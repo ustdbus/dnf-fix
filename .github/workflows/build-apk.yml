@@ -1,0 +1,97 @@
+name: 构建并发布安卓 APK (Release)
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码仓库
+        uses: actions/checkout@v4
+
+      - name: 配置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 安装前端依赖并构建
+        run: |
+          npm ci || npm install
+          npm run build
+
+      - name: 将前端产物同步到 Android Assets 目录
+        run: |
+          mkdir -p android/app/src/main/assets
+          cp -r dist/* android/app/src/main/assets/
+
+      - name: 配置 Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: 设置 Android SDK 与签名秘钥
+        run: |
+          if [ ! -f android/app/release.keystore ]; then
+            keytool -genkeypair -v -keystore android/app/release.keystore \
+              -alias dnffix -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass dnf123456 -keypass dnf123456 \
+              -dname "CN=DnfFix, OU=App, O=DNF, L=Beijing, ST=Beijing, C=CN"
+          fi
+
+      - name: 配置 Gradle 权限并执行构建
+        run: |
+          cd android
+          gradle assembleRelease --no-daemon
+
+      - name: 重命名 APK 文件
+        id: apk_step
+        run: |
+          VERSION=${GITHUB_REF_NAME:-v1.0.0}
+          APK_PATH=$(find android/app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
+          TARGET_NAME="dnf-fix-${VERSION}.apk"
+          cp "$APK_PATH" "$TARGET_NAME"
+          echo "apk_path=$TARGET_NAME" >> $GITHUB_OUTPUT
+          echo "tag_name=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: 上传构建产物 (Artifacts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dnf-fix-apk
+          path: ${{ steps.apk_step.outputs.apk_path }}
+
+      - name: 发布到 GitHub Releases
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.apk_step.outputs.tag_name }}
+          name: 鬼剑士存档修改器安卓版 ${{ steps.apk_step.outputs.tag_name }}
+          body: |
+            ## 🎮 鬼剑士单机版安卓存档修改器 ${{ steps.apk_step.outputs.tag_name }}
+
+            ### 🚀 主要功能：
+            - **多角色支持**：自动扫描并支持打开角色 1 至角色 4 存档（`DnfHero0` ~ `DnfHero3`）。
+            - **角色属性修改**：金币（最高21亿）、复活币、胜点、背包格数（最高90格）。
+            - **背包槽位全修改**：90个槽位自由修改物品数量、装备强化等级（+0 ~ +34+），支持在空槽中更改/添加任意物品！
+            - **王图全开**：格兰之森、天空之城、天维巨兽、雪山、机械牛一键全开王者难度！
+            - **30篇冒险日志全解锁**：一键点亮全部冒险日志！
+            - **安全备份机制**：写回存档时自动生成 `.bak` 备份文件，确保存档永不丢失。
+
+            ### 📥 下载安装：
+            请在下方 Assets 中下载 `dnf-fix-${{ steps.apk_step.outputs.tag_name }}.apk` 安装到安卓手机即可直接使用！
+          files: ${{ steps.apk_step.outputs.apk_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
