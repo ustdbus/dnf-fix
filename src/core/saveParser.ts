@@ -20,10 +20,11 @@ export const DEFAULT_ITEM_TEMPLATE = new Uint8Array([
 ])
 
 const PROFESSION_NAMES: Record<number, string> = {
-  0: '鬼剑士 / 狂战士',
+  0: '鬼剑士 (未转职)',
   1: '剑魂',
   2: '鬼泣',
-  3: '阿修罗'
+  3: '狂战士',
+  4: '阿修罗'
 }
 
 export function isEquipCategory(typeId: number): boolean {

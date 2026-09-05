@@ -27,7 +27,7 @@
               @click="loadSampleSave"
               class="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs rounded-lg shadow-lg shadow-amber-600/30 transition"
             >
-              🚀 载入项目参考存档进行测试 (Lv.60 阿修罗)
+              🚀 载入项目参考存档进行测试 (Lv.60 狂战士)
             </button>
           </div>
         </div>
