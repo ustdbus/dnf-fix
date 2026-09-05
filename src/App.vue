@@ -170,6 +170,14 @@ function loadSampleSave() {
   }
 }
 
+onMounted(() => {
+  const params = new URLSearchParams(window.location.search)
+  if (params.get('sample') === 'true') {
+    loadSampleSave()
+    activeTab.value = 'inventory'
+  }
+})
+
 function onSelectCharacter(index: number) {
   currentCharacter.value = index
   if (saves.value[index]) {

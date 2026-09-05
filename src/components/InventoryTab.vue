@@ -9,78 +9,108 @@
         <span class="text-gray-400">已使用:</span>
         <span class="text-emerald-400 font-bold font-mono">{{ usedSlotsCount }}</span>
         <span class="text-gray-400">空闲:</span>
-        <span class="text-blue-400 font-bold font-mono">{{ 90 - usedSlotsCount }}</span>
+        <span class="text-blue-400 font-bold font-mono">{{ emptySlotsCount }}</span>
       </div>
 
-      <div class="flex items-center gap-2">
+      <!-- 游戏同款分类 Tab + 空槽筛选 -->
+      <div class="flex flex-wrap items-center gap-1.5">
         <button
           @click="filterType = 'all'"
-          :class="['px-2 py-1 rounded transition', filterType === 'all' ? 'bg-amber-600 text-black font-bold' : 'bg-gray-800 text-gray-400 hover:text-white']"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'all' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
         >
-          全部 (90)
+          全部 <span class="text-[10px] font-mono opacity-80">({{ save.inventory.length }})</span>
         </button>
         <button
-          @click="filterType = 'active'"
-          :class="['px-2 py-1 rounded transition', filterType === 'active' ? 'bg-amber-600 text-black font-bold' : 'bg-gray-800 text-gray-400 hover:text-white']"
+          @click="filterType = 'equip'"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'equip' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
         >
-          仅有物品
+          🗡️ 装备 <span class="text-[10px] font-mono opacity-80">({{ equipSlotsCount }})</span>
+        </button>
+        <button
+          @click="filterType = 'consumable'"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'consumable' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
+        >
+          🧪 消耗品 <span class="text-[10px] font-mono opacity-80">({{ consumableSlotsCount }})</span>
+        </button>
+        <button
+          @click="filterType = 'material'"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'material' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
+        >
+          💎 材料 <span class="text-[10px] font-mono opacity-80">({{ materialSlotsCount }})</span>
+        </button>
+        <button
+          @click="filterType = 'quest'"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'quest' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
+        >
+          📜 任务 <span class="text-[10px] font-mono opacity-80">({{ questSlotsCount }})</span>
         </button>
         <button
           @click="filterType = 'empty'"
-          :class="['px-2 py-1 rounded transition', filterType === 'empty' ? 'bg-amber-600 text-black font-bold' : 'bg-gray-800 text-gray-400 hover:text-white']"
+          :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'empty' ? 'bg-blue-600 border-blue-500 text-white font-bold shadow-md shadow-blue-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-400 hover:text-white hover:bg-gray-700']"
         >
-          仅空槽 (可添加)
+          ➕ 仅空槽 <span class="text-[10px] font-mono opacity-80">({{ emptySlotsCount }})</span>
         </button>
       </div>
     </div>
 
-    <!-- 90 个槽位网格 -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2">
-      <div
-        v-for="slot in filteredSlots"
-        :key="slot.slotIndex"
-        @click="openEditModal(slot)"
-        :class="[
-          'relative p-2.5 rounded-lg border cursor-pointer transition flex flex-col justify-between h-24 overflow-hidden group select-none',
-          slot.isEmpty
-            ? 'bg-[#10131d]/60 border-dashed border-gray-800 hover:border-amber-600/50 hover:bg-[#161a27]'
-            : getQualityClass(slot)
-        ]"
-      >
-        <!-- 槽位序号与类别 -->
-        <div class="flex items-center justify-between text-[10px]">
-          <span class="font-mono text-gray-500">#{{ slot.slotIndex + 1 }}</span>
-          <span
-            v-if="!slot.isEmpty"
-            class="px-1 py-0.2 rounded bg-black/40 text-gray-300 scale-90 origin-right"
-          >
-            {{ slot.categoryName }}
-          </span>
-          <span v-else class="text-gray-600">空槽</span>
-        </div>
-
-        <!-- 物品名称与状态 -->
-        <div class="my-auto">
-          <div v-if="!slot.isEmpty" class="text-xs font-medium truncate" :title="slot.itemName">
-            <span v-if="slot.refineLevel > 0" class="text-amber-400 font-bold mr-1">
-              +{{ slot.refineLevel }}
+    <!-- 游戏同款一行10格网格容器 (支持横向滑动自适应) -->
+    <div class="overflow-x-auto pb-3 -mx-1 px-1 custom-scrollbar">
+      <div class="grid grid-cols-10 min-w-[780px] gap-1.5">
+        <div
+          v-for="slot in filteredSlots"
+          :key="slot.slotIndex"
+          @click="openEditModal(slot)"
+          :class="[
+            'relative p-1.5 rounded-lg border cursor-pointer transition flex flex-col justify-between h-20 overflow-hidden group select-none',
+            slot.isEmpty
+              ? 'bg-[#10131d]/60 border-dashed border-gray-800 hover:border-amber-600/50 hover:bg-[#161a27]'
+              : getQualityClass(slot)
+          ]"
+        >
+          <!-- 槽位角标: 左侧装备标记/强化等级，右侧槽位序号 -->
+          <div class="flex items-center justify-between text-[10px] leading-none">
+            <span v-if="!slot.isEmpty && isEquip(slot.typeId)" class="font-bold">
+              <span v-if="slot.refineLevel > 0" class="text-amber-400 drop-shadow">
+                +{{ slot.refineLevel }}
+              </span>
+              <span v-else class="text-amber-300/80 bg-black/40 px-1 py-0.5 rounded text-[9px]">
+                E
+              </span>
             </span>
-            <span>{{ slot.itemName }}</span>
-          </div>
-          <div v-else class="text-center text-gray-600 text-xs py-1 group-hover:text-amber-400 transition">
-            + 点击添加物品
-          </div>
-        </div>
+            <span v-else-if="!slot.isEmpty" class="text-gray-500 scale-90 origin-left text-[9px]">
+              {{ slot.categoryName.slice(0, 3) }}
+            </span>
+            <span v-else class="text-gray-600 text-[9px]">空</span>
 
-        <!-- 数量角标与操作提示 -->
-        <div class="flex items-center justify-between text-[10px]">
-          <span v-if="!slot.isEmpty" class="text-gray-400 font-mono">
-            x{{ slot.count }}
-          </span>
-          <span v-else class="text-gray-600">空闲</span>
-          <span class="text-[9px] text-gray-500 opacity-0 group-hover:opacity-100 transition">
-            编辑 ✏️
-          </span>
+            <span class="font-mono text-gray-500 text-[9px]">#{{ slot.slotIndex + 1 }}</span>
+          </div>
+
+          <!-- 中间物品名称 -->
+          <div class="my-auto py-0.5 text-center">
+            <div
+              v-if="!slot.isEmpty"
+              class="text-[11px] leading-tight line-clamp-2 text-gray-200 group-hover:text-white font-medium break-all"
+              :title="slot.itemName + (slot.refineLevel > 0 ? ` (+${slot.refineLevel})` : '')"
+            >
+              {{ slot.itemName }}
+            </div>
+            <div v-else class="text-[11px] text-gray-600 group-hover:text-amber-400 transition font-mono">
+              +
+            </div>
+          </div>
+
+          <!-- 底部栏: 左侧类别/提示，右侧数量 -->
+          <div class="flex items-center justify-between text-[10px] leading-none">
+            <span v-if="!slot.isEmpty" class="text-[9px] text-gray-500 scale-90 origin-left truncate max-w-[45px]">
+              {{ slot.categoryName }}
+            </span>
+            <span v-else class="text-[9px] text-gray-600">可添加</span>
+
+            <span v-if="!slot.isEmpty" class="text-[10px] font-mono text-amber-300 font-semibold">
+              x{{ slot.count }}
+            </span>
+            <span v-else class="text-[9px] text-gray-600 font-mono">--</span>
+          </div>
         </div>
       </div>
     </div>
@@ -251,7 +281,8 @@ const props = defineProps<{
   save: DnfHeroSave
 }>()
 
-const filterType = ref<'all' | 'active' | 'empty'>('all')
+type FilterType = 'all' | 'equip' | 'consumable' | 'material' | 'quest' | 'empty'
+const filterType = ref<FilterType>('all')
 const editingSlot = ref<InventorySlot | null>(null)
 
 const formTypeId = ref<number>(0x01)
@@ -259,18 +290,51 @@ const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
+const isEquip = (typeId: number) => (typeId >= 0x00 && typeId <= 0x0a) || typeId === 0x0c
+const isConsumable = (typeId: number) => typeId >= 0x0d && typeId <= 0x12
+const isMaterial = (typeId: number) => typeId === 0x0b
+const isQuest = (typeId: number) => typeId === 0x13
+
 const usedSlotsCount = computed(() => {
   return props.save.inventory.filter(s => !s.isEmpty).length
 })
 
+const equipSlotsCount = computed(() => {
+  return props.save.inventory.filter(s => !s.isEmpty && isEquip(s.typeId)).length
+})
+
+const consumableSlotsCount = computed(() => {
+  return props.save.inventory.filter(s => !s.isEmpty && isConsumable(s.typeId)).length
+})
+
+const materialSlotsCount = computed(() => {
+  return props.save.inventory.filter(s => !s.isEmpty && isMaterial(s.typeId)).length
+})
+
+const questSlotsCount = computed(() => {
+  return props.save.inventory.filter(s => !s.isEmpty && isQuest(s.typeId)).length
+})
+
+const emptySlotsCount = computed(() => {
+  return props.save.inventory.filter(s => s.isEmpty).length
+})
+
 const filteredSlots = computed(() => {
-  if (filterType.value === 'active') {
-    return props.save.inventory.filter(s => !s.isEmpty)
+  switch (filterType.value) {
+    case 'equip':
+      return props.save.inventory.filter(s => !s.isEmpty && isEquip(s.typeId))
+    case 'consumable':
+      return props.save.inventory.filter(s => !s.isEmpty && isConsumable(s.typeId))
+    case 'material':
+      return props.save.inventory.filter(s => !s.isEmpty && isMaterial(s.typeId))
+    case 'quest':
+      return props.save.inventory.filter(s => !s.isEmpty && isQuest(s.typeId))
+    case 'empty':
+      return props.save.inventory.filter(s => s.isEmpty)
+    case 'all':
+    default:
+      return props.save.inventory
   }
-  if (filterType.value === 'empty') {
-    return props.save.inventory.filter(s => s.isEmpty)
-  }
-  return props.save.inventory
 })
 
 const currentCategoryItems = computed(() => {
