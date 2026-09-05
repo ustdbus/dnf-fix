@@ -222,6 +222,8 @@ export const ITEM_DICTIONARY: ItemDefinition[] = [
   { typeId: 0x0b, itemId: 0x84, name: '代币 (复活兑换券)', categoryName: '材料', quality: 'orange' },
   { typeId: 0x0b, itemId: 0x85, name: '强化碳 (炉岩炭)', categoryName: '材料', quality: 'purple' },
   { typeId: 0x0b, itemId: 0x89, name: '小龙的心脏 (幼龙心脏)', categoryName: '材料', quality: 'purple' },
+  { typeId: 0x0b, itemId: 0x8a, name: '黄金哥布林的钥匙', categoryName: '材料', quality: 'pink' },
+  { typeId: 0x0b, itemId: 0x8f, name: '沾满血迹的传书', categoryName: '材料', quality: 'purple' },
   { typeId: 0x0b, itemId: 0x90, name: '暴龙王戒 (狂龙之戒)', categoryName: '材料', quality: 'orange' },
   { typeId: 0x0b, itemId: 0x91, name: '赛菲亚破旧日记 (旧日记)', categoryName: '材料', quality: 'purple' },
   { typeId: 0x0b, itemId: 0x92, name: '机械牛装置 (比尔马克机械芯)', categoryName: '材料', quality: 'orange' },
