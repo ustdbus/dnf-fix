@@ -290,9 +290,9 @@ const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
-const isEquip = (typeId: number) => (typeId >= 0x00 && typeId <= 0x0a) || typeId === 0x0c
+const isEquip = (typeId: number) => typeId >= 0x00 && typeId <= 0x0a
 const isConsumable = (typeId: number) => typeId >= 0x0d && typeId <= 0x12
-const isMaterial = (typeId: number) => typeId === 0x0b
+const isMaterial = (typeId: number) => typeId === 0x0b || typeId === 0x0c
 const isQuest = (typeId: number) => typeId === 0x13
 
 const usedSlotsCount = computed(() => {
