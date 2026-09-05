@@ -123,7 +123,7 @@ export const ITEM_DICTIONARY: ItemDefinition[] = [
   { typeId: 0x0b, itemId: 0x50, name: '魔塔皮亚 (魔塔之晶)', categoryName: '材料', quality: 'purple' },
   { typeId: 0x0b, itemId: 0x51, name: '米拉津果实 (米拉津果)', categoryName: '材料', quality: 'white' },
   { typeId: 0x0b, itemId: 0x52, name: '马雷果实 (马雷果)', categoryName: '材料', quality: 'white' },
-  { typeId: 0x0b, itemId: 0x53, name: '妖丰骨 (妖精骨/妖风骨)', categoryName: '材料', quality: 'blue' },
+  { typeId: 0x0b, itemId: 0x53, name: '哥布林手骨 (妖丰骨/妖精骨)', categoryName: '材料', quality: 'blue' },
   { typeId: 0x0b, itemId: 0x54, name: '猫指甲 (暗猫指甲)', categoryName: '材料', quality: 'white' },
   { typeId: 0x0b, itemId: 0x55, name: '黑妖精守护精华 (守护精华)', categoryName: '材料', quality: 'purple' },
   { typeId: 0x0b, itemId: 0x5a, name: '黑暗项链 (暗影项链)', categoryName: '材料', quality: 'blue' },
