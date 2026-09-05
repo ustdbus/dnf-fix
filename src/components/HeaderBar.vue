@@ -14,16 +14,6 @@
             <p class="text-[11px] text-gray-400">Android 专用版 · 角色/背包/王图/日志全功能修改</p>
           </div>
         </div>
-
-        <div class="flex items-center gap-2">
-          <button
-            @click="$emit('load-sample')"
-            class="text-xs px-2.5 py-1 rounded bg-amber-950/60 hover:bg-amber-900/80 border border-amber-700/50 text-amber-300 transition flex items-center gap-1 shadow-sm"
-            title="加载随项目附带的参考存档进行测试"
-          >
-            <span>载入参考存档</span>
-          </button>
-        </div>
       </div>
 
       <!-- 存档路径输入与扫描 -->
@@ -34,7 +24,7 @@
             :value="savePath"
             @input="$emit('update:savePath', ($event.target as HTMLInputElement).value)"
             type="text"
-            placeholder="例如: /sdcard/Android/data/... 或 C:/.../参考存档"
+            placeholder="例如: /sdcard/Android/data/com.tencent.dnf/files"
             class="flex-1 bg-[#161a24] text-xs text-gray-200 px-3 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none placeholder-gray-600"
           />
         </div>
@@ -99,7 +89,6 @@ defineEmits<{
   (e: 'update:savePath', val: string): void
   (e: 'detect-path'): void
   (e: 'select-character', index: number): void
-  (e: 'load-sample'): void
   (e: 'file-selected', event: Event): void
 }>()
 </script>

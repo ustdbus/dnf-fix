@@ -9,7 +9,6 @@
         @update:save-path="savePath = $event"
         @detect-path="detectSaves"
         @select-character="onSelectCharacter"
-        @load-sample="loadSampleSave"
         @file-selected="onFileSelected"
       />
 
@@ -17,17 +16,21 @@
       <main class="max-w-4xl mx-auto p-3 sm:p-4 space-y-4">
         <!-- 未加载存档时的提示 -->
         <div v-if="!currentSave" class="bg-[#141724] border border-amber-800/40 rounded-2xl p-8 text-center space-y-4 my-6 shadow-xl">
-          <div class="text-4xl animate-bounce">⚔️</div>
+          <div class="text-4xl">⚔️</div>
           <h2 class="text-lg font-bold text-amber-300">尚未加载角色存档</h2>
           <p class="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">
-            请在上方输入手机中的存档目录路径并点击【检测存档】，或者直接点击右上角【载入参考存档】进入本地测试模式。
+            请在上方输入手机中游戏存档目录路径并点击【检测存档】，或者点击下方【打开存档文件】选择本地 DnfHero0 ~ DnfHero3 存档文件进行修改。
           </p>
           <div class="flex justify-center gap-3 pt-2">
+            <label class="cursor-pointer px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs rounded-lg shadow-lg shadow-amber-600/30 transition flex items-center gap-1.5">
+              <span>📂 打开存档文件</span>
+              <input type="file" class="hidden" @change="onFileSelected" />
+            </label>
             <button
-              @click="loadSampleSave"
-              class="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs rounded-lg shadow-lg shadow-amber-600/30 transition"
+              @click="detectSaves"
+              class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 font-bold text-xs rounded-lg transition flex items-center gap-1.5"
             >
-              🚀 载入项目参考存档进行测试 (Lv.60 狂战士)
+              <span>🔍 检测路径存档</span>
             </button>
           </div>
         </div>
@@ -113,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import HeaderBar from './components/HeaderBar.vue'
 import CharacterTab from './components/CharacterTab.vue'
 import InventoryTab from './components/InventoryTab.vue'
@@ -121,7 +124,6 @@ import DungeonTab from './components/DungeonTab.vue'
 import SaveActions from './components/SaveActions.vue'
 import { DnfHeroSave } from './core/types'
 import { parseHeroSave, serializeHeroSave } from './core/saveParser'
-import { SAMPLE_HERO_BASE64 } from './assets/sampleSave'
 
 const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
 const currentCharacter = ref<number>(0)
@@ -148,35 +150,6 @@ function showToast(msg: string, type: 'success' | 'error' = 'success') {
     toastMessage.value = ''
   }, 3000)
 }
-
-function loadSampleSave() {
-  try {
-    const binaryString = window.atob(SAMPLE_HERO_BASE64)
-    const len = binaryString.length
-    const bytes = new Uint8Array(len)
-    for (let i = 0; i < len; i++) {
-      bytes[i] = binaryString.charCodeAt(i)
-    }
-    const save = parseHeroSave(bytes.buffer, currentCharacter.value)
-    saves.value[currentCharacter.value] = save
-    currentSave.value = save
-    characterStatus.value[currentCharacter.value] = {
-      exists: true,
-      desc: `Lv.${save.level} ${save.professionName}`
-    }
-    showToast(`成功载入角色 ${currentCharacter.value + 1} 参考存档 (Lv.${save.level})`)
-  } catch (err: any) {
-    showToast(`载入参考存档失败: ${err.message}`, 'error')
-  }
-}
-
-onMounted(() => {
-  const params = new URLSearchParams(window.location.search)
-  if (params.get('sample') === 'true') {
-    loadSampleSave()
-    activeTab.value = 'inventory'
-  }
-})
 
 function onSelectCharacter(index: number) {
   currentCharacter.value = index
@@ -233,7 +206,7 @@ function detectSaves() {
   }
 
   // 网页端检测模式 (模拟)
-  showToast(`已检测路径: ${savePath.value} (网页模式下请使用浏览文件或参考存档)`)
+  showToast(`已检测路径: ${savePath.value} (网页模式下请使用【浏览文件】选择本地存档)`)
 }
 
 function onFileSelected(event: Event) {
@@ -311,9 +284,4 @@ function triggerDownload(bytes: Uint8Array, filename: string) {
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
 }
-
-onMounted(() => {
-  // 默认自动尝试载入参考存档，方便初次打开即进入体验
-  loadSampleSave()
-})
 </script>

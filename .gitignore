@@ -15,3 +15,8 @@ android/app/build
 android/.gradle
 android/build
 android/local.properties
+
+# 隐私与用户存档保护
+参考存档/
+*.bak
+*.png
