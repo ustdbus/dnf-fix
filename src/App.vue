@@ -9,6 +9,7 @@
         @update:save-path="savePath = $event"
         @detect-path="detectSaves"
         @select-character="onSelectCharacter"
+        @reload-current="reloadCurrentSave"
         @file-selected="onFileSelected"
       />
 
@@ -116,7 +117,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderBar from './components/HeaderBar.vue'
 import CharacterTab from './components/CharacterTab.vue'
 import InventoryTab from './components/InventoryTab.vue'
@@ -128,6 +129,15 @@ import { parseHeroSave, serializeHeroSave } from './core/saveParser'
 const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
 const currentCharacter = ref<number>(0)
 const activeTab = ref<'character' | 'inventory' | 'dungeon'>('character')
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && window.AndroidBridge) {
+      // 用户从游戏切换回修改器时，自动从磁盘重新检查当前角色是否有更新
+      loadCharacterSaveFromDisk(currentCharacter.value, true)
+    }
+  })
+})
 
 // 4个角色的存档数据缓存 (0 ~ 3)
 const saves = ref<(DnfHeroSave | null)[]>([null, null, null, null])
@@ -151,17 +161,12 @@ function showToast(msg: string, type: 'success' | 'error' = 'success') {
   }, 3000)
 }
 
-function onSelectCharacter(index: number) {
-  currentCharacter.value = index
-  if (saves.value[index]) {
-    currentSave.value = saves.value[index]
-    showToast(`已切换至角色 ${index + 1}`)
-  } else {
-    // 检查 AndroidBridge 是否存在该角色文件
-    if (window.AndroidBridge && window.AndroidBridge.checkFileExists) {
-      const charPath = `${savePath.value}/DnfHero${index}`
-      if (window.AndroidBridge.checkFileExists(charPath)) {
-        const b64 = window.AndroidBridge.readSaveFile(charPath)
+function loadCharacterSaveFromDisk(index: number, silent: boolean = false): boolean {
+  if (window.AndroidBridge && window.AndroidBridge.checkFileExists && window.AndroidBridge.readSaveFile) {
+    const charPath = `${savePath.value}/DnfHero${index}`
+    if (window.AndroidBridge.checkFileExists(charPath)) {
+      const b64 = window.AndroidBridge.readSaveFile(charPath)
+      if (b64) {
         const binaryString = window.atob(b64)
         const len = binaryString.length
         const bytes = new Uint8Array(len)
@@ -170,23 +175,53 @@ function onSelectCharacter(index: number) {
         }
         const save = parseHeroSave(bytes.buffer, index)
         saves.value[index] = save
-        currentSave.value = save
         characterStatus.value[index] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
-        showToast(`已读取角色 ${index + 1} 存档`)
-        return
+        if (currentCharacter.value === index) {
+          currentSave.value = save
+        }
+        if (!silent) {
+          showToast(`已读取角色 ${index + 1} 最新存档 (Lv.${save.level} ${save.professionName})`)
+        }
+        return true
       }
     }
-    currentSave.value = null
-    showToast(`角色 ${index + 1} 暂无存档数据，请先检测或导入`, 'error')
   }
+  return false
+}
+
+function reloadCurrentSave() {
+  const success = loadCharacterSaveFromDisk(currentCharacter.value)
+  if (!success) {
+    showToast(`重新读取失败：磁盘未找到 DnfHero${currentCharacter.value} 或当前在网页模式`, 'error')
+  }
+}
+
+function onSelectCharacter(index: number) {
+  currentCharacter.value = index
+  // 1. Android 原生环境下，每次切换或点击角色卡片均强制从磁盘重新读取最新数据
+  const readSuccess = loadCharacterSaveFromDisk(index)
+  if (readSuccess) {
+    return
+  }
+
+  // 2. 若不在原生环境或磁盘未找到，检查是否有手动导入的存档
+  if (saves.value[index]) {
+    currentSave.value = saves.value[index]
+    showToast(`已切换至角色 ${index + 1}`)
+    return
+  }
+
+  currentSave.value = null
+  showToast(`角色 ${index + 1} 暂无存档数据，请先检测或导入`, 'error')
 }
 
 function detectSaves() {
   if (window.AndroidBridge && window.AndroidBridge.scanSaves) {
     try {
+      // 重新检测时清空旧缓存，强制完全从磁盘刷新
+      saves.value = [null, null, null, null]
       const resultJson = window.AndroidBridge.scanSaves(savePath.value)
       const res = JSON.parse(resultJson)
-      // res: Array<{ index: number, exists: boolean, size: number }>
       let foundCount = 0
       for (let i = 0; i < 4; i++) {
         const item = res.find((r: any) => r.index === i)
@@ -198,7 +233,8 @@ function detectSaves() {
         }
       }
       showToast(`检测完成，共发现 ${foundCount} 个角色存档`)
-      onSelectCharacter(0)
+      // 强制从磁盘重新读取当前角色存档
+      loadCharacterSaveFromDisk(currentCharacter.value)
       return
     } catch (e: any) {
       showToast(`检测存档路径出错: ${e.message}`, 'error')
@@ -227,6 +263,8 @@ function onFileSelected(event: Event) {
       showToast(`成功读取 ${file.name} (Lv.${save.level} ${save.professionName})`)
     } catch (e: any) {
       showToast(`解析文件失败: ${e.message}`, 'error')
+    } finally {
+      target.value = ''
     }
   }
   reader.readAsArrayBuffer(file)

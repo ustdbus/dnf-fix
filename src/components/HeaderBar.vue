@@ -28,11 +28,18 @@
             class="flex-1 bg-[#161a24] text-xs text-gray-200 px-3 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none placeholder-gray-600"
           />
         </div>
-        <div class="flex items-center gap-2">
-          <label class="cursor-pointer text-xs px-3 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1">
+        <div class="flex items-center gap-1.5">
+          <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1">
             <span>浏览文件</span>
             <input type="file" class="hidden" @change="$emit('file-selected', $event)" />
           </label>
+          <button
+            @click="$emit('reload-current')"
+            class="text-xs px-2.5 py-1.5 rounded bg-blue-900/70 hover:bg-blue-800 border border-blue-600/80 text-blue-200 transition flex items-center gap-1 shadow-sm"
+            title="强制从存储重新读取当前角色的最新存档"
+          >
+            <span>🔄 重新读取</span>
+          </button>
           <button
             @click="$emit('detect-path')"
             class="text-xs px-3 py-1.5 rounded bg-amber-600 hover:bg-amber-500 text-black font-bold transition flex items-center gap-1 shadow-md shadow-amber-600/30"
@@ -89,6 +96,7 @@ defineEmits<{
   (e: 'update:savePath', val: string): void
   (e: 'detect-path'): void
   (e: 'select-character', index: number): void
+  (e: 'reload-current'): void
   (e: 'file-selected', event: Event): void
 }>()
 </script>
