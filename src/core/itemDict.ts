@@ -61,6 +61,24 @@ export const ITEM_DICTIONARY: ItemDefinition[] = [
   { typeId: 0x03, itemId: 0x51, name: '30级史诗光剑', categoryName: '光剑', quality: 'orange', canRefine: true },
   { typeId: 0x03, itemId: 0x60, name: '60级史诗光剑', categoryName: '光剑', quality: 'orange', canRefine: true },
 
+  // ==================== 40级高级防具与手腕首饰 ====================
+  { typeId: 0x04, itemId: 0x45, name: '40级高级布甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
+  { typeId: 0x04, itemId: 0x46, name: '40级高级轻甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
+  { typeId: 0x04, itemId: 0x47, name: '40级高级重甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
+  { typeId: 0x04, itemId: 0x48, name: '40级高级板甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
+
+  { typeId: 0x05, itemId: 0x45, name: '40级高级布甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
+  { typeId: 0x05, itemId: 0x46, name: '40级高级轻甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
+  { typeId: 0x05, itemId: 0x47, name: '40级高级重甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
+  { typeId: 0x05, itemId: 0x48, name: '40级高级板甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
+
+  { typeId: 0x06, itemId: 0x45, name: '40级高级布甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
+  { typeId: 0x06, itemId: 0x46, name: '40级高级轻甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
+  { typeId: 0x06, itemId: 0x47, name: '40级高级重甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
+  { typeId: 0x06, itemId: 0x48, name: '40级高级板甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
+
+  { typeId: 0x07, itemId: 0x14, name: '40级高级手腕', categoryName: '手腕', quality: 'blue', canRefine: true },
+
   // ==================== 称号类 (0x09) ====================
   { typeId: 0x09, itemId: 0x08, name: '力体狂暴之冠 (物攻+力体)', categoryName: '称号', quality: 'pink', desc: '物攻+X%, 力+30, 体+40' },
   { typeId: 0x09, itemId: 0x09, name: '智精睿智之耀 (魔攻+智精)', categoryName: '称号', quality: 'pink', desc: '魔攻+X%, 智+30, 精+40' },
