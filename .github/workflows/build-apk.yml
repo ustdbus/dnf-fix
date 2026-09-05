@@ -41,7 +41,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
+
+      - name: 配置 Gradle 构建环境
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: 确保 Android SDK 环境完备
+        uses: android-actions/setup-android@v3
 
       - name: 设置 Android SDK 与签名秘钥
         run: |
