@@ -63,10 +63,21 @@ export function parseQuestSave(buffer: ArrayBuffer, charIndex: number = 0): DnfQ
     })
 
     if (isActive && qid >= 0 && qid < TOTAL_QUEST_COUNT) {
-      // 待领奖判定：step === 3 或目标进度均拉满
-      const isReady = step === 0x03 || p1 >= 99 || p2 >= 99 || p3 >= 99
+      const hitCount = safeBuffer[offset + 7]
+      const grade = safeBuffer[offset + 8]
+      const styleScore = safeBuffer[offset + 10]
+      const techniqueScore = safeBuffer[offset + 11]
+      const dungeonClearFlag = safeBuffer[offset + 12]
+
+      // 待领奖判定：
+      // 1. step === 0x03 或杀怪拉满
+      // 2. 地下城指标全达成 (通关标记置1、风格/技巧拉满、无伤且SSS等)
+      const isReady = step === 0x03 || p1 >= 99 || p2 >= 99 || p3 >= 99 ||
+                      dungeonClearFlag === 0x01 || styleScore >= 40 || techniqueScore >= 40 ||
+                      (hitCount === 0 && grade === 0)
       activeSlotMap.set(qid, { slotIndex: s, isReady })
     }
+
   }
 
   // 2. 解析 530 个任务项
@@ -152,25 +163,40 @@ export function serializeQuestSave(questSave: DnfQuestSave): Uint8Array {
       output[offset + 2] = (q.id >> 8) & 0xff
 
       if (q.isReadyToReward) {
-        // 目标达成（待领奖状态）：step 设为 0x03，条件计数拉满为 99 (0x63)
+        // 目标达成（待领奖状态）：
+        // 经逆向游戏底层 (libBNVModule.so: loadDataQuest 0x00055510, checkEndQuest 0x000d38f4)：
+        // 1. step (offset + 3) = 0x03: 阶段3 / 通关地下城次数达标 (condType 2)
+        // 2. count0~2 (offset + 4~6) = 0x63: 怪物击杀目标达标 (condType 3)
+        // 3. hitCount (offset + 7) = 0x00: 0次被击，满足心眼等被击次数限制 (condType 4)
+        // 4. grade (offset + 8) = 0x00: 0对应最高评级(SSS级)，满足评分等级限制 (condType 6)
+        // 5. clearTimeFlag (offset + 9) = 0x01: 限时通关标记置1，满足罐子的传说等限时通关 (condType 7)
+        // 6. styleScore (offset + 10) = 0x64: 100% 风格得分，满足风的修炼等风格限制 (condType 8)
+        // 7. techniqueScore (offset + 11) = 0x64: 100% 技巧得分，满足卡坤等技巧限制 (condType 9)
+        // 8. dungeonClearFlag (offset + 12) = 0x01: 地下城通关完成标记置1 (condType 0xf)
         output[offset + 3] = 0x03
         output[offset + 4] = 0x63
         output[offset + 5] = 0x63
         output[offset + 6] = 0x63
+        output[offset + 7] = 0x00
+        output[offset + 8] = 0x00
+        output[offset + 9] = 0x01
+        output[offset + 10] = 0x64
+        output[offset + 11] = 0x64
+        output[offset + 12] = 0x01
       } else {
-        // 普通进行中未达成状态
+        // 普通进行中未达成状态 (初始默认重置参数)
         output[offset + 3] = 0x00
         output[offset + 4] = 0x00
         output[offset + 5] = 0x00
         output[offset + 6] = 0x00
+        output[offset + 7] = 0xff
+        output[offset + 8] = 0x09
+        output[offset + 9] = 0x00
+        output[offset + 10] = 0x00
+        output[offset + 11] = 0x00
+        output[offset + 12] = 0x00
       }
 
-      output[offset + 7] = 0xff
-      output[offset + 8] = 0x09
-      output[offset + 9] = 0x00
-      output[offset + 10] = 0x00
-      output[offset + 11] = 0x00
-      output[offset + 12] = 0x00
     } else {
       // 写入标准空槽数据
       output.set(EMPTY_SLOT_BYTES, offset)
