@@ -1,14 +1,14 @@
 <template>
   <div class="space-y-6">
-    <!-- 顶部状态栏与批量控制 -->
-    <div class="bg-[#141722] p-4 rounded-xl border border-gray-800 space-y-4 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-800 pb-3">
+    <!-- 顶部状态栏与批量控制：DNF 史诗任务卷轴 -->
+    <div class="bg-gradient-to-b from-[#181b26] to-[#10121a] p-4 sm:p-5 rounded-2xl border border-amber-900/40 shadow-xl space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-amber-900/30 pb-3.5">
         <div>
-          <h2 class="text-sm font-bold text-amber-300 flex items-center gap-1.5">
+          <h2 class="text-sm sm:text-base font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-300 to-yellow-500 flex items-center gap-2">
             <span>📜</span> 任务系统管理 (全量 530 个官方任务)
           </h2>
           <p class="text-[11px] text-gray-400 mt-0.5">
-            支持主线/支线/重复任务状态修改 (00未接取 · 01进行中 · 02已完成)，一键全通及状态重置。
+            阿拉德大陆主线/支线/重复/转职/觉醒任务状态编辑 (00未接取 · 01进行中 · 02已完成)
           </p>
         </div>
 
@@ -16,65 +16,65 @@
         <div class="flex flex-wrap items-center gap-2">
           <button
             @click="setAllQuestsState(2)"
-            class="text-xs px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-extrabold transition shadow-md shadow-amber-600/20 flex items-center gap-1"
+            class="text-xs px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-black transition shadow-lg shadow-amber-500/30 flex items-center gap-1.5 active:scale-95"
             :disabled="!questSave"
           >
-            ✨ 一键全部完成 (All Clear)
+            <span>✨ 一键全通 (All Clear)</span>
           </button>
           <button
             @click="setEpicQuestsState(2)"
-            class="text-xs px-2.5 py-1.5 rounded-lg bg-amber-950/70 hover:bg-amber-900 border border-amber-800/60 text-amber-300 font-bold transition flex items-center gap-1"
+            class="text-xs px-3 py-1.5 rounded-lg bg-amber-950/80 hover:bg-amber-900 border border-amber-600/50 text-amber-200 font-bold transition flex items-center gap-1 active:scale-95"
             :disabled="!questSave"
           >
-            🎯 一键完成主线
+            <span>🎯 一键完成主线</span>
           </button>
           <button
             @click="setAllQuestsState(0)"
-            class="text-xs px-2.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium transition"
+            class="text-xs px-2.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-[11px] font-medium transition active:scale-95"
             :disabled="!questSave"
           >
-            🔄 重置为未接取
+            <span>🔄 重置未接取</span>
           </button>
         </div>
       </div>
 
       <!-- 任务存档未载入时的导入提示 -->
-      <div v-if="!questSave" class="p-4 bg-[#0f121a] border border-amber-900/40 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div v-if="!questSave" class="p-4 bg-[#0d0f17] border border-amber-900/40 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
         <div class="flex items-center gap-2 text-xs text-amber-200/90">
           <span class="text-lg">💡</span>
-          <span>当前角色尚未载入 DnfQuest 任务存档文件 (DnfQuest{{ charIndex }})</span>
+          <span>当前角色尚未关联 DnfQuest 任务存档文件 (DnfQuest{{ charIndex }})</span>
         </div>
         <div class="flex items-center gap-2">
-          <label class="cursor-pointer text-xs px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-black font-bold rounded-lg transition">
+          <label class="cursor-pointer text-xs px-3.5 py-1.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold rounded-lg transition shadow-md shadow-amber-600/20 active:scale-95">
             <span>📂 导入 DnfQuest{{ charIndex }}</span>
             <input type="file" class="hidden" @change="onQuestFileSelected" />
           </label>
           <button
             @click="createDefaultQuest"
-            class="text-xs px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition border border-gray-700"
+            class="text-xs px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition border border-gray-700 active:scale-95"
           >
-            ➕ 创建空白任务存档
+            ➕ 创建空白任务
           </button>
         </div>
       </div>
 
       <!-- 任务统计卡片 -->
       <div v-else class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <div class="bg-[#0f121a] p-2.5 rounded-lg border border-gray-800 flex items-center justify-between">
+        <div class="bg-[#0b0e15] p-3 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner">
           <span class="text-xs text-gray-400">总任务数</span>
-          <span class="text-xs font-bold text-gray-200">530</span>
+          <span class="text-xs font-black text-amber-300 font-mono">530</span>
         </div>
-        <div class="bg-[#0f121a] p-2.5 rounded-lg border border-gray-800 flex items-center justify-between">
+        <div class="bg-[#0b0e15] p-3 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner">
           <span class="text-xs text-gray-400">已完成任务</span>
-          <span class="text-xs font-bold text-emerald-400">{{ completedCount }}</span>
+          <span class="text-xs font-black text-emerald-400 font-mono">{{ completedCount }}</span>
         </div>
-        <div class="bg-[#0f121a] p-2.5 rounded-lg border border-gray-800 flex items-center justify-between">
+        <div class="bg-[#0b0e15] p-3 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner">
           <span class="text-xs text-gray-400">进行中 (已接取)</span>
-          <span class="text-xs font-bold text-amber-400">{{ activeCount }}</span>
+          <span class="text-xs font-black text-amber-400 font-mono">{{ activeCount }}</span>
         </div>
-        <div class="bg-[#0f121a] p-2.5 rounded-lg border border-gray-800 flex items-center justify-between">
+        <div class="bg-[#0b0e15] p-3 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner">
           <span class="text-xs text-gray-400">未完成任务</span>
-          <span class="text-xs font-bold text-gray-400">{{ unfinishedCount }}</span>
+          <span class="text-xs font-black text-gray-400 font-mono">{{ unfinishedCount }}</span>
         </div>
       </div>
     </div>
@@ -83,21 +83,21 @@
     <div class="space-y-3">
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <!-- 5 大核心筛选类别：全部、已接取、未完成、已完成、重复 -->
-        <div class="flex flex-wrap gap-1.5 bg-[#121520] p-1 rounded-xl border border-gray-800">
+        <div class="flex flex-wrap gap-1.5 bg-[#10131c] p-1.5 rounded-xl border border-gray-800/90 shadow-sm">
           <button
             v-for="f in filterOptions"
             :key="f.key"
             @click="currentFilter = f.key"
             :class="[
-              'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1',
+              'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1 active:scale-95',
               currentFilter === f.key
-                ? 'bg-amber-600 text-black shadow-sm shadow-amber-600/30'
+                ? 'bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-md shadow-amber-500/30'
                 : 'text-gray-400 hover:text-gray-200'
             ]"
           >
             <span>{{ f.icon }}</span>
             <span>{{ f.label }}</span>
-            <span class="text-[10px] opacity-75 font-normal">({{ getFilterCount(f.key) }})</span>
+            <span class="text-[10px] opacity-80 font-mono">({{ getFilterCount(f.key) }})</span>
           </button>
         </div>
 
@@ -107,7 +107,7 @@
             v-model="searchQuery"
             type="text"
             placeholder="搜索任务名称或 ID..."
-            class="w-full bg-[#121520] border border-gray-800 rounded-lg px-3 py-1.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-amber-500 transition"
+            class="w-full bg-[#10131c] border border-gray-800 rounded-xl px-3.5 py-1.5 text-xs text-gray-100 placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition shadow-inner"
           />
           <span v-if="searchQuery" @click="searchQuery = ''" class="absolute right-2.5 top-1.5 text-gray-500 hover:text-gray-300 text-xs cursor-pointer">
             ✕
@@ -121,12 +121,12 @@
           v-for="q in paginatedQuests"
           :key="q.id"
           :class="[
-            'p-3 rounded-lg border transition flex flex-col justify-between gap-2',
+            'p-3 rounded-xl border transition-all flex flex-col justify-between gap-2 shadow-sm hover:scale-[1.01]',
             q.state === 2
-              ? 'bg-[#121520] border-emerald-950/40 hover:border-emerald-800/40'
+              ? 'bg-[#121622] border-emerald-900/50 hover:border-emerald-600/50'
               : q.state === 1
-                ? 'bg-amber-950/10 border-amber-800/40 hover:border-amber-700/60'
-                : 'bg-[#141722] border-gray-800 hover:border-gray-700'
+                ? 'bg-[#1a1715] border-amber-700/60 hover:border-amber-500 shadow-amber-500/10'
+                : 'bg-[#11131c] border-gray-800/90 hover:border-gray-700'
           ]"
         >
           <!-- 任务头：ID 与类别徽章 -->

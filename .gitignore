@@ -21,4 +21,7 @@ android/local.properties
 游戏apk/
 *.apk
 *.bak
-*.png
+photo_*.jpg
+android/app/*.keystore
+android/app/*.jks
+android/app/*base64*.txt

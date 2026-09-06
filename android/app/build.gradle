@@ -17,9 +17,9 @@ android {
     signingConfigs {
         release {
             storeFile file("release.keystore")
-            storePassword "dnf123456"
-            keyAlias "dnffix"
-            keyPassword "dnf123456"
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: "ustdbus123456"
+            keyAlias System.getenv("KEY_ALIAS") ?: "ustdbus"
+            keyPassword System.getenv("KEY_PASSWORD") ?: "ustdbus123456"
         }
     }
 

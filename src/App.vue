@@ -46,15 +46,15 @@
 
         <!-- 已加载存档时：展示三大 Tab 导航 -->
         <div v-else class="space-y-4">
-          <!-- 导航选项卡 -->
-          <div class="flex border-b border-gray-800 bg-[#121520] rounded-xl p-1 shadow-sm">
+          <!-- 导航选项卡：DNF 金属金属铭牌风格 -->
+          <div class="flex border-b-2 border-amber-600/40 bg-[#10131c] rounded-2xl p-1.5 shadow-xl gap-1">
             <button
               @click="activeTab = 'character'"
               :class="[
-                'flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5',
+                'flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 active:scale-95',
                 activeTab === 'character'
-                  ? 'bg-amber-600 text-black shadow-md shadow-amber-600/30'
-                  : 'text-gray-400 hover:text-gray-200'
+                  ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black shadow-lg shadow-amber-500/30'
+                  : 'text-gray-400 hover:text-amber-200 hover:bg-gray-850'
               ]"
             >
               <span>👤</span> 角色属性
@@ -62,10 +62,10 @@
             <button
               @click="activeTab = 'inventory'"
               :class="[
-                'flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5',
+                'flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 active:scale-95',
                 activeTab === 'inventory'
-                  ? 'bg-amber-600 text-black shadow-md shadow-amber-600/30'
-                  : 'text-gray-400 hover:text-gray-200'
+                  ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black shadow-lg shadow-amber-500/30'
+                  : 'text-gray-400 hover:text-amber-200 hover:bg-gray-850'
               ]"
             >
               <span>🎒</span> 背包物品
@@ -73,10 +73,10 @@
             <button
               @click="activeTab = 'dungeon'"
               :class="[
-                'flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5',
+                'flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 active:scale-95',
                 activeTab === 'dungeon'
-                  ? 'bg-amber-600 text-black shadow-md shadow-amber-600/30'
-                  : 'text-gray-400 hover:text-gray-200'
+                  ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black shadow-lg shadow-amber-500/30'
+                  : 'text-gray-400 hover:text-amber-200 hover:bg-gray-850'
               ]"
             >
               <span>🗺️</span> 王图 & 日志
@@ -84,13 +84,13 @@
             <button
               @click="activeTab = 'quest'"
               :class="[
-                'flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5',
+                'flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 active:scale-95',
                 activeTab === 'quest'
-                  ? 'bg-amber-600 text-black shadow-md shadow-amber-600/30'
-                  : 'text-gray-400 hover:text-gray-200'
+                  ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black shadow-lg shadow-amber-500/30'
+                  : 'text-gray-400 hover:text-amber-200 hover:bg-gray-850'
               ]"
             >
-              <span>📜</span> 任务
+              <span>📜</span> 任务系统
             </button>
           </div>
 
@@ -144,7 +144,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import HeaderBar from './components/HeaderBar.vue'
 import CharacterTab from './components/CharacterTab.vue'
 import InventoryTab from './components/InventoryTab.vue'
@@ -152,7 +152,7 @@ import DungeonTab from './components/DungeonTab.vue'
 import QuestTab from './components/QuestTab.vue'
 import SaveActions from './components/SaveActions.vue'
 import { DnfHeroSave } from './core/types'
-import { parseHeroSave, serializeHeroSave } from './core/saveParser'
+import { parseHeroSave, serializeHeroSave, PROFESSION_NAMES } from './core/saveParser'
 import { parseQuestSave, serializeQuestSave } from './core/questParser'
 import { scanDirectory, readSaveFile, writeSaveFile } from './core/fsBridge'
 
@@ -199,11 +199,11 @@ onMounted(() => {
 const saves = ref<(DnfHeroSave | null)[]>([null, null, null, null])
 const currentSave = ref<DnfHeroSave | null>(null)
 
-const characterStatus = ref<Array<{ exists: boolean; desc?: string }>>([
-  { exists: false, desc: '未载入' },
-  { exists: false, desc: '未载入' },
-  { exists: false, desc: '未载入' },
-  { exists: false, desc: '未载入' },
+const characterStatus = ref<Array<{ exists: boolean; desc?: string; profession?: number }>>([
+  { exists: false, desc: '未载入', profession: 0 },
+  { exists: false, desc: '未载入', profession: 0 },
+  { exists: false, desc: '未载入', profession: 0 },
+  { exists: false, desc: '未载入', profession: 0 },
 ])
 
 const toastMessage = ref<string>('')
@@ -216,6 +216,17 @@ function showToast(msg: string, type: 'success' | 'error' = 'success') {
     toastMessage.value = ''
   }, 3000)
 }
+
+// 监听当前角色职业变动，实时响应更新
+watch(() => currentSave.value?.profession, (newProf) => {
+  if (newProf !== undefined && currentSave.value) {
+    currentSave.value.professionName = PROFESSION_NAMES[newProf] || `职业 (0x${newProf.toString(16)})`
+    if (characterStatus.value[currentCharacter.value]) {
+      characterStatus.value[currentCharacter.value].profession = newProf
+      characterStatus.value[currentCharacter.value].desc = `Lv.${currentSave.value.level} ${currentSave.value.professionName}`
+    }
+  }
+})
 
 async function loadCharacterSaveFromDisk(index: number, silent: boolean = false): Promise<boolean> {
   const heroBytes = await readSaveFile(savePath.value, `DnfHero${index}`)
@@ -234,7 +245,11 @@ async function loadCharacterSaveFromDisk(index: number, silent: boolean = false)
       }
 
       saves.value[index] = save
-      characterStatus.value[index] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
+      characterStatus.value[index] = {
+        exists: true,
+        desc: `Lv.${save.level} ${save.professionName}`,
+        profession: save.profession
+      }
       if (currentCharacter.value === index) {
         currentSave.value = save
       }
@@ -366,7 +381,8 @@ async function detectSaves() {
           saves.value[hero.index] = save
           characterStatus.value[hero.index] = {
             exists: true,
-            desc: `Lv.${save.level} ${save.professionName}`
+            desc: `Lv.${save.level} ${save.professionName}`,
+            profession: save.profession
           }
         } catch (e) {
           characterStatus.value[hero.index] = { exists: true, desc: `${hero.size} 字节` }
@@ -439,7 +455,11 @@ async function onFolderSelected(event: Event) {
           }
         }
         saves.value[i] = save
-        characterStatus.value[i] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
+        characterStatus.value[i] = {
+          exists: true,
+          desc: `Lv.${save.level} ${save.professionName}`,
+          profession: save.profession
+        }
         loadedCount++
       } catch (e) {
         console.warn(`解析角色 ${i} 失败:`, e)
@@ -522,7 +542,8 @@ function onFileSelected(event: Event) {
       currentSave.value = save
       characterStatus.value[currentCharacter.value] = {
         exists: true,
-        desc: `Lv.${save.level} ${save.professionName}`
+        desc: `Lv.${save.level} ${save.professionName}`,
+        profession: save.profession
       }
       showToast(`成功读取 ${heroFile.name} (Lv.${save.level} ${save.professionName})`)
     } catch (e: any) {

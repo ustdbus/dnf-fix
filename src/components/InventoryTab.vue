@@ -70,14 +70,23 @@
           <!-- 槽位角标: 左侧装备标记/强化等级，右侧槽位序号 -->
           <div class="flex items-center justify-between text-[10px] leading-none">
             <span v-if="!slot.isEmpty && isEquip(slot.typeId)" class="font-bold">
-              <span v-if="slot.refineLevel > 0" class="text-amber-400 drop-shadow">
+              <span
+                v-if="slot.refineLevel > 0"
+                :class="[
+                  'drop-shadow font-black',
+                  slot.refineLevel >= 15 ? 'text-red-400 animate-pulse' :
+                  slot.refineLevel >= 13 ? 'text-amber-300' :
+                  slot.refineLevel >= 10 ? 'text-fuchsia-400' :
+                  'text-amber-400'
+                ]"
+              >
                 +{{ slot.refineLevel }}
               </span>
-              <span v-else class="text-amber-300/80 bg-black/40 px-1 py-0.5 rounded text-[9px]">
+              <span v-else class="text-amber-300/80 bg-black/50 px-1 py-0.5 rounded text-[9px] border border-amber-600/30">
                 E
               </span>
             </span>
-            <span v-else-if="!slot.isEmpty" class="text-gray-500 scale-90 origin-left text-[9px]">
+            <span v-else-if="!slot.isEmpty" class="text-gray-400 scale-90 origin-left text-[9px]">
               {{ slot.categoryName.slice(0, 3) }}
             </span>
             <span v-else class="text-gray-600 text-[9px]">空</span>
@@ -94,7 +103,7 @@
             >
               {{ slot.itemName }}
             </div>
-            <div v-else class="text-[11px] text-gray-600 group-hover:text-amber-400 transition font-mono">
+            <div v-else class="text-sm text-gray-600 group-hover:text-amber-400 transition font-bold font-mono">
               +
             </div>
           </div>

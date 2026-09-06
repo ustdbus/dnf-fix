@@ -193,7 +193,8 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
   output.set(save.rawBuffer)
   const view = new DataView(output.buffer)
   
-  // 写入角色属性 (金币、复活币、胜点、背包格数)
+  // 写入职业与角色属性 (职业, 金币, 复活币, 胜点, 背包格数)
+  output[0x00] = save.profession & 0xff
   view.setInt32(0x25, Math.max(0, Math.min(2147483647, Math.floor(save.gold))), true)
   view.setInt32(0x29, Math.max(0, Math.min(2147483647, Math.floor(save.reviveCoins))), true)
   view.setInt32(0x2d, Math.max(0, Math.min(2147483647, Math.floor(save.victoryPoints))), true)
