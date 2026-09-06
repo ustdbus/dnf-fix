@@ -1,4 +1,5 @@
 import { ItemDefinition } from './types'
+import { OFFICIAL_ITEM_DATABASE } from './officialItems'
 
 export const CATEGORIES: { id: number; name: string }[] = [
   { id: 0x00, name: '短剑' },
@@ -645,43 +646,104 @@ export function parseEquipment(typeId: number, itemId: number): { name: string; 
   return null
 }
 
-// ==================== 统一查找函数 ====================
-export function findItemInfo(typeId: number, itemId: number): { name: string; categoryName: string; quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'; canRefine: boolean } {
-  // 1. 如果是装备类 (0x00 ~ 0x08)，直接使用智能数格子推导引擎
-  if (typeId >= 0x00 && typeId <= 0x08) {
-    const match = ITEM_DICTIONARY.find(i => i.typeId === typeId && i.itemId === itemId)
-    if (match) {
-      return {
-        name: match.name,
-        categoryName: match.categoryName,
-        quality: match.quality,
-        canRefine: true,
-      }
+// ==================== 官方全量物品注入 ====================
+// 将解包得到的 1797 件官方物品全量注册入 ITEM_DICTIONARY 中
+const registeredKeySet = new Set<string>()
+for (const item of ITEM_DICTIONARY) {
+  registeredKeySet.add(`${item.typeId}_${item.itemId}`)
+}
+
+for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
+  const typeId = Number(typeIdStr)
+  const cat = CATEGORIES.find(c => c.id === typeId)
+  const categoryName = cat ? cat.name : `未知类别`
+  const canRefine = typeId >= 0x00 && typeId <= 0x08
+
+  for (const [itemIdStr, official] of Object.entries(items)) {
+    const itemId = Number(itemIdStr)
+    const key = `${typeId}_${itemId}`
+    if (!registeredKeySet.has(key)) {
+      ITEM_DICTIONARY.push({
+        typeId,
+        itemId,
+        name: official.name,
+        categoryName,
+        quality: official.quality || 'white',
+        canRefine,
+        desc: official.reqLevel !== undefined ? `Lv.${official.reqLevel} ${official.price ? '售价:' + official.price : ''}` : undefined,
+      })
+      registeredKeySet.add(key)
     }
-    const parsed = parseEquipment(typeId, itemId)
-    if (parsed) {
-      return parsed
+  }
+}
+
+// ==================== 统一查找函数 ====================
+export function findItemInfo(typeId: number, itemId: number): {
+  name: string
+  categoryName: string
+  quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'
+  canRefine: boolean
+  reqLevel?: number
+  price?: number
+} {
+  const cat = CATEGORIES.find(c => c.id === typeId)
+  const catName = cat ? cat.name : `未知类别`
+  const isEquip = typeId >= 0x00 && typeId <= 0x08
+
+  // 1. 优先查官方全量解包数据库 (1797件物品完整数据)
+  const official = OFFICIAL_ITEM_DATABASE[typeId]?.[itemId]
+  if (official) {
+    return {
+      name: official.name,
+      categoryName: catName,
+      quality: official.quality || 'white',
+      canRefine: isEquip,
+      reqLevel: official.reqLevel,
+      price: official.price,
     }
   }
 
-  // 2. 非装备类 (材料、消耗品、卡片、称号、宠物、任务等)
+  // 2. 查精调词典
   const match = ITEM_DICTIONARY.find(i => i.typeId === typeId && i.itemId === itemId)
   if (match) {
     return {
       name: match.name,
       categoryName: match.categoryName,
       quality: match.quality,
-      canRefine: !!match.canRefine || (typeId >= 0x00 && typeId <= 0x08),
+      canRefine: !!match.canRefine || isEquip,
     }
   }
 
-  const cat = CATEGORIES.find(c => c.id === typeId)
-  const catName = cat ? cat.name : `未知类别`
-  const isEquip = typeId >= 0x00 && typeId <= 0x08
+  // 3. 装备类数格子兜底推导引擎
+  if (isEquip) {
+    const parsed = parseEquipment(typeId, itemId)
+    if (parsed) {
+      return parsed
+    }
+  }
+
+  // 4. 默认兜底
   return {
     name: `${catName} [0x${itemId.toString(16).padStart(2, '0')}]`,
     categoryName: catName,
     quality: 'white',
     canRefine: isEquip,
   }
+}
+
+export function getItemDefinition(typeId: number, itemId: number): ItemDefinition | undefined {
+  const info = findItemInfo(typeId, itemId)
+  return {
+    typeId,
+    itemId,
+    name: info.name,
+    categoryName: info.categoryName,
+    quality: info.quality || 'white',
+    canRefine: info.canRefine,
+    desc: info.reqLevel !== undefined ? `Lv.${info.reqLevel}` : undefined,
+  }
+}
+
+export function getCategoryItems(typeId: number): ItemDefinition[] {
+  return ITEM_DICTIONARY.filter(i => i.typeId === typeId)
 }

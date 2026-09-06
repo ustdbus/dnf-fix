@@ -18,5 +18,7 @@ android/local.properties
 
 # 隐私与用户存档保护
 参考存档/
+游戏apk/
+*.apk
 *.bak
 *.png
