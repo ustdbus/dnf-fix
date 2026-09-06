@@ -83,7 +83,7 @@ jobs:
       - name: 重命名 APK 文件
         id: apk_step
         run: |
-          VERSION=${GITHUB_REF_NAME:-v1.0.0}
+          VERSION=${GITHUB_REF_NAME:-v1.3.3}
           APK_PATH=$(find android/app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
           TARGET_NAME="dnf-fix-${VERSION}.apk"
           cp "$APK_PATH" "$TARGET_NAME"

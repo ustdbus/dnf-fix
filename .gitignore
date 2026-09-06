@@ -25,3 +25,4 @@ photo_*.jpg
 android/app/*.keystore
 android/app/*.jks
 android/app/*base64*.txt
+test_*.ts

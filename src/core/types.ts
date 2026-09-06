@@ -67,17 +67,31 @@ export interface DnfHeroSave {
   questSave?: DnfQuestSave;
 }
 
+export interface ActiveQuestSlot {
+  slotIndex: number;    // 0 ~ 19
+  isActive: boolean;    // 是否被占用 (byte 0 === 0x01)
+  questId: number;      // 任务ID
+  step: number;         // 阶段/状态 (0x03 为目标达成/待领奖)
+  progress1: number;    // 条件1进度
+  progress2: number;    // 条件2进度
+  progress3: number;    // 条件3进度
+  rawBytes: Uint8Array; // 13 字节原始切片
+}
+
 export interface QuestItem {
   id: number;           // 任务ID 0 ~ 529
   name: string;         // 官方任务名
   type: number;         // 0: 普通, 1: 主线, 2: 重复, 3: 转职, 4: 觉醒
   typeName: "普通" | "主线" | "重复" | "转职" | "觉醒";
   state: number;        // 0: 未接取/未完成, 1: 进行中(已接取), 2: 已完成
+  isReadyToReward?: boolean; // 是否目标达成待领奖 (在活跃槽位且 step=3 或 progress满)
+  activeSlotIndex?: number;  // 活跃槽位序号 (-1 表示未进活跃槽)
 }
 
 export interface DnfQuestSave {
   characterIndex: number;
-  rawBuffer: Uint8Array; // 790 字节原始文件
-  quests: QuestItem[];   // 全量 530 个任务
+  rawBuffer: Uint8Array;          // 790 字节原始文件
+  quests: QuestItem[];            // 全量 530 个任务
+  activeSlots: ActiveQuestSlot[]; // 20 个活跃任务槽位
 }
 
