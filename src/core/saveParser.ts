@@ -71,6 +71,18 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
     const isEquip = isEquipCategory(typeId)
     // 只有装备才使用第4字节作为强化等级；非装备强化等级视为 0
     const refineLevel = (!isEmpty && isEquip) ? slotBytes[4] : 0
+
+    // 装备附魔 Option Type (字节 17) 及参数 1~3 (字节 18~23, uint16 LE)
+    let enchant = undefined
+    if (!isEmpty && isEquip) {
+      const enchantCode = slotBytes[17]
+      if (enchantCode > 0) {
+        const param1 = slotBytes[18] | (slotBytes[19] << 8)
+        const param2 = slotBytes[20] | (slotBytes[21] << 8)
+        const param3 = slotBytes[22] | (slotBytes[23] << 8)
+        enchant = { code: enchantCode, param1, param2, param3 }
+      }
+    }
     
     const itemInfo = isEmpty 
       ? { name: '空槽位', categoryName: '空', canRefine: false }
@@ -86,7 +98,8 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
       refineLevel,
       rawBytes: slotBytes,
       itemName: itemInfo.name,
-      categoryName: itemInfo.categoryName
+      categoryName: itemInfo.categoryName,
+      enchant
     })
   }
   
@@ -234,6 +247,25 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
       }
       if (isEquip) {
         baseBytes[4] = Math.max(0, Math.min(255, slot.refineLevel)) & 0xff
+        // 写入附魔数据 (字节 17~23: 附魔代码 + 参数1~3 小端序)
+        if (slot.enchant && slot.enchant.code > 0) {
+          baseBytes[17] = slot.enchant.code & 0xff
+          baseBytes[18] = slot.enchant.param1 & 0xff
+          baseBytes[19] = (slot.enchant.param1 >> 8) & 0xff
+          baseBytes[20] = slot.enchant.param2 & 0xff
+          baseBytes[21] = (slot.enchant.param2 >> 8) & 0xff
+          baseBytes[22] = slot.enchant.param3 & 0xff
+          baseBytes[23] = (slot.enchant.param3 >> 8) & 0xff
+        } else {
+          // 无附魔或清除附魔，清零字节 17~23
+          baseBytes[17] = 0
+          baseBytes[18] = 0
+          baseBytes[19] = 0
+          baseBytes[20] = 0
+          baseBytes[21] = 0
+          baseBytes[22] = 0
+          baseBytes[23] = 0
+        }
       }
       output.set(baseBytes, offset)
     }

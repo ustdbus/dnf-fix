@@ -68,9 +68,9 @@
               : getQualityClass(slot)
           ]"
         >
-          <!-- 槽位角标: 左侧装备标记/强化等级，右侧槽位序号 -->
+          <!-- 槽位角标: 左侧装备标记/强化等级/附魔，右侧槽位序号 -->
           <div class="flex items-center justify-between text-[8px] sm:text-[10px] leading-none">
-            <span v-if="!slot.isEmpty && isEquip(slot.typeId)" class="font-bold">
+            <span v-if="!slot.isEmpty && isEquip(slot.typeId)" class="font-bold flex items-center gap-0.5">
               <span
                 v-if="slot.refineLevel > 0"
                 :class="[
@@ -85,6 +85,14 @@
               </span>
               <span v-else class="text-amber-300/80 bg-black/50 px-0.5 sm:px-1 py-0.2 rounded text-[7px] sm:text-[9px] border border-amber-600/30">
                 E
+              </span>
+              <!-- 附魔标识 (紫色微光标签) -->
+              <span
+                v-if="slot.enchant && slot.enchant.code > 0"
+                class="text-[7px] sm:text-[8px] text-fuchsia-300 bg-fuchsia-950/90 px-0.5 rounded border border-fuchsia-500/50 leading-tight shadow-sm shadow-fuchsia-500/30 font-mono"
+                title="已附魔"
+              >
+                魔
               </span>
             </span>
             <span v-else-if="!slot.isEmpty" class="text-gray-400 scale-90 origin-left text-[7px] sm:text-[9px] truncate max-w-[20px] sm:max-w-[40px]">
@@ -263,6 +271,10 @@
                   <span class="text-gray-500">当前强化:</span>
                   <span class="text-amber-300 font-black font-mono">+{{ formRefineLevel }}</span>
                 </span>
+                <span v-if="isEquipCategory(formTypeId) && formEnchantCode > 0" class="flex items-center gap-1">
+                  <span class="text-gray-500">附魔:</span>
+                  <span class="text-fuchsia-300 font-bold font-mono">{{ currentEnchantFormatText }}</span>
+                </span>
                 <span v-if="currentSelectedInfo.price" class="flex items-center gap-1">
                   <span class="text-gray-500">售价:</span>
                   <span class="text-yellow-400 font-mono">{{ currentSelectedInfo.price }} 金币</span>
@@ -349,6 +361,147 @@
           </div>
         </div>
 
+        <!-- 5. 装备附魔 / 魔法词条 (仅武器/防具/首饰可用) -->
+        <div v-if="isEquipCategory(formTypeId)" class="bg-[#121624] p-3 rounded-xl border border-fuchsia-900/40 space-y-3 shadow-inner">
+          <div class="flex items-center justify-between">
+            <label class="text-xs text-fuchsia-300 font-bold flex items-center gap-1.5">
+              <span>🔮</span>
+              <span>5. 装备附魔 / 魔法词条 (官方全量 0x01~0x9F):</span>
+            </label>
+            <button
+              v-if="formEnchantCode > 0"
+              @click="clearEnchant"
+              class="text-[10px] px-2 py-0.5 rounded bg-red-950/60 hover:bg-red-900 text-red-300 border border-red-800/40 transition"
+            >
+              ✕ 清除附魔
+            </button>
+          </div>
+
+          <!-- 快捷预设横向药丸栏 (Presets) -->
+          <div class="space-y-1">
+            <div class="text-[10px] text-gray-400 flex items-center justify-between">
+              <span>⚡ 强力神级附魔一键应用 (预设):</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
+              <button
+                v-for="preset in ENCHANT_PRESETS"
+                :key="preset.id"
+                @click="applyPreset(preset)"
+                :class="[
+                  'text-[10px] px-2 py-1 rounded-lg border transition flex items-center gap-1',
+                  formEnchantCode === preset.code && formEnchantParam1 === preset.param1 && formEnchantParam2 === preset.param2 && formEnchantParam3 === preset.param3
+                    ? 'bg-fuchsia-600 border-fuchsia-400 text-white font-bold shadow-md shadow-fuchsia-600/30'
+                    : 'bg-gray-800/80 hover:bg-gray-700 border-gray-700 text-gray-300 hover:text-white'
+                ]"
+                :title="preset.desc"
+              >
+                <span>{{ preset.name }}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 附魔词条细分选择 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-gray-800/60">
+            <!-- 分类筛选 -->
+            <div>
+              <label class="text-[10px] text-gray-400 block mb-1">词条大类:</label>
+              <select
+                v-model="selectedEnchantCategory"
+                class="w-full bg-[#0d1018] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
+              >
+                <option value="all">全部大类 (全量词条)</option>
+                <option v-for="cat in ENCHANT_CATEGORIES" :key="cat.id" :value="cat.id">
+                  {{ cat.icon }} {{ cat.name }}
+                </option>
+              </select>
+            </div>
+
+            <!-- 具体附魔选项 -->
+            <div>
+              <label class="text-[10px] text-gray-400 block mb-1">附魔效果:</label>
+              <select
+                v-model.number="formEnchantCode"
+                @change="onEnchantCodeChange"
+                class="w-full bg-[#0d1018] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
+              >
+                <option :value="0">-- 无附魔效果 --</option>
+                <option
+                  v-for="item in filteredEnchantList"
+                  :key="item.code"
+                  :value="item.code"
+                >
+                  [0x{{ item.code.toString(16).padStart(2, '0').toUpperCase() }}] {{ item.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 当前附魔实时效果展示条 -->
+          <div
+            v-if="formEnchantCode > 0"
+            class="p-2.5 rounded-lg bg-fuchsia-950/30 border border-fuchsia-700/40 text-xs text-fuchsia-200 flex items-center justify-between shadow-inner"
+          >
+            <div class="flex items-center gap-2">
+              <span class="text-fuchsia-400 font-bold">✨ 词条属性:</span>
+              <span class="font-bold text-white tracking-wide">{{ currentEnchantFormatText }}</span>
+            </div>
+            <span class="text-[10px] font-mono text-fuchsia-400/80 bg-black/40 px-1.5 py-0.5 rounded border border-fuchsia-700/30">
+              Code: 0x{{ formEnchantCode.toString(16).padStart(2, '0').toUpperCase() }}
+            </span>
+          </div>
+
+          <!-- 参数动态输入 (根据选中的词条参数要求) -->
+          <div v-if="currentEnchantDef && currentEnchantDef.params.length > 0" class="space-y-2 pt-1 border-t border-gray-800/60">
+            <div class="text-[10px] text-gray-400">词条数值设置:</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <!-- 参数 1 -->
+              <div v-if="currentEnchantDef.params[0]" class="space-y-1">
+                <label class="text-[10px] text-gray-400 flex items-center justify-between">
+                  <span>{{ currentEnchantDef.params[0].label }}:</span>
+                  <span v-if="currentEnchantDef.params[0].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[0].unit }}</span>
+                </label>
+                <input
+                  v-model.number="formEnchantParam1"
+                  type="number"
+                  :min="currentEnchantDef.params[0].min"
+                  :max="currentEnchantDef.params[0].max"
+                  class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
+                />
+              </div>
+
+              <!-- 参数 2 -->
+              <div v-if="currentEnchantDef.params[1]" class="space-y-1">
+                <label class="text-[10px] text-gray-400 flex items-center justify-between">
+                  <span>{{ currentEnchantDef.params[1].label }}:</span>
+                  <span v-if="currentEnchantDef.params[1].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[1].unit }}</span>
+                </label>
+                <input
+                  v-model.number="formEnchantParam2"
+                  type="number"
+                  :min="currentEnchantDef.params[1].min"
+                  :max="currentEnchantDef.params[1].max"
+                  class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
+                />
+              </div>
+
+              <!-- 参数 3 -->
+              <div v-if="currentEnchantDef.params[2]" class="space-y-1">
+                <label class="text-[10px] text-gray-400 flex items-center justify-between">
+                  <span>{{ currentEnchantDef.params[2].label }}:</span>
+                  <span v-if="currentEnchantDef.params[2].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[2].unit }}</span>
+                </label>
+                <input
+                  v-model.number="formEnchantParam3"
+                  type="number"
+                  :min="currentEnchantDef.params[2].min"
+                  :max="currentEnchantDef.params[2].max"
+                  class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 底部按钮操作 -->
         <div class="flex items-center justify-between pt-3 border-t border-gray-800">
           <button
@@ -387,6 +540,7 @@ import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
 import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
+import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, EnchantPreset } from '../core/enchantDict'
 
 const props = defineProps<{
   save: DnfHeroSave
@@ -402,6 +556,63 @@ const formTypeId = ref<number>(0x01)
 const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
+
+// 附魔响应式状态
+const selectedEnchantCategory = ref<string>('all')
+const formEnchantCode = ref<number>(0)
+const formEnchantParam1 = ref<number>(0)
+const formEnchantParam2 = ref<number>(0)
+const formEnchantParam3 = ref<number>(0)
+
+// 附魔计算属性
+const currentEnchantDef = computed(() => {
+  if (!formEnchantCode.value) return null
+  return ENCHANT_DEFINITIONS[formEnchantCode.value] || null
+})
+
+const currentEnchantFormatText = computed(() => {
+  return formatEnchantText(
+    formEnchantCode.value,
+    formEnchantParam1.value,
+    formEnchantParam2.value,
+    formEnchantParam3.value
+  )
+})
+
+const filteredEnchantList = computed(() => {
+  const list = Object.values(ENCHANT_DEFINITIONS)
+  if (selectedEnchantCategory.value === 'all') {
+    return list
+  }
+  return list.filter(item => item.category === selectedEnchantCategory.value)
+})
+
+function applyPreset(preset: EnchantPreset) {
+  formEnchantCode.value = preset.code
+  formEnchantParam1.value = preset.param1
+  formEnchantParam2.value = preset.param2
+  formEnchantParam3.value = preset.param3
+}
+
+function clearEnchant() {
+  formEnchantCode.value = 0
+  formEnchantParam1.value = 0
+  formEnchantParam2.value = 0
+  formEnchantParam3.value = 0
+}
+
+function onEnchantCodeChange() {
+  const def = ENCHANT_DEFINITIONS[formEnchantCode.value]
+  if (def && def.params) {
+    formEnchantParam1.value = def.params[0]?.defaultVal || 0
+    formEnchantParam2.value = def.params[1]?.defaultVal || 0
+    formEnchantParam3.value = def.params[2]?.defaultVal || 0
+  } else {
+    formEnchantParam1.value = 0
+    formEnchantParam2.value = 0
+    formEnchantParam3.value = 0
+  }
+}
 
 // 装备判定 (武器、防具、首饰、称号、宠物，数量锁死为1)
 const isSingleCategory = (typeId: number) => typeId >= 0x00 && typeId <= 0x0a
@@ -603,24 +814,37 @@ function getSlotHoverTitle(slot: InventorySlot): string {
   const qInfo = getQualityInfo(info.quality)
   const lvlStr = info.reqLevel !== undefined ? ` | Lv.${info.reqLevel}` : ''
   const refineStr = slot.refineLevel > 0 ? ` (+${slot.refineLevel})` : ''
-  return `${slot.itemName}${refineStr} [${qInfo.label}] | ${info.categoryName}${lvlStr} | 数量: ${slot.count}`
+  const enchantStr = (slot.enchant && slot.enchant.code > 0)
+    ? ` | 🔮 附魔: ${formatEnchantText(slot.enchant.code, slot.enchant.param1, slot.enchant.param2, slot.enchant.param3)}`
+    : ''
+  return `${slot.itemName}${refineStr} [${qInfo.label}] | ${info.categoryName}${lvlStr} | 数量: ${slot.count}${enchantStr}`
 }
 
 function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
   modalSearchQuery.value = ''
+  selectedEnchantCategory.value = 'all'
   if (slot.isEmpty) {
     selectedCategoryFilter.value = 0x01 // 默认太刀
     formTypeId.value = 0x01 // 默认太刀
     formItemId.value = 0x28 // 默认流光星陨刀
     formCount.value = 1
     formRefineLevel.value = 0
+    clearEnchant()
   } else {
     selectedCategoryFilter.value = slot.typeId
     formTypeId.value = slot.typeId
     formItemId.value = slot.itemId
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
+    if (slot.enchant && slot.enchant.code > 0) {
+      formEnchantCode.value = slot.enchant.code
+      formEnchantParam1.value = slot.enchant.param1
+      formEnchantParam2.value = slot.enchant.param2
+      formEnchantParam3.value = slot.enchant.param3
+    } else {
+      clearEnchant()
+    }
   }
 }
 
@@ -628,6 +852,7 @@ function closeEditModal() {
   editingSlot.value = null
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
+  clearEnchant()
 }
 
 function clearCurrentSlot() {
@@ -637,8 +862,10 @@ function clearCurrentSlot() {
   editingSlot.value.itemId = 0
   editingSlot.value.count = 0
   editingSlot.value.refineLevel = 0
+  editingSlot.value.enchant = undefined
   editingSlot.value.itemName = '空槽位'
   editingSlot.value.categoryName = '空'
+  clearEnchant()
   closeEditModal()
 }
 
@@ -654,6 +881,16 @@ function saveSlotEdit() {
   // 装备数量严格锁死为 1，非装备最大限制 99
   editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
   editingSlot.value.refineLevel = isEquip ? formRefineLevel.value : 0
+  if (isEquip && formEnchantCode.value > 0) {
+    editingSlot.value.enchant = {
+      code: formEnchantCode.value,
+      param1: formEnchantParam1.value,
+      param2: formEnchantParam2.value,
+      param3: formEnchantParam3.value
+    }
+  } else {
+    editingSlot.value.enchant = undefined
+  }
   editingSlot.value.itemName = info.name
   editingSlot.value.categoryName = info.categoryName
   closeEditModal()

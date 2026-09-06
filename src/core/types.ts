@@ -10,6 +10,13 @@ export interface ItemDefinition {
   desc?: string;        // 说明备注
 }
 
+export interface EnchantOption {
+  code: number;       // 附魔代码 (0x01 ~ 0x9F, 0x00 为无附魔)
+  param1: number;     // 参数1 (X)
+  param2: number;     // 参数2 (Y)
+  param3: number;     // 参数3 (Z)
+}
+
 export interface InventorySlot {
   slotIndex: number;    // 0 ~ 89
   isEmpty: boolean;     // 是否为空槽
@@ -21,6 +28,7 @@ export interface InventorySlot {
   rawBytes: Uint8Array; // 完整的 24 字节备份
   itemName: string;     // 解析出的物品名
   categoryName: string; // 物品大类名
+  enchant?: EnchantOption; // 装备附魔 / 魔法词条 (字节 17~23)
 }
 
 export interface MapDifficulty {
