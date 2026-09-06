@@ -23,6 +23,14 @@
             <span>🎁 一键达成待领奖</span>
           </button>
           <button
+            @click="setAllReadyQuestsToOngoing"
+            class="text-xs px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white font-bold transition shadow-md shadow-amber-900/30 flex items-center gap-1.5 active:scale-95"
+            :disabled="!questSave"
+            title="将所有待领奖任务批量转回普通进行中状态（未完成进度）"
+          >
+            <span>⚡ 一键转为进行中</span>
+          </button>
+          <button
             @click="setNormalQuestsCompleted"
             class="text-xs px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold transition shadow-md shadow-emerald-900/30 flex items-center gap-1.5 active:scale-95"
             :disabled="!questSave"
@@ -30,6 +38,7 @@
           >
             <span>✅ 一键完成普通任务（不含重复任务）</span>
           </button>
+
         </div>
       </div>
 
@@ -863,7 +872,24 @@ function setAllActiveQuestsReady() {
   }
 }
 
+// 一键将所有待领奖任务转换回普通进行中状态
+function setAllReadyQuestsToOngoing() {
+  let count = 0
+  for (const q of questList.value) {
+    if (q.state === 1 && q.isReadyToReward) {
+      q.isReadyToReward = false
+      count++
+    }
+  }
+  if (count > 0) {
+    actionNotice.value = `已将当前 ${count} 个待领奖任务一键转回普通进行中状态！`
+  } else {
+    actionNotice.value = `当前没有处于待领奖状态的任务。`
+  }
+}
+
 // 一键完成普通任务（不含重复任务）
+
 function setNormalQuestsCompleted() {
   let count = 0
   for (const q of questList.value) {

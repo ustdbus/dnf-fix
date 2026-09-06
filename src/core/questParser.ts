@@ -63,21 +63,13 @@ export function parseQuestSave(buffer: ArrayBuffer, charIndex: number = 0): DnfQ
     })
 
     if (isActive && qid >= 0 && qid < TOTAL_QUEST_COUNT) {
-      const hitCount = safeBuffer[offset + 7]
-      const grade = safeBuffer[offset + 8]
-      const styleScore = safeBuffer[offset + 10]
-      const techniqueScore = safeBuffer[offset + 11]
-      const dungeonClearFlag = safeBuffer[offset + 12]
-
-      // 待领奖判定：
-      // 1. step === 0x03 或杀怪拉满
-      // 2. 地下城指标全达成 (通关标记置1、风格/技巧拉满、无伤且SSS等)
-      const isReady = step === 0x03 || p1 >= 99 || p2 >= 99 || p3 >= 99 ||
-                      dungeonClearFlag === 0x01 || styleScore >= 40 || techniqueScore >= 40 ||
-                      (hitCount === 0 && grade === 0)
+      // 权威待领奖判定：
+      // 1. step === 0x03：修改器设为待领奖或地下城/对话通关达成标志
+      // 2. p1 >= 99 || p2 >= 99 || p3 >= 99：杀怪数量拉满达成标志
+      // 严禁使用 (hitCount === 0 && grade === 0) 等默认零值，否则任何刚接取的新任务都会被误判为待领奖！
+      const isReady = step === 0x03 || p1 >= 99 || p2 >= 99 || p3 >= 99
       activeSlotMap.set(qid, { slotIndex: s, isReady })
     }
-
   }
 
   // 2. 解析 530 个任务项
@@ -95,18 +87,16 @@ export function parseQuestSave(buffer: ArrayBuffer, charIndex: number = 0): DnfQ
     const activeSlotIndex = activeInfo ? activeInfo.slotIndex : -1
 
     if (activeInfo) {
-      if (activeInfo.isReady) {
-        // 活跃槽中目标已达成 (step === 3 或条件满额)：智能修复/识别为待领奖状态
-        isReadyToReward = true
-        state = 1
-      } else {
-        isReadyToReward = false
-        // 如果活跃槽位被占用但状态被误标为 2，修复为进行中
-        if (state === 2) {
-          state = 1
-        }
+      // 只要该任务存在于 20 个活跃任务槽中，它在逻辑上必定是进行中状态 (1)
+      state = 1
+      isReadyToReward = activeInfo.isReady
+    } else {
+      // 若该任务不在活跃槽中，且前 530 字节被标为进行中 (1)，属于脏数据，自动修正为未接取 (0)
+      if (state === 1) {
+        state = 0
       }
     }
+
 
     quests.push({
       id: i,
