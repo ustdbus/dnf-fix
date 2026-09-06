@@ -327,6 +327,8 @@
             type="number"
             min="1"
             max="99"
+            @blur="formCount = Math.max(1, Math.min(99, Math.floor(formCount || 1)))"
+            @change="formCount = Math.max(1, Math.min(99, Math.floor(formCount || 1)))"
             class="w-full bg-[#0e1119] text-xs font-mono text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
           />
         </div>
@@ -458,13 +460,17 @@
               <div v-if="currentEnchantDef.params[0]" class="space-y-1">
                 <label class="text-[10px] text-gray-400 flex items-center justify-between">
                   <span>{{ currentEnchantDef.params[0].label }}:</span>
-                  <span v-if="currentEnchantDef.params[0].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[0].unit }}</span>
+                  <span class="text-fuchsia-400/80 font-mono text-[9px]">
+                    上限: {{ currentEnchantDef.params[0].max }}{{ currentEnchantDef.params[0].unit || '' }}
+                  </span>
                 </label>
                 <input
                   v-model.number="formEnchantParam1"
                   type="number"
                   :min="currentEnchantDef.params[0].min"
                   :max="currentEnchantDef.params[0].max"
+                  @blur="handleParamInput(0)"
+                  @change="handleParamInput(0)"
                   class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
                 />
               </div>
@@ -473,13 +479,17 @@
               <div v-if="currentEnchantDef.params[1]" class="space-y-1">
                 <label class="text-[10px] text-gray-400 flex items-center justify-between">
                   <span>{{ currentEnchantDef.params[1].label }}:</span>
-                  <span v-if="currentEnchantDef.params[1].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[1].unit }}</span>
+                  <span class="text-fuchsia-400/80 font-mono text-[9px]">
+                    上限: {{ currentEnchantDef.params[1].max }}{{ currentEnchantDef.params[1].unit || '' }}
+                  </span>
                 </label>
                 <input
                   v-model.number="formEnchantParam2"
                   type="number"
                   :min="currentEnchantDef.params[1].min"
                   :max="currentEnchantDef.params[1].max"
+                  @blur="handleParamInput(1)"
+                  @change="handleParamInput(1)"
                   class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
                 />
               </div>
@@ -488,13 +498,17 @@
               <div v-if="currentEnchantDef.params[2]" class="space-y-1">
                 <label class="text-[10px] text-gray-400 flex items-center justify-between">
                   <span>{{ currentEnchantDef.params[2].label }}:</span>
-                  <span v-if="currentEnchantDef.params[2].unit" class="text-fuchsia-400">{{ currentEnchantDef.params[2].unit }}</span>
+                  <span class="text-fuchsia-400/80 font-mono text-[9px]">
+                    上限: {{ currentEnchantDef.params[2].max }}{{ currentEnchantDef.params[2].unit || '' }}
+                  </span>
                 </label>
                 <input
                   v-model.number="formEnchantParam3"
                   type="number"
                   :min="currentEnchantDef.params[2].min"
                   :max="currentEnchantDef.params[2].max"
+                  @blur="handleParamInput(2)"
+                  @change="handleParamInput(2)"
                   class="w-full bg-[#0d1018] text-xs font-mono text-white p-2 rounded-lg border border-gray-700 focus:border-fuchsia-500 focus:outline-none"
                 />
               </div>
@@ -540,7 +554,7 @@ import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
 import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
-import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, EnchantPreset } from '../core/enchantDict'
+import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 
 const props = defineProps<{
   save: DnfHeroSave
@@ -611,6 +625,18 @@ function onEnchantCodeChange() {
     formEnchantParam1.value = 0
     formEnchantParam2.value = 0
     formEnchantParam3.value = 0
+  }
+}
+
+// 参数超出上限时自动设为上限最大值 (如果小于最小值则设为最小值)
+function handleParamInput(paramIndex: number) {
+  if (!formEnchantCode.value) return
+  if (paramIndex === 0) {
+    formEnchantParam1.value = clampEnchantParam(formEnchantCode.value, 0, formEnchantParam1.value)
+  } else if (paramIndex === 1) {
+    formEnchantParam2.value = clampEnchantParam(formEnchantCode.value, 1, formEnchantParam2.value)
+  } else if (paramIndex === 2) {
+    formEnchantParam3.value = clampEnchantParam(formEnchantCode.value, 2, formEnchantParam3.value)
   }
 }
 
@@ -882,11 +908,17 @@ function saveSlotEdit() {
   editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
   editingSlot.value.refineLevel = isEquip ? formRefineLevel.value : 0
   if (isEquip && formEnchantCode.value > 0) {
+    const p1 = clampEnchantParam(formEnchantCode.value, 0, formEnchantParam1.value)
+    const p2 = clampEnchantParam(formEnchantCode.value, 1, formEnchantParam2.value)
+    const p3 = clampEnchantParam(formEnchantCode.value, 2, formEnchantParam3.value)
+    formEnchantParam1.value = p1
+    formEnchantParam2.value = p2
+    formEnchantParam3.value = p3
     editingSlot.value.enchant = {
       code: formEnchantCode.value,
-      param1: formEnchantParam1.value,
-      param2: formEnchantParam2.value,
-      param3: formEnchantParam3.value
+      param1: p1,
+      param2: p2,
+      param3: p3
     }
   } else {
     editingSlot.value.enchant = undefined

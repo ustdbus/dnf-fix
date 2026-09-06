@@ -247,15 +247,18 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
       }
       if (isEquip) {
         baseBytes[4] = Math.max(0, Math.min(255, slot.refineLevel)) & 0xff
-        // 写入附魔数据 (字节 17~23: 附魔代码 + 参数1~3 小端序)
+        // 写入附魔数据 (字节 17~23: 附魔代码 + 参数1~3 小端序, 严格限制在 uint16 0~65535)
         if (slot.enchant && slot.enchant.code > 0) {
+          const p1 = Math.max(0, Math.min(65535, Math.floor(slot.enchant.param1 || 0)))
+          const p2 = Math.max(0, Math.min(65535, Math.floor(slot.enchant.param2 || 0)))
+          const p3 = Math.max(0, Math.min(65535, Math.floor(slot.enchant.param3 || 0)))
           baseBytes[17] = slot.enchant.code & 0xff
-          baseBytes[18] = slot.enchant.param1 & 0xff
-          baseBytes[19] = (slot.enchant.param1 >> 8) & 0xff
-          baseBytes[20] = slot.enchant.param2 & 0xff
-          baseBytes[21] = (slot.enchant.param2 >> 8) & 0xff
-          baseBytes[22] = slot.enchant.param3 & 0xff
-          baseBytes[23] = (slot.enchant.param3 >> 8) & 0xff
+          baseBytes[18] = p1 & 0xff
+          baseBytes[19] = (p1 >> 8) & 0xff
+          baseBytes[20] = p2 & 0xff
+          baseBytes[21] = (p2 >> 8) & 0xff
+          baseBytes[22] = p3 & 0xff
+          baseBytes[23] = (p3 >> 8) & 0xff
         } else {
           // 无附魔或清除附魔，清零字节 17~23
           baseBytes[17] = 0

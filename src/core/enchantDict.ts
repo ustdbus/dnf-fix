@@ -1125,3 +1125,28 @@ export function formatEnchantText(code: number, p1: number = 0, p2: number = 0, 
   }
   return `附魔 [0x${code.toString(16).padStart(2, '0').toUpperCase()}]`
 }
+
+/**
+ * 校验并限制词条参数数值：
+ * 如果输入超过该参数的上限限制，则自动视为最大值 (max)；
+ * 如果小于最小值，则视为最小值 (min)；
+ * 物理硬上限严格锁死在 uint16 (0 ~ 65535)。
+ */
+export function clampEnchantParam(code: number, paramIndex: number, val: number): number {
+  if (val === undefined || val === null || isNaN(val)) return 0
+  const def = ENCHANT_DEFINITIONS[code]
+  const intVal = Math.floor(val)
+  if (!def || !def.params || !def.params[paramIndex]) {
+    return Math.max(0, Math.min(65535, intVal))
+  }
+  const pDef = def.params[paramIndex]
+  const effectiveMax = Math.min(65535, pDef.max)
+  if (intVal > effectiveMax) {
+    return effectiveMax
+  }
+  if (intVal < pDef.min) {
+    return pDef.min
+  }
+  return intVal
+}
+
