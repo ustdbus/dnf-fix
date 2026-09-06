@@ -24,60 +24,38 @@ export const CATEGORIES: { id: number; name: string }[] = [
 ]
 
 export const ITEM_DICTIONARY: ItemDefinition[] = [
-  // ==================== 武器类 (精确规范: xx级 + 普通/高级/稀有/神器/史诗 + 光剑/太刀/巨剑/短剑) ====================
+  // ==================== 武器类基准项 ====================
   // 太刀 (0x01)
-  { typeId: 0x01, itemId: 0x39, name: '20级神器太刀', categoryName: '太刀', quality: 'pink', canRefine: true },
-  { typeId: 0x01, itemId: 0x51, name: '30级史诗太刀', categoryName: '太刀', quality: 'orange', canRefine: true },
+  { typeId: 0x01, itemId: 0x00, name: '1级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
+  { typeId: 0x01, itemId: 0x01, name: '5级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
   { typeId: 0x01, itemId: 0x09, name: '40级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
   { typeId: 0x01, itemId: 0x28, name: '40级稀有太刀', categoryName: '太刀', quality: 'purple', canRefine: true },
-  { typeId: 0x01, itemId: 0x10, name: '10级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x20, name: '20级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x30, name: '30级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x50, name: '50级神器太刀', categoryName: '太刀', quality: 'pink', canRefine: true },
-  { typeId: 0x01, itemId: 0x60, name: '60级史诗太刀', categoryName: '太刀', quality: 'orange', canRefine: true },
+  { typeId: 0x01, itemId: 0x39, name: '20级神器太刀', categoryName: '太刀', quality: 'pink', canRefine: true },
+  { typeId: 0x01, itemId: 0x51, name: '30级史诗太刀', categoryName: '太刀', quality: 'orange', canRefine: true },
 
   // 短剑 (0x00)
+  { typeId: 0x00, itemId: 0x00, name: '1级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
+  { typeId: 0x00, itemId: 0x01, name: '5级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
   { typeId: 0x00, itemId: 0x09, name: '40级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
   { typeId: 0x00, itemId: 0x28, name: '40级稀有短剑', categoryName: '短剑', quality: 'purple', canRefine: true },
   { typeId: 0x00, itemId: 0x39, name: '20级神器短剑', categoryName: '短剑', quality: 'pink', canRefine: true },
-  { typeId: 0x00, itemId: 0x50, name: '50级神器短剑', categoryName: '短剑', quality: 'pink', canRefine: true },
   { typeId: 0x00, itemId: 0x51, name: '30级史诗短剑', categoryName: '短剑', quality: 'orange', canRefine: true },
-  { typeId: 0x00, itemId: 0x60, name: '60级史诗短剑', categoryName: '短剑', quality: 'orange', canRefine: true },
 
   // 巨剑 (0x02)
+  { typeId: 0x02, itemId: 0x00, name: '1级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
+  { typeId: 0x02, itemId: 0x01, name: '5级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
   { typeId: 0x02, itemId: 0x09, name: '40级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
   { typeId: 0x02, itemId: 0x28, name: '40级稀有巨剑', categoryName: '巨剑', quality: 'purple', canRefine: true },
   { typeId: 0x02, itemId: 0x39, name: '20级神器巨剑', categoryName: '巨剑', quality: 'pink', canRefine: true },
-  { typeId: 0x02, itemId: 0x50, name: '50级神器巨剑', categoryName: '巨剑', quality: 'pink', canRefine: true },
   { typeId: 0x02, itemId: 0x51, name: '30级史诗巨剑', categoryName: '巨剑', quality: 'orange', canRefine: true },
-  { typeId: 0x02, itemId: 0x58, name: '55级史诗巨剑', categoryName: '巨剑', quality: 'orange', canRefine: true },
-  { typeId: 0x02, itemId: 0x60, name: '60级史诗巨剑', categoryName: '巨剑', quality: 'orange', canRefine: true },
 
   // 光剑 (0x03)
+  { typeId: 0x03, itemId: 0x00, name: '1级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
+  { typeId: 0x03, itemId: 0x01, name: '5级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
   { typeId: 0x03, itemId: 0x09, name: '40级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
   { typeId: 0x03, itemId: 0x28, name: '40级稀有光剑', categoryName: '光剑', quality: 'purple', canRefine: true },
   { typeId: 0x03, itemId: 0x39, name: '20级神器光剑', categoryName: '光剑', quality: 'pink', canRefine: true },
-  { typeId: 0x03, itemId: 0x50, name: '50级神器光剑', categoryName: '光剑', quality: 'pink', canRefine: true },
   { typeId: 0x03, itemId: 0x51, name: '30级史诗光剑', categoryName: '光剑', quality: 'orange', canRefine: true },
-  { typeId: 0x03, itemId: 0x60, name: '60级史诗光剑', categoryName: '光剑', quality: 'orange', canRefine: true },
-
-  // ==================== 40级高级防具与手腕首饰 ====================
-  { typeId: 0x04, itemId: 0x45, name: '40级高级布甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
-  { typeId: 0x04, itemId: 0x46, name: '40级高级轻甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
-  { typeId: 0x04, itemId: 0x47, name: '40级高级重甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
-  { typeId: 0x04, itemId: 0x48, name: '40级高级板甲 (护肩)', categoryName: '护肩', quality: 'blue', canRefine: true },
-
-  { typeId: 0x05, itemId: 0x45, name: '40级高级布甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
-  { typeId: 0x05, itemId: 0x46, name: '40级高级轻甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
-  { typeId: 0x05, itemId: 0x47, name: '40级高级重甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
-  { typeId: 0x05, itemId: 0x48, name: '40级高级板甲 (上衣)', categoryName: '上衣', quality: 'blue', canRefine: true },
-
-  { typeId: 0x06, itemId: 0x45, name: '40级高级布甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
-  { typeId: 0x06, itemId: 0x46, name: '40级高级轻甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
-  { typeId: 0x06, itemId: 0x47, name: '40级高级重甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
-  { typeId: 0x06, itemId: 0x48, name: '40级高级板甲 (下装)', categoryName: '下衣', quality: 'blue', canRefine: true },
-
-  { typeId: 0x07, itemId: 0x14, name: '40级高级手腕', categoryName: '手腕', quality: 'blue', canRefine: true },
 
   // ==================== 称号类 (0x09) ====================
   { typeId: 0x09, itemId: 0x08, name: '力体狂暴之冠 (物攻+力体)', categoryName: '称号', quality: 'pink', desc: '物攻+X%, 力+30, 体+40' },
@@ -504,8 +482,189 @@ for (const item of RING_DEFS) {
   })
 }
 
+// ==================== 装备智能数格子推导引擎 (核心解析逻辑) ====================
+export const ARMOR_TYPES = ['布甲', '轻甲', '重甲', '板甲'] as const
+
+/**
+ * 根据装备大类 (typeId 0x00~0x08) 和子ID (itemId)，基于同一品质递增数格子规律直接推导装备等级、品类与品质
+ */
+export function parseEquipment(typeId: number, itemId: number): { name: string; categoryName: string; quality: 'white' | 'blue' | 'purple' | 'pink' | 'orange'; canRefine: boolean } | null {
+  // 1. 防具 (0x04 护肩, 0x05 上衣, 0x06 下衣)
+  if (typeId >= 0x04 && typeId <= 0x06) {
+    const catName = typeId === 0x04 ? '护肩' : typeId === 0x05 ? '上衣' : '下衣'
+
+    // 神器 (粉): 6d ~ 84 (10级 ~ 60级，每级4种甲: 布/轻/重/板)
+    if (itemId >= 0x6d && itemId <= 0x84) {
+      const idx = itemId - 0x6d
+      const level = 10 + Math.floor(idx / 4) * 10
+      const armor = ARMOR_TYPES[idx % 4]
+      return { name: `${level}级神器${armor} (${catName})`, categoryName: catName, quality: 'pink', canRefine: true }
+    }
+
+    // 史诗 (橙): 85 ~ 94 (25级 ~ 55级，每级4种甲: 布/轻/重/板)
+    if (itemId >= 0x85 && itemId <= 0x94) {
+      const idx = itemId - 0x85
+      const level = 25 + Math.floor(idx / 4) * 10
+      const armor = ARMOR_TYPES[idx % 4]
+      return { name: `${level}级史诗${armor} (${catName})`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+
+    // 史诗 (橙): ba ~ bd (60级史诗防具: 布/轻/重/板)
+    if (itemId >= 0xba && itemId <= 0xbd) {
+      const armor = ARMOR_TYPES[(itemId - 0xba) % 4]
+      return { name: `60级史诗${armor} (${catName})`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+    // 史诗 (橙): 95 ~ b9 (55~60级史诗防具套装)
+    if (itemId >= 0x95 && itemId < 0xba) {
+      const armor = ARMOR_TYPES[(itemId - 0x95) % 4]
+      return { name: `60级史诗${armor} (${catName})`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+
+    // 稀有 (紫): 55 ~ 6c (10级 ~ 60级，每级4种甲: 布/轻/重/板)
+    if (itemId >= 0x55 && itemId <= 0x6c) {
+      const idx = itemId - 0x55
+      const level = 10 + Math.floor(idx / 4) * 10
+      const armor = ARMOR_TYPES[idx % 4]
+      return { name: `${level}级稀有${armor} (${catName})`, categoryName: catName, quality: 'purple', canRefine: true }
+    }
+
+    // 高级 (蓝): 39 ~ 54 (10级 ~ 60级，每级4种甲: 布/轻/重/板，其中 0x45~0x48 为40级高级防具)
+    if (itemId >= 0x39 && itemId <= 0x54) {
+      const idx = itemId - 0x39
+      const level = 10 + Math.floor(idx / 4) * 10
+      const armor = ARMOR_TYPES[idx % 4]
+      return { name: `${level}级高级${armor} (${catName})`, categoryName: catName, quality: 'blue', canRefine: true }
+    }
+
+    // 普通 (白): < 39 (包含1级、5级防具)
+    const armor = ARMOR_TYPES[itemId % 4]
+    let level = 1
+    if (itemId >= 0x00 && itemId <= 0x03) level = 1
+    else if (itemId >= 0x04 && itemId <= 0x07) level = 5
+    else {
+      level = 10 + Math.floor((itemId - 8) / 4) * 5
+      if (level > 40) level = 40
+    }
+    return { name: `${level}级普通${armor} (${catName})`, categoryName: catName, quality: 'white', canRefine: true }
+  }
+
+  // 2. 首饰 (0x07 手腕, 0x08 戒指)
+  if (typeId === 0x07 || typeId === 0x08) {
+    const catName = typeId === 0x07 ? '手腕' : '戒指'
+
+    // 60级史诗 (橙)
+    const ss60Wrist = [0x44, 0x45, 0x47, 0x48, 0x49, 0x4a]
+    const ss60Ring = [0x47, 0x48, 0x4a, 0x4b, 0x4c, 0x4d]
+    if (typeId === 0x07 && ss60Wrist.includes(itemId)) {
+      return { name: `60级史诗${catName}`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+    if (typeId === 0x08 && ss60Ring.includes(itemId)) {
+      return { name: `60级史诗${catName}`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+
+    // 30/40/50 级史诗 (橙): 38, 39, 3a
+    if (itemId >= 0x38 && itemId <= 0x3a) {
+      const level = 30 + (itemId - 0x38) * 10
+      return { name: `${level}级史诗${catName}`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+
+    // 神器 (粉): 29 ~ 33 (10级 ~ 60级，每5级一档: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60级)
+    if (itemId >= 0x29 && itemId <= 0x33) {
+      const level = 10 + (itemId - 0x29) * 5
+      return { name: `${level}级神器${catName}`, categoryName: catName, quality: 'pink', canRefine: true }
+    }
+
+    // 稀有 (紫): 1e ~ 28 (10级 ~ 60级，每5级一档)
+    if (itemId >= 0x1e && itemId <= 0x28) {
+      const level = 10 + (itemId - 0x1e) * 5
+      return { name: `${level}级稀有${catName}`, categoryName: catName, quality: 'purple', canRefine: true }
+    }
+
+    // 高级 (蓝): 0e ~ 18 (10级 ~ 60级，每5级一档，0x14 恰好为40级高级手腕)
+    if (itemId >= 0x0e && itemId <= 0x18) {
+      const level = 10 + (itemId - 0x0e) * 5
+      return { name: `${level}级高级${catName}`, categoryName: catName, quality: 'blue', canRefine: true }
+    }
+
+    // 普通 (白): < 0e (包含1级、5级装备)
+    const level = itemId <= 0x01 ? 1 : itemId <= 0x03 ? 5 : 10
+    return { name: `${level}级普通${catName}`, categoryName: catName, quality: 'white', canRefine: true }
+  }
+
+  // 3. 武器 (0x00 短剑, 0x01 太刀, 0x02 巨剑, 0x03 光剑)
+  if (typeId >= 0x00 && typeId <= 0x03) {
+    const wpNames = ['短剑', '太刀', '巨剑', '光剑']
+    const catName = wpNames[typeId] || '武器'
+
+    // 史诗 (橙): >= 0x51 (30级起)
+    if (itemId >= 0x51) {
+      let level = 30
+      if (itemId === 0x51) level = 30
+      else if (itemId === 0x52) level = 35
+      else if (itemId === 0x53) level = 40
+      else if (itemId === 0x54) level = 45
+      else if (itemId === 0x55) level = 50
+      else if (itemId >= 0x56 && itemId <= 0x58) level = 55
+      else level = 60
+      return { name: `${level}级史诗${catName}`, categoryName: catName, quality: 'orange', canRefine: true }
+    }
+
+    // 神器 (粉): 0x37 ~ 0x50 (0x39 为 20级神器太刀)
+    if (itemId >= 0x37 && itemId <= 0x50) {
+      let level = 20 + (itemId - 0x39) * 5
+      if (level < 10) level = 10
+      if (level > 60) level = 60
+      return { name: `${level}级神器${catName}`, categoryName: catName, quality: 'pink', canRefine: true }
+    }
+
+    // 稀有 (紫): 0x22 ~ 0x36 (0x28 为 40级稀有太刀)
+    if (itemId >= 0x22 && itemId <= 0x36) {
+      let level = 40 + (itemId - 0x28) * 5
+      if (level < 10) level = 10
+      if (level > 60) level = 60
+      return { name: `${level}级稀有${catName}`, categoryName: catName, quality: 'purple', canRefine: true }
+    }
+
+    // 高级 (蓝): 0x0e ~ 0x21 (0x14 对应40级高级)
+    if (itemId >= 0x0e && itemId <= 0x21) {
+      let level = 40 + (itemId - 0x14) * 5
+      if (level < 10) level = 10
+      if (level > 60) level = 60
+      return { name: `${level}级高级${catName}`, categoryName: catName, quality: 'blue', canRefine: true }
+    }
+
+    // 普通 (白): <= 0x0d (0x09 为 40级普通太刀，包含1级、5级)
+    let level = 40 + (itemId - 0x09) * 5
+    if (itemId === 0x00) level = 1
+    else if (itemId === 0x01) level = 5
+    else if (level < 5) level = 5
+    if (level > 60) level = 60
+    return { name: `${level}级普通${catName}`, categoryName: catName, quality: 'white', canRefine: true }
+  }
+
+  return null
+}
+
 // ==================== 统一查找函数 ====================
 export function findItemInfo(typeId: number, itemId: number): { name: string; categoryName: string; quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'; canRefine: boolean } {
+  // 1. 如果是装备类 (0x00 ~ 0x08)，直接使用智能数格子推导引擎
+  if (typeId >= 0x00 && typeId <= 0x08) {
+    const match = ITEM_DICTIONARY.find(i => i.typeId === typeId && i.itemId === itemId)
+    if (match) {
+      return {
+        name: match.name,
+        categoryName: match.categoryName,
+        quality: match.quality,
+        canRefine: true,
+      }
+    }
+    const parsed = parseEquipment(typeId, itemId)
+    if (parsed) {
+      return parsed
+    }
+  }
+
+  // 2. 非装备类 (材料、消耗品、卡片、称号、宠物、任务等)
   const match = ITEM_DICTIONARY.find(i => i.typeId === typeId && i.itemId === itemId)
   if (match) {
     return {
