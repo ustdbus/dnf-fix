@@ -157,7 +157,8 @@ import { parseQuestSave, serializeQuestSave } from './core/questParser'
 import { scanDirectory, readSaveFile, writeSaveFile } from './core/fsBridge'
 
 const STORAGE_KEY_PATH = 'dnf_save_path'
-const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
+const DEFAULT_PATH = '/storage/emulated/0/Documents/DNF_Save/files/Resource/'
+const savePath = ref<string>(DEFAULT_PATH)
 const isDefaultSaved = ref<boolean>(false)
 const currentCharacter = ref<number>(0)
 const activeTab = ref<'character' | 'inventory' | 'dungeon' | 'quest'>('character')
@@ -174,13 +175,21 @@ function initDefaultPath() {
   if (!saved) {
     saved = localStorage.getItem(STORAGE_KEY_PATH) || ''
   }
+  // 如果读取到旧的已废弃路径，则迁移为新的默认路径
+  if (saved && saved.includes('com.tencent.dnf')) {
+    saved = DEFAULT_PATH
+    onSaveDefaultPath(DEFAULT_PATH)
+  }
+
   if (saved && saved.trim()) {
     savePath.value = saved.trim()
     isDefaultSaved.value = true
     detectSaves()
   } else {
-    savePath.value = '/sdcard/Android/data/com.tencent.dnf/files'
-    isDefaultSaved.value = false
+    savePath.value = DEFAULT_PATH
+    isDefaultSaved.value = true
+    onSaveDefaultPath(DEFAULT_PATH)
+    detectSaves()
   }
 }
 

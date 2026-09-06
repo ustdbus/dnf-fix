@@ -50,7 +50,7 @@
               @change="$emit('save-default-path', ($event.target as HTMLInputElement).value)"
               @keyup.enter="$emit('save-default-path', ($event.target as HTMLInputElement).value)"
               type="text"
-              placeholder="手机端路径或本地参考存档文件夹路径"
+              placeholder="默认: /storage/emulated/0/Documents/DNF_Save/files/Resource/"
               class="w-full bg-[#151924] text-xs text-gray-100 pl-3 pr-20 py-2 rounded-lg border border-gray-700/80 focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 focus:outline-none placeholder-gray-500 font-mono transition"
             />
             <div class="absolute right-1.5 flex items-center gap-1.5">

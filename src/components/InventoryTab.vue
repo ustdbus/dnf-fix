@@ -53,22 +53,22 @@
       </div>
     </div>
 
-    <!-- 游戏同款一行10格网格容器 (支持横向滑动自适应) -->
-    <div class="overflow-x-auto pb-3 -mx-1 px-1 custom-scrollbar">
-      <div class="grid grid-cols-10 min-w-[780px] gap-1.5">
+    <!-- 游戏同款一行10格网格容器 (手机单屏宽度完整容纳10格，无需横向滚动) -->
+    <div class="w-full pb-3">
+      <div class="grid grid-cols-10 gap-1 sm:gap-1.5 w-full">
         <div
           v-for="slot in filteredSlots"
           :key="slot.slotIndex"
           @click="openEditModal(slot)"
           :class="[
-            'relative p-1.5 rounded-lg border cursor-pointer transition flex flex-col justify-between h-20 overflow-hidden group select-none',
+            'relative p-0.5 sm:p-1.5 rounded-md sm:rounded-lg border cursor-pointer transition flex flex-col justify-between h-[48px] sm:h-20 overflow-hidden group select-none',
             slot.isEmpty
               ? 'bg-[#10131d]/60 border-dashed border-gray-800 hover:border-amber-600/50 hover:bg-[#161a27]'
               : getQualityClass(slot)
           ]"
         >
           <!-- 槽位角标: 左侧装备标记/强化等级，右侧槽位序号 -->
-          <div class="flex items-center justify-between text-[10px] leading-none">
+          <div class="flex items-center justify-between text-[8px] sm:text-[10px] leading-none">
             <span v-if="!slot.isEmpty && isEquip(slot.typeId)" class="font-bold">
               <span
                 v-if="slot.refineLevel > 0"
@@ -82,43 +82,43 @@
               >
                 +{{ slot.refineLevel }}
               </span>
-              <span v-else class="text-amber-300/80 bg-black/50 px-1 py-0.5 rounded text-[9px] border border-amber-600/30">
+              <span v-else class="text-amber-300/80 bg-black/50 px-0.5 sm:px-1 py-0.2 rounded text-[7px] sm:text-[9px] border border-amber-600/30">
                 E
               </span>
             </span>
-            <span v-else-if="!slot.isEmpty" class="text-gray-400 scale-90 origin-left text-[9px]">
-              {{ slot.categoryName.slice(0, 3) }}
+            <span v-else-if="!slot.isEmpty" class="text-gray-400 scale-90 origin-left text-[7px] sm:text-[9px] truncate max-w-[20px] sm:max-w-[40px]">
+              {{ slot.categoryName.slice(0, 2) }}
             </span>
-            <span v-else class="text-gray-600 text-[9px]">空</span>
+            <span v-else class="text-gray-600 text-[7px] sm:text-[9px]">空</span>
 
-            <span class="font-mono text-gray-500 text-[9px]">#{{ slot.slotIndex + 1 }}</span>
+            <span class="font-mono text-gray-500 text-[7px] sm:text-[9px]">#{{ slot.slotIndex + 1 }}</span>
           </div>
 
           <!-- 中间物品名称 -->
-          <div class="my-auto py-0.5 text-center">
+          <div class="my-auto py-0.5 text-center px-0.5">
             <div
               v-if="!slot.isEmpty"
-              class="text-[11px] leading-tight line-clamp-2 text-gray-200 group-hover:text-white font-medium break-all"
+              class="text-[8px] sm:text-[11px] leading-tight line-clamp-2 text-gray-200 group-hover:text-white font-medium break-all"
               :title="slot.itemName + (slot.refineLevel > 0 ? ` (+${slot.refineLevel})` : '')"
             >
               {{ slot.itemName }}
             </div>
-            <div v-else class="text-sm text-gray-600 group-hover:text-amber-400 transition font-bold font-mono">
+            <div v-else class="text-xs sm:text-sm text-gray-600 group-hover:text-amber-400 transition font-bold font-mono">
               +
             </div>
           </div>
 
-          <!-- 底部栏: 左侧类别/提示，右侧数量 -->
-          <div class="flex items-center justify-between text-[10px] leading-none">
-            <span v-if="!slot.isEmpty" class="text-[9px] text-gray-500 scale-90 origin-left truncate max-w-[45px]">
+          <!-- 底部栏: 手机端优先精简显示数量 -->
+          <div class="flex items-center justify-between text-[7px] sm:text-[10px] leading-none">
+            <span v-if="!slot.isEmpty" class="hidden sm:inline text-[9px] text-gray-500 scale-90 origin-left truncate max-w-[45px]">
               {{ slot.categoryName }}
             </span>
-            <span v-else class="text-[9px] text-gray-600">可添加</span>
+            <span v-else class="hidden sm:inline text-[9px] text-gray-600">可添加</span>
 
-            <span v-if="!slot.isEmpty" class="text-[10px] font-mono text-amber-300 font-semibold">
+            <span v-if="!slot.isEmpty" class="w-full sm:w-auto text-right text-[8px] sm:text-[10px] font-mono text-amber-300 font-semibold">
               x{{ slot.count }}
             </span>
-            <span v-else class="text-[9px] text-gray-600 font-mono">--</span>
+            <span v-else class="w-full sm:w-auto text-right text-[7px] sm:text-[9px] text-gray-600 font-mono">--</span>
           </div>
         </div>
       </div>
