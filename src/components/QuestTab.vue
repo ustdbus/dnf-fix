@@ -23,27 +23,12 @@
             <span>🎁 一键达成待领奖</span>
           </button>
           <button
-            @click="setAllQuestsState(2)"
-            class="text-xs px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold transition shadow-md shadow-emerald-900/30 flex items-center gap-1.5 active:scale-95"
+            @click="setNormalQuestsCompleted"
+            class="text-xs px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold transition shadow-md shadow-emerald-900/30 flex items-center gap-1.5 active:scale-95"
             :disabled="!questSave"
-            title="一键彻底完成全量任务，自动清空活跃任务槽位"
+            title="一键彻底完成所有普通任务，不含日常重复任务"
           >
-            <span>✨ 一键全通 (All Clear)</span>
-          </button>
-          <button
-            @click="setEpicQuestsState(2)"
-            class="text-xs px-3 py-1.5 rounded-lg bg-amber-950/80 hover:bg-amber-900 border border-amber-600/50 text-amber-200 font-bold transition flex items-center gap-1 active:scale-95"
-            :disabled="!questSave"
-            title="一键彻底完成所有主线任务"
-          >
-            <span>🎯 一键完成主线</span>
-          </button>
-          <button
-            @click="setAllQuestsState(0)"
-            class="text-xs px-2.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-[11px] font-medium transition active:scale-95"
-            :disabled="!questSave"
-          >
-            <span>🔄 重置未接取</span>
+            <span>✅ 一键完成普通任务（不含重复任务）</span>
           </button>
         </div>
       </div>
@@ -70,34 +55,67 @@
           </label>
           <button
             @click="createDefaultQuest"
-            class="text-xs px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition border border-gray-700 active:scale-95"
+            class="text-xs px-3.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition border border-gray-700 active:scale-95"
           >
             ➕ 创建空白任务
           </button>
         </div>
       </div>
 
-      <!-- 任务统计卡片 -->
+      <!-- 任务统计卡片 (1.进行中 -> 2.待领奖 -> 3.未接取 -> 4.彻底完成 -> 5.总任务数) -->
       <div v-else class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-        <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner">
-          <span class="text-[11px] text-gray-400">总任务数</span>
-          <span class="text-xs font-black text-amber-300 font-mono">530</span>
+        <!-- 1. 进行中 -->
+        <div 
+          @click="currentFilter = 'active'"
+          :class="[
+            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
+            currentFilter === 'active' ? 'bg-amber-950/40 border-amber-500 ring-1 ring-amber-500/50' : 'bg-[#0b0e15] border-amber-900/40 hover:border-amber-600/60'
+          ]"
+        >
+          <span class="text-[11px] text-amber-400 flex items-center gap-1">⚡ 进行中</span>
+          <span class="text-xs font-black text-amber-300 font-mono">{{ ongoingCount }}</span>
         </div>
-        <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-yellow-600/40 flex items-center justify-between shadow-inner bg-yellow-950/20">
+
+        <!-- 2. 待领奖 -->
+        <div 
+          @click="currentFilter = 'ready'"
+          :class="[
+            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
+            currentFilter === 'ready' ? 'bg-yellow-950/40 border-yellow-500 ring-1 ring-yellow-500/50' : 'bg-[#0b0e15] border-yellow-600/40 hover:border-yellow-500/60'
+          ]"
+        >
           <span class="text-[11px] text-yellow-400 font-semibold flex items-center gap-1">🎁 待领奖</span>
           <span class="text-xs font-black text-yellow-300 font-mono">{{ readyCount }}</span>
         </div>
-        <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-amber-800/40 flex items-center justify-between shadow-inner">
-          <span class="text-[11px] text-amber-400 flex items-center gap-1">⚡ 进行中</span>
-          <span class="text-xs font-black text-amber-400 font-mono">{{ ongoingCount }}</span>
+
+        <!-- 3. 未接取 -->
+        <div 
+          @click="currentFilter = 'unaccepted'"
+          :class="[
+            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
+            currentFilter === 'unaccepted' ? 'bg-gray-800/60 border-gray-500 ring-1 ring-gray-400/50' : 'bg-[#0b0e15] border-gray-800 hover:border-gray-700'
+          ]"
+        >
+          <span class="text-[11px] text-gray-400 flex items-center gap-1">⏳ 未接取</span>
+          <span class="text-xs font-black text-gray-300 font-mono">{{ unacceptedCount }}</span>
         </div>
-        <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-emerald-900/50 flex items-center justify-between shadow-inner">
+
+        <!-- 4. 彻底完成 -->
+        <div 
+          @click="currentFilter = 'completed'"
+          :class="[
+            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
+            currentFilter === 'completed' ? 'bg-emerald-950/40 border-emerald-500 ring-1 ring-emerald-500/50' : 'bg-[#0b0e15] border-emerald-900/50 hover:border-emerald-600/60'
+          ]"
+        >
           <span class="text-[11px] text-emerald-400 flex items-center gap-1">✅ 彻底完成</span>
           <span class="text-xs font-black text-emerald-400 font-mono">{{ completedCount }}</span>
         </div>
+
+        <!-- 5. 总任务数 -->
         <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner col-span-2 sm:col-span-1">
-          <span class="text-[11px] text-gray-400">⏳ 未接取</span>
-          <span class="text-xs font-black text-gray-400 font-mono">{{ unacceptedCount }}</span>
+          <span class="text-[11px] text-gray-400">📜 总任务数</span>
+          <span class="text-xs font-black text-amber-300 font-mono">530</span>
         </div>
       </div>
     </div>
@@ -105,7 +123,7 @@
     <!-- 任务筛选与检索区 -->
     <div class="space-y-3">
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        <!-- 6 大核心筛选类别：全部、待领奖、进行中、未完成、已完成、重复 -->
+        <!-- 筛选分类 Tab (进行中、待领奖、未接取、彻底完成、重复任务) -->
         <div class="flex flex-wrap gap-1.5 bg-[#10131c] p-1.5 rounded-xl border border-gray-800/90 shadow-sm">
           <button
             v-for="f in filterOptions"
@@ -116,7 +134,13 @@
               currentFilter === f.key
                 ? f.key === 'ready'
                   ? 'bg-gradient-to-r from-yellow-500 to-amber-400 text-black shadow-md shadow-yellow-500/30'
-                  : 'bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-md shadow-amber-500/30'
+                  : f.key === 'active'
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-400 text-black shadow-md shadow-amber-500/30'
+                    : f.key === 'completed'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-md shadow-emerald-500/30'
+                      : f.key === 'unaccepted'
+                        ? 'bg-gradient-to-r from-gray-700 to-gray-600 text-white shadow-md'
+                        : 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md'
                 : 'text-gray-400 hover:text-gray-200'
             ]"
           >
@@ -248,18 +272,17 @@ const emit = defineEmits<{
   (e: 'update:questSave', value: DnfQuestSave): void
 }>()
 
-// 6 大核心筛选选项
+// 核心筛选选项：进行中(第1)、待领奖(第2)、未接取(第3)、彻底完成(第4)、重复任务(第5)
 const filterOptions = [
-  { key: 'all', label: '全部', icon: '📋' },
-  { key: 'ready', label: '待领奖', icon: '🎁' },
   { key: 'active', label: '进行中', icon: '⚡' },
-  { key: 'unfinished', label: '未完成', icon: '⏳' },
-  { key: 'completed', label: '已完成', icon: '✅' },
-  { key: 'repeat', label: '重复', icon: '🔁' },
+  { key: 'ready', label: '待领奖', icon: '🎁' },
+  { key: 'unaccepted', label: '未接取', icon: '⏳' },
+  { key: 'completed', label: '彻底完成', icon: '✅' },
+  { key: 'repeat', label: '重复任务', icon: '🔁' },
 ] as const
 
 type FilterKey = typeof filterOptions[number]['key']
-const currentFilter = ref<FilterKey>('all')
+const currentFilter = ref<FilterKey>('active')
 const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = 48
@@ -274,21 +297,18 @@ const questList = computed<QuestItem[]>(() => {
   return props.questSave?.quests || []
 })
 
-// 统计数据
-const completedCount = computed(() => questList.value.filter(q => q.state === 2).length)
-const readyCount = computed(() => questList.value.filter(q => q.state === 1 && q.isReadyToReward).length)
+// 统计数据 (对应进行中、待领奖、未接取、彻底完成互斥分类)
 const ongoingCount = computed(() => questList.value.filter(q => q.state === 1 && !q.isReadyToReward).length)
-const activeTotalCount = computed(() => questList.value.filter(q => q.state === 1).length)
+const readyCount = computed(() => questList.value.filter(q => q.state === 1 && q.isReadyToReward).length)
 const unacceptedCount = computed(() => questList.value.filter(q => q.state === 0).length)
-const unfinishedCount = computed(() => questList.value.filter(q => q.state !== 2).length)
+const completedCount = computed(() => questList.value.filter(q => q.state === 2).length)
 const repeatCount = computed(() => questList.value.filter(q => q.type === 2).length)
 
 function getFilterCount(key: FilterKey): number {
   switch (key) {
-    case 'all': return questList.value.length
+    case 'active': return ongoingCount.value
     case 'ready': return readyCount.value
-    case 'active': return activeTotalCount.value
-    case 'unfinished': return unfinishedCount.value
+    case 'unaccepted': return unacceptedCount.value
     case 'completed': return completedCount.value
     case 'repeat': return repeatCount.value
   }
@@ -298,28 +318,28 @@ function getFilterCount(key: FilterKey): number {
 const filteredQuests = computed(() => {
   let list = questList.value
 
-  // 1. 分类筛选
-  if (currentFilter.value === 'ready') {
-    list = list.filter(q => q.state === 1 && q.isReadyToReward)
-  } else if (currentFilter.value === 'active') {
-    list = list.filter(q => q.state === 1)
-  } else if (currentFilter.value === 'unfinished') {
-    list = list.filter(q => q.state !== 2)
-  } else if (currentFilter.value === 'completed') {
-    list = list.filter(q => q.state === 2)
-  } else if (currentFilter.value === 'repeat') {
-    list = list.filter(q => q.type === 2)
-  }
-
-  // 2. 关键词搜索
+  // 1. 关键词搜索：如果有输入搜索词，则全局匹配所有任务
   if (searchQuery.value.trim()) {
     const q = searchQuery.value.trim().toLowerCase()
-    list = list.filter(item => 
+    return list.filter(item => 
       item.name.toLowerCase().includes(q) || 
       item.id.toString() === q ||
       item.typeName.toLowerCase().includes(q) ||
       (q === '待领奖' && item.state === 1 && item.isReadyToReward)
     )
+  }
+
+  // 2. 分类筛选
+  if (currentFilter.value === 'active') {
+    return list.filter(q => q.state === 1 && !q.isReadyToReward)
+  } else if (currentFilter.value === 'ready') {
+    return list.filter(q => q.state === 1 && q.isReadyToReward)
+  } else if (currentFilter.value === 'unaccepted') {
+    return list.filter(q => q.state === 0)
+  } else if (currentFilter.value === 'completed') {
+    return list.filter(q => q.state === 2)
+  } else if (currentFilter.value === 'repeat') {
+    return list.filter(q => q.type === 2)
   }
 
   return list
@@ -420,28 +440,19 @@ function setAllActiveQuestsReady() {
   }
 }
 
-function setAllQuestsState(targetState: number) {
-  for (const q of questList.value) {
-    q.state = targetState
-    q.isReadyToReward = false
-  }
-  if (targetState === 2) {
-    actionNotice.value = '全量 530 个任务已标记为彻底完成 (已领奖/清除活跃槽位)！'
-  } else if (targetState === 0) {
-    actionNotice.value = '全量 530 个任务已重置为未接取状态！'
-  }
-}
-
-function setEpicQuestsState(targetState: number) {
+// 一键完成普通任务（不含重复任务）
+function setNormalQuestsCompleted() {
   let count = 0
   for (const q of questList.value) {
-    if (q.type === 1) {
-      q.state = targetState
+    // 0: 普通, 1: 主线, 2: 重复, 3: 转职, 4: 觉醒
+    // 严格满足：普通任务 (q.type === 0)，不含重复任务 (q.type === 2)
+    if (q.type === 0) {
+      q.state = 2
       q.isReadyToReward = false
       count++
     }
   }
-  actionNotice.value = `已将 ${count} 个主线 (史诗) 任务设置为彻底完成！`
+  actionNotice.value = `已将全量 ${count} 个普通任务（不含重复任务）设置为彻底完成！`
 }
 
 function createDefaultQuest() {
