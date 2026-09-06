@@ -60,6 +60,7 @@
           v-for="slot in filteredSlots"
           :key="slot.slotIndex"
           @click="openEditModal(slot)"
+          :title="getSlotHoverTitle(slot)"
           :class="[
             'relative p-0.5 sm:p-1.5 rounded-md sm:rounded-lg border cursor-pointer transition flex flex-col justify-between h-[48px] sm:h-20 overflow-hidden group select-none',
             slot.isEmpty
@@ -158,26 +159,99 @@
         <!-- 2. 预置物品库选择 -->
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="text-xs text-gray-400 font-medium">2. 选择预置物品 (或手动填写ID):</label>
-            <span class="text-[10px] text-gray-500">匹配本类别预设</span>
+            <label class="text-xs text-gray-400 font-medium">2. 选择物品 (含穿戴等级与品级分类):</label>
+            <span class="text-[10px] text-gray-500">共 {{ currentCategoryItems.length }} 件预置</span>
           </div>
           <select
             v-model.number="formItemId"
             class="w-full bg-[#0e1119] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
           >
             <option v-for="item in currentCategoryItems" :key="item.itemId" :value="item.itemId">
-              {{ item.name }} [0x{{ item.itemId.toString(16).padStart(2, '0') }}]
+              {{ formatOptionLabel(item) }}
             </option>
           </select>
         </div>
 
-        <!-- 3. 手动 16 进制 ID 调整 (支持任意冷门装备代码) -->
+        <!-- 3. 选定物品实时详情卡片 (等级、品级分类、属性完整呈现) -->
+        <div
+          :class="[
+            'p-3 rounded-xl border transition-all space-y-2',
+            currentQualityInfo.bgColor,
+            currentQualityInfo.borderColor
+          ]"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1.5 min-w-0 flex-1">
+              <!-- 物品名称与品级分类徽章 -->
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-sm font-black truncate" :class="currentQualityInfo.color">
+                  {{ currentSelectedInfo.name }}
+                </span>
+                <span
+                  :class="[
+                    'text-[10px] px-2 py-0.5 rounded border font-bold font-mono tracking-wide',
+                    currentQualityInfo.badgeClass
+                  ]"
+                >
+                  {{ currentQualityInfo.label }}
+                </span>
+                <span
+                  v-if="isSingleCategory(formTypeId)"
+                  class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/40 font-mono"
+                >
+                  🔒 独立装备 (数量固定1)
+                </span>
+              </div>
+
+              <!-- 详细属性栏: 分类、等级、强化、价格等 -->
+              <div class="text-[11px] text-gray-300 flex flex-wrap items-center gap-x-3.5 gap-y-1 pt-0.5">
+                <span class="flex items-center gap-1">
+                  <span class="text-gray-500">品级:</span>
+                  <span class="font-bold" :class="currentQualityInfo.color">{{ currentQualityInfo.name }}</span>
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="text-gray-500">分类:</span>
+                  <span class="text-amber-200 font-semibold">{{ currentSelectedInfo.categoryName }}</span>
+                </span>
+                <span v-if="currentSelectedInfo.reqLevel !== undefined" class="flex items-center gap-1">
+                  <span class="text-gray-500">穿戴等级:</span>
+                  <span class="text-emerald-400 font-black font-mono">Lv.{{ currentSelectedInfo.reqLevel }}</span>
+                </span>
+                <span v-else-if="isSingleCategory(formTypeId)" class="flex items-center gap-1">
+                  <span class="text-gray-500">穿戴等级:</span>
+                  <span class="text-gray-400 font-mono">通用 / 无限制</span>
+                </span>
+                <span v-if="isEquipCategory(formTypeId)" class="flex items-center gap-1">
+                  <span class="text-gray-500">当前强化:</span>
+                  <span class="text-amber-300 font-black font-mono">+{{ formRefineLevel }}</span>
+                </span>
+                <span v-if="currentSelectedInfo.price" class="flex items-center gap-1">
+                  <span class="text-gray-500">售价:</span>
+                  <span class="text-yellow-400 font-mono">{{ currentSelectedInfo.price }} 金币</span>
+                </span>
+              </div>
+
+              <!-- 物品说明/备注 -->
+              <div v-if="currentSelectedInfo.desc" class="text-[10px] text-gray-400 font-mono pt-0.5 border-t border-gray-800/60">
+                {{ currentSelectedInfo.desc }}
+              </div>
+            </div>
+
+            <!-- 右侧 16 进制代码徽章 -->
+            <div class="shrink-0 text-right font-mono text-[10px] text-gray-400 bg-black/50 p-2 rounded-lg border border-gray-800">
+              <div>大类: 0x{{ toHex(formTypeId) }}</div>
+              <div>代码: 0x{{ toHex(formItemId) }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 手动 16 进制 ID 调整 (支持任意冷门装备代码) -->
         <div class="grid grid-cols-2 gap-3 bg-black/30 p-3 rounded-lg border border-gray-800/80">
           <div>
             <label class="block text-[11px] text-gray-400 mb-1">大类代码 (16进制):</label>
             <input
               type="text"
-              :value="'0x' + formTypeId.toString(16).padStart(2, '0')"
+              :value="'0x' + toHex(formTypeId)"
               @change="onHexTypeInput(($event.target as HTMLInputElement).value)"
               class="w-full bg-[#121520] text-xs font-mono text-amber-300 px-2.5 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none"
             />
@@ -186,18 +260,26 @@
             <label class="block text-[11px] text-gray-400 mb-1">子ID代码 (16进制):</label>
             <input
               type="text"
-              :value="'0x' + formItemId.toString(16).padStart(2, '0')"
+              :value="'0x' + toHex(formItemId)"
               @change="onHexItemInput(($event.target as HTMLInputElement).value)"
               class="w-full bg-[#121520] text-xs font-mono text-amber-300 px-2.5 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none"
             />
           </div>
         </div>
 
-        <!-- 4. 物品数量 -->
+        <!-- 5. 物品数量 (装备数量锁死为1不可更改) -->
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="text-xs text-gray-400 font-medium">3. 物品数量 (1 ~ 255):</label>
-            <div class="flex gap-1">
+            <label class="text-xs text-gray-400 font-medium">
+              {{ isSingleCategory(formTypeId) ? '物品数量 (装备锁死):' : '物品数量 (1 ~ 255):' }}
+            </label>
+            <span
+              v-if="isSingleCategory(formTypeId)"
+              class="text-[10px] text-amber-400 font-mono flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/40"
+            >
+              🔒 装备单件独立，数量锁死为 1
+            </span>
+            <div v-else class="flex gap-1">
               <button
                 v-for="amt in [1, 10, 50, 99, 255]"
                 :key="amt"
@@ -208,7 +290,17 @@
               </button>
             </div>
           </div>
+          <div v-if="isSingleCategory(formTypeId)" class="relative">
+            <input
+              type="text"
+              value="1 (装备独立不可叠加，数量已锁死)"
+              disabled
+              class="w-full bg-[#0e1119]/80 text-xs font-mono text-amber-300/80 p-2 rounded-lg border border-gray-800 cursor-not-allowed select-none font-bold"
+            />
+            <span class="absolute right-3 top-2 text-xs text-gray-500">🔒 锁定</span>
+          </div>
           <input
+            v-else
             v-model.number="formCount"
             type="number"
             min="1"
@@ -283,7 +375,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, ITEM_DICTIONARY, findItemInfo } from '../core/itemDict'
+import { CATEGORIES, ITEM_DICTIONARY, findItemInfo, getQualityInfo } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 
 const props = defineProps<{
@@ -299,10 +391,28 @@ const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
+// 装备判定 (武器、防具、首饰、称号、宠物，数量锁死为1)
+const isSingleCategory = (typeId: number) => typeId >= 0x00 && typeId <= 0x0a
 const isEquip = (typeId: number) => typeId >= 0x00 && typeId <= 0x0a
 const isConsumable = (typeId: number) => typeId >= 0x0d && typeId <= 0x12
 const isMaterial = (typeId: number) => typeId === 0x0b || typeId === 0x0c
 const isQuest = (typeId: number) => typeId === 0x13
+
+function toHex(val: number | undefined | null, pad = 2): string {
+  if (val === undefined || val === null || isNaN(val)) return '00'
+  return (val & 0xff).toString(16).padStart(pad, '0').toUpperCase()
+}
+
+// 实时选中的装备信息与品级样式
+const currentSelectedInfo = computed(() => {
+  const tId = typeof formTypeId.value === 'number' && !isNaN(formTypeId.value) ? formTypeId.value : 0
+  const iId = typeof formItemId.value === 'number' && !isNaN(formItemId.value) ? formItemId.value : 0
+  return findItemInfo(tId, iId)
+})
+
+const currentQualityInfo = computed(() => {
+  return getQualityInfo(currentSelectedInfo.value.quality)
+})
 
 const usedSlotsCount = computed(() => {
   return props.save.inventory.filter(s => !s.isEmpty).length
@@ -352,12 +462,22 @@ const currentCategoryItems = computed(() => {
     return [{
       typeId: formTypeId.value,
       itemId: formItemId.value,
-      name: `默认物品 [0x${formItemId.value.toString(16)}]`,
+      name: `默认物品 [0x${toHex(formItemId.value)}]`,
       categoryName: '自定义'
     }]
   }
   return list
 })
+
+function formatOptionLabel(item: any): string {
+  if (!item) return ''
+  const qInfo = getQualityInfo(item.quality)
+  const hex = '0x' + toHex(item.itemId)
+  if (item.reqLevel !== undefined && item.reqLevel > 0) {
+    return `[Lv.${item.reqLevel} ${qInfo.name}] ${item.name} [${hex}]`
+  }
+  return `[${qInfo.name}] ${item.name} [${hex}]`
+}
 
 function getQualityClass(slot: InventorySlot): string {
   const info = findItemInfo(slot.typeId, slot.itemId)
@@ -375,6 +495,15 @@ function getQualityClass(slot: InventorySlot): string {
   }
 }
 
+function getSlotHoverTitle(slot: InventorySlot): string {
+  if (slot.isEmpty) return '空槽位 (点击录入物品)'
+  const info = findItemInfo(slot.typeId, slot.itemId)
+  const qInfo = getQualityInfo(info.quality)
+  const lvlStr = info.reqLevel !== undefined ? ` | Lv.${info.reqLevel}` : ''
+  const refineStr = slot.refineLevel > 0 ? ` (+${slot.refineLevel})` : ''
+  return `${slot.itemName}${refineStr} [${qInfo.label}] | ${info.categoryName}${lvlStr} | 数量: ${slot.count}`
+}
+
 function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
   if (slot.isEmpty) {
@@ -385,7 +514,7 @@ function openEditModal(slot: InventorySlot) {
   } else {
     formTypeId.value = slot.typeId
     formItemId.value = slot.itemId
-    formCount.value = slot.count || 1
+    formCount.value = isSingleCategory(slot.typeId) ? 1 : (slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
   }
 }
@@ -401,12 +530,18 @@ function onCategoryChange() {
   } else {
     formItemId.value = 0x01
   }
+  if (isSingleCategory(formTypeId.value)) {
+    formCount.value = 1
+  }
 }
 
 function onHexTypeInput(val: string) {
   const parsed = parseInt(val.replace('0x', ''), 16)
   if (!isNaN(parsed)) {
     formTypeId.value = parsed & 0xff
+    if (isSingleCategory(formTypeId.value)) {
+      formCount.value = 1
+    }
   }
 }
 
@@ -433,11 +568,13 @@ function saveSlotEdit() {
   if (!editingSlot.value) return
   const info = findItemInfo(formTypeId.value, formItemId.value)
   const isEquip = isEquipCategory(formTypeId.value)
+  const isSingle = isSingleCategory(formTypeId.value)
 
   editingSlot.value.isEmpty = false
   editingSlot.value.typeId = formTypeId.value
   editingSlot.value.itemId = formItemId.value
-  editingSlot.value.count = formCount.value
+  // 装备数量严格锁死为 1
+  editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(255, formCount.value || 1))
   editingSlot.value.refineLevel = isEquip ? formRefineLevel.value : 0
   editingSlot.value.itemName = info.name
   editingSlot.value.categoryName = info.categoryName

@@ -5,6 +5,8 @@ export interface ItemDefinition {
   categoryName: string; // 大类名称
   quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'; // 品级
   canRefine?: boolean;  // 是否可强化 (武器/防具/首饰)
+  reqLevel?: number;    // 装备需求等级
+  price?: number;       // 基础售价
   desc?: string;        // 说明备注
 }
 

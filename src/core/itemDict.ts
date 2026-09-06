@@ -25,39 +25,6 @@ export const CATEGORIES: { id: number; name: string }[] = [
 ]
 
 export const ITEM_DICTIONARY: ItemDefinition[] = [
-  // ==================== 武器类基准项 ====================
-  // 太刀 (0x01)
-  { typeId: 0x01, itemId: 0x00, name: '1级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x01, name: '5级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x09, name: '40级普通太刀', categoryName: '太刀', quality: 'white', canRefine: true },
-  { typeId: 0x01, itemId: 0x28, name: '40级稀有太刀', categoryName: '太刀', quality: 'purple', canRefine: true },
-  { typeId: 0x01, itemId: 0x39, name: '20级神器太刀', categoryName: '太刀', quality: 'pink', canRefine: true },
-  { typeId: 0x01, itemId: 0x51, name: '30级史诗太刀', categoryName: '太刀', quality: 'orange', canRefine: true },
-
-  // 短剑 (0x00)
-  { typeId: 0x00, itemId: 0x00, name: '1级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
-  { typeId: 0x00, itemId: 0x01, name: '5级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
-  { typeId: 0x00, itemId: 0x09, name: '40级普通短剑', categoryName: '短剑', quality: 'white', canRefine: true },
-  { typeId: 0x00, itemId: 0x28, name: '40级稀有短剑', categoryName: '短剑', quality: 'purple', canRefine: true },
-  { typeId: 0x00, itemId: 0x39, name: '20级神器短剑', categoryName: '短剑', quality: 'pink', canRefine: true },
-  { typeId: 0x00, itemId: 0x51, name: '30级史诗短剑', categoryName: '短剑', quality: 'orange', canRefine: true },
-
-  // 巨剑 (0x02)
-  { typeId: 0x02, itemId: 0x00, name: '1级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
-  { typeId: 0x02, itemId: 0x01, name: '5级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
-  { typeId: 0x02, itemId: 0x09, name: '40级普通巨剑', categoryName: '巨剑', quality: 'white', canRefine: true },
-  { typeId: 0x02, itemId: 0x28, name: '40级稀有巨剑', categoryName: '巨剑', quality: 'purple', canRefine: true },
-  { typeId: 0x02, itemId: 0x39, name: '20级神器巨剑', categoryName: '巨剑', quality: 'pink', canRefine: true },
-  { typeId: 0x02, itemId: 0x51, name: '30级史诗巨剑', categoryName: '巨剑', quality: 'orange', canRefine: true },
-
-  // 光剑 (0x03)
-  { typeId: 0x03, itemId: 0x00, name: '1级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
-  { typeId: 0x03, itemId: 0x01, name: '5级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
-  { typeId: 0x03, itemId: 0x09, name: '40级普通光剑', categoryName: '光剑', quality: 'white', canRefine: true },
-  { typeId: 0x03, itemId: 0x28, name: '40级稀有光剑', categoryName: '光剑', quality: 'purple', canRefine: true },
-  { typeId: 0x03, itemId: 0x39, name: '20级神器光剑', categoryName: '光剑', quality: 'pink', canRefine: true },
-  { typeId: 0x03, itemId: 0x51, name: '30级史诗光剑', categoryName: '光剑', quality: 'orange', canRefine: true },
-
   // ==================== 称号类 (0x09) ====================
   { typeId: 0x09, itemId: 0x08, name: '力体狂暴之冠 (物攻+力体)', categoryName: '称号', quality: 'pink', desc: '物攻+X%, 力+30, 体+40' },
   { typeId: 0x09, itemId: 0x09, name: '智精睿智之耀 (魔攻+智精)', categoryName: '称号', quality: 'pink', desc: '魔攻+X%, 智+30, 精+40' },
@@ -670,10 +637,73 @@ for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
         categoryName,
         quality: official.quality || 'white',
         canRefine,
+        reqLevel: official.reqLevel,
+        price: official.price,
         desc: official.reqLevel !== undefined ? `Lv.${official.reqLevel} ${official.price ? '售价:' + official.price : ''}` : undefined,
       })
       registeredKeySet.add(key)
     }
+  }
+}
+
+// ==================== 品质信息与样式辅助 ====================
+export interface QualityInfo {
+  name: string
+  label: string
+  color: string
+  borderColor: string
+  bgColor: string
+  badgeClass: string
+}
+
+export function getQualityInfo(quality?: string): QualityInfo {
+  switch (quality) {
+    case 'orange':
+      return {
+        name: '史诗',
+        label: '史诗 (橙装)',
+        color: 'text-amber-400',
+        borderColor: 'border-amber-500/60',
+        bgColor: 'bg-amber-950/40',
+        badgeClass: 'bg-amber-950/70 border-amber-500/80 text-amber-300 shadow-sm shadow-amber-500/20'
+      }
+    case 'pink':
+      return {
+        name: '神器',
+        label: '神器 (粉装)',
+        color: 'text-fuchsia-400',
+        borderColor: 'border-fuchsia-500/60',
+        bgColor: 'bg-fuchsia-950/40',
+        badgeClass: 'bg-fuchsia-950/70 border-fuchsia-500/80 text-fuchsia-300 shadow-sm shadow-fuchsia-500/20'
+      }
+    case 'purple':
+      return {
+        name: '稀有',
+        label: '稀有 (紫装)',
+        color: 'text-purple-400',
+        borderColor: 'border-purple-500/60',
+        bgColor: 'bg-purple-950/40',
+        badgeClass: 'bg-purple-950/70 border-purple-500/80 text-purple-300'
+      }
+    case 'blue':
+      return {
+        name: '高级',
+        label: '高级 (蓝装)',
+        color: 'text-blue-400',
+        borderColor: 'border-blue-500/60',
+        bgColor: 'bg-blue-950/40',
+        badgeClass: 'bg-blue-950/70 border-blue-500/80 text-blue-300'
+      }
+    case 'white':
+    default:
+      return {
+        name: '普通',
+        label: '普通 (白装)',
+        color: 'text-gray-300',
+        borderColor: 'border-gray-700',
+        bgColor: 'bg-gray-900/60',
+        badgeClass: 'bg-gray-800 border-gray-600 text-gray-300'
+      }
   }
 }
 
@@ -685,6 +715,7 @@ export function findItemInfo(typeId: number, itemId: number): {
   canRefine: boolean
   reqLevel?: number
   price?: number
+  desc?: string
 } {
   const cat = CATEGORIES.find(c => c.id === typeId)
   const catName = cat ? cat.name : `未知类别`
@@ -700,6 +731,7 @@ export function findItemInfo(typeId: number, itemId: number): {
       canRefine: isEquip,
       reqLevel: official.reqLevel,
       price: official.price,
+      desc: official.reqLevel !== undefined ? `Lv.${official.reqLevel}` : undefined,
     }
   }
 
@@ -711,6 +743,9 @@ export function findItemInfo(typeId: number, itemId: number): {
       categoryName: match.categoryName,
       quality: match.quality,
       canRefine: !!match.canRefine || isEquip,
+      reqLevel: match.reqLevel,
+      price: match.price,
+      desc: match.desc,
     }
   }
 
@@ -740,7 +775,9 @@ export function getItemDefinition(typeId: number, itemId: number): ItemDefinitio
     categoryName: info.categoryName,
     quality: info.quality || 'white',
     canRefine: info.canRefine,
-    desc: info.reqLevel !== undefined ? `Lv.${info.reqLevel}` : undefined,
+    reqLevel: info.reqLevel,
+    price: info.price,
+    desc: info.desc || (info.reqLevel !== undefined ? `Lv.${info.reqLevel}` : undefined),
   }
 }
 

@@ -219,7 +219,9 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
       
       baseBytes[0] = slot.typeId & 0xff
       baseBytes[1] = slot.itemId & 0xff
-      baseBytes[2] = Math.max(1, Math.min(255, slot.count)) & 0xff
+      // 装备、防具、首饰、称号、宠物(0x00~0x0a)单件独立不可叠加，数量严格锁死为 1
+      const isSingle = slot.typeId <= 0x0a
+      baseBytes[2] = isSingle ? 1 : (Math.max(1, Math.min(255, slot.count)) & 0xff)
       if (slot.flag !== undefined) {
         baseBytes[3] = slot.flag
       }
@@ -233,8 +235,12 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
   // 写入王图难度
   for (const region of save.dungeonRegions) {
     for (let i = 0; i < region.maps.length; i++) {
-      const targetLvl = region.maps[i].level
-      // 如果原值为 0xff 且用户未主动改动（即 level 仍为 0xff），保持 0xff
+      const map = region.maps[i]
+      let targetLvl = map.level
+      // 遗忘系列地下城在单机版中仅有普通级，防止非预期修改破坏游戏逻辑
+      if (map.name.includes('遗忘')) {
+        targetLvl = 0
+      }
       output[region.offset + i] = targetLvl & 0xff
     }
   }

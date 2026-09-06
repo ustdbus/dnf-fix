@@ -48,22 +48,37 @@
               :key="map.id"
               class="bg-[#141724] p-2.5 rounded-lg border border-gray-800 hover:border-gray-700 flex flex-col justify-between gap-2 shadow-sm transition"
             >
-              <div class="text-[11px] font-bold text-gray-200 truncate" :title="map.name">
-                {{ map.name }}
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-[11px] font-bold text-gray-200 truncate" :title="map.name">
+                  {{ map.name }}
+                </span>
+                <span
+                  v-if="isForgottenMap(map.name)"
+                  class="shrink-0 text-[9px] px-1 py-0.5 rounded bg-amber-950/50 border border-amber-800/40 text-amber-400/90 font-mono"
+                  title="该地下城在单机版中仅有普通级"
+                >
+                  🔒仅普通
+                </span>
               </div>
               <div class="flex items-center gap-1.5">
                 <select
                   v-model.number="map.level"
+                  :disabled="isForgottenMap(map.name)"
                   :class="[
                     'w-full text-[11px] py-1 px-1.5 rounded border focus:outline-none font-bold transition shadow-inner font-mono',
-                    getDifficultyClass(map.level)
+                    isForgottenMap(map.name)
+                      ? 'opacity-80 cursor-not-allowed bg-gray-900 border-gray-700 text-gray-400'
+                      : getDifficultyClass(map.level)
                   ]"
                 >
-                  <option :value="0">普通 (00)</option>
-                  <option :value="1">冒险 (01)</option>
-                  <option :value="2">勇士 (02)</option>
-                  <option :value="3">👑 王者 (03)</option>
-                  <option v-if="map.level === 255" :value="255">未开放 (FF)</option>
+                  <option v-if="isForgottenMap(map.name)" :value="0">🔒 普通 (锁定)</option>
+                  <template v-else>
+                    <option :value="0">普通 (00)</option>
+                    <option :value="1">冒险 (01)</option>
+                    <option :value="2">勇士 (02)</option>
+                    <option :value="3">👑 王者 (03)</option>
+                    <option v-if="map.level === 255" :value="255">未开放 (FF)</option>
+                  </template>
                 </select>
               </div>
             </div>
@@ -153,17 +168,29 @@ function getDifficultyClass(level: number): string {
   }
 }
 
+function isForgottenMap(name: string): boolean {
+  return name.includes('遗忘')
+}
+
 function setAllKings() {
   for (const reg of props.save.dungeonRegions) {
     for (const m of reg.maps) {
-      m.level = 3 // 王者
+      if (isForgottenMap(m.name)) {
+        m.level = 0 // 遗忘系列仅普通级，保持锁定为0
+      } else {
+        m.level = 3 // 其余设为王者
+      }
     }
   }
 }
 
 function setRegionKing(region: MapRegion) {
   for (const m of region.maps) {
-    m.level = 3
+    if (isForgottenMap(m.name)) {
+      m.level = 0
+    } else {
+      m.level = 3
+    }
   }
 }
 
