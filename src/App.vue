@@ -28,7 +28,7 @@
           <div class="flex justify-center gap-3 pt-2">
             <label class="cursor-pointer px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs rounded-lg shadow-lg shadow-amber-600/30 transition flex items-center gap-1.5">
               <span>📂 打开存档文件</span>
-              <input type="file" class="hidden" @change="onFileSelected" />
+              <input type="file" multiple class="hidden" @change="onFileSelected" />
             </label>
             <button
               @click="detectSaves"
@@ -76,6 +76,17 @@
             >
               <span>🗺️</span> 王图 & 日志
             </button>
+            <button
+              @click="activeTab = 'quest'"
+              :class="[
+                'flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5',
+                activeTab === 'quest'
+                  ? 'bg-amber-600 text-black shadow-md shadow-amber-600/30'
+                  : 'text-gray-400 hover:text-gray-200'
+              ]"
+            >
+              <span>📜</span> 任务
+            </button>
           </div>
 
           <!-- Tab 1: 角色 -->
@@ -94,6 +105,14 @@
           <DungeonTab
             v-if="activeTab === 'dungeon'"
             :save="currentSave"
+          />
+
+          <!-- Tab 4: 任务 -->
+          <QuestTab
+            v-if="activeTab === 'quest'"
+            :char-index="currentCharacter"
+            :quest-save="currentSave.questSave"
+            @update:quest-save="currentSave.questSave = $event"
           />
         </div>
       </main>
@@ -125,15 +144,17 @@ import HeaderBar from './components/HeaderBar.vue'
 import CharacterTab from './components/CharacterTab.vue'
 import InventoryTab from './components/InventoryTab.vue'
 import DungeonTab from './components/DungeonTab.vue'
+import QuestTab from './components/QuestTab.vue'
 import SaveActions from './components/SaveActions.vue'
 import { DnfHeroSave } from './core/types'
 import { parseHeroSave, serializeHeroSave } from './core/saveParser'
+import { parseQuestSave, serializeQuestSave } from './core/questParser'
 
 const STORAGE_KEY_PATH = 'dnf_save_path'
 const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
 const isDefaultSaved = ref<boolean>(false)
 const currentCharacter = ref<number>(0)
-const activeTab = ref<'character' | 'inventory' | 'dungeon'>('character')
+const activeTab = ref<'character' | 'inventory' | 'dungeon' | 'quest'>('character')
 
 function initDefaultPath() {
   let saved = ''
@@ -203,6 +224,26 @@ function loadCharacterSaveFromDisk(index: number, silent: boolean = false): bool
           bytes[i] = binaryString.charCodeAt(i)
         }
         const save = parseHeroSave(bytes.buffer, index)
+
+        // 同时尝试从磁盘读取当前角色对应的 DnfQuest 任务存档
+        const questPath = `${savePath.value}/DnfQuest${index}`
+        if (window.AndroidBridge.checkFileExists(questPath)) {
+          const qb64 = window.AndroidBridge.readSaveFile(questPath)
+          if (qb64) {
+            try {
+              const qBin = window.atob(qb64)
+              const qLen = qBin.length
+              const qBytes = new Uint8Array(qLen)
+              for (let i = 0; i < qLen; i++) {
+                qBytes[i] = qBin.charCodeAt(i)
+              }
+              save.questSave = parseQuestSave(qBytes.buffer, index)
+            } catch (e) {
+              console.warn('解析任务存档失败:', e)
+            }
+          }
+        }
+
         saves.value[index] = save
         characterStatus.value[index] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
         if (currentCharacter.value === index) {
@@ -328,26 +369,67 @@ function detectSaves() {
 function onFileSelected(event: Event) {
   const target = event.target as HTMLInputElement
   if (!target.files || target.files.length === 0) return
-  const file = target.files[0]
+  
+  const fileList = Array.from(target.files)
+  
+  // 查找是否有 DnfHero 角色文件和 DnfQuest 任务文件
+  const heroFile = fileList.find(f => f.name.includes('Hero')) || fileList[0]
+  const questFile = fileList.find(f => f.name.includes('Quest'))
+
+  // 如果上传的是 DnfQuest 文件且当前已有主角存档，直接绑定任务存档
+  if (heroFile.name.includes('Quest') && currentSave.value) {
+    const reader = new FileReader()
+    reader.onload = () => {
+      try {
+        const ab = reader.result as ArrayBuffer
+        const qSave = parseQuestSave(ab, currentCharacter.value)
+        currentSave.value!.questSave = qSave
+        showToast(`成功载入任务存档 ${heroFile.name}`)
+      } catch (e: any) {
+        showToast(`解析任务文件失败: ${e.message}`, 'error')
+      } finally {
+        target.value = ''
+      }
+    }
+    reader.readAsArrayBuffer(heroFile)
+    return
+  }
+
+  // 正常解析角色存档
   const reader = new FileReader()
   reader.onload = () => {
     const arrayBuffer = reader.result as ArrayBuffer
     try {
       const save = parseHeroSave(arrayBuffer, currentCharacter.value)
+      
+      // 如果同时选了 DnfQuest 文件，一起解析绑定
+      if (questFile) {
+        const qReader = new FileReader()
+        qReader.onload = () => {
+          try {
+            const qab = qReader.result as ArrayBuffer
+            save.questSave = parseQuestSave(qab, currentCharacter.value)
+          } catch (e) {
+            console.warn('解析任务文件失败:', e)
+          }
+        }
+        qReader.readAsArrayBuffer(questFile)
+      }
+
       saves.value[currentCharacter.value] = save
       currentSave.value = save
       characterStatus.value[currentCharacter.value] = {
         exists: true,
         desc: `Lv.${save.level} ${save.professionName}`
       }
-      showToast(`成功读取 ${file.name} (Lv.${save.level} ${save.professionName})`)
+      showToast(`成功读取 ${heroFile.name} (Lv.${save.level} ${save.professionName})`)
     } catch (e: any) {
       showToast(`解析文件失败: ${e.message}`, 'error')
     } finally {
       target.value = ''
     }
   }
-  reader.readAsArrayBuffer(file)
+  reader.readAsArrayBuffer(heroFile)
 }
 
 function onSave() {
@@ -366,10 +448,23 @@ function onSave() {
         binary += String.fromCharCode(modifiedBytes[i])
       }
       const b64 = window.btoa(binary)
-      
-      const success = window.AndroidBridge.writeSaveFile(targetPath, b64)
-      if (success) {
-        showToast(`已成功保存至 ${targetPath} (原文件已备份为 .bak)`)
+      const successHero = window.AndroidBridge.writeSaveFile(targetPath, b64)
+
+      // 同步保存 DnfQuest 任务存档
+      let successQuest = true
+      if (currentSave.value.questSave) {
+        const qBytes = serializeQuestSave(currentSave.value.questSave)
+        const qFileName = `DnfQuest${currentCharacter.value}`
+        const qTargetPath = `${savePath.value}/${qFileName}`
+        let qBin = ''
+        for (let i = 0; i < qBytes.length; i++) {
+          qBin += String.fromCharCode(qBytes[i])
+        }
+        successQuest = window.AndroidBridge.writeSaveFile(qTargetPath, window.btoa(qBin))
+      }
+
+      if (successHero && successQuest) {
+        showToast(`已成功保存角色与任务存档至 ${savePath.value}`)
       } else {
         showToast('写入存档失败，请检查存储权限', 'error')
       }
@@ -378,7 +473,13 @@ function onSave() {
 
     // 网页模式下：自动触发下载并提示
     triggerDownload(modifiedBytes, `DnfHero${currentCharacter.value}`)
-    showToast(`存档修改已生效！已导出下载 DnfHero${currentCharacter.value}`)
+    if (currentSave.value.questSave) {
+      const qBytes = serializeQuestSave(currentSave.value.questSave)
+      triggerDownload(qBytes, `DnfQuest${currentCharacter.value}`)
+      showToast(`存档修改已生效！已导出下载 DnfHero${currentCharacter.value} 与 DnfQuest${currentCharacter.value}`)
+    } else {
+      showToast(`存档修改已生效！已导出下载 DnfHero${currentCharacter.value}`)
+    }
   } catch (e: any) {
     showToast(`保存失败: ${e.message}`, 'error')
   }
@@ -388,7 +489,13 @@ function onExport() {
   if (!currentSave.value) return
   const modifiedBytes = serializeHeroSave(currentSave.value)
   triggerDownload(modifiedBytes, `DnfHero${currentCharacter.value}`)
-  showToast(`已导出角色 ${currentCharacter.value + 1} 存档文件`)
+  if (currentSave.value.questSave) {
+    const qBytes = serializeQuestSave(currentSave.value.questSave)
+    triggerDownload(qBytes, `DnfQuest${currentCharacter.value}`)
+    showToast(`已导出角色 ${currentCharacter.value + 1} 的属性与任务存档`)
+  } else {
+    showToast(`已导出角色 ${currentCharacter.value + 1} 存档文件`)
+  }
 }
 
 function triggerDownload(bytes: Uint8Array, filename: string) {

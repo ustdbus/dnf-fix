@@ -60,4 +60,22 @@ export interface DnfHeroSave {
   
   // 原始二进制副本
   rawBuffer: Uint8Array;
+
+  // 任务存档（DnfQuestX），可选
+  questSave?: DnfQuestSave;
 }
+
+export interface QuestItem {
+  id: number;           // 任务ID 0 ~ 529
+  name: string;         // 官方任务名
+  type: number;         // 0: 普通, 1: 主线, 2: 重复, 3: 转职, 4: 觉醒
+  typeName: "普通" | "主线" | "重复" | "转职" | "觉醒";
+  state: number;        // 0: 未接取/未完成, 1: 进行中(已接取), 2: 已完成
+}
+
+export interface DnfQuestSave {
+  characterIndex: number;
+  rawBuffer: Uint8Array; // 790 字节原始文件
+  quests: QuestItem[];   // 全量 530 个任务
+}
+

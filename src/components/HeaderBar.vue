@@ -53,7 +53,7 @@
         <div class="flex items-center gap-1.5">
           <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1">
             <span>浏览文件</span>
-            <input type="file" class="hidden" @change="$emit('file-selected', $event)" />
+            <input type="file" multiple class="hidden" @change="$emit('file-selected', $event)" />
           </label>
           <button
             @click="$emit('reload-current')"

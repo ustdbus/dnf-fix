@@ -96,25 +96,27 @@
       </div>
 
       <!-- 30 个日志列表网格 -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
         <div
           v-for="(_, index) in save.logs"
           :key="index"
           @click="toggleLog(index)"
           :class="[
-            'p-2.5 rounded-lg border cursor-pointer select-none transition flex items-center justify-between',
+            'p-2.5 rounded-lg border cursor-pointer select-none transition flex items-center justify-between gap-2',
             save.logs[index]
               ? 'bg-amber-950/20 border-amber-600/50 text-amber-300 shadow-sm shadow-amber-500/10'
               : 'bg-[#121520] border-gray-800 text-gray-500 hover:border-gray-700'
           ]"
         >
-          <div class="flex flex-col">
-            <span class="text-xs font-bold">日志 #{{ index + 1 }}</span>
+          <div class="flex flex-col min-w-0">
+            <span class="text-xs font-bold truncate" :title="`日志 #${index + 1} ${OFFICIAL_DIARIES[index] || ''}`">
+              #{{ index + 1 }} {{ OFFICIAL_DIARIES[index] || '冒险日志' }}
+            </span>
             <span class="text-[10px]" :class="save.logs[index] ? 'text-amber-400/80' : 'text-gray-600'">
               {{ save.logs[index] ? '已解锁' : '未解锁' }}
             </span>
           </div>
-          <span class="text-base">
+          <span class="text-base shrink-0">
             {{ save.logs[index] ? '📖' : '🔒' }}
           </span>
         </div>
@@ -125,6 +127,7 @@
 
 <script setup lang="ts">
 import { DnfHeroSave, MapRegion } from '../core/types'
+import { OFFICIAL_DIARIES } from '../core/officialDiaries'
 
 const props = defineProps<{
   save: DnfHeroSave
