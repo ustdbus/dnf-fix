@@ -209,39 +209,7 @@
         </div>
       </div>
 
-      <!-- 4. 背包格数 -->
-      <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-emerald-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-emerald-500 transition-colors">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🎒</span>
-              <span class="font-black text-sm text-emerald-200">背包格数 (Max 90格)</span>
-            </div>
-            <button
-              @click="save.bagSlotCount = 90"
-              class="text-[11px] px-2.5 py-1 rounded-lg bg-gradient-to-r from-emerald-700 to-emerald-600 hover:from-emerald-600 hover:to-emerald-500 text-black font-extrabold transition shadow-sm active:scale-95"
-            >
-              拉满 90 格
-            </button>
-          </div>
-          <div class="text-xs text-gray-400 mb-1">有效范围: 24 ~ 90 格 (推荐90格开启全部槽位)</div>
-        </div>
-        <div class="mt-2 flex items-center gap-3">
-          <input
-            v-model.number="save.bagSlotCount"
-            type="range"
-            min="24"
-            max="90"
-            step="1"
-            class="flex-1 accent-emerald-500 cursor-pointer h-2 bg-gray-800 rounded-lg"
-          />
-          <span class="font-mono text-emerald-300 font-black text-base w-14 text-right bg-black/40 px-2 py-0.5 rounded border border-emerald-900/60">
-            {{ save.bagSlotCount }} 格
-          </span>
-        </div>
-      </div>
-
-      <!-- 5. SP 技能点 -->
+      <!-- 4. SP 技能点 -->
       <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-purple-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-purple-500 transition-colors">
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -277,7 +245,7 @@
         </div>
       </div>
 
-      <!-- 6. 角色勋章 (对应存档 0x31~0x34) -->
+      <!-- 5. 角色勋章 (对应存档 0x31~0x34) -->
       <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-amber-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-amber-500 transition-colors">
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -310,6 +278,38 @@
             max="2147483647"
             class="w-full bg-[#090b10] text-amber-300 font-mono text-base px-3 py-2 rounded-lg border border-amber-800/60 focus:border-amber-400 focus:ring-1 focus:ring-amber-400/40 focus:outline-none transition shadow-inner"
           />
+        </div>
+      </div>
+
+      <!-- 6. 背包格数 (放在最末尾) -->
+      <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-emerald-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-emerald-500 transition-colors">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🎒</span>
+              <span class="font-black text-sm text-emerald-200">背包格数 (Max 90格)</span>
+            </div>
+            <button
+              @click="save.bagSlotCount = 90"
+              class="text-[11px] px-2.5 py-1 rounded-lg bg-gradient-to-r from-emerald-700 to-emerald-600 hover:from-emerald-600 hover:to-emerald-500 text-black font-extrabold transition shadow-sm active:scale-95"
+            >
+              拉满 90 格
+            </button>
+          </div>
+          <div class="text-xs text-gray-400 mb-1">有效范围: 24 ~ 90 格 (推荐90格开启全部槽位)</div>
+        </div>
+        <div class="mt-2 flex items-center gap-3">
+          <input
+            v-model.number="save.bagSlotCount"
+            type="range"
+            min="24"
+            max="90"
+            step="1"
+            class="flex-1 accent-emerald-500 cursor-pointer h-2 bg-gray-800 rounded-lg"
+          />
+          <span class="font-mono text-emerald-300 font-black text-base w-14 text-right bg-black/40 px-2 py-0.5 rounded border border-emerald-900/60">
+            {{ save.bagSlotCount }} 格
+          </span>
         </div>
       </div>
     </div>
