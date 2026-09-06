@@ -782,5 +782,50 @@ export function getItemDefinition(typeId: number, itemId: number): ItemDefinitio
 }
 
 export function getCategoryItems(typeId: number): ItemDefinition[] {
-  return ITEM_DICTIONARY.filter(i => i.typeId === typeId)
+  return getAllAvailableItems().filter(i => i.typeId === typeId)
+}
+
+let _allAvailableItemsCache: ItemDefinition[] | null = null
+
+/**
+ * 获取全量可用物品列表 (整合官方全量 1797 件物品解包数据库与精调称号宠物字典)
+ */
+export function getAllAvailableItems(): ItemDefinition[] {
+  if (_allAvailableItemsCache) return _allAvailableItemsCache
+
+  const map = new Map<string, ItemDefinition>()
+
+  // 1. 载入官方解包数据库 (0x00 ~ 0x13 各类装备道具)
+  for (const typeStr of Object.keys(OFFICIAL_ITEM_DATABASE)) {
+    const typeId = Number(typeStr)
+    const cat = CATEGORIES.find(c => c.id === typeId)
+    const catName = cat ? cat.name : '其他'
+    const isEquip = typeId >= 0x00 && typeId <= 0x08
+    const items = OFFICIAL_ITEM_DATABASE[typeId]
+    for (const itemStr of Object.keys(items)) {
+      const itemId = Number(itemStr)
+      const entry = items[itemId]
+      const key = `${typeId}_${itemId}`
+      map.set(key, {
+        typeId,
+        itemId,
+        name: entry.name,
+        categoryName: catName,
+        quality: entry.quality || 'white',
+        canRefine: isEquip,
+        reqLevel: entry.reqLevel,
+        price: entry.price,
+        desc: entry.reqLevel !== undefined ? `Lv.${entry.reqLevel}` : undefined
+      })
+    }
+  }
+
+  // 2. 覆盖并补充精调词典 (包含称号 0x09、宠物 0x0a 及特殊属性说明)
+  for (const item of ITEM_DICTIONARY) {
+    const key = `${item.typeId}_${item.itemId}`
+    map.set(key, item)
+  }
+
+  _allAvailableItemsCache = Array.from(map.values())
+  return _allAvailableItemsCache
 }

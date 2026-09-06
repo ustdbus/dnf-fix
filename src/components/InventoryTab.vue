@@ -151,28 +151,63 @@
             class="w-full bg-[#0e1119] text-xs text-amber-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
           >
             <option v-for="cat in CATEGORIES" :key="cat.id" :value="cat.id">
-              {{ cat.name }} (0x{{ cat.id.toString(16).padStart(2, '0') }})
+              {{ cat.name }}
             </option>
           </select>
         </div>
 
-        <!-- 2. 预置物品库选择 -->
+        <!-- 2. 物品名称搜索定位功能 -->
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="text-xs text-gray-400 font-medium">2. 选择物品 (含穿戴等级与品级分类):</label>
-            <span class="text-[10px] text-gray-500">共 {{ currentCategoryItems.length }} 件预置</span>
+            <label class="text-xs text-amber-300 font-medium flex items-center gap-1">
+              <span>🔍</span>
+              <span>搜索物品 (快速定位):</span>
+            </label>
+            <span
+              v-if="modalSearchQuery"
+              @click="modalSearchQuery = ''"
+              class="text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer"
+            >
+              清空搜索
+            </span>
+          </div>
+          <div class="relative">
+            <input
+              v-model="modalSearchQuery"
+              type="text"
+              placeholder="输入物品名称关键词 (例如: 梵风衣 / 流光 / 钻石 / 地狱)..."
+              class="w-full bg-[#0e1119] text-xs text-gray-100 placeholder-gray-500 pl-8 pr-3 py-2 rounded-lg border border-gray-700 focus:border-amber-400 focus:outline-none transition shadow-inner"
+            />
+            <span class="absolute left-2.5 top-2 text-gray-500 text-xs">🔎</span>
+          </div>
+        </div>
+
+        <!-- 3. 物品选择列表 -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="text-xs text-gray-400 font-medium">
+              {{ modalSearchQuery.trim() ? '搜索匹配物品列表:' : '选择物品 (含穿戴等级与品级分类):' }}
+            </label>
+            <span class="text-[10px] text-gray-500">
+              共 {{ modalDisplayItems.length }} 件物品
+            </span>
           </div>
           <select
-            v-model.number="formItemId"
+            :value="selectedItemCompositeKey"
+            @change="onSelectKeyChange"
             class="w-full bg-[#0e1119] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
           >
-            <option v-for="item in currentCategoryItems" :key="item.itemId" :value="item.itemId">
-              {{ formatOptionLabel(item) }}
+            <option
+              v-for="item in modalDisplayItems"
+              :key="item.typeId + '_' + item.itemId"
+              :value="item.typeId + '_' + item.itemId"
+            >
+              {{ formatOptionLabel(item, !!modalSearchQuery.trim()) }}
             </option>
           </select>
         </div>
 
-        <!-- 3. 选定物品实时详情卡片 (等级、品级分类、属性完整呈现) -->
+        <!-- 4. 选定物品实时详情卡片 (等级、品级分类、属性完整呈现) -->
         <div
           :class="[
             'p-3 rounded-xl border transition-all space-y-2',
@@ -236,42 +271,14 @@
                 {{ currentSelectedInfo.desc }}
               </div>
             </div>
-
-            <!-- 右侧 16 进制代码徽章 -->
-            <div class="shrink-0 text-right font-mono text-[10px] text-gray-400 bg-black/50 p-2 rounded-lg border border-gray-800">
-              <div>大类: 0x{{ toHex(formTypeId) }}</div>
-              <div>代码: 0x{{ toHex(formItemId) }}</div>
-            </div>
           </div>
         </div>
 
-        <!-- 4. 手动 16 进制 ID 调整 (支持任意冷门装备代码) -->
-        <div class="grid grid-cols-2 gap-3 bg-black/30 p-3 rounded-lg border border-gray-800/80">
-          <div>
-            <label class="block text-[11px] text-gray-400 mb-1">大类代码 (16进制):</label>
-            <input
-              type="text"
-              :value="'0x' + toHex(formTypeId)"
-              @change="onHexTypeInput(($event.target as HTMLInputElement).value)"
-              class="w-full bg-[#121520] text-xs font-mono text-amber-300 px-2.5 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label class="block text-[11px] text-gray-400 mb-1">子ID代码 (16进制):</label>
-            <input
-              type="text"
-              :value="'0x' + toHex(formItemId)"
-              @change="onHexItemInput(($event.target as HTMLInputElement).value)"
-              class="w-full bg-[#121520] text-xs font-mono text-amber-300 px-2.5 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <!-- 5. 物品数量 (装备数量锁死为1不可更改) -->
+        <!-- 5. 物品数量 (装备数量锁死为1不可更改，非装备最高99) -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ isSingleCategory(formTypeId) ? '物品数量 (装备锁死):' : '物品数量 (1 ~ 255):' }}
+              {{ isSingleCategory(formTypeId) ? '物品数量 (装备锁死):' : '物品数量 (1 ~ 99):' }}
             </label>
             <span
               v-if="isSingleCategory(formTypeId)"
@@ -281,7 +288,7 @@
             </span>
             <div v-else class="flex gap-1">
               <button
-                v-for="amt in [1, 10, 50, 99, 255]"
+                v-for="amt in [1, 10, 20, 30, 50, 99]"
                 :key="amt"
                 @click="formCount = amt"
                 class="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300"
@@ -304,7 +311,7 @@
             v-model.number="formCount"
             type="number"
             min="1"
-            max="255"
+            max="99"
             class="w-full bg-[#0e1119] text-xs font-mono text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
           />
         </div>
@@ -373,9 +380,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, ITEM_DICTIONARY, findItemInfo, getQualityInfo } from '../core/itemDict'
+import { CATEGORIES, ITEM_DICTIONARY, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 
 const props = defineProps<{
@@ -386,6 +393,7 @@ type FilterType = 'all' | 'equip' | 'consumable' | 'material' | 'quest' | 'empty
 const filterType = ref<FilterType>('all')
 const editingSlot = ref<InventorySlot | null>(null)
 
+const modalSearchQuery = ref('')
 const formTypeId = ref<number>(0x01)
 const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
@@ -402,6 +410,11 @@ function toHex(val: number | undefined | null, pad = 2): string {
   if (val === undefined || val === null || isNaN(val)) return '00'
   return (val & 0xff).toString(16).padStart(pad, '0').toUpperCase()
 }
+
+// 复合键，用于跨大类搜索时唯一标识物品
+const selectedItemCompositeKey = computed(() => {
+  return `${formTypeId.value}_${formItemId.value}`
+})
 
 // 实时选中的装备信息与品级样式
 const currentSelectedInfo = computed(() => {
@@ -456,27 +469,83 @@ const filteredSlots = computed(() => {
   }
 })
 
-const currentCategoryItems = computed(() => {
-  const list = ITEM_DICTIONARY.filter(i => i.typeId === formTypeId.value)
-  if (list.length === 0) {
+// 弹窗中展示的物品列表：支持输入名称跨大类实时搜索与当前大类展示
+const modalDisplayItems = computed(() => {
+  const q = modalSearchQuery.value.trim().toLowerCase()
+  const allAvailable = getAllAvailableItems()
+  if (!q) {
+    const list = allAvailable.filter(i => i.typeId === formTypeId.value)
+    if (list.length === 0) {
+      return [{
+        typeId: formTypeId.value,
+        itemId: formItemId.value,
+        name: `默认物品`,
+        categoryName: '自定义'
+      }]
+    }
+    return list
+  }
+
+  // 跨大类全量解包数据库模糊搜索
+  const matched = allAvailable.filter(item => {
+    return item.name.toLowerCase().includes(q) ||
+           (item.desc && item.desc.toLowerCase().includes(q)) ||
+           item.categoryName.toLowerCase().includes(q)
+  })
+
+  if (matched.length === 0) {
     return [{
       typeId: formTypeId.value,
       itemId: formItemId.value,
-      name: `默认物品 [0x${toHex(formItemId.value)}]`,
-      categoryName: '自定义'
+      name: `未找到包含 "${modalSearchQuery.value}" 的物品`,
+      categoryName: '无匹配'
     }]
   }
-  return list
+  return matched
 })
 
-function formatOptionLabel(item: any): string {
+// 监听搜索输入，自动同步定位首个匹配项并切换大类
+watch(modalSearchQuery, (newQ) => {
+  const q = newQ.trim().toLowerCase()
+  if (!q) return
+  const matched = getAllAvailableItems().filter(item => 
+    item.name.toLowerCase().includes(q) || 
+    (item.desc && item.desc.toLowerCase().includes(q)) ||
+    item.categoryName.toLowerCase().includes(q)
+  )
+  if (matched.length > 0) {
+    const hasCurrent = matched.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
+    if (!hasCurrent) {
+      const first = matched[0]
+      formTypeId.value = first.typeId
+      formItemId.value = first.itemId
+      if (isSingleCategory(first.typeId)) {
+        formCount.value = 1
+      }
+    }
+  }
+})
+
+function formatOptionLabel(item: any, isSearching: boolean = false): string {
   if (!item) return ''
   const qInfo = getQualityInfo(item.quality)
-  const hex = '0x' + toHex(item.itemId)
-  if (item.reqLevel !== undefined && item.reqLevel > 0) {
-    return `[Lv.${item.reqLevel} ${qInfo.name}] ${item.name} [${hex}]`
+  const lvlStr = item.reqLevel !== undefined && item.reqLevel > 0 ? `Lv.${item.reqLevel} ` : ''
+  const categoryPrefix = isSearching ? `[${item.categoryName}] ` : ''
+  return `${categoryPrefix}[${lvlStr}${qInfo.name}] ${item.name}`
+}
+
+function onSelectKeyChange(event: Event) {
+  const val = (event.target as HTMLSelectElement).value
+  const parts = val.split('_')
+  if (parts.length === 2) {
+    const tId = Number(parts[0])
+    const iId = Number(parts[1])
+    formTypeId.value = tId
+    formItemId.value = iId
+    if (isSingleCategory(tId)) {
+      formCount.value = 1
+    }
   }
-  return `[${qInfo.name}] ${item.name} [${hex}]`
 }
 
 function getQualityClass(slot: InventorySlot): string {
@@ -506,6 +575,7 @@ function getSlotHoverTitle(slot: InventorySlot): string {
 
 function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
+  modalSearchQuery.value = ''
   if (slot.isEmpty) {
     formTypeId.value = 0x01 // 默认太刀
     formItemId.value = 0x28 // 默认流光星陨刀
@@ -514,16 +584,18 @@ function openEditModal(slot: InventorySlot) {
   } else {
     formTypeId.value = slot.typeId
     formItemId.value = slot.itemId
-    formCount.value = isSingleCategory(slot.typeId) ? 1 : (slot.count || 1)
+    formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
   }
 }
 
 function closeEditModal() {
   editingSlot.value = null
+  modalSearchQuery.value = ''
 }
 
 function onCategoryChange() {
+  modalSearchQuery.value = ''
   const firstItem = ITEM_DICTIONARY.find(i => i.typeId === formTypeId.value)
   if (firstItem) {
     formItemId.value = firstItem.itemId
@@ -532,23 +604,6 @@ function onCategoryChange() {
   }
   if (isSingleCategory(formTypeId.value)) {
     formCount.value = 1
-  }
-}
-
-function onHexTypeInput(val: string) {
-  const parsed = parseInt(val.replace('0x', ''), 16)
-  if (!isNaN(parsed)) {
-    formTypeId.value = parsed & 0xff
-    if (isSingleCategory(formTypeId.value)) {
-      formCount.value = 1
-    }
-  }
-}
-
-function onHexItemInput(val: string) {
-  const parsed = parseInt(val.replace('0x', ''), 16)
-  if (!isNaN(parsed)) {
-    formItemId.value = parsed & 0xff
   }
 }
 
@@ -573,8 +628,8 @@ function saveSlotEdit() {
   editingSlot.value.isEmpty = false
   editingSlot.value.typeId = formTypeId.value
   editingSlot.value.itemId = formItemId.value
-  // 装备数量严格锁死为 1
-  editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(255, formCount.value || 1))
+  // 装备数量严格锁死为 1，非装备最大限制 99
+  editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
   editingSlot.value.refineLevel = isEquip ? formRefineLevel.value : 0
   editingSlot.value.itemName = info.name
   editingSlot.value.categoryName = info.categoryName
