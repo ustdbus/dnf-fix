@@ -168,16 +168,19 @@
           </div>
         </div>
 
-        <!-- 1. 物品大类选择 -->
+        <!-- 1. 物品大类选择 (支持切换全部类别与具体类别) -->
         <div>
           <label class="block text-xs text-gray-400 mb-1 font-medium">1. 物品大类:</label>
           <select
-            v-model.number="formTypeId"
-            @change="onCategoryChange"
-            class="w-full bg-[#0e1119] text-xs text-amber-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
+            v-model.number="selectedCategoryFilter"
+            @change="onCategoryFilterChange"
+            class="w-full bg-[#0e1119] text-xs text-amber-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none cursor-pointer font-medium"
           >
-            <option v-for="cat in CATEGORIES" :key="cat.id" :value="cat.id">
-              {{ cat.name }}
+            <option :value="-1">
+              {{ modalSearchQuery.trim() ? `🌟 全部类别 (全库匹配共 ${totalMatchedCount} 件)` : '🌟 全部类别 (全库浏览)' }}
+            </option>
+            <option v-for="cat in categoryFilterOptions" :key="cat.id" :value="cat.id">
+              {{ cat.label }}
             </option>
           </select>
         </div>
@@ -186,7 +189,7 @@
         <div>
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ modalSearchQuery.trim() ? '全库搜索匹配物品列表:' : '2. 选择物品 (含穿戴等级与品级分类):' }}
+              {{ modalSearchQuery.trim() ? '搜索匹配物品列表 (含穿戴等级与品级分类):' : '2. 选择物品 (含穿戴等级与品级分类):' }}
             </label>
             <span class="text-[10px] text-gray-500 font-mono">
               共 {{ modalDisplayItems.length }} 件物品
@@ -195,14 +198,14 @@
           <select
             :value="selectedItemCompositeKey"
             @change="onSelectKeyChange"
-            class="w-full bg-[#0e1119] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none"
+            class="w-full bg-[#0e1119] text-xs text-gray-200 p-2 rounded-lg border border-gray-700 focus:border-amber-500 focus:outline-none cursor-pointer"
           >
             <option
               v-for="item in modalDisplayItems"
               :key="item.typeId + '_' + item.itemId"
               :value="item.typeId + '_' + item.itemId"
             >
-              {{ formatOptionLabel(item, !!modalSearchQuery.trim()) }}
+              {{ formatOptionLabel(item, selectedCategoryFilter === -1 || !!modalSearchQuery.trim()) }}
             </option>
           </select>
         </div>
@@ -394,6 +397,7 @@ const filterType = ref<FilterType>('all')
 const editingSlot = ref<InventorySlot | null>(null)
 
 const modalSearchQuery = ref('')
+const selectedCategoryFilter = ref<number>(-1)
 const formTypeId = ref<number>(0x01)
 const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
@@ -469,50 +473,68 @@ const filteredSlots = computed(() => {
   }
 })
 
-// 弹窗中展示的物品列表：支持输入名称跨大类实时搜索与当前大类展示
-const modalDisplayItems = computed(() => {
+// 全量匹配搜索词的物品列表 (全库检索近2000件物品)
+const allSearchMatchedItems = computed(() => {
   const q = modalSearchQuery.value.trim().toLowerCase()
   const allAvailable = getAllAvailableItems()
   if (!q) {
-    const list = allAvailable.filter(i => i.typeId === formTypeId.value)
-    if (list.length === 0) {
-      return [{
-        typeId: formTypeId.value,
-        itemId: formItemId.value,
-        name: `默认物品`,
-        categoryName: '自定义'
-      }]
-    }
-    return list
+    return allAvailable
   }
-
-  // 跨大类全量解包数据库模糊搜索
-  const matched = allAvailable.filter(item => {
+  return allAvailable.filter(item => {
     return item.name.toLowerCase().includes(q) ||
            (item.desc && item.desc.toLowerCase().includes(q)) ||
            item.categoryName.toLowerCase().includes(q)
   })
+})
 
-  if (matched.length === 0) {
+// 当前匹配的总物品数
+const totalMatchedCount = computed(() => {
+  return allSearchMatchedItems.value.length
+})
+
+// 弹窗大类下拉框的动态选项 (搜索时动态统计各分类匹配数量，且仅列出有匹配项的类别)
+const categoryFilterOptions = computed(() => {
+  const q = modalSearchQuery.value.trim().toLowerCase()
+  const list = allSearchMatchedItems.value
+  return CATEGORIES.map(cat => {
+    const count = list.filter(i => i.typeId === cat.id).length
+    return {
+      id: cat.id,
+      name: cat.name,
+      count,
+      label: q ? `${cat.name} (${count}件)` : `${cat.name} (${count})`
+    }
+  }).filter(cat => !q || cat.count > 0)
+})
+
+// 弹窗中展示的物品列表：根据搜索词与选定大类双重过滤
+const modalDisplayItems = computed(() => {
+  const q = modalSearchQuery.value.trim().toLowerCase()
+  let list = allSearchMatchedItems.value
+  
+  // 如果选择了特定类别（非“全部类别”），按该类别过滤
+  if (selectedCategoryFilter.value !== -1) {
+    list = list.filter(i => i.typeId === selectedCategoryFilter.value)
+  }
+
+  if (list.length === 0) {
     return [{
       typeId: formTypeId.value,
       itemId: formItemId.value,
-      name: `未找到包含 "${modalSearchQuery.value}" 的物品`,
+      name: q ? `未找到包含 "${modalSearchQuery.value}" 的物品` : '当前分类无物品',
       categoryName: '无匹配'
     }]
   }
-  return matched
+  return list
 })
 
-// 监听搜索输入，自动同步定位首个匹配项并切换大类
+// 监听搜索输入，自动重置大类为全部类别，列出全库所有类别的匹配物品
 watch(modalSearchQuery, (newQ) => {
+  selectedCategoryFilter.value = -1
   const q = newQ.trim().toLowerCase()
   if (!q) return
-  const matched = getAllAvailableItems().filter(item => 
-    item.name.toLowerCase().includes(q) || 
-    (item.desc && item.desc.toLowerCase().includes(q)) ||
-    item.categoryName.toLowerCase().includes(q)
-  )
+
+  const matched = allSearchMatchedItems.value
   if (matched.length > 0) {
     const hasCurrent = matched.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
     if (!hasCurrent) {
@@ -525,6 +547,22 @@ watch(modalSearchQuery, (newQ) => {
     }
   }
 })
+
+// 切换大类分类时触发：不修改搜索词，只定位选中的物品到当前分类的首项
+function onCategoryFilterChange() {
+  const list = modalDisplayItems.value
+  if (list.length > 0 && list[0].categoryName !== '无匹配') {
+    const hasCurrent = list.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
+    if (!hasCurrent) {
+      const first = list[0]
+      formTypeId.value = first.typeId
+      formItemId.value = first.itemId
+      if (isSingleCategory(first.typeId)) {
+        formCount.value = 1
+      }
+    }
+  }
+}
 
 function formatOptionLabel(item: any, isSearching: boolean = false): string {
   if (!item) return ''
@@ -577,11 +615,13 @@ function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
   modalSearchQuery.value = ''
   if (slot.isEmpty) {
+    selectedCategoryFilter.value = 0x01 // 默认太刀
     formTypeId.value = 0x01 // 默认太刀
     formItemId.value = 0x28 // 默认流光星陨刀
     formCount.value = 1
     formRefineLevel.value = 0
   } else {
+    selectedCategoryFilter.value = slot.typeId
     formTypeId.value = slot.typeId
     formItemId.value = slot.itemId
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
@@ -592,19 +632,7 @@ function openEditModal(slot: InventorySlot) {
 function closeEditModal() {
   editingSlot.value = null
   modalSearchQuery.value = ''
-}
-
-function onCategoryChange() {
-  modalSearchQuery.value = ''
-  const firstItem = ITEM_DICTIONARY.find(i => i.typeId === formTypeId.value)
-  if (firstItem) {
-    formItemId.value = firstItem.itemId
-  } else {
-    formItemId.value = 0x01
-  }
-  if (isSingleCategory(formTypeId.value)) {
-    formCount.value = 1
-  }
+  selectedCategoryFilter.value = -1
 }
 
 function clearCurrentSlot() {
