@@ -104,7 +104,10 @@ export function parseQuestSave(buffer: ArrayBuffer, charIndex: number = 0): DnfQ
       typeName: official.typeName,
       state: state,
       isReadyToReward,
-      activeSlotIndex
+      activeSlotIndex,
+      desc: official.desc,
+      requires: official.requires,
+      rewards: official.rewards
     })
   }
 

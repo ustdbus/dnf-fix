@@ -80,6 +80,14 @@ export interface ActiveQuestSlot {
   rawBytes: Uint8Array; // 13 字节原始切片
 }
 
+export interface QuestRequirementItem {
+  typeId: number;
+  itemId: number;
+  count: number;
+  name: string;
+  quality?: string;
+}
+
 export interface QuestItem {
   id: number;           // 任务ID 0 ~ 529
   name: string;         // 官方任务名
@@ -88,6 +96,9 @@ export interface QuestItem {
   state: number;        // 0: 未接取/未完成, 1: 进行中(已接取), 2: 已完成
   isReadyToReward?: boolean; // 是否目标达成待领奖 (在活跃槽位且 step=3 或 progress满)
   activeSlotIndex?: number;  // 活跃槽位序号 (-1 表示未进活跃槽)
+  desc?: string;        // 任务描述说明
+  requires?: QuestRequirementItem[]; // 任务材料需求列表
+  rewards?: QuestRequirementItem[];  // 任务完成奖励列表
 }
 
 export interface DnfQuestSave {

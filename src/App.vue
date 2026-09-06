@@ -117,6 +117,7 @@
             v-if="activeTab === 'quest'"
             :char-index="currentCharacter"
             :quest-save="currentSave.questSave"
+            :hero-save="currentSave"
             @update:quest-save="currentSave.questSave = $event"
           />
         </div>

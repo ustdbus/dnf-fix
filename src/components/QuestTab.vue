@@ -192,8 +192,9 @@
         <div
           v-for="q in paginatedQuests"
           :key="q.id"
+          @click="openDetailModal(q)"
           :class="[
-            'p-3 rounded-xl border transition-all flex flex-col justify-between gap-2 shadow-sm hover:scale-[1.01]',
+            'p-3 rounded-xl border transition-all flex flex-col justify-between gap-2 shadow-sm hover:scale-[1.01] cursor-pointer relative group select-none',
             q.state === 2
               ? 'bg-[#121622] border-emerald-900/50 hover:border-emerald-600/50'
               : q.state === 1 && q.isReadyToReward
@@ -207,6 +208,13 @@
           <div class="flex items-center justify-between gap-1.5">
             <span class="text-[10px] text-gray-500 font-mono">#{{ String(q.id).padStart(3, '0') }}</span>
             <div class="flex items-center gap-1">
+              <span
+                v-if="q.requires && q.requires.length > 0"
+                class="text-[9px] px-1 py-0.2 rounded font-bold bg-amber-950/60 text-amber-300 border border-amber-800/50"
+                title="需要交付材料"
+              >
+                📦需材料 ({{ q.requires.length }})
+              </span>
               <span
                 v-if="q.state === 1 && q.isReadyToReward"
                 class="text-[10px] px-1.5 py-0.5 rounded font-black border bg-yellow-500/20 text-yellow-300 border-yellow-500/60 animate-pulse"
@@ -224,13 +232,18 @@
             </div>
           </div>
 
-          <!-- 任务官方名称 -->
-          <div class="text-xs font-semibold text-gray-200 truncate py-0.5" :title="q.name">
-            {{ q.name }}
+          <!-- 任务官方名称与简要描述 -->
+          <div>
+            <div class="text-xs font-bold text-gray-200 truncate group-hover:text-amber-300 transition" :title="q.name">
+              {{ q.name }}
+            </div>
+            <div v-if="q.desc" class="text-[10px] text-gray-400/80 truncate mt-0.5" :title="q.desc">
+              {{ q.desc }}
+            </div>
           </div>
 
           <!-- 任务状态选择器 (4 档状态选择) -->
-          <div class="pt-1 border-t border-gray-800/60 flex items-center justify-between gap-2">
+          <div class="pt-1 border-t border-gray-800/60 flex items-center justify-between gap-2" @click.stop>
             <span class="text-[10px] text-gray-400">状态：</span>
             <select
               :value="getQuestUiState(q)"
@@ -278,17 +291,199 @@
         </div>
       </div>
     </div>
+
+    <!-- 任务详情与材料联动弹窗 (Task Detail Modal) -->
+    <div
+      v-if="detailQuest"
+      class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      @click.self="closeDetailModal"
+    >
+      <div class="bg-gradient-to-b from-[#181b26] to-[#0f1118] border border-amber-500/50 rounded-2xl w-full max-w-lg shadow-2xl p-5 space-y-4 max-h-[90vh] overflow-y-auto">
+        <!-- 头部标题与关闭 -->
+        <div class="flex items-center justify-between border-b border-amber-900/40 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">📜</span>
+            <h3 class="text-sm sm:text-base font-black text-amber-200">
+              任务详情与达成要求
+            </h3>
+          </div>
+          <button
+            @click="closeDetailModal"
+            class="text-gray-400 hover:text-gray-200 text-base px-2 py-0.5 rounded-lg hover:bg-gray-800 transition"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- 任务核心卡片 -->
+        <div class="p-3.5 rounded-xl bg-[#11131c] border border-amber-900/30 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs font-mono text-gray-500">任务编号: #{{ String(detailQuest.id).padStart(3, '0') }}</span>
+            <div class="flex items-center gap-1.5">
+              <span :class="['text-xs px-2 py-0.5 rounded font-bold border', getTypeBadgeClass(detailQuest.type)]">
+                {{ detailQuest.typeName }}
+              </span>
+              <span
+                :class="[
+                  'text-xs px-2 py-0.5 rounded font-bold border',
+                  getUiStateBadgeClass(detailQuest)
+                ]"
+              >
+                {{ getUiStateLabel(detailQuest) }}
+              </span>
+            </div>
+          </div>
+          <div class="text-base font-black text-amber-300">
+            {{ detailQuest.name }}
+          </div>
+        </div>
+
+        <!-- 任务内容说明 -->
+        <div class="space-y-1.5">
+          <div class="text-xs font-bold text-gray-400 flex items-center gap-1.5">
+            <span>🎯</span>
+            <span>任务目标描述:</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0c0e14] border border-gray-800 text-xs text-gray-200 leading-relaxed font-sans select-text">
+            {{ formatDesc(detailQuest.desc) }}
+          </div>
+        </div>
+
+        <!-- 材料需求与背包联动检测 -->
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-gray-400 flex items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span>📦</span>
+              <span>任务所需上交材料 (联动背包检测):</span>
+            </span>
+            <span v-if="heroSave" class="text-[11px] text-gray-500 font-mono">
+              背包剩余空槽: <span :class="emptyBagSlotsCount > 0 ? 'text-emerald-400 font-bold' : 'text-red-400 font-bold'">{{ emptyBagSlotsCount }}</span> 格
+            </span>
+          </div>
+
+          <!-- 无材料要求情况 -->
+          <div
+            v-if="!detailQuest.requires || detailQuest.requires.length === 0"
+            class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-900/40 text-xs text-emerald-300 flex items-center gap-2.5"
+          >
+            <span class="text-base">✅</span>
+            <div class="space-y-0.5">
+              <div class="font-bold">无需上交背包材料</div>
+              <div class="text-[11px] text-emerald-400/70">该任务为击杀目标怪物、通关指定地下城或与 NPC 对话交付类任务。</div>
+            </div>
+          </div>
+
+          <!-- 有材料要求清单 -->
+          <div v-else class="space-y-2">
+            <div
+              v-for="req in detailQuest.requires"
+              :key="req.typeId + '_' + req.itemId"
+              class="p-3 rounded-xl bg-[#11141f] border border-gray-800 flex items-center justify-between gap-3 shadow-inner"
+            >
+              <div class="space-y-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <span :class="['text-xs font-bold truncate', getItemQualityColor(req.quality)]">
+                    {{ req.name }}
+                  </span>
+                </div>
+                <div class="text-[11px] text-gray-400 flex items-center gap-3">
+                  <span>任务需求: <b class="text-amber-300 font-mono">{{ req.count }}</b> 件</span>
+                  <span>当前背包持有: <b :class="getHeroItemCount(req.typeId, req.itemId) >= req.count ? 'text-emerald-400 font-mono' : 'text-orange-400 font-mono'">{{ getHeroItemCount(req.typeId, req.itemId) }}</b> 件</span>
+                </div>
+              </div>
+
+              <!-- 满足度徽章 -->
+              <div class="flex-shrink-0">
+                <span
+                  v-if="getHeroItemCount(req.typeId, req.itemId) >= req.count"
+                  class="text-[10px] px-2 py-0.5 rounded font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60"
+                >
+                  ✓ 数量充足
+                </span>
+                <span
+                  v-else
+                  class="text-[10px] px-2 py-0.5 rounded font-bold bg-amber-950/80 text-amber-300 border border-amber-700/60"
+                >
+                  尚缺 {{ req.count - getHeroItemCount(req.typeId, req.itemId) }} 件
+                </span>
+              </div>
+            </div>
+
+            <!-- 自动生成物品说明 -->
+            <div class="p-2.5 rounded-lg bg-yellow-500/10 border border-yellow-500/25 text-[11px] text-yellow-300/90 flex items-center gap-2">
+              <span>💡</span>
+              <span>将此任务切换为【待领奖】时，若背包持有数量不足，系统将自动检测空槽位并在背包空槽中生成所需材料！</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 任务达成奖励预览 -->
+        <div v-if="detailQuest.rewards && detailQuest.rewards.length > 0" class="space-y-2">
+          <div class="text-xs font-bold text-gray-400 flex items-center gap-1.5">
+            <span>🎁</span>
+            <span>任务交付奖励:</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div
+              v-for="rew in detailQuest.rewards"
+              :key="rew.typeId + '_' + rew.itemId"
+              class="p-2.5 rounded-xl bg-amber-950/20 border border-amber-900/30 flex items-center justify-between gap-2"
+            >
+              <div class="text-xs font-bold truncate" :class="getItemQualityColor(rew.quality)">
+                {{ rew.name }}
+              </div>
+              <span class="text-xs font-mono text-amber-300 font-bold bg-black/40 px-2 py-0.5 rounded border border-amber-900/40 shrink-0">
+                x{{ rew.count }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 弹窗底部操作按钮 -->
+        <div class="pt-3 border-t border-gray-800/80 flex flex-wrap items-center justify-end gap-2">
+          <button
+            @click="closeDetailModal"
+            class="text-xs px-3.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition"
+          >
+            关闭
+          </button>
+          <button
+            v-if="getQuestUiState(detailQuest) !== 3"
+            @click="handleDetailSetReady"
+            class="text-xs px-3.5 py-1.5 bg-gradient-to-r from-yellow-500 via-amber-400 to-orange-400 hover:from-yellow-400 hover:to-orange-300 text-black font-black rounded-lg transition shadow-md shadow-yellow-500/25 flex items-center gap-1.5 active:scale-95"
+          >
+            <span>🎁 设为待领奖 (自动补齐材料)</span>
+          </button>
+          <button
+            v-if="getQuestUiState(detailQuest) !== 2"
+            @click="setQuestUiStateDirect(detailQuest, 2)"
+            class="text-xs px-3 py-1.5 bg-emerald-900/60 hover:bg-emerald-800 text-emerald-200 font-bold rounded-lg border border-emerald-700/50 transition active:scale-95"
+          >
+            ✅ 设为彻底完成
+          </button>
+          <button
+            v-if="getQuestUiState(detailQuest) !== 0"
+            @click="setQuestUiStateDirect(detailQuest, 0)"
+            class="text-xs px-3 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-400 rounded-lg border border-gray-700 transition active:scale-95"
+          >
+            ⚪ 重置为未接取
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import type { DnfQuestSave, QuestItem } from '../core/types'
+import type { DnfQuestSave, QuestItem, DnfHeroSave, InventorySlot } from '../core/types'
 import { parseQuestSave, createDefaultQuestSave } from '../core/questParser'
+import { findItemInfo } from '../core/itemDict'
 
 const props = defineProps<{
   charIndex: number
   questSave?: DnfQuestSave | null
+  heroSave?: DnfHeroSave | null
 }>()
 
 const emit = defineEmits<{
@@ -310,6 +505,68 @@ const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = 48
 const actionNotice = ref('')
+
+// 详情弹窗与背包联动状态
+const detailQuest = ref<QuestItem | null>(null)
+
+function openDetailModal(q: QuestItem) {
+  detailQuest.value = q
+}
+
+function closeDetailModal() {
+  detailQuest.value = null
+}
+
+function formatDesc(desc?: string): string {
+  if (!desc) return '暂无官方详细描述'
+  return desc.replace(/\bA4\b/g, '').replace(/[$]/g, '').trim()
+}
+
+const emptyBagSlotsCount = computed(() => {
+  if (!props.heroSave?.inventory) return 0
+  return props.heroSave.inventory.filter(s => s.isEmpty).length
+})
+
+function getHeroItemCount(typeId: number, itemId: number): number {
+  if (!props.heroSave?.inventory) return 0
+  let total = 0
+  for (const slot of props.heroSave.inventory) {
+    if (!slot.isEmpty && slot.typeId === typeId && slot.itemId === itemId) {
+      total += slot.count
+    }
+  }
+  return total
+}
+
+function getItemQualityColor(quality?: string): string {
+  switch (quality) {
+    case 'orange': return 'text-amber-400 font-bold'
+    case 'pink': return 'text-fuchsia-400 font-bold'
+    case 'purple': return 'text-purple-400 font-bold'
+    case 'blue': return 'text-blue-400 font-bold'
+    default: return 'text-gray-200'
+  }
+}
+
+function getUiStateLabel(q: QuestItem): string {
+  const s = getQuestUiState(q)
+  switch (s) {
+    case 3: return '🎁 待领奖'
+    case 2: return '✅ 彻底完成'
+    case 1: return '⚡ 进行中'
+    default: return '⚪ 未接取'
+  }
+}
+
+function getUiStateBadgeClass(q: QuestItem): string {
+  const s = getQuestUiState(q)
+  switch (s) {
+    case 3: return 'bg-yellow-950/80 border-yellow-500 text-yellow-300'
+    case 2: return 'bg-emerald-950/80 border-emerald-500 text-emerald-300'
+    case 1: return 'bg-amber-950/80 border-amber-500 text-amber-300'
+    default: return 'bg-gray-800 border-gray-600 text-gray-400'
+  }
+}
 
 const activeFilterInfo = computed(() => {
   return filterOptions.find(f => f.key === currentFilter.value) || filterOptions[0]
@@ -385,27 +642,139 @@ function getQuestUiState(q: QuestItem): number {
 function onStateSelectChange(q: QuestItem, event: Event) {
   const target = event.target as HTMLSelectElement
   const val = Number(target.value)
-  setQuestUiState(q, val)
+  if (val === 3) {
+    const success = applyQuestReadyWithItems(q)
+    if (!success) {
+      target.value = String(getQuestUiState(q))
+    }
+  } else {
+    setQuestUiStateDirect(q, val)
+  }
 }
 
-function setQuestUiState(q: QuestItem, uiState: number) {
-  if (uiState === 3) {
-    // 待领奖状态：底层为 1，且标记 isReadyToReward = true
-    q.state = 1
-    q.isReadyToReward = true
-  } else if (uiState === 1) {
-    // 普通进行中未达成状态
-    q.state = 1
-    q.isReadyToReward = false
-  } else if (uiState === 2) {
-    // 彻底完成：底层为 2，清空待领奖标记
+function setQuestUiStateDirect(q: QuestItem, uiState: number) {
+  if (uiState === 2) {
     q.state = 2
     q.isReadyToReward = false
+    actionNotice.value = `已将任务【${q.name}】设为彻底完成！`
+  } else if (uiState === 1) {
+    q.state = 1
+    q.isReadyToReward = false
+    actionNotice.value = `已将任务【${q.name}】设为进行中。`
+  } else if (uiState === 3) {
+    applyQuestReadyWithItems(q)
   } else {
-    // 未接取
     q.state = 0
     q.isReadyToReward = false
+    actionNotice.value = `已将任务【${q.name}】重置为未接取。`
   }
+  if (detailQuest.value && detailQuest.value.id === q.id) {
+    closeDetailModal()
+  }
+}
+
+function handleDetailSetReady() {
+  if (!detailQuest.value) return
+  const success = applyQuestReadyWithItems(detailQuest.value)
+  if (success) {
+    closeDetailModal()
+  }
+}
+
+/**
+ * 切换为待领奖并检测背包空间、自动生成对应数量的任务所需材料
+ */
+function applyQuestReadyWithItems(q: QuestItem): boolean {
+  // 1. 若无材料需求，直接设为待领奖
+  if (!q.requires || q.requires.length === 0) {
+    q.state = 1
+    q.isReadyToReward = true
+    actionNotice.value = `🎁 已将任务【${q.name}】设为待领奖！进游戏可直接找 NPC 交付领奖。`
+    return true
+  }
+
+  // 2. 若未关联角色背包
+  if (!props.heroSave?.inventory) {
+    q.state = 1
+    q.isReadyToReward = true
+    actionNotice.value = `🎁 已将任务【${q.name}】设为待领奖（当前未关联角色背包，请自行在游戏内准备材料）。`
+    return true
+  }
+
+  const inventory = props.heroSave.inventory
+  interface FillPlan {
+    req: { typeId: number; itemId: number; count: number; name: string }
+    fillCount: number
+    targetSlot?: InventorySlot
+  }
+  const fillPlans: FillPlan[] = []
+  let neededEmptySlots = 0
+
+  for (const req of q.requires) {
+    let currentTotal = 0
+    let stackableSlot: InventorySlot | null = null
+
+    for (const slot of inventory) {
+      if (!slot.isEmpty && slot.typeId === req.typeId && slot.itemId === req.itemId) {
+        currentTotal += slot.count
+        if (req.typeId > 0x0a && slot.count < 99 && !stackableSlot) {
+          stackableSlot = slot
+        }
+      }
+    }
+
+    if (currentTotal >= req.count) {
+      continue
+    }
+
+    const missing = req.count - currentTotal
+    if (stackableSlot && (stackableSlot.count + missing <= 99)) {
+      fillPlans.push({ req, fillCount: missing, targetSlot: stackableSlot })
+    } else {
+      neededEmptySlots++
+      fillPlans.push({ req, fillCount: missing })
+    }
+  }
+
+  // 3. 检查背包空槽位是否足够
+  const emptySlots = inventory.filter(s => s.isEmpty)
+  if (emptySlots.length < neededEmptySlots) {
+    actionNotice.value = `⚠️ 背包空间不足！完成任务【${q.name}】还需要 ${neededEmptySlots} 个空槽位来存放材料，当前背包仅剩 ${emptySlots.length} 个空槽位。请先前往【角色背包】清理空格后再设为待领奖！`
+    return false
+  }
+
+  // 4. 空槽位充足，执行生成与发物
+  const addedSummary: string[] = []
+  let emptyIdx = 0
+
+  for (const plan of fillPlans) {
+    if (plan.targetSlot) {
+      plan.targetSlot.count += plan.fillCount
+      addedSummary.push(`${plan.req.name} +${plan.fillCount} (累计到现有槽位)`)
+    } else {
+      const slot = emptySlots[emptyIdx++]
+      const info = findItemInfo(plan.req.typeId, plan.req.itemId)
+      slot.isEmpty = false
+      slot.typeId = plan.req.typeId
+      slot.itemId = plan.req.itemId
+      slot.count = Math.max(1, Math.min(99, plan.fillCount))
+      slot.flag = 0
+      slot.refineLevel = 0
+      slot.itemName = info.name
+      slot.categoryName = info.categoryName
+      addedSummary.push(`${plan.req.name} x${slot.count}`)
+    }
+  }
+
+  q.state = 1
+  q.isReadyToReward = true
+
+  if (addedSummary.length > 0) {
+    actionNotice.value = `🎁 已将任务【${q.name}】设为待领奖，并自动向背包添加所需材料：${addedSummary.join('、')}！进游戏直接找 NPC 交付领奖即可。`
+  } else {
+    actionNotice.value = `🎁 背包中已有充足任务材料，已将任务【${q.name}】设为待领奖！进游戏可直接找 NPC 交付领奖。`
+  }
+  return true
 }
 
 // 样式映射
@@ -444,14 +813,20 @@ function getUiSelectClass(q: QuestItem): string {
 // 批量修改
 function setAllActiveQuestsReady() {
   let count = 0
+  let itemQuestsCount = 0
   for (const q of questList.value) {
     if (q.state === 1) {
-      q.isReadyToReward = true
+      if (q.requires && q.requires.length > 0) {
+        applyQuestReadyWithItems(q)
+        itemQuestsCount++
+      } else {
+        q.isReadyToReward = true
+      }
       count++
     }
   }
   if (count > 0) {
-    actionNotice.value = `已将当前 ${count} 个进行中任务一键达成！进游戏可直接找 NPC 交付领奖。`
+    actionNotice.value = `已将当前 ${count} 个进行中任务一键设为待领奖！${itemQuestsCount > 0 ? '已联动背包为材料任务自动检测/补齐材料。' : ''}进游戏可直接找 NPC 交付领奖。`
   } else {
     actionNotice.value = `当前没有已接取的任务。您可以先在任务列表选择任务并设为【🎁 待领奖】！`
   }
