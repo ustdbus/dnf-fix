@@ -788,7 +788,7 @@ function applyQuestReadyWithItems(q: QuestItem): boolean {
   const reqDetails: string[] = []
 
   for (const req of q.requires) {
-    const { total: currentTotal, reserved, available } = getItemStockInfo(req.typeId, req.itemId, q.id)
+    const { reserved, available } = getItemStockInfo(req.typeId, req.itemId, q.id)
     const partialSlots: InventorySlot[] = []
 
     for (const slot of inventory) {
