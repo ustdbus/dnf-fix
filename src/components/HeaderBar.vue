@@ -20,13 +20,35 @@
       <div class="flex flex-col sm:flex-row gap-2 bg-[#0d0f15]/80 p-2.5 rounded-lg border border-gray-800">
         <div class="flex-1 flex items-center gap-2">
           <span class="text-xs text-amber-400/90 whitespace-nowrap font-medium">📁 存档路径:</span>
-          <input
-            :value="savePath"
-            @input="$emit('update:savePath', ($event.target as HTMLInputElement).value)"
-            type="text"
-            placeholder="例如: /sdcard/Android/data/com.tencent.dnf/files"
-            class="flex-1 bg-[#161a24] text-xs text-gray-200 px-3 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none placeholder-gray-600"
-          />
+          <div class="flex-1 relative flex items-center">
+            <input
+              :value="savePath"
+              @input="$emit('update:savePath', ($event.target as HTMLInputElement).value)"
+              @change="$emit('save-default-path', ($event.target as HTMLInputElement).value)"
+              @keyup.enter="$emit('save-default-path', ($event.target as HTMLInputElement).value)"
+              type="text"
+              placeholder="例如: /sdcard/Android/data/com.tencent.dnf/files"
+              class="w-full bg-[#161a24] text-xs text-gray-200 pl-3 pr-20 py-1.5 rounded border border-gray-700 focus:border-amber-500 focus:outline-none placeholder-gray-600"
+            />
+            <div class="absolute right-1.5 flex items-center gap-1.5">
+              <span
+                v-if="isDefaultSaved"
+                class="text-[9px] bg-emerald-950/80 border border-emerald-600/60 text-emerald-400 px-1 py-0.2 rounded select-none"
+                title="当前路径已持久化保存为默认路径"
+              >
+                默认
+              </span>
+              <button
+                v-if="savePath"
+                @click="$emit('clear-path')"
+                type="button"
+                class="text-gray-400 hover:text-red-400 text-xs px-1 py-0.5 rounded hover:bg-gray-800 transition select-none"
+                title="主动删除/清除默认路径"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
         </div>
         <div class="flex items-center gap-1.5">
           <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1">
@@ -90,6 +112,7 @@ defineProps<{
   savePath: string
   currentCharacter: number
   characterStatus: Array<{ exists: boolean; desc?: string }>
+  isDefaultSaved?: boolean
 }>()
 
 defineEmits<{
@@ -98,5 +121,7 @@ defineEmits<{
   (e: 'select-character', index: number): void
   (e: 'reload-current'): void
   (e: 'file-selected', event: Event): void
+  (e: 'clear-path'): void
+  (e: 'save-default-path', val: string): void
 }>()
 </script>

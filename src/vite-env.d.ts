@@ -12,5 +12,9 @@ interface Window {
     writeSaveFile: (filePath: string, base64Data: string) => boolean;
     checkFileExists: (filePath: string) => boolean;
     scanSaves: (dirPath: string) => string;
+    getSavedPath?: () => string;
+    saveDefaultPath?: (path: string) => void;
+    clearDefaultPath?: () => void;
+    toast?: (msg: string) => void;
   }
 }

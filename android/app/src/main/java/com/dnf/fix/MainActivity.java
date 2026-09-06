@@ -2,6 +2,7 @@ package com.dnf.fix;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -149,6 +150,36 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void toast(String message) {
             runOnUiThread(() -> Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show());
+        }
+
+        @JavascriptInterface
+        public String getSavedPath() {
+            try {
+                SharedPreferences sp = getSharedPreferences("dnf_prefs", MODE_PRIVATE);
+                return sp.getString("save_path", "");
+            } catch (Exception e) {
+                return "";
+            }
+        }
+
+        @JavascriptInterface
+        public void saveDefaultPath(String path) {
+            try {
+                SharedPreferences sp = getSharedPreferences("dnf_prefs", MODE_PRIVATE);
+                sp.edit().putString("save_path", path).apply();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @JavascriptInterface
+        public void clearDefaultPath() {
+            try {
+                SharedPreferences sp = getSharedPreferences("dnf_prefs", MODE_PRIVATE);
+                sp.edit().remove("save_path").apply();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

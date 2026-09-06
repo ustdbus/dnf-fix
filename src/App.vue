@@ -6,11 +6,14 @@
         :save-path="savePath"
         :current-character="currentCharacter"
         :character-status="characterStatus"
+        :is-default-saved="isDefaultSaved"
         @update:save-path="savePath = $event"
         @detect-path="detectSaves"
         @select-character="onSelectCharacter"
         @reload-current="reloadCurrentSave"
         @file-selected="onFileSelected"
+        @clear-path="onClearPath"
+        @save-default-path="onSaveDefaultPath"
       />
 
       <!-- 主工作区 -->
@@ -126,11 +129,37 @@ import SaveActions from './components/SaveActions.vue'
 import { DnfHeroSave } from './core/types'
 import { parseHeroSave, serializeHeroSave } from './core/saveParser'
 
+const STORAGE_KEY_PATH = 'dnf_save_path'
 const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
+const isDefaultSaved = ref<boolean>(false)
 const currentCharacter = ref<number>(0)
 const activeTab = ref<'character' | 'inventory' | 'dungeon'>('character')
 
+function initDefaultPath() {
+  let saved = ''
+  if (window.AndroidBridge && window.AndroidBridge.getSavedPath) {
+    try {
+      saved = window.AndroidBridge.getSavedPath() || ''
+    } catch (e) {
+      console.warn('获取原生持久化路径失败:', e)
+    }
+  }
+  if (!saved) {
+    saved = localStorage.getItem(STORAGE_KEY_PATH) || ''
+  }
+  if (saved && saved.trim()) {
+    savePath.value = saved.trim()
+    isDefaultSaved.value = true
+    detectSaves()
+  } else {
+    savePath.value = '/sdcard/Android/data/com.tencent.dnf/files'
+    isDefaultSaved.value = false
+  }
+}
+
 onMounted(() => {
+  initDefaultPath()
+
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && window.AndroidBridge) {
       // 用户从游戏切换回修改器时，自动从磁盘重新检查当前角色是否有更新
@@ -215,7 +244,58 @@ function onSelectCharacter(index: number) {
   showToast(`角色 ${index + 1} 暂无存档数据，请先检测或导入`, 'error')
 }
 
+function onSaveDefaultPath(newPath: string) {
+  const trimmed = newPath ? newPath.trim() : ''
+  if (!trimmed) return
+  savePath.value = trimmed
+  if (window.AndroidBridge && window.AndroidBridge.saveDefaultPath) {
+    try {
+      window.AndroidBridge.saveDefaultPath(trimmed)
+    } catch (e) {
+      console.warn('原生保存默认路径失败:', e)
+    }
+  }
+  localStorage.setItem(STORAGE_KEY_PATH, trimmed)
+  isDefaultSaved.value = true
+  showToast('已保存为默认路径')
+}
+
+function onClearPath() {
+  if (window.AndroidBridge && window.AndroidBridge.clearDefaultPath) {
+    try {
+      window.AndroidBridge.clearDefaultPath()
+    } catch (e) {
+      console.warn('原生清除默认路径失败:', e)
+    }
+  }
+  localStorage.removeItem(STORAGE_KEY_PATH)
+  savePath.value = ''
+  isDefaultSaved.value = false
+  saves.value = [null, null, null, null]
+  currentSave.value = null
+  characterStatus.value = [
+    { exists: false, desc: '未载入' },
+    { exists: false, desc: '未载入' },
+    { exists: false, desc: '未载入' },
+    { exists: false, desc: '未载入' }
+  ]
+  showToast('已删除默认路径并清空输入')
+}
+
 function detectSaves() {
+  if (savePath.value && savePath.value.trim()) {
+    const trimmed = savePath.value.trim()
+    if (window.AndroidBridge && window.AndroidBridge.saveDefaultPath) {
+      try {
+        window.AndroidBridge.saveDefaultPath(trimmed)
+      } catch (e) {
+        console.warn('原生保存默认路径失败:', e)
+      }
+    }
+    localStorage.setItem(STORAGE_KEY_PATH, trimmed)
+    isDefaultSaved.value = true
+  }
+
   if (window.AndroidBridge && window.AndroidBridge.scanSaves) {
     try {
       // 重新检测时清空旧缓存，强制完全从磁盘刷新
