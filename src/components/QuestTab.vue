@@ -62,96 +62,119 @@
         </div>
       </div>
 
-      <!-- 任务统计卡片 (1.进行中 -> 2.待领奖 -> 3.未接取 -> 4.彻底完成 -> 5.总任务数) -->
+      <!-- 任务核心状态分类切换栏 (兼具统计与Tab筛选功能，绝无重复) -->
       <div v-else class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
         <!-- 1. 进行中 -->
-        <div 
+        <button
           @click="currentFilter = 'active'"
           :class="[
-            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
-            currentFilter === 'active' ? 'bg-amber-950/40 border-amber-500 ring-1 ring-amber-500/50' : 'bg-[#0b0e15] border-amber-900/40 hover:border-amber-600/60'
+            'p-3 rounded-xl border flex items-center justify-between transition-all duration-200 shadow-inner active:scale-95 text-left',
+            currentFilter === 'active'
+              ? 'bg-gradient-to-r from-amber-950/80 to-[#1f170f] border-amber-400 ring-2 ring-amber-400/40 shadow-lg shadow-amber-500/20'
+              : 'bg-[#0b0e15] border-amber-900/30 hover:border-amber-600/50 hover:bg-amber-950/20'
           ]"
         >
-          <span class="text-[11px] text-amber-400 flex items-center gap-1">⚡ 进行中</span>
-          <span class="text-xs font-black text-amber-300 font-mono">{{ ongoingCount }}</span>
-        </div>
+          <span :class="['text-xs font-bold flex items-center gap-1.5', currentFilter === 'active' ? 'text-amber-200' : 'text-amber-400/90']">
+            <span>⚡</span>
+            <span>进行中</span>
+          </span>
+          <span class="text-xs font-black text-amber-300 font-mono bg-black/40 px-2 py-0.5 rounded border border-amber-900/40">
+            {{ ongoingCount }}
+          </span>
+        </button>
 
         <!-- 2. 待领奖 -->
-        <div 
+        <button
           @click="currentFilter = 'ready'"
           :class="[
-            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
-            currentFilter === 'ready' ? 'bg-yellow-950/40 border-yellow-500 ring-1 ring-yellow-500/50' : 'bg-[#0b0e15] border-yellow-600/40 hover:border-yellow-500/60'
+            'p-3 rounded-xl border flex items-center justify-between transition-all duration-200 shadow-inner active:scale-95 text-left',
+            currentFilter === 'ready'
+              ? 'bg-gradient-to-r from-yellow-950/80 to-[#221a0a] border-yellow-400 ring-2 ring-yellow-400/40 shadow-lg shadow-yellow-500/20'
+              : 'bg-[#0b0e15] border-yellow-900/30 hover:border-yellow-600/50 hover:bg-yellow-950/20'
           ]"
         >
-          <span class="text-[11px] text-yellow-400 font-semibold flex items-center gap-1">🎁 待领奖</span>
-          <span class="text-xs font-black text-yellow-300 font-mono">{{ readyCount }}</span>
-        </div>
+          <span :class="['text-xs font-bold flex items-center gap-1.5', currentFilter === 'ready' ? 'text-yellow-200' : 'text-yellow-400/90']">
+            <span>🎁</span>
+            <span>待领奖</span>
+          </span>
+          <span class="text-xs font-black text-yellow-300 font-mono bg-black/40 px-2 py-0.5 rounded border border-yellow-900/40">
+            {{ readyCount }}
+          </span>
+        </button>
 
         <!-- 3. 未接取 -->
-        <div 
+        <button
           @click="currentFilter = 'unaccepted'"
           :class="[
-            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
-            currentFilter === 'unaccepted' ? 'bg-gray-800/60 border-gray-500 ring-1 ring-gray-400/50' : 'bg-[#0b0e15] border-gray-800 hover:border-gray-700'
+            'p-3 rounded-xl border flex items-center justify-between transition-all duration-200 shadow-inner active:scale-95 text-left',
+            currentFilter === 'unaccepted'
+              ? 'bg-gradient-to-r from-gray-800/80 to-[#181a24] border-gray-300 ring-2 ring-gray-300/40 shadow-lg'
+              : 'bg-[#0b0e15] border-gray-800 hover:border-gray-700 hover:bg-gray-900/40'
           ]"
         >
-          <span class="text-[11px] text-gray-400 flex items-center gap-1">⏳ 未接取</span>
-          <span class="text-xs font-black text-gray-300 font-mono">{{ unacceptedCount }}</span>
-        </div>
+          <span :class="['text-xs font-bold flex items-center gap-1.5', currentFilter === 'unaccepted' ? 'text-gray-100' : 'text-gray-400']">
+            <span>⏳</span>
+            <span>未接取</span>
+          </span>
+          <span class="text-xs font-black text-gray-300 font-mono bg-black/40 px-2 py-0.5 rounded border border-gray-800">
+            {{ unacceptedCount }}
+          </span>
+        </button>
 
         <!-- 4. 彻底完成 -->
-        <div 
+        <button
           @click="currentFilter = 'completed'"
           :class="[
-            'p-2.5 rounded-xl border flex items-center justify-between shadow-inner cursor-pointer transition active:scale-95',
-            currentFilter === 'completed' ? 'bg-emerald-950/40 border-emerald-500 ring-1 ring-emerald-500/50' : 'bg-[#0b0e15] border-emerald-900/50 hover:border-emerald-600/60'
+            'p-3 rounded-xl border flex items-center justify-between transition-all duration-200 shadow-inner active:scale-95 text-left',
+            currentFilter === 'completed'
+              ? 'bg-gradient-to-r from-emerald-950/80 to-[#0e1f18] border-emerald-400 ring-2 ring-emerald-400/40 shadow-lg shadow-emerald-500/20'
+              : 'bg-[#0b0e15] border-emerald-900/30 hover:border-emerald-600/50 hover:bg-emerald-950/20'
           ]"
         >
-          <span class="text-[11px] text-emerald-400 flex items-center gap-1">✅ 彻底完成</span>
-          <span class="text-xs font-black text-emerald-400 font-mono">{{ completedCount }}</span>
-        </div>
+          <span :class="['text-xs font-bold flex items-center gap-1.5', currentFilter === 'completed' ? 'text-emerald-200' : 'text-emerald-400/90']">
+            <span>✅</span>
+            <span>彻底完成</span>
+          </span>
+          <span class="text-xs font-black text-emerald-300 font-mono bg-black/40 px-2 py-0.5 rounded border border-emerald-900/40">
+            {{ completedCount }}
+          </span>
+        </button>
 
-        <!-- 5. 总任务数 -->
-        <div class="bg-[#0b0e15] p-2.5 rounded-xl border border-gray-800 flex items-center justify-between shadow-inner col-span-2 sm:col-span-1">
-          <span class="text-[11px] text-gray-400">📜 总任务数</span>
-          <span class="text-xs font-black text-amber-300 font-mono">530</span>
-        </div>
+        <!-- 5. 重复任务 -->
+        <button
+          @click="currentFilter = 'repeat'"
+          :class="[
+            'p-3 rounded-xl border flex items-center justify-between transition-all duration-200 shadow-inner active:scale-95 text-left col-span-2 sm:col-span-1',
+            currentFilter === 'repeat'
+              ? 'bg-gradient-to-r from-blue-950/80 to-[#0f1726] border-blue-400 ring-2 ring-blue-400/40 shadow-lg shadow-blue-500/20'
+              : 'bg-[#0b0e15] border-blue-900/30 hover:border-blue-600/50 hover:bg-blue-950/20'
+          ]"
+        >
+          <span :class="['text-xs font-bold flex items-center gap-1.5', currentFilter === 'repeat' ? 'text-blue-200' : 'text-blue-400/90']">
+            <span>🔁</span>
+            <span>重复任务</span>
+          </span>
+          <span class="text-xs font-black text-blue-300 font-mono bg-black/40 px-2 py-0.5 rounded border border-blue-900/40">
+            {{ repeatCount }}
+          </span>
+        </button>
       </div>
     </div>
 
-    <!-- 任务筛选与检索区 -->
+    <!-- 任务检索与状态指示区 (去重后极简且强大) -->
     <div class="space-y-3">
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        <!-- 筛选分类 Tab (进行中、待领奖、未接取、彻底完成、重复任务) -->
-        <div class="flex flex-wrap gap-1.5 bg-[#10131c] p-1.5 rounded-xl border border-gray-800/90 shadow-sm">
-          <button
-            v-for="f in filterOptions"
-            :key="f.key"
-            @click="currentFilter = f.key"
-            :class="[
-              'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1 active:scale-95',
-              currentFilter === f.key
-                ? f.key === 'ready'
-                  ? 'bg-gradient-to-r from-yellow-500 to-amber-400 text-black shadow-md shadow-yellow-500/30'
-                  : f.key === 'active'
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-400 text-black shadow-md shadow-amber-500/30'
-                    : f.key === 'completed'
-                      ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-md shadow-emerald-500/30'
-                      : f.key === 'unaccepted'
-                        ? 'bg-gradient-to-r from-gray-700 to-gray-600 text-white shadow-md'
-                        : 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md'
-                : 'text-gray-400 hover:text-gray-200'
-            ]"
-          >
-            <span>{{ f.icon }}</span>
-            <span>{{ f.label }}</span>
-            <span class="text-[10px] opacity-80 font-mono">({{ getFilterCount(f.key) }})</span>
-          </button>
+        <div class="text-xs text-gray-400 flex items-center gap-2">
+          <span class="text-gray-500">当前分类:</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#10131c] text-amber-300 font-bold border border-amber-900/50 flex items-center gap-1.5 shadow-sm">
+            <span>{{ activeFilterInfo.icon }}</span>
+            <span>{{ activeFilterInfo.label }}</span>
+            <span class="text-[11px] opacity-80 font-mono">({{ filteredQuests.length }} 项)</span>
+          </span>
         </div>
 
         <!-- 搜索输入框 -->
-        <div class="relative sm:w-64">
+        <div class="relative sm:w-72">
           <input
             v-model="searchQuery"
             type="text"
@@ -288,6 +311,10 @@ const currentPage = ref(1)
 const pageSize = 48
 const actionNotice = ref('')
 
+const activeFilterInfo = computed(() => {
+  return filterOptions.find(f => f.key === currentFilter.value) || filterOptions[0]
+})
+
 // 重置分页
 watch([currentFilter, searchQuery], () => {
   currentPage.value = 1
@@ -303,16 +330,6 @@ const readyCount = computed(() => questList.value.filter(q => q.state === 1 && q
 const unacceptedCount = computed(() => questList.value.filter(q => q.state === 0).length)
 const completedCount = computed(() => questList.value.filter(q => q.state === 2).length)
 const repeatCount = computed(() => questList.value.filter(q => q.type === 2).length)
-
-function getFilterCount(key: FilterKey): number {
-  switch (key) {
-    case 'active': return ongoingCount.value
-    case 'ready': return readyCount.value
-    case 'unaccepted': return unacceptedCount.value
-    case 'completed': return completedCount.value
-    case 'repeat': return repeatCount.value
-  }
-}
 
 // 筛选后的列表
 const filteredQuests = computed(() => {
