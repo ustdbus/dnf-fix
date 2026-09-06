@@ -412,16 +412,24 @@
                     {{ req.name }}
                   </span>
                 </div>
-                <div class="text-[11px] text-gray-400 flex items-center gap-3">
+                <div class="text-[11px] text-gray-400 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <span>任务需求: <b class="text-amber-300 font-mono">{{ req.count }}</b> 件</span>
-                  <span>当前背包持有: <b :class="getHeroItemCount(req.typeId, req.itemId) >= req.count ? 'text-emerald-400 font-mono' : 'text-orange-400 font-mono'">{{ getHeroItemCount(req.typeId, req.itemId) }}</b> 件</span>
+                  <span>
+                    当前可用: 
+                    <b :class="getItemStockInfo(req.typeId, req.itemId, detailQuest.id).available >= req.count ? 'text-emerald-400 font-mono' : 'text-orange-400 font-mono'">
+                      {{ getItemStockInfo(req.typeId, req.itemId, detailQuest.id).available }}
+                    </b> 件
+                    <span v-if="getItemStockInfo(req.typeId, req.itemId, detailQuest.id).reserved > 0" class="text-gray-400 text-[10px]">
+                      (持有: {{ getItemStockInfo(req.typeId, req.itemId, detailQuest.id).total }}，其他待领奖占用: {{ getItemStockInfo(req.typeId, req.itemId, detailQuest.id).reserved }})
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <!-- 满足度徽章 -->
               <div class="flex-shrink-0">
                 <span
-                  v-if="getHeroItemCount(req.typeId, req.itemId) >= req.count"
+                  v-if="getItemStockInfo(req.typeId, req.itemId, detailQuest.id).available >= req.count"
                   class="text-[10px] px-2 py-0.5 rounded font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60"
                 >
                   ✓ 数量充足
@@ -430,7 +438,7 @@
                   v-else
                   class="text-[10px] px-2 py-0.5 rounded font-bold bg-amber-950/80 text-amber-300 border border-amber-700/60"
                 >
-                  尚缺 {{ req.count - getHeroItemCount(req.typeId, req.itemId) }} 件
+                  尚缺 {{ req.count - getItemStockInfo(req.typeId, req.itemId, detailQuest.id).available }} 件
                 </span>
               </div>
             </div>
@@ -628,6 +636,34 @@ const unacceptedCount = computed(() => questList.value.filter(q => q.state === 0
 const completedCount = computed(() => questList.value.filter(q => q.state === 2).length)
 const repeatCount = computed(() => questList.value.filter(q => q.type === 2).length)
 
+/**
+ * 计算已被其他处于【待领奖】状态的任务锁定的指定材料总数量
+ */
+function getReservedItemCount(typeId: number, itemId: number, excludeQuestId?: number): number {
+  let reserved = 0
+  for (const q of questList.value) {
+    if (q.id === excludeQuestId) continue
+    if (q.state === 1 && q.isReadyToReward && q.requires) {
+      for (const req of q.requires) {
+        if (req.typeId === typeId && req.itemId === itemId) {
+          reserved += req.count
+        }
+      }
+    }
+  }
+  return reserved
+}
+
+/**
+ * 获取指定材料在背包中的综合库存信息：背包物理总数、其它待领奖任务已占用数、当前任务真正可用数
+ */
+function getItemStockInfo(typeId: number, itemId: number, excludeQuestId?: number) {
+  const total = getHeroItemCount(typeId, itemId)
+  const reserved = getReservedItemCount(typeId, itemId, excludeQuestId)
+  const available = Math.max(0, total - reserved)
+  return { total, reserved, available }
+}
+
 // 筛选后的列表
 const filteredQuests = computed(() => {
   let list = questList.value
@@ -752,23 +788,23 @@ function applyQuestReadyWithItems(q: QuestItem): boolean {
   const reqDetails: string[] = []
 
   for (const req of q.requires) {
-    let currentTotal = 0
+    const { total: currentTotal, reserved, available } = getItemStockInfo(req.typeId, req.itemId, q.id)
     const partialSlots: InventorySlot[] = []
 
     for (const slot of inventory) {
       if (!slot.isEmpty && slot.typeId === req.typeId && slot.itemId === req.itemId) {
-        currentTotal += slot.count
         if (slot.count < 99) {
           partialSlots.push(slot)
         }
       }
     }
 
-    if (currentTotal >= req.count) {
+    // 核心判定：扣除其它“待领奖”任务已锁定的材料后，当前任务可支配的有效材料充足则跳过
+    if (available >= req.count) {
       continue
     }
 
-    let remainingMissing = req.count - currentTotal
+    let remainingMissing = req.count - available
     let addedCount = 0
 
     // 1. 优先填满已有但未满 99 的同类槽位
@@ -794,17 +830,20 @@ function applyQuestReadyWithItems(q: QuestItem): boolean {
       addedCount += fillThis
     }
 
+    let note = `${req.name} +${addedCount}`
     if (newSlotsForThisReq > 1) {
-      reqDetails.push(`${req.name} +${addedCount} (按单格上限99分占 ${newSlotsForThisReq} 格)`)
-    } else {
-      reqDetails.push(`${req.name} +${addedCount}`)
+      note += ` (按单格上限99分占 ${newSlotsForThisReq} 格)`
     }
+    if (reserved > 0) {
+      note += ` [预留其它待领奖 ${reserved} 件]`
+    }
+    reqDetails.push(note)
   }
 
   // 3. 检查背包空槽位是否足够
   const emptySlots = inventory.filter(s => s.isEmpty)
   if (emptySlots.length < neededEmptySlots) {
-    actionNotice.value = `⚠️ 背包空间不足！完成任务【${q.name}】还需要 ${neededEmptySlots} 个空槽位来分格存放材料（单格上限99），当前背包仅剩 ${emptySlots.length} 个空槽位。请先前往【角色背包】清理空格后再设为待领奖！`
+    actionNotice.value = `⚠️ 背包空间不足！完成任务【${q.name}】还需要 ${neededEmptySlots} 个空槽位来分格存放材料（单格上限99，且已预留其它待领奖任务所需材料），当前背包仅剩 ${emptySlots.length} 个空槽位。请先前往【角色背包】清理空格后再设为待领奖！`
     return false
   }
 
