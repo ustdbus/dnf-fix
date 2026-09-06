@@ -38,6 +38,14 @@
           >
             <span>✅ 一键完成普通任务（不含重复任务）</span>
           </button>
+          <button
+            @click="syncAndReconcileQuests"
+            class="text-xs px-3.5 py-1.5 rounded-lg bg-gray-800/90 hover:bg-gray-700 text-amber-300 font-bold border border-amber-900/40 transition flex items-center gap-1.5 active:scale-95 shadow-sm"
+            :disabled="!questSave"
+            title="根据当前背包实际材料重新核对所有待领奖任务，若背包材料不足则自动拉回进行中状态"
+          >
+            <span>🔄 校验材料状态</span>
+          </button>
 
         </div>
       </div>
@@ -663,6 +671,89 @@ function getItemStockInfo(typeId: number, itemId: number, excludeQuestId?: numbe
   const available = Math.max(0, total - reserved)
   return { total, reserved, available }
 }
+
+/**
+ * 根据当前背包实际材料库存，对账并自动纠偏所有“待领奖”任务：
+ * 若背包中材料不足以支持所有被标记为“待领奖”的任务，自动将缺少材料的任务拉回“进行中”状态，防止游戏内领奖失败
+ */
+function reconcileReadyQuests(isSilent: boolean = true): string[] {
+  if (!props.questSave?.quests || !props.heroSave?.inventory) {
+    return []
+  }
+
+  // 1. 统计当前背包所有有效材料的物理库存账本
+  const stock = new Map<string, number>()
+  for (const slot of props.heroSave.inventory) {
+    if (!slot.isEmpty) {
+      const key = `${slot.typeId}_${slot.itemId}`
+      stock.set(key, (stock.get(key) || 0) + slot.count)
+    }
+  }
+
+  // 2. 筛选出所有标记为待领奖的任务，并按活跃槽位顺序（0~19）稳定排序
+  const readyQuests = props.questSave.quests.filter(q => q.state === 1 && q.isReadyToReward)
+  readyQuests.sort((a, b) => {
+    const slotA = a.activeSlotIndex !== undefined && a.activeSlotIndex >= 0 ? a.activeSlotIndex : 999
+    const slotB = b.activeSlotIndex !== undefined && b.activeSlotIndex >= 0 ? b.activeSlotIndex : 999
+    if (slotA !== slotB) return slotA - slotB
+    return a.id - b.id
+  })
+
+  const revertedNames: string[] = []
+
+  for (const q of readyQuests) {
+    // 非材料任务（通关、击杀、对话等），无需背包材料，保持待领奖
+    if (!q.requires || q.requires.length === 0) {
+      continue
+    }
+
+    // 检查该任务所需的所有材料是否在账本中充足
+    let canFulfill = true
+    for (const req of q.requires) {
+      const key = `${req.typeId}_${req.itemId}`
+      const available = stock.get(key) || 0
+      if (available < req.count) {
+        canFulfill = false
+        break
+      }
+    }
+
+    if (canFulfill) {
+      // 材料充足，扣除账本中的虚拟库存（模拟分配）
+      for (const req of q.requires) {
+        const key = `${req.typeId}_${req.itemId}`
+        stock.set(key, (stock.get(key) || 0) - req.count)
+      }
+    } else {
+      // 背包实际材料不足，自动拉回进行中！
+      q.isReadyToReward = false
+      revertedNames.push(q.name)
+    }
+  }
+
+  if (revertedNames.length > 0) {
+    actionNotice.value = `⚠️ 检测到背包材料变动，已将材料不足的 ${revertedNames.length} 个任务【${revertedNames.join('、')}】自动拉回进行中状态，防止游戏内领奖失败！`
+  } else if (!isSilent) {
+    actionNotice.value = `✅ 经核对，当前所有待领奖任务所需的背包材料均真实充足，可放心在游戏内领奖！`
+  }
+
+  return revertedNames
+}
+
+function syncAndReconcileQuests() {
+  reconcileReadyQuests(false)
+}
+
+// 当加载/切换角色存档或任务存档更新时，自动核对一次待领奖任务的背包材料充足性
+watch(
+  [() => props.questSave, () => props.heroSave],
+  ([newQuest, newHero]) => {
+    if (newQuest && newHero) {
+      reconcileReadyQuests(true)
+    }
+  },
+  { immediate: true }
+)
 
 // 筛选后的列表
 const filteredQuests = computed(() => {
