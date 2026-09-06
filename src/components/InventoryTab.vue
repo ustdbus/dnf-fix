@@ -142,6 +142,32 @@
           <button @click="closeEditModal" class="text-gray-400 hover:text-white text-lg">✕</button>
         </div>
 
+        <!-- 顶部全局物品名称搜索 (在物品大类上方，搜索全部物品) -->
+        <div class="bg-amber-950/20 p-2.5 rounded-xl border border-amber-800/40 space-y-1.5 shadow-inner">
+          <div class="flex items-center justify-between">
+            <label class="text-xs text-amber-300 font-bold flex items-center gap-1.5">
+              <span>🔍</span>
+              <span>全局搜索物品 (搜索全部物品，快速定位):</span>
+            </label>
+            <span
+              v-if="modalSearchQuery"
+              @click="modalSearchQuery = ''"
+              class="text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer bg-amber-900/40 px-1.5 py-0.5 rounded border border-amber-700/50"
+            >
+              ✕ 清空搜索
+            </span>
+          </div>
+          <div class="relative">
+            <input
+              v-model="modalSearchQuery"
+              type="text"
+              placeholder="输入任意物品名称关键词 (例如: 梵风衣 / 流光 / 钻石 / 地狱 / 泰拉 / 冰)..."
+              class="w-full bg-[#0e1119] text-xs text-gray-100 placeholder-gray-500 pl-8 pr-3 py-2 rounded-lg border border-gray-700 focus:border-amber-400 focus:outline-none transition shadow-inner"
+            />
+            <span class="absolute left-2.5 top-2 text-gray-500 text-xs">🔎</span>
+          </div>
+        </div>
+
         <!-- 1. 物品大类选择 -->
         <div>
           <label class="block text-xs text-gray-400 mb-1 font-medium">1. 物品大类:</label>
@@ -156,39 +182,13 @@
           </select>
         </div>
 
-        <!-- 2. 物品名称搜索定位功能 -->
-        <div>
-          <div class="flex items-center justify-between mb-1">
-            <label class="text-xs text-amber-300 font-medium flex items-center gap-1">
-              <span>🔍</span>
-              <span>搜索物品 (快速定位):</span>
-            </label>
-            <span
-              v-if="modalSearchQuery"
-              @click="modalSearchQuery = ''"
-              class="text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer"
-            >
-              清空搜索
-            </span>
-          </div>
-          <div class="relative">
-            <input
-              v-model="modalSearchQuery"
-              type="text"
-              placeholder="输入物品名称关键词 (例如: 梵风衣 / 流光 / 钻石 / 地狱)..."
-              class="w-full bg-[#0e1119] text-xs text-gray-100 placeholder-gray-500 pl-8 pr-3 py-2 rounded-lg border border-gray-700 focus:border-amber-400 focus:outline-none transition shadow-inner"
-            />
-            <span class="absolute left-2.5 top-2 text-gray-500 text-xs">🔎</span>
-          </div>
-        </div>
-
-        <!-- 3. 物品选择列表 -->
+        <!-- 2. 物品选择列表 -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ modalSearchQuery.trim() ? '搜索匹配物品列表:' : '选择物品 (含穿戴等级与品级分类):' }}
+              {{ modalSearchQuery.trim() ? '全库搜索匹配物品列表:' : '2. 选择物品 (含穿戴等级与品级分类):' }}
             </label>
-            <span class="text-[10px] text-gray-500">
+            <span class="text-[10px] text-gray-500 font-mono">
               共 {{ modalDisplayItems.length }} 件物品
             </span>
           </div>
