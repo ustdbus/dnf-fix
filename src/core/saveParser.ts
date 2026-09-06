@@ -42,6 +42,7 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
   const profession = bytes[0x00]
   const professionName = PROFESSION_NAMES[profession] || `职业 (0x${profession.toString(16)})`
   const level = bytes[0x01]
+  const sp = view.getUint16(0x17, true) // 技能点 SP (0x17~0x18, uint16 little-endian)
   
   // 金币 (0x25~0x28, int32 little-endian)
   const gold = view.getInt32(0x25, true)
@@ -49,6 +50,8 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
   const reviveCoins = view.getInt32(0x29, true)
   // 胜点 (0x2D~0x30, int32 little-endian)
   const victoryPoints = view.getInt32(0x2D, true)
+  // 勋章 (0x31~0x34, int32 little-endian)
+  const medal = view.getInt32(0x31, true)
   // 背包格数 (0x39, uint8)
   const bagSlotCount = bytes[0x39]
   
@@ -177,6 +180,8 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
     profession,
     professionName,
     level,
+    sp,
+    medal,
     gold,
     reviveCoins,
     victoryPoints,
@@ -193,11 +198,13 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
   output.set(save.rawBuffer)
   const view = new DataView(output.buffer)
   
-  // 写入职业与角色属性 (职业, 金币, 复活币, 胜点, 背包格数)
+  // 写入职业与角色属性 (职业, SP点, 金币, 复活币, 胜点, 勋章, 背包格数)
   output[0x00] = save.profession & 0xff
+  view.setUint16(0x17, Math.max(0, Math.min(65535, Math.floor(save.sp || 0))), true)
   view.setInt32(0x25, Math.max(0, Math.min(2147483647, Math.floor(save.gold))), true)
   view.setInt32(0x29, Math.max(0, Math.min(2147483647, Math.floor(save.reviveCoins))), true)
   view.setInt32(0x2d, Math.max(0, Math.min(2147483647, Math.floor(save.victoryPoints))), true)
+  view.setInt32(0x31, Math.max(0, Math.min(2147483647, Math.floor(save.medal || 0))), true)
   output[0x39] = Math.max(1, Math.min(90, Math.floor(save.bagSlotCount)))
   
   // 写入 90 个背包槽位

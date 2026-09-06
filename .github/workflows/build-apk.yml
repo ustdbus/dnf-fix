@@ -73,7 +73,7 @@ jobs:
 
       - name: 构建 Android 发布版 APK (Release)
         run: |
-          RAW_VER="${GITHUB_REF_NAME:-v1.3.6}"
+          RAW_VER="${GITHUB_REF_NAME:-v1.3.7}"
           CLEAN_VER="${RAW_VER#v}"
           echo "Building APK for Version: $CLEAN_VER"
           export APP_VERSION="$CLEAN_VER"
@@ -83,7 +83,7 @@ jobs:
       - name: 重命名 APK 文件
         id: apk_step
         run: |
-          VERSION=${GITHUB_REF_NAME:-v1.3.6}
+          VERSION=${GITHUB_REF_NAME:-v1.3.7}
           APK_PATH=$(find android/app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
           TARGET_NAME="dnf-fix-${VERSION}.apk"
           cp "$APK_PATH" "$TARGET_NAME"

@@ -7,10 +7,10 @@
       <!-- 标题栏与专属 Q 版鬼剑士徽标 -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <!-- Q版鬼剑士程序图标 -->
+          <!-- 职业/鬼剑士程序图标 (未转职保持经典鬼剑士，转职与觉醒展示对应职业图片) -->
           <div class="relative group">
             <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border-2 border-amber-400/90 shadow-lg shadow-amber-600/30 bg-[#161a25] transition-transform duration-300 group-hover:scale-105">
-              <img :src="chibiLogo" alt="鬼剑士" class="w-full h-full object-cover" />
+              <img :src="activeAvatar" :alt="activeTitle" class="w-full h-full object-cover transition-all duration-300" />
             </div>
             <!-- 激活微光角标 -->
             <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-red-600 border-2 border-[#12141d] shadow-sm flex items-center justify-center text-[8px] font-bold text-white">
@@ -173,15 +173,32 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import chibiLogo from '../assets/ghost_blade_chibi.png'
 import { getProfessionInfo } from '../utils/professionAssets'
 
-defineProps<{
+const props = defineProps<{
   savePath: string
   currentCharacter: number
   characterStatus: Array<{ exists: boolean; desc?: string; profession?: number }>
   isDefaultSaved?: boolean
 }>()
+
+const activeAvatar = computed(() => {
+  const current = props.characterStatus[props.currentCharacter]
+  if (current && current.exists && current.profession !== undefined && current.profession > 0) {
+    return getProfessionInfo(current.profession).avatar
+  }
+  return chibiLogo
+})
+
+const activeTitle = computed(() => {
+  const current = props.characterStatus[props.currentCharacter]
+  if (current && current.exists && current.profession !== undefined && current.profession > 0) {
+    return getProfessionInfo(current.profession).name
+  }
+  return '鬼剑士'
+})
 
 defineEmits<{
   (e: 'update:savePath', val: string): void

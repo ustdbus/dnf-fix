@@ -240,6 +240,78 @@
           </span>
         </div>
       </div>
+
+      <!-- 5. SP 技能点 -->
+      <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-purple-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-purple-500 transition-colors">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">✨</span>
+              <span class="font-black text-sm text-purple-200">SP 技能点 (Skill Points)</span>
+            </div>
+            <div class="flex gap-1.5">
+              <button
+                @click="save.sp = 9999"
+                class="text-[11px] px-2 py-0.8 rounded-lg bg-purple-900/80 hover:bg-purple-800 text-purple-200 font-bold transition shadow-sm active:scale-95 border border-purple-700/50"
+              >
+                9999
+              </button>
+              <button
+                @click="save.sp = 50000"
+                class="text-[11px] px-2.5 py-1 rounded-lg bg-gradient-to-r from-purple-700 to-purple-600 hover:from-purple-600 hover:to-purple-500 text-white font-extrabold transition shadow-sm active:scale-95"
+              >
+                满点 50000
+              </button>
+            </div>
+          </div>
+          <div class="text-xs text-gray-400 mb-1 font-mono">当前拥有: {{ formatNumber(save.sp) }} SP (点满全技能)</div>
+        </div>
+        <div class="mt-2">
+          <input
+            v-model.number="save.sp"
+            type="number"
+            min="0"
+            max="65535"
+            class="w-full bg-[#090b10] text-purple-300 font-mono text-base px-3 py-2 rounded-lg border border-purple-800/60 focus:border-purple-400 focus:ring-1 focus:ring-purple-400/40 focus:outline-none transition shadow-inner"
+          />
+        </div>
+      </div>
+
+      <!-- 6. 角色勋章 (对应存档 0x31~0x34) -->
+      <div class="bg-gradient-to-b from-[#181a26] to-[#11131c] p-4 rounded-xl border border-amber-800/50 shadow-md relative overflow-hidden flex flex-col justify-between hover:border-amber-500 transition-colors">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🎖️</span>
+              <span class="font-black text-sm text-amber-200">角色勋章 (Medal)</span>
+            </div>
+            <div class="flex gap-1.5">
+              <button
+                @click="save.medal = 9999999"
+                class="text-[11px] px-2 py-0.8 rounded-lg bg-amber-900/80 hover:bg-amber-800 text-amber-200 font-bold transition shadow-sm active:scale-95 border border-amber-700/50"
+              >
+                999 万
+              </button>
+              <button
+                @click="save.medal = 88888888"
+                class="text-[11px] px-2.5 py-1 rounded-lg bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-black font-extrabold transition shadow-sm active:scale-95"
+              >
+                8888 万
+              </button>
+            </div>
+          </div>
+          <div class="text-xs text-gray-400 mb-1 font-mono">当前拥有: {{ formatNumber(save.medal) }} 枚勋章</div>
+        </div>
+        <div class="mt-2">
+          <input
+            v-model.number="save.medal"
+            type="number"
+            min="0"
+            max="2147483647"
+            class="w-full bg-[#090b10] text-amber-300 font-mono text-base px-3 py-2 rounded-lg border border-amber-800/60 focus:border-amber-400 focus:ring-1 focus:ring-amber-400/40 focus:outline-none transition shadow-inner"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -45,11 +45,13 @@ export interface DnfHeroSave {
   professionName: string;
   level: number;          // 等级 0x01
   
-  // 角色界面可修改的四项数值
+  // 角色界面可修改的数值
   gold: number;           // 金币 (0x25 ~ 0x28, int32)
   reviveCoins: number;    // 复活币 (0x29 ~ 0x2C, int32)
   victoryPoints: number;  // 胜点 (0x2D ~ 0x30, int32)
+  medal: number;          // 勋章 (0x31 ~ 0x34, int32)
   bagSlotCount: number;   // 背包格数 (0x39, uint8)
+  sp: number;             // SP 技能点 (0x17 ~ 0x18, uint16 little-endian)
   
   // 背包 90 槽位
   inventory: InventorySlot[];
