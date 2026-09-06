@@ -385,7 +385,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, ITEM_DICTIONARY, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
+import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 
 const props = defineProps<{
@@ -409,11 +409,6 @@ const isEquip = (typeId: number) => typeId >= 0x00 && typeId <= 0x0a
 const isConsumable = (typeId: number) => typeId >= 0x0d && typeId <= 0x12
 const isMaterial = (typeId: number) => typeId === 0x0b || typeId === 0x0c
 const isQuest = (typeId: number) => typeId === 0x13
-
-function toHex(val: number | undefined | null, pad = 2): string {
-  if (val === undefined || val === null || isNaN(val)) return '00'
-  return (val & 0xff).toString(16).padStart(pad, '0').toUpperCase()
-}
 
 // 复合键，用于跨大类搜索时唯一标识物品
 const selectedItemCompositeKey = computed(() => {
