@@ -12,6 +12,7 @@
         @select-character="onSelectCharacter"
         @reload-current="reloadCurrentSave"
         @file-selected="onFileSelected"
+        @folder-selected="onFolderSelected"
         @clear-path="onClearPath"
         @save-default-path="onSaveDefaultPath"
       />
@@ -23,16 +24,20 @@
           <div class="text-4xl">⚔️</div>
           <h2 class="text-lg font-bold text-amber-300">尚未加载角色存档</h2>
           <p class="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">
-            请在上方输入手机中游戏存档目录路径并点击【检测存档】，或者点击下方【打开存档文件】选择本地 DnfHero0 ~ DnfHero3 存档文件进行修改。
+            请在上方输入本地或手机中存档目录路径并点击【检测存档】，或者点击下方【选择存档文件夹】/【打开存档文件】进行修改。
           </p>
-          <div class="flex justify-center gap-3 pt-2">
+          <div class="flex justify-center gap-3 pt-2 flex-wrap">
             <label class="cursor-pointer px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs rounded-lg shadow-lg shadow-amber-600/30 transition flex items-center gap-1.5">
-              <span>📂 打开存档文件</span>
+              <span>📂 选择存档文件夹</span>
+              <input type="file" webkitdirectory directory multiple class="hidden" @change="onFolderSelected" />
+            </label>
+            <label class="cursor-pointer px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 font-bold text-xs rounded-lg transition flex items-center gap-1.5">
+              <span>📄 选取存档文件</span>
               <input type="file" multiple class="hidden" @change="onFileSelected" />
             </label>
             <button
               @click="detectSaves"
-              class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 font-bold text-xs rounded-lg transition flex items-center gap-1.5"
+              class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-amber-400 border border-amber-600/40 font-bold text-xs rounded-lg transition flex items-center gap-1.5"
             >
               <span>🔍 检测路径存档</span>
             </button>
@@ -149,6 +154,7 @@ import SaveActions from './components/SaveActions.vue'
 import { DnfHeroSave } from './core/types'
 import { parseHeroSave, serializeHeroSave } from './core/saveParser'
 import { parseQuestSave, serializeQuestSave } from './core/questParser'
+import { scanDirectory, readSaveFile, writeSaveFile } from './core/fsBridge'
 
 const STORAGE_KEY_PATH = 'dnf_save_path'
 const savePath = ref<string>('/sdcard/Android/data/com.tencent.dnf/files')
@@ -182,8 +188,8 @@ onMounted(() => {
   initDefaultPath()
 
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && window.AndroidBridge) {
-      // 用户从游戏切换回修改器时，自动从磁盘重新检查当前角色是否有更新
+    if (document.visibilityState === 'visible') {
+      // 用户从游戏切换回修改器时，自动从存储重新检查当前角色是否有更新
       loadCharacterSaveFromDisk(currentCharacter.value, true)
     }
   })
@@ -211,70 +217,54 @@ function showToast(msg: string, type: 'success' | 'error' = 'success') {
   }, 3000)
 }
 
-function loadCharacterSaveFromDisk(index: number, silent: boolean = false): boolean {
-  if (window.AndroidBridge && window.AndroidBridge.checkFileExists && window.AndroidBridge.readSaveFile) {
-    const charPath = `${savePath.value}/DnfHero${index}`
-    if (window.AndroidBridge.checkFileExists(charPath)) {
-      const b64 = window.AndroidBridge.readSaveFile(charPath)
-      if (b64) {
-        const binaryString = window.atob(b64)
-        const len = binaryString.length
-        const bytes = new Uint8Array(len)
-        for (let i = 0; i < len; i++) {
-          bytes[i] = binaryString.charCodeAt(i)
-        }
-        const save = parseHeroSave(bytes.buffer, index)
+async function loadCharacterSaveFromDisk(index: number, silent: boolean = false): Promise<boolean> {
+  const heroBytes = await readSaveFile(savePath.value, `DnfHero${index}`)
+  if (heroBytes) {
+    try {
+      const save = parseHeroSave(heroBytes.buffer, index)
 
-        // 同时尝试从磁盘读取当前角色对应的 DnfQuest 任务存档
-        const questPath = `${savePath.value}/DnfQuest${index}`
-        if (window.AndroidBridge.checkFileExists(questPath)) {
-          const qb64 = window.AndroidBridge.readSaveFile(questPath)
-          if (qb64) {
-            try {
-              const qBin = window.atob(qb64)
-              const qLen = qBin.length
-              const qBytes = new Uint8Array(qLen)
-              for (let i = 0; i < qLen; i++) {
-                qBytes[i] = qBin.charCodeAt(i)
-              }
-              save.questSave = parseQuestSave(qBytes.buffer, index)
-            } catch (e) {
-              console.warn('解析任务存档失败:', e)
-            }
-          }
+      // 同时尝试读取对应的 DnfQuest 任务存档
+      const questBytes = await readSaveFile(savePath.value, `DnfQuest${index}`)
+      if (questBytes) {
+        try {
+          save.questSave = parseQuestSave(questBytes.buffer, index)
+        } catch (e) {
+          console.warn(`解析角色 ${index + 1} 任务存档失败:`, e)
         }
-
-        saves.value[index] = save
-        characterStatus.value[index] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
-        if (currentCharacter.value === index) {
-          currentSave.value = save
-        }
-        if (!silent) {
-          showToast(`已读取角色 ${index + 1} 最新存档 (Lv.${save.level} ${save.professionName})`)
-        }
-        return true
       }
+
+      saves.value[index] = save
+      characterStatus.value[index] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
+      if (currentCharacter.value === index) {
+        currentSave.value = save
+      }
+      if (!silent) {
+        showToast(`已读取角色 ${index + 1} 最新存档 (Lv.${save.level} ${save.professionName})`)
+      }
+      return true
+    } catch (e: any) {
+      console.warn(`解析角色 ${index} 存档失败:`, e)
     }
   }
   return false
 }
 
-function reloadCurrentSave() {
-  const success = loadCharacterSaveFromDisk(currentCharacter.value)
+async function reloadCurrentSave() {
+  const success = await loadCharacterSaveFromDisk(currentCharacter.value)
   if (!success) {
-    showToast(`重新读取失败：磁盘未找到 DnfHero${currentCharacter.value} 或当前在网页模式`, 'error')
+    showToast(`重新读取失败：未找到 DnfHero${currentCharacter.value} 或路径不可达`, 'error')
   }
 }
 
-function onSelectCharacter(index: number) {
+async function onSelectCharacter(index: number) {
   currentCharacter.value = index
-  // 1. Android 原生环境下，每次切换或点击角色卡片均强制从磁盘重新读取最新数据
-  const readSuccess = loadCharacterSaveFromDisk(index)
+  // 1. 优先尝试从存储路径重新读取最新数据
+  const readSuccess = await loadCharacterSaveFromDisk(index)
   if (readSuccess) {
     return
   }
 
-  // 2. 若不在原生环境或磁盘未找到，检查是否有手动导入的存档
+  // 2. 若路径未直接找到或当前为手动导入模式，检查是否有本地缓存
   if (saves.value[index]) {
     currentSave.value = saves.value[index]
     showToast(`已切换至角色 ${index + 1}`)
@@ -323,9 +313,9 @@ function onClearPath() {
   showToast('已删除默认路径并清空输入')
 }
 
-function detectSaves() {
-  if (savePath.value && savePath.value.trim()) {
-    const trimmed = savePath.value.trim()
+async function detectSaves() {
+  const trimmed = savePath.value ? savePath.value.trim() : ''
+  if (trimmed) {
     if (window.AndroidBridge && window.AndroidBridge.saveDefaultPath) {
       try {
         window.AndroidBridge.saveDefaultPath(trimmed)
@@ -337,33 +327,145 @@ function detectSaves() {
     isDefaultSaved.value = true
   }
 
-  if (window.AndroidBridge && window.AndroidBridge.scanSaves) {
-    try {
-      // 重新检测时清空旧缓存，强制完全从磁盘刷新
-      saves.value = [null, null, null, null]
-      const resultJson = window.AndroidBridge.scanSaves(savePath.value)
-      const res = JSON.parse(resultJson)
-      let foundCount = 0
-      for (let i = 0; i < 4; i++) {
-        const item = res.find((r: any) => r.index === i)
-        if (item && item.exists) {
-          characterStatus.value[i] = { exists: true, desc: `${item.size} 字节` }
-          foundCount++
-        } else {
-          characterStatus.value[i] = { exists: false }
+  if (!trimmed) {
+    showToast('请输入有效的存档目录路径', 'error')
+    return
+  }
+
+  // 重新检测时清空旧缓存，先标记检测中
+  saves.value = [null, null, null, null]
+  for (let i = 0; i < 4; i++) {
+    characterStatus.value[i] = { exists: false, desc: '检测中...' }
+  }
+
+  const scanRes = await scanDirectory(trimmed)
+  if (!scanRes.success) {
+    for (let i = 0; i < 4; i++) {
+      characterStatus.value[i] = { exists: false, desc: '未发现' }
+    }
+    showToast(`检测存档失败: ${scanRes.error || '无法访问该目录'}`, 'error')
+    return
+  }
+
+  let foundCount = 0
+  for (const hero of scanRes.heroes) {
+    if (hero.exists) {
+      foundCount++
+      const heroBytes = await readSaveFile(trimmed, `DnfHero${hero.index}`)
+      if (heroBytes) {
+        try {
+          const save = parseHeroSave(heroBytes.buffer, hero.index)
+          const qBytes = await readSaveFile(trimmed, `DnfQuest${hero.index}`)
+          if (qBytes) {
+            try {
+              save.questSave = parseQuestSave(qBytes.buffer, hero.index)
+            } catch (e) {
+              console.warn(`解析角色 ${hero.index + 1} 任务存档失败:`, e)
+            }
+          }
+          saves.value[hero.index] = save
+          characterStatus.value[hero.index] = {
+            exists: true,
+            desc: `Lv.${save.level} ${save.professionName}`
+          }
+        } catch (e) {
+          characterStatus.value[hero.index] = { exists: true, desc: `${hero.size} 字节` }
         }
+      } else {
+        characterStatus.value[hero.index] = { exists: true, desc: `${hero.size} 字节` }
       }
-      showToast(`检测完成，共发现 ${foundCount} 个角色存档`)
-      // 强制从磁盘重新读取当前角色存档
-      loadCharacterSaveFromDisk(currentCharacter.value)
-      return
-    } catch (e: any) {
-      showToast(`检测存档路径出错: ${e.message}`, 'error')
+    } else {
+      characterStatus.value[hero.index] = { exists: false, desc: '未发现' }
     }
   }
 
-  // 网页端检测模式 (模拟)
-  showToast(`已检测路径: ${savePath.value} (网页模式下请使用【浏览文件】选择本地存档)`)
+  showToast(`检测完成，共发现 ${foundCount} 个角色存档`)
+
+  // 自动载入当前角色，若当前角色不存在则载入第一个存在的角色
+  if (saves.value[currentCharacter.value]) {
+    currentSave.value = saves.value[currentCharacter.value]
+  } else {
+    const firstExisting = scanRes.heroes.find(h => h.exists)
+    if (firstExisting && saves.value[firstExisting.index]) {
+      currentCharacter.value = firstExisting.index
+      currentSave.value = saves.value[firstExisting.index]
+    } else {
+      currentSave.value = null
+    }
+  }
+}
+
+async function onFolderSelected(event: Event) {
+  const target = event.target as HTMLInputElement
+  if (!target.files || target.files.length === 0) return
+
+  const fileList = Array.from(target.files)
+  const relPath = fileList[0].webkitRelativePath
+  if (relPath) {
+    const folderName = relPath.split('/')[0]
+    if (folderName && (!savePath.value || savePath.value.includes('Android'))) {
+      savePath.value = folderName
+    }
+  }
+
+  const heroFiles: { [index: number]: File } = {}
+  const questFiles: { [index: number]: File } = {}
+
+  for (const f of fileList) {
+    const matchHero = f.name.match(/DnfHero(\d)/i)
+    if (matchHero) {
+      const idx = parseInt(matchHero[1], 10)
+      if (idx >= 0 && idx < 4) heroFiles[idx] = f
+    }
+    const matchQuest = f.name.match(/DnfQuest(\d)/i)
+    if (matchQuest) {
+      const idx = parseInt(matchQuest[1], 10)
+      if (idx >= 0 && idx < 4) questFiles[idx] = f
+    }
+  }
+
+  let loadedCount = 0
+  for (let i = 0; i < 4; i++) {
+    if (heroFiles[i]) {
+      try {
+        const ab = await heroFiles[i].arrayBuffer()
+        const save = parseHeroSave(ab, i)
+        if (questFiles[i]) {
+          try {
+            const qab = await questFiles[i].arrayBuffer()
+            save.questSave = parseQuestSave(qab, i)
+          } catch (e) {
+            console.warn(`读取任务文件失败:`, e)
+          }
+        }
+        saves.value[i] = save
+        characterStatus.value[i] = { exists: true, desc: `Lv.${save.level} ${save.professionName}` }
+        loadedCount++
+      } catch (e) {
+        console.warn(`解析角色 ${i} 失败:`, e)
+      }
+    } else {
+      saves.value[i] = null
+      characterStatus.value[i] = { exists: false, desc: '未发现' }
+    }
+  }
+
+  if (loadedCount > 0) {
+    showToast(`成功从文件夹载入 ${loadedCount} 个角色存档`)
+    if (saves.value[currentCharacter.value]) {
+      currentSave.value = saves.value[currentCharacter.value]
+    } else {
+      const firstKey = Object.keys(heroFiles)[0]
+      if (firstKey !== undefined) {
+        const firstIdx = parseInt(firstKey, 10)
+        currentCharacter.value = firstIdx
+        currentSave.value = saves.value[firstIdx]
+      }
+    }
+  } else {
+    showToast('未在选中的文件夹中发现 DnfHero 存档文件', 'error')
+  }
+  target.value = ''
 }
 
 function onFileSelected(event: Event) {
@@ -432,53 +534,33 @@ function onFileSelected(event: Event) {
   reader.readAsArrayBuffer(heroFile)
 }
 
-function onSave() {
+async function onSave() {
   if (!currentSave.value) return
   try {
     const modifiedBytes = serializeHeroSave(currentSave.value)
-    
-    // 如果在 Android 原生环境
-    if (window.AndroidBridge && window.AndroidBridge.writeSaveFile) {
-      const fileName = `DnfHero${currentCharacter.value}`
-      const targetPath = `${savePath.value}/${fileName}`
-      
-      // 转 Base64 传输给原生
-      let binary = ''
-      for (let i = 0; i < modifiedBytes.length; i++) {
-        binary += String.fromCharCode(modifiedBytes[i])
-      }
-      const b64 = window.btoa(binary)
-      const successHero = window.AndroidBridge.writeSaveFile(targetPath, b64)
+    const fileName = `DnfHero${currentCharacter.value}`
+    const qFileName = `DnfQuest${currentCharacter.value}`
+    const qBytes = currentSave.value.questSave ? serializeQuestSave(currentSave.value.questSave) : null
 
-      // 同步保存 DnfQuest 任务存档
-      let successQuest = true
-      if (currentSave.value.questSave) {
-        const qBytes = serializeQuestSave(currentSave.value.questSave)
-        const qFileName = `DnfQuest${currentCharacter.value}`
-        const qTargetPath = `${savePath.value}/${qFileName}`
-        let qBin = ''
-        for (let i = 0; i < qBytes.length; i++) {
-          qBin += String.fromCharCode(qBytes[i])
-        }
-        successQuest = window.AndroidBridge.writeSaveFile(qTargetPath, window.btoa(qBin))
-      }
+    // 优先尝试写回到存储（Android 原生桥接或 Vite 本地开发文件系统）
+    const writeHeroRes = await writeSaveFile(savePath.value, fileName, modifiedBytes)
+    let writeQuestRes: { success: boolean; message?: string } = { success: true, message: '' }
+    if (qBytes) {
+      writeQuestRes = await writeSaveFile(savePath.value, qFileName, qBytes)
+    }
 
-      if (successHero && successQuest) {
-        showToast(`已成功保存角色与任务存档至 ${savePath.value}`)
-      } else {
-        showToast('写入存档失败，请检查存储权限', 'error')
-      }
+    if (writeHeroRes.success && writeQuestRes.success) {
+      showToast(`已成功保存至 ${savePath.value} (原文件已备份为 .bak)`)
       return
     }
 
-    // 网页模式下：自动触发下载并提示
-    triggerDownload(modifiedBytes, `DnfHero${currentCharacter.value}`)
-    if (currentSave.value.questSave) {
-      const qBytes = serializeQuestSave(currentSave.value.questSave)
-      triggerDownload(qBytes, `DnfQuest${currentCharacter.value}`)
-      showToast(`存档修改已生效！已导出下载 DnfHero${currentCharacter.value} 与 DnfQuest${currentCharacter.value}`)
+    // 网页模式无后端时：降级为自动触发浏览器下载
+    triggerDownload(modifiedBytes, fileName)
+    if (qBytes) {
+      triggerDownload(qBytes, qFileName)
+      showToast(`存档修改已生效！已导出下载 ${fileName} 与 ${qFileName}`)
     } else {
-      showToast(`存档修改已生效！已导出下载 DnfHero${currentCharacter.value}`)
+      showToast(`存档修改已生效！已导出下载 ${fileName}`)
     }
   } catch (e: any) {
     showToast(`保存失败: ${e.message}`, 'error')

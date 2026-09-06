@@ -50,10 +50,14 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center gap-1.5">
-          <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1">
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1" title="选择一个或多个存档文件">
             <span>浏览文件</span>
             <input type="file" multiple class="hidden" @change="$emit('file-selected', $event)" />
+          </label>
+          <label class="cursor-pointer text-xs px-2.5 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 transition flex items-center gap-1" title="直接选择包含存档的整个文件夹">
+            <span>📂 选文件夹</span>
+            <input type="file" webkitdirectory directory multiple class="hidden" @change="$emit('folder-selected', $event)" />
           </label>
           <button
             @click="$emit('reload-current')"
@@ -65,6 +69,7 @@
           <button
             @click="$emit('detect-path')"
             class="text-xs px-3 py-1.5 rounded bg-amber-600 hover:bg-amber-500 text-black font-bold transition flex items-center gap-1 shadow-md shadow-amber-600/30"
+            title="检测并载入该路径下的所有存档"
           >
             <span>检测存档</span>
           </button>
@@ -121,6 +126,7 @@ defineEmits<{
   (e: 'select-character', index: number): void
   (e: 'reload-current'): void
   (e: 'file-selected', event: Event): void
+  (e: 'folder-selected', event: Event): void
   (e: 'clear-path'): void
   (e: 'save-default-path', val: string): void
 }>()
