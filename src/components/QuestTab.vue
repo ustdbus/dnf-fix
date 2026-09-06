@@ -194,17 +194,17 @@
           :key="q.id"
           @click="openDetailModal(q)"
           :class="[
-            'p-3 rounded-xl border transition-all flex flex-col justify-between gap-2 shadow-sm hover:scale-[1.01] cursor-pointer relative group select-none',
+            'p-3 rounded-xl border transition-all flex flex-col justify-between gap-2 shadow-sm hover:scale-[1.01] active:scale-[0.99] cursor-pointer relative group touch-manipulation',
             q.state === 2
-              ? 'bg-[#121622] border-emerald-900/50 hover:border-emerald-600/50'
+              ? 'bg-[#121622] border-emerald-900/50 hover:border-emerald-600/50 active:bg-emerald-950/40'
               : q.state === 1 && q.isReadyToReward
-                ? 'bg-gradient-to-b from-[#251e12] to-[#16120b] border-yellow-500/80 hover:border-yellow-400 shadow-md shadow-yellow-500/10'
+                ? 'bg-gradient-to-b from-[#251e12] to-[#16120b] border-yellow-500/80 hover:border-yellow-400 active:bg-[#2e2416] shadow-md shadow-yellow-500/10'
                 : q.state === 1
-                  ? 'bg-[#1a1715] border-amber-700/60 hover:border-amber-500 shadow-amber-500/10'
-                  : 'bg-[#11131c] border-gray-800/90 hover:border-gray-700'
+                  ? 'bg-[#1a1715] border-amber-700/60 hover:border-amber-500 active:bg-amber-950/50 shadow-amber-500/10'
+                  : 'bg-[#11131c] border-gray-800/90 hover:border-gray-700 active:bg-[#181a26]'
           ]"
         >
-          <!-- 任务头：ID 与类别徽章 -->
+          <!-- 任务头：ID 与类别徽章 + 手机端专属详情按钮 -->
           <div class="flex items-center justify-between gap-1.5">
             <span class="text-[10px] text-gray-500 font-mono">#{{ String(q.id).padStart(3, '0') }}</span>
             <div class="flex items-center gap-1">
@@ -229,6 +229,16 @@
               >
                 {{ q.typeName }}
               </span>
+              <!-- 明确的详情按钮：手机端一触即开，阻止冒泡直接打开弹窗 -->
+              <button
+                type="button"
+                @click.stop="openDetailModal(q)"
+                class="text-[10px] px-1.5 py-0.5 rounded font-bold bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 border border-amber-500/50 active:scale-95 transition flex items-center gap-0.5"
+                title="查看任务要求与奖励详情"
+              >
+                <span>📜</span>
+                <span>详情</span>
+              </button>
             </div>
           </div>
 
@@ -295,10 +305,16 @@
     <!-- 任务详情与材料联动弹窗 (Task Detail Modal) -->
     <div
       v-if="detailQuest"
-      class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-      @click.self="closeDetailModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 touch-manipulation"
     >
-      <div class="bg-gradient-to-b from-[#181b26] to-[#0f1118] border border-amber-500/50 rounded-2xl w-full max-w-lg shadow-2xl p-5 space-y-4 max-h-[90vh] overflow-y-auto">
+      <!-- 半透明磨砂背景遮罩：独立层级 + 防点透时间保护 -->
+      <div
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm"
+        @click="onBackdropClick"
+      ></div>
+
+      <!-- 弹窗本体容器 -->
+      <div class="relative z-10 bg-gradient-to-b from-[#181b26] to-[#0f1118] border border-amber-500/50 rounded-2xl w-full max-w-lg shadow-2xl p-4 sm:p-5 space-y-4 max-h-[88vh] overflow-y-auto overscroll-contain">
         <!-- 头部标题与关闭 -->
         <div class="flex items-center justify-between border-b border-amber-900/40 pb-3">
           <div class="flex items-center gap-2">
@@ -308,8 +324,9 @@
             </h3>
           </div>
           <button
-            @click="closeDetailModal"
-            class="text-gray-400 hover:text-gray-200 text-base px-2 py-0.5 rounded-lg hover:bg-gray-800 transition"
+            type="button"
+            @click="forceCloseDetailModal"
+            class="text-gray-400 hover:text-gray-200 text-base px-2.5 py-1 rounded-lg bg-gray-800/80 hover:bg-gray-700 transition"
           >
             ✕
           </button>
@@ -442,7 +459,8 @@
         <!-- 弹窗底部操作按钮 -->
         <div class="pt-3 border-t border-gray-800/80 flex flex-wrap items-center justify-end gap-2">
           <button
-            @click="closeDetailModal"
+            type="button"
+            @click="forceCloseDetailModal"
             class="text-xs px-3.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition"
           >
             关闭
@@ -508,12 +526,25 @@ const actionNotice = ref('')
 
 // 详情弹窗与背包联动状态
 const detailQuest = ref<QuestItem | null>(null)
+let modalOpenTime = 0
 
 function openDetailModal(q: QuestItem) {
+  modalOpenTime = Date.now()
   detailQuest.value = q
 }
 
+function onBackdropClick() {
+  // 移动端点透防护：打开后 350ms 内忽略背景点击，防止手机合成的 click 事件穿透误关弹窗
+  if (Date.now() - modalOpenTime < 350) return
+  forceCloseDetailModal()
+}
+
 function closeDetailModal() {
+  if (Date.now() - modalOpenTime < 350) return
+  detailQuest.value = null
+}
+
+function forceCloseDetailModal() {
   detailQuest.value = null
 }
 
