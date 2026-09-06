@@ -742,23 +742,24 @@ function applyQuestReadyWithItems(q: QuestItem): boolean {
   }
 
   const inventory = props.heroSave.inventory
-  interface FillPlan {
+  interface FillAction {
     req: { typeId: number; itemId: number; count: number; name: string }
-    fillCount: number
+    count: number
     targetSlot?: InventorySlot
   }
-  const fillPlans: FillPlan[] = []
+  const fillActions: FillAction[] = []
   let neededEmptySlots = 0
+  const reqDetails: string[] = []
 
   for (const req of q.requires) {
     let currentTotal = 0
-    let stackableSlot: InventorySlot | null = null
+    const partialSlots: InventorySlot[] = []
 
     for (const slot of inventory) {
       if (!slot.isEmpty && slot.typeId === req.typeId && slot.itemId === req.itemId) {
         currentTotal += slot.count
-        if (req.typeId > 0x0a && slot.count < 99 && !stackableSlot) {
-          stackableSlot = slot
+        if (slot.count < 99) {
+          partialSlots.push(slot)
         }
       }
     }
@@ -767,55 +768,76 @@ function applyQuestReadyWithItems(q: QuestItem): boolean {
       continue
     }
 
-    const missing = req.count - currentTotal
-    if (stackableSlot && (stackableSlot.count + missing <= 99)) {
-      fillPlans.push({ req, fillCount: missing, targetSlot: stackableSlot })
-    } else {
+    let remainingMissing = req.count - currentTotal
+    let addedCount = 0
+
+    // 1. 优先填满已有但未满 99 的同类槽位
+    for (const slot of partialSlots) {
+      const canAdd = 99 - slot.count
+      const toAdd = Math.min(remainingMissing, canAdd)
+      if (toAdd > 0) {
+        fillActions.push({ req, count: toAdd, targetSlot: slot })
+        remainingMissing -= toAdd
+        addedCount += toAdd
+        if (remainingMissing === 0) break
+      }
+    }
+
+    // 2. 若仍有缺少材料（支持超过 99 数量的大额材料），按每格上限 99 分配到新的空格子中
+    let newSlotsForThisReq = 0
+    while (remainingMissing > 0) {
+      const fillThis = Math.min(99, remainingMissing)
+      fillActions.push({ req, count: fillThis })
       neededEmptySlots++
-      fillPlans.push({ req, fillCount: missing })
+      newSlotsForThisReq++
+      remainingMissing -= fillThis
+      addedCount += fillThis
+    }
+
+    if (newSlotsForThisReq > 1) {
+      reqDetails.push(`${req.name} +${addedCount} (按单格上限99分占 ${newSlotsForThisReq} 格)`)
+    } else {
+      reqDetails.push(`${req.name} +${addedCount}`)
     }
   }
 
   // 3. 检查背包空槽位是否足够
   const emptySlots = inventory.filter(s => s.isEmpty)
   if (emptySlots.length < neededEmptySlots) {
-    actionNotice.value = `⚠️ 背包空间不足！完成任务【${q.name}】还需要 ${neededEmptySlots} 个空槽位来存放材料，当前背包仅剩 ${emptySlots.length} 个空槽位。请先前往【角色背包】清理空格后再设为待领奖！`
+    actionNotice.value = `⚠️ 背包空间不足！完成任务【${q.name}】还需要 ${neededEmptySlots} 个空槽位来分格存放材料（单格上限99），当前背包仅剩 ${emptySlots.length} 个空槽位。请先前往【角色背包】清理空格后再设为待领奖！`
     return false
   }
 
   // 4. 空槽位充足，执行生成与发物
-  const addedSummary: string[] = []
   let emptyIdx = 0
-
-  for (const plan of fillPlans) {
-    if (plan.targetSlot) {
-      plan.targetSlot.count += plan.fillCount
-      addedSummary.push(`${plan.req.name} +${plan.fillCount} (累计到现有槽位)`)
+  for (const action of fillActions) {
+    if (action.targetSlot) {
+      action.targetSlot.count += action.count
     } else {
       const slot = emptySlots[emptyIdx++]
-      const info = findItemInfo(plan.req.typeId, plan.req.itemId)
+      const info = findItemInfo(action.req.typeId, action.req.itemId)
       slot.isEmpty = false
-      slot.typeId = plan.req.typeId
-      slot.itemId = plan.req.itemId
-      slot.count = Math.max(1, Math.min(99, plan.fillCount))
+      slot.typeId = action.req.typeId
+      slot.itemId = action.req.itemId
+      slot.count = action.count
       slot.flag = 0
       slot.refineLevel = 0
       slot.itemName = info.name
       slot.categoryName = info.categoryName
-      addedSummary.push(`${plan.req.name} x${slot.count}`)
     }
   }
 
   q.state = 1
   q.isReadyToReward = true
 
-  if (addedSummary.length > 0) {
-    actionNotice.value = `🎁 已将任务【${q.name}】设为待领奖，并自动向背包添加所需材料：${addedSummary.join('、')}！进游戏直接找 NPC 交付领奖即可。`
+  if (reqDetails.length > 0) {
+    actionNotice.value = `🎁 已将任务【${q.name}】设为待领奖，并自动向背包补齐所需材料：${reqDetails.join('、')}！已按单格上限99分格存放，进游戏可直接找 NPC 交付领奖。`
   } else {
     actionNotice.value = `🎁 背包中已有充足任务材料，已将任务【${q.name}】设为待领奖！进游戏可直接找 NPC 交付领奖。`
   }
   return true
 }
+
 
 // 样式映射
 function getTypeBadgeClass(type: number): string {
@@ -854,23 +876,37 @@ function getUiSelectClass(q: QuestItem): string {
 function setAllActiveQuestsReady() {
   let count = 0
   let itemQuestsCount = 0
+  let failedItemQuestsCount = 0
   for (const q of questList.value) {
-    if (q.state === 1) {
+    if (q.state === 1 && !q.isReadyToReward) {
       if (q.requires && q.requires.length > 0) {
-        applyQuestReadyWithItems(q)
-        itemQuestsCount++
+        const success = applyQuestReadyWithItems(q)
+        if (success) {
+          itemQuestsCount++
+          count++
+        } else {
+          failedItemQuestsCount++
+        }
       } else {
         q.isReadyToReward = true
+        count++
       }
-      count++
     }
   }
-  if (count > 0) {
-    actionNotice.value = `已将当前 ${count} 个进行中任务一键设为待领奖！${itemQuestsCount > 0 ? '已联动背包为材料任务自动检测/补齐材料。' : ''}进游戏可直接找 NPC 交付领奖。`
+  if (count > 0 || failedItemQuestsCount > 0) {
+    let msg = `已将 ${count} 个进行中任务一键设为待领奖！`
+    if (itemQuestsCount > 0) {
+      msg += ` 已自动为材料任务分格补齐材料（单格上限99）。`
+    }
+    if (failedItemQuestsCount > 0) {
+      msg += ` ⚠️ 另有 ${failedItemQuestsCount} 个材料任务因背包空格不足未设为待领奖，请前往【角色背包】清理空格后再重试！`
+    }
+    actionNotice.value = msg
   } else {
-    actionNotice.value = `当前没有已接取的任务。您可以先在任务列表选择任务并设为【🎁 待领奖】！`
+    actionNotice.value = `当前没有未达成的进行中任务。`
   }
 }
+
 
 // 一键将所有待领奖任务转换回普通进行中状态
 function setAllReadyQuestsToOngoing() {
