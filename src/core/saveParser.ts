@@ -83,7 +83,7 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
     })
   }
   
-  // 王图 (地图难度)，从 0x09CC 开始
+  // 王图 (地图难度)，从 0x09CC 开始，共 37 个字节（官方解包数据）
   const regions: MapRegion[] = [
     {
       name: '格兰之森 (10图)',
@@ -92,14 +92,14 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
       maps: [
         { id: 'g1', name: '幽暗密林', level: bytes[0x09cc] },
         { id: 'g2', name: '幽暗密林深处', level: bytes[0x09cd] },
-        { id: 'g3', name: '密林魔法阵', level: bytes[0x09ce] },
-        { id: 'g4', name: '雷鸣废墟', level: bytes[0x09cf] },
-        { id: 'g5', name: '猛毒雷鸣废墟', level: bytes[0x09d0] },
-        { id: 'g6', name: '冰霜幽暗密林', level: bytes[0x09d1] },
-        { id: 'g7', name: '格拉卡', level: bytes[0x09d2] },
-        { id: 'g8', name: '烈焰格拉卡', level: bytes[0x09d3] },
+        { id: 'g3', name: '雷鸣废墟', level: bytes[0x09ce] },
+        { id: 'g4', name: '猛毒雷鸣废墟', level: bytes[0x09cf] },
+        { id: 'g5', name: '冰霜幽暗密林', level: bytes[0x09d0] },
+        { id: 'g6', name: '格拉卡', level: bytes[0x09d1] },
+        { id: 'g7', name: '烈焰格拉卡', level: bytes[0x09d2] },
+        { id: 'g8', name: '白化幽暗密林', level: bytes[0x09d3] },
         { id: 'g9', name: '暗黑雷鸣废墟', level: bytes[0x09d4] },
-        { id: 'g10', name: '狂暴僵尸领地', level: bytes[0x09d5] },
+        { id: 'g10', name: '遗忘之幽暗密林', level: bytes[0x09d5] },
       ]
     },
     {
@@ -111,10 +111,10 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
         { id: 't2', name: '人偶玄关', level: bytes[0x09d7] },
         { id: 't3', name: '石巨人塔', level: bytes[0x09d8] },
         { id: 't4', name: '黑暗玄廊', level: bytes[0x09d9] },
-        { id: 't5', name: '城主宫殿', level: bytes[0x09da] },
-        { id: 't6', name: '悬空城', level: bytes[0x09db] },
-        { id: 't7', name: '天空之城深渊', level: bytes[0x09dc] },
-        { id: 't8', name: '天空之城密室', level: bytes[0x09dd] },
+        { id: 't5', name: '悬空城', level: bytes[0x09da] },
+        { id: 't6', name: '城主宫殿', level: bytes[0x09db] },
+        { id: 't7', name: '深渊', level: bytes[0x09dc] },
+        { id: 't8', name: '遗忘之塔', level: bytes[0x09dd] },
       ]
     },
     {
@@ -129,24 +129,24 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
         { id: 'w5', name: '第一脊椎', level: bytes[0x09e2] },
         { id: 'w6', name: '第二脊椎', level: bytes[0x09e3] },
         { id: 'w7', name: '天维禁地', level: bytes[0x09e4] },
-        { id: 'w8', name: '天维巨兽深渊', level: bytes[0x09e5] },
+        { id: 'w8', name: '遗忘之神殿', level: bytes[0x09e5] },
       ]
     },
     {
-      name: '雪山 (10图)',
+      name: '万年雪山 (10图)',
       offset: 0x09e6,
       length: 10,
       maps: [
-        { id: 's1', name: '万年雪山入口', level: bytes[0x09e6] },
-        { id: 's2', name: '冰心少年', level: bytes[0x09e7] },
-        { id: 's3', name: '利库天井', level: bytes[0x09e8] },
-        { id: 's4', name: '白色废墟', level: bytes[0x09e9] },
-        { id: 's5', name: '布万加的修炼场', level: bytes[0x09ea] },
-        { id: 's6', name: '山脊', level: bytes[0x09eb] },
-        { id: 's7', name: '斯卡萨之巢', level: bytes[0x09ec] },
-        { id: 's8', name: '冰雪试炼场', level: bytes[0x09ed] },
-        { id: 's9', name: '雪山深渊', level: bytes[0x09ee] },
-        { id: 's10', name: '雪山绝顶', level: bytes[0x09ef] },
+        { id: 's1', name: '山脊', level: bytes[0x09e6] },
+        { id: 's2', name: 'GBL教秘密地下城', level: bytes[0x09e7] },
+        { id: 's3', name: '冰心少年', level: bytes[0x09e8] },
+        { id: 's4', name: '利库天井', level: bytes[0x09e9] },
+        { id: 's5', name: '奥尔卡的修炼场', level: bytes[0x09ea] },
+        { id: 's6', name: '白色废墟', level: bytes[0x09eb] },
+        { id: 's7', name: '冰雪宫殿', level: bytes[0x09ec] },
+        { id: 's8', name: '斯卡萨之巢', level: bytes[0x09ed] },
+        { id: 's9', name: '古代修炼场', level: bytes[0x09ee] },
+        { id: 's10', name: '遗忘之洞窟', level: bytes[0x09ef] },
       ]
     },
     {
@@ -154,7 +154,7 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
       offset: 0x09f0,
       length: 1,
       maps: [
-        { id: 'b1', name: '比尔马克试验场', level: bytes[0x09f0] },
+        { id: 'b1', name: '比尔马克', level: bytes[0x09f0] },
       ]
     }
   ]
