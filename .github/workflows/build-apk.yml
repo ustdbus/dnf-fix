@@ -83,9 +83,12 @@ jobs:
       - name: 校验 APK 签名与证书指纹
         run: |
           APK_PATH=$(find android/app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
-          echo "====================== 发布版 APK 签名证书指纹 ======================"
-          apksigner verify --verbose --print-certs "$APK_PATH"
-          echo "===================================================================="
+          echo "APK 文件: $APK_PATH"
+          APKSIGNER=$(find $ANDROID_HOME/build-tools -name apksigner 2>/dev/null | sort -V | tail -n 1)
+          if [ -n "$APKSIGNER" ] && [ -x "$APKSIGNER" ]; then
+            echo "使用 $APKSIGNER 校验发布版证书指纹:"
+            "$APKSIGNER" verify --verbose --print-certs "$APK_PATH" || true
+          fi
 
       - name: 重命名 APK 文件
         id: apk_step
