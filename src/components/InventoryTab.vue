@@ -986,30 +986,21 @@ const isWeapon = computed(() => {
 })
 
 const GRADE_LIST = [
-  { value: 3, label: '最上级 (100%)', color: 'text-amber-400' },
-  { value: 2, label: '上级 (75%~89%)', color: 'text-purple-400' },
-  { value: 1, label: '中级 (50%~74%)', color: 'text-blue-400' },
-  { value: 0, label: '下级 (1%~49%)', color: 'text-gray-400' },
+  { value: 3, label: '最上级 (100% 官方满属性)', color: 'text-amber-400' },
+  { value: 2, label: '上级', color: 'text-purple-400' },
+  { value: 1, label: '中级', color: 'text-blue-400' },
+  { value: 0, label: '下级', color: 'text-gray-400' },
 ]
 
-// 切换装备品级时，静默联动调整基础攻防为该品级对应的官方正规最大数值
+// 切换装备品级时，静默联动调整基础攻防与耐久度为该装备官方正规出厂满属性
 function onGradeChange() {
   if (!isEquip(formTypeId.value)) return
   const innate = getEquipInnateInfo(formTypeId.value, formItemId.value)
   if (!innate) return
 
-  let ratio = 1.0
-  if (formGrade.value === 3) {
-    ratio = 1.0
-  } else if (formGrade.value === 2) {
-    ratio = 0.89
-  } else if (formGrade.value === 1) {
-    ratio = 0.74
-  } else if (formGrade.value === 0) {
-    ratio = 0.49
-  }
-  formBaseAtkDef1.value = Math.round((innate.base1 || 0) * ratio)
-  formBaseAtkDef2.value = Math.round((innate.base2 || 0) * ratio)
+  formBaseAtkDef1.value = innate.base1 || 0
+  formBaseAtkDef2.value = innate.base2 || 0
+  formDurability.value = innate.durability || 35
 }
 
 // 附魔计算属性

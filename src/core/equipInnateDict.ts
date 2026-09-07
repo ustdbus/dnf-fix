@@ -28,8 +28,8 @@ export interface EquipInnateInfo {
 
 export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
   "0_0": {
-    "base1": 0,
-    "base2": 0,
+    "base1": 6,
+    "base2": 8,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38,140 +38,140 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "0_1": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 6,
+    "base2": 8,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 8,
+    "base2": 11,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_3": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 15,
+    "base2": 21,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_4": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 26,
+    "base2": 38,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_5": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 41,
+    "base2": 61,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_6": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 61,
+    "base2": 91,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_7": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 86,
+    "base2": 128,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_8": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 115,
+    "base2": 171,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_9": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 148,
+    "base2": 221,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_10": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 186,
+    "base2": 278,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_11": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 228,
+    "base2": 341,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_12": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 275,
+    "base2": 411,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_13": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 326,
+    "base2": 488,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "0_14": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 10,
+    "base2": 14,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -192,10 +192,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_15": {
-    "base1": 1536,
-    "base2": 846,
+    "base1": 12,
+    "base2": 16,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -216,10 +216,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_16": {
-    "base1": 1792,
-    "base2": 987,
+    "base1": 13,
+    "base2": 18,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -240,10 +240,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_17": {
-    "base1": 2304,
-    "base2": 1269,
+    "base1": 17,
+    "base2": 23,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -264,10 +264,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_18": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 19,
+    "base2": 26,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -288,10 +288,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_19": {
-    "base1": 3072,
-    "base2": 1692,
+    "base1": 24,
+    "base2": 34,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -312,10 +312,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_20": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 33,
+    "base2": 47,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -336,10 +336,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_21": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 52,
+    "base2": 76,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -360,10 +360,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_22": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 77,
+    "base2": 114,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -384,10 +384,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_23": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 108,
+    "base2": 160,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -408,10 +408,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_24": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 144,
+    "base2": 214,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -432,10 +432,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_25": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 185,
+    "base2": 276,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -456,10 +456,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_26": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 233,
+    "base2": 347,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -480,10 +480,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_27": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 285,
+    "base2": 426,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -504,10 +504,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_28": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 344,
+    "base2": 514,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -528,10 +528,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_29": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 408,
+    "base2": 610,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -552,10 +552,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_30": {
-    "base1": 1280,
-    "base2": 1025,
+    "base1": 12,
+    "base2": 17,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -588,10 +588,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_31": {
-    "base1": 2561,
-    "base2": 2050,
+    "base1": 22,
+    "base2": 32,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -624,10 +624,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_32": {
-    "base1": 3840,
-    "base2": 3075,
+    "base1": 39,
+    "base2": 57,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -660,10 +660,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_33": {
-    "base1": 5120,
-    "base2": 4100,
+    "base1": 62,
+    "base2": 92,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -696,10 +696,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_34": {
-    "base1": 5121,
-    "base2": 4100,
+    "base1": 62,
+    "base2": 92,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -732,10 +732,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_35": {
-    "base1": 7680,
-    "base2": 6150,
+    "base1": 129,
+    "base2": 192,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -768,10 +768,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_36": {
-    "base1": 7681,
-    "base2": 6150,
+    "base1": 129,
+    "base2": 192,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -804,10 +804,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_37": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 172,
+    "base2": 257,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -840,10 +840,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_38": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 172,
+    "base2": 257,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -876,10 +876,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_39": {
-    "base1": 10240,
-    "base2": 8200,
+    "base1": 222,
+    "base2": 332,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -912,10 +912,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_40": {
-    "base1": 10241,
-    "base2": 8200,
+    "base1": 222,
+    "base2": 332,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -948,10 +948,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_41": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 279,
+    "base2": 417,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -984,10 +984,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_42": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 279,
+    "base2": 417,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1020,10 +1020,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_43": {
-    "base1": 12800,
-    "base2": 10250,
+    "base1": 342,
+    "base2": 512,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1056,10 +1056,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_44": {
-    "base1": 12801,
-    "base2": 10250,
+    "base1": 342,
+    "base2": 512,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1092,10 +1092,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_45": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1128,10 +1128,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_46": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1164,10 +1164,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_47": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1200,10 +1200,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_48": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -1236,10 +1236,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_49": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -1272,10 +1272,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_50": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1308,10 +1308,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_51": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1344,10 +1344,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_52": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -1380,10 +1380,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_53": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 489,
+    "base2": 732,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1416,10 +1416,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_54": {
-    "base1": 1280,
-    "base2": 1495,
+    "base1": 15,
+    "base2": 19,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "dark",
     "elementName": "暗属性攻击",
     "options": [
@@ -1464,10 +1464,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_55": {
-    "base1": 2561,
-    "base2": 2990,
+    "base1": 26,
+    "base2": 37,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1500,10 +1500,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_56": {
-    "base1": 3840,
-    "base2": 4485,
+    "base1": 46,
+    "base2": 66,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1548,10 +1548,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_57": {
-    "base1": 5120,
-    "base2": 5980,
+    "base1": 73,
+    "base2": 107,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1596,10 +1596,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_58": {
-    "base1": 5121,
-    "base2": 5980,
+    "base1": 73,
+    "base2": 107,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1644,10 +1644,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_59": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 151,
+    "base2": 224,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1692,10 +1692,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_60": {
-    "base1": 7681,
-    "base2": 8970,
+    "base1": 151,
+    "base2": 224,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1740,10 +1740,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_61": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 201,
+    "base2": 299,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -1788,10 +1788,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_62": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 201,
+    "base2": 299,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1836,10 +1836,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_63": {
-    "base1": 10241,
-    "base2": 11960,
+    "base1": 260,
+    "base2": 387,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1884,10 +1884,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_64": {
-    "base1": 10240,
-    "base2": 11960,
+    "base1": 260,
+    "base2": 387,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -1932,10 +1932,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_65": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 326,
+    "base2": 486,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -1980,10 +1980,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_66": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 326,
+    "base2": 486,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2028,10 +2028,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_67": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 400,
+    "base2": 597,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2076,10 +2076,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_68": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 400,
+    "base2": 597,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2124,10 +2124,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_69": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2172,10 +2172,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_70": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2220,10 +2220,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_71": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2268,10 +2268,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_72": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2316,10 +2316,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_73": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -2364,10 +2364,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_74": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2412,10 +2412,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_75": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2460,10 +2460,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_76": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -2508,10 +2508,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_77": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 571,
+    "base2": 854,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2556,10 +2556,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_78": {
-    "base1": 3840,
-    "base2": 6540,
+    "base1": 56,
+    "base2": 80,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2604,10 +2604,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_79": {
-    "base1": 5120,
-    "base2": 8720,
+    "base1": 89,
+    "base2": 130,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2652,10 +2652,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_80": {
-    "base1": 6400,
-    "base2": 10900,
+    "base1": 131,
+    "base2": 194,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -2700,10 +2700,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_81": {
-    "base1": 7680,
-    "base2": 13080,
+    "base1": 183,
+    "base2": 272,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -2748,10 +2748,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_82": {
-    "base1": 8960,
-    "base2": 15260,
+    "base1": 244,
+    "base2": 364,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -2796,10 +2796,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_83": {
-    "base1": 10240,
-    "base2": 17440,
+    "base1": 315,
+    "base2": 470,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2844,10 +2844,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_84": {
-    "base1": 11520,
-    "base2": 19620,
+    "base1": 396,
+    "base2": 590,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2892,10 +2892,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_85": {
-    "base1": 12800,
-    "base2": 21800,
+    "base1": 485,
+    "base2": 725,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2940,10 +2940,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_86": {
-    "base1": 14081,
-    "base2": 23980,
+    "base1": 584,
+    "base2": 874,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -2988,10 +2988,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_87": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 693,
+    "base2": 1037,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3036,10 +3036,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_88": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 693,
+    "base2": 1037,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -3084,10 +3084,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_89": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 693,
+    "base2": 1037,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3132,10 +3132,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_90": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 693,
+    "base2": 1037,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3180,10 +3180,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_91": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 971,
+    "base2": 1451,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3228,10 +3228,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_92": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 693,
+    "base2": 1037,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3276,10 +3276,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_93": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 685,
+    "base2": 1024,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3324,10 +3324,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_94": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 685,
+    "base2": 1024,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3372,10 +3372,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_95": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 685,
+    "base2": 1024,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -3420,10 +3420,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_96": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 685,
+    "base2": 1024,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3468,10 +3468,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_97": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1179,
+    "base2": 1762,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3516,10 +3516,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_98": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1387,
+    "base2": 2074,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3564,10 +3564,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_99": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1525,
+    "base2": 2281,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3612,10 +3612,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_100": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1734,
+    "base2": 2592,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3660,10 +3660,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "0_101": {
-    "base1": 1281,
-    "base2": 705,
+    "base1": 10,
+    "base2": 14,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -3684,8 +3684,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_0": {
-    "base1": 0,
-    "base2": 0,
+    "base1": 7,
+    "base2": 8,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -3694,140 +3694,140 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "1_1": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 7,
+    "base2": 8,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 9,
+    "base2": 10,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_3": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 17,
+    "base2": 19,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_4": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 29,
+    "base2": 33,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_5": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 47,
+    "base2": 53,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_6": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 69,
+    "base2": 79,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_7": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 97,
+    "base2": 110,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_8": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 129,
+    "base2": 148,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_9": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 167,
+    "base2": 190,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_10": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 209,
+    "base2": 239,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_11": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 257,
+    "base2": 293,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "1_12": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 309,
+    "base2": 353,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_13": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 367,
+    "base2": 419,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "1_14": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 12,
+    "base2": 13,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3848,10 +3848,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_15": {
-    "base1": 1536,
-    "base2": 846,
+    "base1": 13,
+    "base2": 15,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3872,10 +3872,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_16": {
-    "base1": 1792,
-    "base2": 987,
+    "base1": 15,
+    "base2": 17,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3896,10 +3896,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_17": {
-    "base1": 2304,
-    "base2": 1269,
+    "base1": 19,
+    "base2": 21,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3920,10 +3920,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_18": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 21,
+    "base2": 24,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3944,10 +3944,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_19": {
-    "base1": 3072,
-    "base2": 1692,
+    "base1": 27,
+    "base2": 30,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3968,10 +3968,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_20": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 37,
+    "base2": 42,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -3992,10 +3992,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_21": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 59,
+    "base2": 67,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4016,10 +4016,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_22": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 87,
+    "base2": 99,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4040,10 +4040,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_23": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 121,
+    "base2": 138,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4064,10 +4064,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_24": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 162,
+    "base2": 185,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4088,10 +4088,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_25": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 209,
+    "base2": 238,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4112,10 +4112,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_26": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 262,
+    "base2": 299,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4136,10 +4136,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_27": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 321,
+    "base2": 367,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -4160,10 +4160,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_28": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 387,
+    "base2": 442,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4184,10 +4184,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_29": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 459,
+    "base2": 524,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4208,10 +4208,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_30": {
-    "base1": 1280,
-    "base2": 1025,
+    "base1": 14,
+    "base2": 16,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4244,10 +4244,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_31": {
-    "base1": 2561,
-    "base2": 2050,
+    "base1": 25,
+    "base2": 29,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4280,10 +4280,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_32": {
-    "base1": 3840,
-    "base2": 3075,
+    "base1": 44,
+    "base2": 50,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4316,10 +4316,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_33": {
-    "base1": 5121,
-    "base2": 4100,
+    "base1": 70,
+    "base2": 80,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4352,10 +4352,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_34": {
-    "base1": 5120,
-    "base2": 4100,
+    "base1": 70,
+    "base2": 80,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4388,10 +4388,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_35": {
-    "base1": 7680,
-    "base2": 6150,
+    "base1": 145,
+    "base2": 166,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4424,10 +4424,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_36": {
-    "base1": 7681,
-    "base2": 6150,
+    "base1": 145,
+    "base2": 166,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4460,10 +4460,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_37": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 194,
+    "base2": 222,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4496,10 +4496,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_38": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 194,
+    "base2": 222,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4532,10 +4532,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_39": {
-    "base1": 10241,
-    "base2": 8200,
+    "base1": 250,
+    "base2": 286,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4568,10 +4568,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_40": {
-    "base1": 10240,
-    "base2": 8200,
+    "base1": 250,
+    "base2": 286,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4604,10 +4604,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_41": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 314,
+    "base2": 359,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4640,10 +4640,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_42": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 314,
+    "base2": 359,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4676,10 +4676,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_43": {
-    "base1": 12800,
-    "base2": 10250,
+    "base1": 385,
+    "base2": 440,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4712,10 +4712,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_44": {
-    "base1": 12801,
-    "base2": 10250,
+    "base1": 385,
+    "base2": 440,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4748,10 +4748,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_45": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4784,10 +4784,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_46": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4820,10 +4820,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_47": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -4856,10 +4856,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_48": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -4892,10 +4892,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_49": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -4928,10 +4928,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_50": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -4964,10 +4964,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_51": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -5000,10 +5000,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_52": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5036,10 +5036,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_53": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 550,
+    "base2": 629,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -5072,10 +5072,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_54": {
-    "base1": 2561,
-    "base2": 2990,
+    "base1": 30,
+    "base2": 34,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5120,10 +5120,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_55": {
-    "base1": 3840,
-    "base2": 4485,
+    "base1": 51,
+    "base2": 59,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5168,10 +5168,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_56": {
-    "base1": 5121,
-    "base2": 5980,
+    "base1": 82,
+    "base2": 94,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5216,10 +5216,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_57": {
-    "base1": 5120,
-    "base2": 5980,
+    "base1": 82,
+    "base2": 94,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -5264,10 +5264,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_58": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 170,
+    "base2": 194,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -5312,10 +5312,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_59": {
-    "base1": 7681,
-    "base2": 8970,
+    "base1": 170,
+    "base2": 194,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5360,10 +5360,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_60": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 226,
+    "base2": 259,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5396,10 +5396,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_61": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 226,
+    "base2": 259,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5444,10 +5444,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_62": {
-    "base1": 10241,
-    "base2": 11960,
+    "base1": 292,
+    "base2": 334,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5492,10 +5492,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_63": {
-    "base1": 10240,
-    "base2": 11960,
+    "base1": 292,
+    "base2": 334,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5540,10 +5540,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_64": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 366,
+    "base2": 419,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5588,10 +5588,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_65": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 366,
+    "base2": 419,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5636,10 +5636,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_66": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 450,
+    "base2": 514,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5684,10 +5684,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_67": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 450,
+    "base2": 514,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5732,10 +5732,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_68": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5780,10 +5780,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_69": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5828,10 +5828,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_70": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5876,10 +5876,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_71": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -5924,10 +5924,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_72": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -5972,10 +5972,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_73": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6020,10 +6020,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_74": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6068,10 +6068,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_75": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6116,10 +6116,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_76": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6164,10 +6164,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_77": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 642,
+    "base2": 734,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6212,10 +6212,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_78": {
-    "base1": 3840,
-    "base2": 6540,
+    "base1": 63,
+    "base2": 71,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6260,10 +6260,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_79": {
-    "base1": 5120,
-    "base2": 8720,
+    "base1": 100,
+    "base2": 114,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6308,10 +6308,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_80": {
-    "base1": 6400,
-    "base2": 10900,
+    "base1": 148,
+    "base2": 168,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -6356,10 +6356,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_81": {
-    "base1": 7680,
-    "base2": 13080,
+    "base1": 206,
+    "base2": 235,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6404,10 +6404,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_82": {
-    "base1": 8960,
-    "base2": 15260,
+    "base1": 275,
+    "base2": 314,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6452,10 +6452,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_83": {
-    "base1": 10240,
-    "base2": 17440,
+    "base1": 355,
+    "base2": 405,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -6500,10 +6500,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_84": {
-    "base1": 11520,
-    "base2": 19620,
+    "base1": 445,
+    "base2": 508,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6548,10 +6548,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_85": {
-    "base1": 12800,
-    "base2": 21800,
+    "base1": 546,
+    "base2": 624,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6596,10 +6596,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_86": {
-    "base1": 14081,
-    "base2": 23980,
+    "base1": 658,
+    "base2": 751,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6644,10 +6644,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_87": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 780,
+    "base2": 891,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6692,10 +6692,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_88": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 780,
+    "base2": 891,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "dark",
     "elementName": "暗属性攻击",
     "options": [
@@ -6740,10 +6740,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_89": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 780,
+    "base2": 891,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6788,10 +6788,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_90": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 780,
+    "base2": 891,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6836,10 +6836,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_91": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1092,
+    "base2": 1247,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6884,10 +6884,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_92": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 780,
+    "base2": 891,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -6932,10 +6932,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_93": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 771,
+    "base2": 880,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -6980,10 +6980,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_94": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 771,
+    "base2": 880,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -7028,10 +7028,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_95": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 771,
+    "base2": 880,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7076,10 +7076,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_96": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 771,
+    "base2": 880,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7124,10 +7124,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_97": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1326,
+    "base2": 1515,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7172,10 +7172,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_98": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1560,
+    "base2": 1782,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7220,10 +7220,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_99": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1716,
+    "base2": 1960,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -7268,10 +7268,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_100": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1950,
+    "base2": 2228,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7316,10 +7316,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_101": {
-    "base1": 4609,
-    "base2": 2538,
+    "base1": 49,
+    "base2": 56,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7352,18 +7352,18 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "1_102": {
-    "base1": 768,
-    "base2": 300,
+    "base1": 8,
+    "base2": 9,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_0": {
-    "base1": 0,
-    "base2": 0,
+    "base1": 8,
+    "base2": 4,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -7372,140 +7372,140 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "2_1": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 8,
+    "base2": 4,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 11,
+    "base2": 7,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_3": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 21,
+    "base2": 13,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_4": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 38,
+    "base2": 24,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_5": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 61,
+    "base2": 40,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_6": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 91,
+    "base2": 60,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_7": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 128,
+    "base2": 84,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_8": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 171,
+    "base2": 113,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_9": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 221,
+    "base2": 147,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_10": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 278,
+    "base2": 184,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_11": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 341,
+    "base2": 227,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_12": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 411,
+    "base2": 273,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_13": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 488,
+    "base2": 324,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "2_14": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 14,
+    "base2": 8,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7526,10 +7526,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_15": {
-    "base1": 1536,
-    "base2": 846,
+    "base1": 16,
+    "base2": 10,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7550,10 +7550,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_16": {
-    "base1": 1792,
-    "base2": 987,
+    "base1": 18,
+    "base2": 11,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7574,10 +7574,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_17": {
-    "base1": 2304,
-    "base2": 1269,
+    "base1": 23,
+    "base2": 15,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7598,10 +7598,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_18": {
-    "base1": 2561,
-    "base2": 1410,
+    "base1": 26,
+    "base2": 17,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7622,10 +7622,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_19": {
-    "base1": 3072,
-    "base2": 1692,
+    "base1": 34,
+    "base2": 22,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7646,10 +7646,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_20": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 47,
+    "base2": 31,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7670,10 +7670,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_21": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 76,
+    "base2": 50,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7694,10 +7694,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_22": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 114,
+    "base2": 75,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7718,10 +7718,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_23": {
-    "base1": 7681,
-    "base2": 4230,
+    "base1": 160,
+    "base2": 106,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7742,10 +7742,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_24": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 214,
+    "base2": 142,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7766,10 +7766,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_25": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 276,
+    "base2": 183,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7790,10 +7790,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_26": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 347,
+    "base2": 231,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7814,10 +7814,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_27": {
-    "base1": 12801,
-    "base2": 7050,
+    "base1": 426,
+    "base2": 283,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7838,10 +7838,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_28": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 514,
+    "base2": 342,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7862,10 +7862,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_29": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 610,
+    "base2": 406,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7886,10 +7886,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_30": {
-    "base1": 1280,
-    "base2": 1025,
+    "base1": 17,
+    "base2": 10,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7922,10 +7922,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_31": {
-    "base1": 2561,
-    "base2": 2050,
+    "base1": 32,
+    "base2": 20,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7958,10 +7958,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_32": {
-    "base1": 3840,
-    "base2": 3075,
+    "base1": 57,
+    "base2": 37,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -7994,10 +7994,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_33": {
-    "base1": 5121,
-    "base2": 4100,
+    "base1": 92,
+    "base2": 60,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8030,10 +8030,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_34": {
-    "base1": 5120,
-    "base2": 4100,
+    "base1": 92,
+    "base2": 60,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8066,10 +8066,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_35": {
-    "base1": 7680,
-    "base2": 6150,
+    "base1": 192,
+    "base2": 127,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "dark",
     "elementName": "暗属性攻击",
     "options": [
@@ -8102,10 +8102,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_36": {
-    "base1": 7681,
-    "base2": 6150,
+    "base1": 192,
+    "base2": 127,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8138,10 +8138,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_37": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 257,
+    "base2": 170,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8174,10 +8174,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_38": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 257,
+    "base2": 170,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8210,10 +8210,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_39": {
-    "base1": 10241,
-    "base2": 8200,
+    "base1": 332,
+    "base2": 220,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8246,10 +8246,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_40": {
-    "base1": 10240,
-    "base2": 8200,
+    "base1": 332,
+    "base2": 220,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8282,10 +8282,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_41": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 417,
+    "base2": 277,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8318,10 +8318,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_42": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 417,
+    "base2": 277,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8354,10 +8354,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_43": {
-    "base1": 12800,
-    "base2": 10250,
+    "base1": 512,
+    "base2": 340,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8390,10 +8390,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_44": {
-    "base1": 12801,
-    "base2": 10250,
+    "base1": 512,
+    "base2": 340,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8426,10 +8426,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_45": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8462,10 +8462,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_46": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8498,10 +8498,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_47": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -8534,10 +8534,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_48": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8570,10 +8570,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_49": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8606,10 +8606,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_50": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8642,10 +8642,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_51": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8678,10 +8678,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_52": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8714,10 +8714,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_53": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 732,
+    "base2": 487,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8750,10 +8750,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_54": {
-    "base1": 2561,
-    "base2": 2990,
+    "base1": 37,
+    "base2": 23,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8798,10 +8798,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_55": {
-    "base1": 3840,
-    "base2": 4485,
+    "base1": 66,
+    "base2": 43,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8846,10 +8846,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_56": {
-    "base1": 5121,
-    "base2": 5980,
+    "base1": 107,
+    "base2": 70,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -8894,10 +8894,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_57": {
-    "base1": 5120,
-    "base2": 5980,
+    "base1": 107,
+    "base2": 70,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8942,10 +8942,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_58": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 224,
+    "base2": 148,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -8990,10 +8990,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_59": {
-    "base1": 7681,
-    "base2": 8970,
+    "base1": 224,
+    "base2": 148,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "dark",
     "elementName": "暗属性攻击",
     "options": [
@@ -9038,10 +9038,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_60": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 299,
+    "base2": 198,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9086,10 +9086,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_61": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 299,
+    "base2": 198,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9134,10 +9134,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_62": {
-    "base1": 10241,
-    "base2": 11960,
+    "base1": 387,
+    "base2": 257,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9182,10 +9182,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_63": {
-    "base1": 10240,
-    "base2": 11960,
+    "base1": 387,
+    "base2": 257,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9230,10 +9230,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_64": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 486,
+    "base2": 323,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9278,10 +9278,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_65": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 486,
+    "base2": 323,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9326,10 +9326,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_66": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 597,
+    "base2": 397,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9374,10 +9374,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_67": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 597,
+    "base2": 397,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9422,10 +9422,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_68": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9470,10 +9470,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_69": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9518,10 +9518,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_70": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9566,10 +9566,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_71": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -9614,10 +9614,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_72": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9662,10 +9662,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_73": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9710,10 +9710,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_74": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9758,10 +9758,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_75": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9806,10 +9806,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_76": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9854,10 +9854,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_77": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 854,
+    "base2": 568,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9902,10 +9902,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_78": {
-    "base1": 3840,
-    "base2": 6540,
+    "base1": 80,
+    "base2": 52,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -9950,10 +9950,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_79": {
-    "base1": 5120,
-    "base2": 8720,
+    "base1": 130,
+    "base2": 85,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -9998,10 +9998,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_80": {
-    "base1": 6400,
-    "base2": 10900,
+    "base1": 194,
+    "base2": 128,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "dark",
     "elementName": "暗属性攻击",
     "options": [
@@ -10046,10 +10046,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_81": {
-    "base1": 7680,
-    "base2": 13080,
+    "base1": 272,
+    "base2": 180,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10094,10 +10094,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_82": {
-    "base1": 8960,
-    "base2": 15260,
+    "base1": 364,
+    "base2": 241,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -10142,10 +10142,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_83": {
-    "base1": 10240,
-    "base2": 17440,
+    "base1": 470,
+    "base2": 312,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10190,10 +10190,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_84": {
-    "base1": 11520,
-    "base2": 19620,
+    "base1": 590,
+    "base2": 392,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10238,10 +10238,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_85": {
-    "base1": 12800,
-    "base2": 21800,
+    "base1": 725,
+    "base2": 482,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10286,10 +10286,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_86": {
-    "base1": 14081,
-    "base2": 23980,
+    "base1": 874,
+    "base2": 581,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10334,10 +10334,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_87": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1037,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10382,10 +10382,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_88": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 1037,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10430,10 +10430,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_89": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 1037,
+    "base2": 690,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10478,10 +10478,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_90": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 1037,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10526,10 +10526,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_91": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1451,
+    "base2": 966,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10574,10 +10574,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_92": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 1037,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10610,10 +10610,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_93": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 1024,
+    "base2": 682,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10658,10 +10658,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_94": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 1024,
+    "base2": 682,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10706,10 +10706,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_95": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 1024,
+    "base2": 682,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10754,10 +10754,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_96": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 1024,
+    "base2": 682,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10802,10 +10802,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_97": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1762,
+    "base2": 690,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10850,10 +10850,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_98": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 2074,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10898,10 +10898,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_99": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 2281,
+    "base2": 690,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10946,10 +10946,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "2_100": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 2592,
+    "base2": 690,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -10982,8 +10982,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_0": {
-    "base1": 1,
-    "base2": 0,
+    "base1": 8,
+    "base2": 4,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -10992,140 +10992,140 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "3_1": {
-    "base1": 257,
-    "base2": 100,
+    "base1": 8,
+    "base2": 4,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_2": {
-    "base1": 1281,
-    "base2": 500,
+    "base1": 10,
+    "base2": 7,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_3": {
-    "base1": 2561,
-    "base2": 1000,
+    "base1": 19,
+    "base2": 14,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_4": {
-    "base1": 4608,
-    "base2": 1800,
+    "base1": 45,
+    "base2": 37,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_5": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 53,
+    "base2": 44,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_6": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 79,
+    "base2": 67,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_7": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 110,
+    "base2": 94,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_8": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 148,
+    "base2": 127,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_9": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 190,
+    "base2": 164,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_10": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 239,
+    "base2": 207,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_11": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 293,
+    "base2": 254,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "3_12": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 353,
+    "base2": 307,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_13": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 419,
+    "base2": 364,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [],
     "lines": []
   },
   "3_14": {
-    "base1": 1281,
-    "base2": 705,
+    "base1": 13,
+    "base2": 7,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11146,10 +11146,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_15": {
-    "base1": 1537,
-    "base2": 846,
+    "base1": 15,
+    "base2": 8,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11170,10 +11170,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_16": {
-    "base1": 1793,
-    "base2": 987,
+    "base1": 17,
+    "base2": 9,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11194,10 +11194,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_17": {
-    "base1": 2305,
-    "base2": 1269,
+    "base1": 21,
+    "base2": 12,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11218,10 +11218,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_18": {
-    "base1": 2561,
-    "base2": 1410,
+    "base1": 24,
+    "base2": 14,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11242,10 +11242,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_19": {
-    "base1": 3073,
-    "base2": 1692,
+    "base1": 30,
+    "base2": 19,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11266,10 +11266,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_20": {
-    "base1": 4608,
-    "base2": 2538,
+    "base1": 56,
+    "base2": 37,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11290,10 +11290,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_21": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 67,
+    "base2": 44,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11314,10 +11314,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_22": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 99,
+    "base2": 67,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11338,10 +11338,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_23": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 138,
+    "base2": 94,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11362,10 +11362,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_24": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 185,
+    "base2": 127,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11386,10 +11386,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_25": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 238,
+    "base2": 164,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11410,10 +11410,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_26": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 299,
+    "base2": 207,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11434,10 +11434,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_27": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 367,
+    "base2": 254,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11458,10 +11458,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_28": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 442,
+    "base2": 307,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11482,10 +11482,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_29": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 524,
+    "base2": 364,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11506,10 +11506,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_30": {
-    "base1": 1281,
-    "base2": 1025,
+    "base1": 16,
+    "base2": 9,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11530,10 +11530,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_31": {
-    "base1": 2561,
-    "base2": 2050,
+    "base1": 29,
+    "base2": 18,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11554,10 +11554,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_32": {
-    "base1": 4608,
-    "base2": 3690,
+    "base1": 67,
+    "base2": 46,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11590,10 +11590,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_33": {
-    "base1": 5120,
-    "base2": 4100,
+    "base1": 80,
+    "base2": 56,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11626,10 +11626,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_34": {
-    "base1": 5121,
-    "base2": 4100,
+    "base1": 80,
+    "base2": 56,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11662,10 +11662,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_35": {
-    "base1": 7680,
-    "base2": 6150,
+    "base1": 166,
+    "base2": 118,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11698,10 +11698,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_36": {
-    "base1": 7681,
-    "base2": 6150,
+    "base1": 166,
+    "base2": 118,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11734,10 +11734,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_37": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 222,
+    "base2": 159,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11770,10 +11770,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_38": {
-    "base1": 8960,
-    "base2": 7175,
+    "base1": 222,
+    "base2": 159,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11806,10 +11806,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_39": {
-    "base1": 10241,
-    "base2": 8200,
+    "base1": 286,
+    "base2": 206,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11842,10 +11842,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_40": {
-    "base1": 10240,
-    "base2": 8200,
+    "base1": 286,
+    "base2": 206,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11878,10 +11878,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_41": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 359,
+    "base2": 259,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11914,10 +11914,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_42": {
-    "base1": 11520,
-    "base2": 9225,
+    "base1": 359,
+    "base2": 259,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -11950,10 +11950,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_43": {
-    "base1": 12800,
-    "base2": 10250,
+    "base1": 440,
+    "base2": 318,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -11986,10 +11986,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_44": {
-    "base1": 12801,
-    "base2": 10250,
+    "base1": 440,
+    "base2": 318,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12022,10 +12022,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_45": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12058,10 +12058,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_46": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12094,10 +12094,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_47": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12130,10 +12130,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_48": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12166,10 +12166,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_49": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12202,10 +12202,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_50": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12238,10 +12238,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_51": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "fire",
     "elementName": "火属性攻击",
     "options": [
@@ -12274,10 +12274,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_52": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12310,10 +12310,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_53": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 629,
+    "base2": 456,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "ice",
     "elementName": "冰属性攻击",
     "options": [
@@ -12346,10 +12346,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_54": {
-    "base1": 1281,
-    "base2": 1495,
+    "base1": 19,
+    "base2": 12,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12382,10 +12382,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_55": {
-    "base1": 2561,
-    "base2": 2990,
+    "base1": 34,
+    "base2": 25,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12418,10 +12418,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_56": {
-    "base1": 4608,
-    "base2": 5382,
+    "base1": 78,
+    "base2": 65,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12466,10 +12466,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_57": {
-    "base1": 5121,
-    "base2": 5980,
+    "base1": 94,
+    "base2": 78,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12514,10 +12514,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_58": {
-    "base1": 5120,
-    "base2": 5980,
+    "base1": 94,
+    "base2": 78,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12562,10 +12562,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_59": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 194,
+    "base2": 165,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12610,10 +12610,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_60": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 194,
+    "base2": 165,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12658,10 +12658,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_61": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 259,
+    "base2": 222,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12706,10 +12706,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_62": {
-    "base1": 8960,
-    "base2": 10465,
+    "base1": 259,
+    "base2": 222,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -12754,10 +12754,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_63": {
-    "base1": 10241,
-    "base2": 11960,
+    "base1": 334,
+    "base2": 288,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12802,10 +12802,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_64": {
-    "base1": 10240,
-    "base2": 11960,
+    "base1": 334,
+    "base2": 288,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12850,10 +12850,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_65": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 419,
+    "base2": 362,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12898,10 +12898,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_66": {
-    "base1": 11520,
-    "base2": 13455,
+    "base1": 419,
+    "base2": 362,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12946,10 +12946,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_67": {
-    "base1": 12800,
-    "base2": 14950,
+    "base1": 514,
+    "base2": 445,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -12994,10 +12994,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_68": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 514,
+    "base2": 445,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13042,10 +13042,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_69": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13090,10 +13090,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_70": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13138,10 +13138,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_71": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13186,10 +13186,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_72": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13234,10 +13234,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_73": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13282,10 +13282,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_74": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13330,10 +13330,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_75": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13378,10 +13378,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_76": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13426,10 +13426,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_77": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 734,
+    "base2": 638,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13474,10 +13474,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_78": {
-    "base1": 4608,
-    "base2": 7848,
+    "base1": 95,
+    "base2": 79,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13522,10 +13522,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_79": {
-    "base1": 5120,
-    "base2": 8720,
+    "base1": 114,
+    "base2": 95,
     "stat4": 0,
-    "durability": 3,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13570,10 +13570,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_80": {
-    "base1": 6400,
-    "base2": 10900,
+    "base1": 168,
+    "base2": 143,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13618,10 +13618,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_81": {
-    "base1": 7680,
-    "base2": 13080,
+    "base1": 235,
+    "base2": 201,
     "stat4": 0,
-    "durability": 2,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13666,10 +13666,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_82": {
-    "base1": 8960,
-    "base2": 15260,
+    "base1": 314,
+    "base2": 270,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13714,10 +13714,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_83": {
-    "base1": 10240,
-    "base2": 17440,
+    "base1": 405,
+    "base2": 350,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13762,10 +13762,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_84": {
-    "base1": 11520,
-    "base2": 19620,
+    "base1": 508,
+    "base2": 440,
     "stat4": 0,
-    "durability": 1,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13810,10 +13810,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_85": {
-    "base1": 12800,
-    "base2": 21800,
+    "base1": 624,
+    "base2": 541,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13858,10 +13858,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_86": {
-    "base1": 14081,
-    "base2": 23980,
+    "base1": 751,
+    "base2": 653,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -13906,10 +13906,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_87": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 891,
+    "base2": 775,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -13954,10 +13954,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_88": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 891,
+    "base2": 775,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -14002,10 +14002,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_89": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 891,
+    "base2": 775,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -14050,10 +14050,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_90": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 891,
+    "base2": 775,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14098,10 +14098,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_91": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1247,
+    "base2": 1085,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14146,10 +14146,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_92": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 891,
+    "base2": 775,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14194,10 +14194,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_93": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 880,
+    "base2": 766,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -14242,10 +14242,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_94": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 880,
+    "base2": 766,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -14290,10 +14290,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_95": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 880,
+    "base2": 766,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14338,10 +14338,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_96": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 880,
+    "base2": 766,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14386,10 +14386,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_97": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1515,
+    "base2": 1317,
     "stat4": 0,
-    "durability": 4,
+    "durability": 35,
     "element": "none",
     "elementName": "",
     "options": [
@@ -14434,10 +14434,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_98": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1782,
+    "base2": 1550,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14482,10 +14482,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_99": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 1960,
+    "base2": 1705,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14530,10 +14530,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "3_100": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 2228,
+    "base2": 1938,
     "stat4": 0,
-    "durability": 0,
+    "durability": 35,
     "element": "light",
     "elementName": "光属性攻击",
     "options": [
@@ -14588,430 +14588,430 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "4_1": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 17,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 19,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_3": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 21,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_4": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 30,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_5": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 33,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_6": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 36,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_7": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 42,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_8": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 47,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_9": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 52,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_10": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 57,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_11": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 55,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_12": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 61,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_13": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 67,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_14": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 73,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_15": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 68,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_16": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 75,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_17": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 83,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_18": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 90,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_19": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 80,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_20": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 89,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_21": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 98,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_22": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 107,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_23": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 93,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_24": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 103,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_25": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 113,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_26": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 124,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_27": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 105,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_28": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 117,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_29": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 129,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_30": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 141,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_31": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 118,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_32": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 131,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_33": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 144,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_34": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 157,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_35": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 131,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_36": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 145,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_37": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 160,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_38": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 174,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_39": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 143,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_40": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 159,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_41": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 175,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_42": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 191,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_43": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 20,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15032,10 +15032,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_44": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 22,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15056,10 +15056,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_45": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 24,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15080,10 +15080,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_46": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 34,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15104,10 +15104,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_47": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 38,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15128,10 +15128,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_48": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 42,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15152,10 +15152,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_49": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 48,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15176,10 +15176,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_50": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 54,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15200,10 +15200,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_51": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 59,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15224,10 +15224,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_52": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 65,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15248,10 +15248,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_53": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 63,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15272,10 +15272,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_54": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 70,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15296,10 +15296,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_55": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 77,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15320,10 +15320,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_56": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 84,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15344,10 +15344,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_57": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 77,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15368,10 +15368,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_58": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 86,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15392,10 +15392,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_59": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 95,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15416,10 +15416,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_60": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 103,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15440,10 +15440,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_61": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 92,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15464,10 +15464,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_62": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 102,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15488,10 +15488,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_63": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 112,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15512,10 +15512,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_64": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 122,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15536,10 +15536,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_65": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 106,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15560,10 +15560,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_66": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 118,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15584,10 +15584,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_67": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 130,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15608,10 +15608,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_68": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 142,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15632,10 +15632,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_69": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 120,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15656,10 +15656,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_70": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 134,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15680,10 +15680,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_71": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 147,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15704,10 +15704,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_72": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 161,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15728,10 +15728,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_73": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 135,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15752,10 +15752,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_74": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 150,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15776,10 +15776,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_75": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 165,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15800,10 +15800,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_76": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 180,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15824,10 +15824,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_77": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 149,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15848,10 +15848,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_78": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 166,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15872,10 +15872,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_79": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 183,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15896,10 +15896,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_80": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 199,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15920,10 +15920,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_81": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 164,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15944,10 +15944,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_82": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 182,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15968,10 +15968,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_83": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 200,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -15992,10 +15992,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_84": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 218,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16016,10 +16016,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_85": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 1,
-    "durability": 0,
+    "base1": 38,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16052,10 +16052,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_86": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 2,
-    "durability": 1,
+    "base1": 43,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16088,10 +16088,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_87": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 3,
-    "durability": 2,
+    "base1": 47,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16124,10 +16124,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_88": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 4,
-    "durability": 3,
+    "base1": 51,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16160,10 +16160,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_89": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 5,
-    "durability": 0,
+    "base1": 71,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16196,10 +16196,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_90": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 6,
-    "durability": 1,
+    "base1": 79,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16232,10 +16232,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_91": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 7,
-    "durability": 2,
+    "base1": 87,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16268,10 +16268,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_92": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 8,
-    "durability": 3,
+    "base1": 95,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16304,10 +16304,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_93": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 9,
-    "durability": 0,
+    "base1": 103,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16340,10 +16340,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_94": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 10,
-    "durability": 1,
+    "base1": 115,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16376,10 +16376,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_95": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 11,
-    "durability": 2,
+    "base1": 126,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16412,10 +16412,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_96": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 12,
-    "durability": 3,
+    "base1": 138,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16448,10 +16448,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_97": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 13,
-    "durability": 0,
+    "base1": 136,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16484,10 +16484,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_98": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 14,
-    "durability": 1,
+    "base1": 151,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16520,10 +16520,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_99": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 15,
-    "durability": 2,
+    "base1": 166,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16556,10 +16556,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_100": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 16,
-    "durability": 3,
+    "base1": 181,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16592,10 +16592,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_101": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 17,
-    "durability": 0,
+    "base1": 168,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16628,10 +16628,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_102": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 18,
-    "durability": 1,
+    "base1": 187,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16664,10 +16664,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_103": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 19,
-    "durability": 2,
+    "base1": 205,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16700,10 +16700,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_104": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 20,
-    "durability": 3,
+    "base1": 224,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16736,10 +16736,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_105": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 21,
-    "durability": 0,
+    "base1": 200,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16772,10 +16772,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_106": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 22,
-    "durability": 1,
+    "base1": 223,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16808,10 +16808,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_107": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 23,
-    "durability": 2,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16844,10 +16844,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_108": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 24,
-    "durability": 3,
+    "base1": 267,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16880,10 +16880,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_109": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 25,
-    "durability": 0,
+    "base1": 43,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16928,10 +16928,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_110": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 26,
-    "durability": 1,
+    "base1": 48,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -16976,10 +16976,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_111": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 27,
-    "durability": 2,
+    "base1": 52,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17024,10 +17024,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_112": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 28,
-    "durability": 3,
+    "base1": 57,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17072,10 +17072,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_113": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 29,
-    "durability": 0,
+    "base1": 79,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17120,10 +17120,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_114": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 30,
-    "durability": 1,
+    "base1": 88,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17168,10 +17168,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_115": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 31,
-    "durability": 2,
+    "base1": 96,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17216,10 +17216,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_116": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 32,
-    "durability": 3,
+    "base1": 105,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17264,10 +17264,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_117": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 33,
-    "durability": 0,
+    "base1": 115,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17312,10 +17312,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_118": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 34,
-    "durability": 1,
+    "base1": 128,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17360,10 +17360,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_119": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 35,
-    "durability": 2,
+    "base1": 140,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17408,10 +17408,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_120": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 36,
-    "durability": 3,
+    "base1": 153,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17456,10 +17456,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_121": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 37,
-    "durability": 0,
+    "base1": 151,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17504,10 +17504,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_122": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 38,
-    "durability": 1,
+    "base1": 168,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17552,10 +17552,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_123": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 39,
-    "durability": 2,
+    "base1": 184,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17600,10 +17600,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_124": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 40,
-    "durability": 3,
+    "base1": 201,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17648,10 +17648,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_125": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 41,
-    "durability": 0,
+    "base1": 187,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17696,10 +17696,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_126": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 42,
-    "durability": 1,
+    "base1": 208,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17744,10 +17744,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_127": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 43,
-    "durability": 2,
+    "base1": 228,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17792,10 +17792,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_128": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 44,
-    "durability": 3,
+    "base1": 249,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17840,10 +17840,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_129": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 45,
-    "durability": 0,
+    "base1": 223,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17888,10 +17888,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_130": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 46,
-    "durability": 1,
+    "base1": 248,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17936,10 +17936,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_131": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 47,
-    "durability": 2,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -17984,10 +17984,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_132": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 48,
-    "durability": 3,
+    "base1": 297,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18032,10 +18032,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_133": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 49,
-    "durability": 0,
+    "base1": 106,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18080,10 +18080,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_134": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 50,
-    "durability": 1,
+    "base1": 118,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18128,10 +18128,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_135": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 51,
-    "durability": 2,
+    "base1": 130,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18176,10 +18176,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_136": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 52,
-    "durability": 3,
+    "base1": 142,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18224,10 +18224,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_137": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 53,
-    "durability": 0,
+    "base1": 146,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18272,10 +18272,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_138": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 54,
-    "durability": 1,
+    "base1": 162,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18320,10 +18320,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_139": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 55,
-    "durability": 2,
+    "base1": 179,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18368,10 +18368,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_140": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 56,
-    "durability": 3,
+    "base1": 195,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18416,10 +18416,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_141": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 57,
-    "durability": 0,
+    "base1": 186,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18464,10 +18464,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_142": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 58,
-    "durability": 1,
+    "base1": 206,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18512,10 +18512,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_143": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 59,
-    "durability": 2,
+    "base1": 227,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18560,10 +18560,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_144": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 60,
-    "durability": 3,
+    "base1": 248,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18608,10 +18608,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_145": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 61,
-    "durability": 0,
+    "base1": 225,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18656,10 +18656,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_146": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 62,
-    "durability": 1,
+    "base1": 250,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18704,10 +18704,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_147": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 63,
-    "durability": 2,
+    "base1": 275,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18752,10 +18752,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_148": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 64,
-    "durability": 3,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18800,10 +18800,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_149": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 65,
-    "durability": 0,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18848,10 +18848,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_150": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 66,
-    "durability": 1,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18896,10 +18896,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_151": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 67,
-    "durability": 2,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18944,10 +18944,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_152": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 68,
-    "durability": 3,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -18992,10 +18992,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_153": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 69,
-    "durability": 0,
+    "base1": 294,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19040,10 +19040,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_154": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 70,
-    "durability": 1,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19088,10 +19088,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_155": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 71,
-    "durability": 2,
+    "base1": 360,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19136,10 +19136,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_156": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 72,
-    "durability": 3,
+    "base1": 392,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19184,20 +19184,20 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_157": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 9,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "4_158": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 73,
-    "durability": 0,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19242,10 +19242,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_159": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 74,
-    "durability": 1,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19290,10 +19290,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_160": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 75,
-    "durability": 2,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19338,10 +19338,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_161": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 76,
-    "durability": 3,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19386,10 +19386,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_162": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 77,
-    "durability": 0,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19434,10 +19434,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_163": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 78,
-    "durability": 1,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19482,10 +19482,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_164": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 79,
-    "durability": 2,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19530,10 +19530,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_165": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 80,
-    "durability": 3,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19578,10 +19578,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_166": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 81,
-    "durability": 0,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19626,10 +19626,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_167": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 82,
-    "durability": 1,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19674,10 +19674,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_168": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 83,
-    "durability": 2,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19722,10 +19722,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_169": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 84,
-    "durability": 3,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19770,10 +19770,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_170": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 85,
-    "durability": 0,
+    "base1": 245,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19818,10 +19818,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_171": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 86,
-    "durability": 1,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19866,10 +19866,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_172": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 87,
-    "durability": 2,
+    "base1": 300,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19914,10 +19914,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_173": {
-    "base1": 15361,
-    "base2": 17940,
-    "stat4": 88,
-    "durability": 3,
+    "base1": 327,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -19962,10 +19962,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_174": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 89,
-    "durability": 0,
+    "base1": 319,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20010,10 +20010,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_175": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 90,
-    "durability": 1,
+    "base1": 354,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20058,10 +20058,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_176": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 91,
-    "durability": 2,
+    "base1": 390,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20106,10 +20106,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_177": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 92,
-    "durability": 3,
+    "base1": 425,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20154,10 +20154,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_178": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 93,
-    "durability": 0,
+    "base1": 343,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20202,10 +20202,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_179": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 94,
-    "durability": 1,
+    "base1": 381,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20250,10 +20250,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_180": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 95,
-    "durability": 2,
+    "base1": 420,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20298,10 +20298,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_181": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 96,
-    "durability": 3,
+    "base1": 458,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20346,10 +20346,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_182": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 97,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20394,10 +20394,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_183": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 98,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20442,10 +20442,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_184": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 99,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20490,10 +20490,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_185": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 100,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20538,10 +20538,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_186": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 101,
-    "durability": 0,
+    "base1": 392,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20586,10 +20586,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_187": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 102,
-    "durability": 1,
+    "base1": 436,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20634,10 +20634,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_188": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 103,
-    "durability": 2,
+    "base1": 480,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20682,10 +20682,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "4_189": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 104,
-    "durability": 3,
+    "base1": 523,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -20740,430 +20740,430 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "5_1": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 44,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 49,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_3": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 53,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_4": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 75,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_5": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 84,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_6": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 92,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_7": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 107,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_8": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 119,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_9": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 130,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_10": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 142,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_11": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 138,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_12": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 154,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_13": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 169,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_14": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 184,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_15": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 170,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_16": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 189,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_17": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 207,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_18": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 226,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_19": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 201,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_20": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 224,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_21": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 246,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_22": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 268,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_23": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 233,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_24": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 259,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_25": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 284,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_26": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 310,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_27": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 264,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_28": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 294,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_29": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 323,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_30": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 352,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_31": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 296,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_32": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 329,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_33": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 361,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_34": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 394,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_35": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 327,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_36": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 364,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_37": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 400,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_38": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 436,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_39": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 359,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_40": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 399,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_41": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 438,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_42": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 478,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_43": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 50,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21184,10 +21184,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_44": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 56,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21208,10 +21208,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_45": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 61,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21232,10 +21232,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_46": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 86,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21256,10 +21256,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_47": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 96,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21280,10 +21280,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_48": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 105,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21304,10 +21304,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_49": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 122,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21328,10 +21328,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_50": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 136,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21352,10 +21352,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_51": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 149,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21376,10 +21376,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_52": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 163,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21400,10 +21400,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_53": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 158,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21424,10 +21424,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_54": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 176,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21448,10 +21448,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_55": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 193,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21472,10 +21472,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_56": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 211,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21496,10 +21496,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_57": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 194,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21520,10 +21520,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_58": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 216,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21544,10 +21544,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_59": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 237,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21568,10 +21568,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_60": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 259,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21592,10 +21592,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_61": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 230,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21616,10 +21616,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_62": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 256,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21640,10 +21640,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_63": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 281,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21664,10 +21664,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_64": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 307,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21688,10 +21688,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_65": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 266,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21712,10 +21712,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_66": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 296,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21736,10 +21736,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_67": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 325,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21760,10 +21760,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_68": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 355,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21784,10 +21784,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_69": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 302,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21808,10 +21808,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_70": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 336,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21832,10 +21832,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_71": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 369,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21856,10 +21856,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_72": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 403,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21880,10 +21880,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_73": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 338,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21904,10 +21904,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_74": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 376,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21928,10 +21928,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_75": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 413,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21952,10 +21952,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_76": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 451,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -21976,10 +21976,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_77": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 374,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22000,10 +22000,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_78": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 416,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22024,10 +22024,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_79": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 457,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22048,10 +22048,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_80": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 499,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22072,10 +22072,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_81": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 410,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22096,10 +22096,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_82": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 456,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22120,10 +22120,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_83": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 501,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22144,10 +22144,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_84": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 547,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22168,10 +22168,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_85": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 1,
-    "durability": 0,
+    "base1": 97,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22204,10 +22204,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_86": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 2,
-    "durability": 1,
+    "base1": 108,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22240,10 +22240,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_87": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 3,
-    "durability": 2,
+    "base1": 118,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22276,10 +22276,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_88": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 4,
-    "durability": 3,
+    "base1": 129,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22312,10 +22312,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_89": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 5,
-    "durability": 0,
+    "base1": 178,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22348,10 +22348,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_90": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 6,
-    "durability": 1,
+    "base1": 198,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22384,10 +22384,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_91": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 7,
-    "durability": 2,
+    "base1": 217,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22420,10 +22420,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_92": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 8,
-    "durability": 3,
+    "base1": 237,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22456,10 +22456,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_93": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 9,
-    "durability": 0,
+    "base1": 259,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22492,10 +22492,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_94": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 10,
-    "durability": 1,
+    "base1": 288,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22528,10 +22528,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_95": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 11,
-    "durability": 2,
+    "base1": 316,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22564,10 +22564,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_96": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 12,
-    "durability": 3,
+    "base1": 345,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22600,10 +22600,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_97": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 13,
-    "durability": 0,
+    "base1": 340,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22636,10 +22636,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_98": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 14,
-    "durability": 1,
+    "base1": 378,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22672,10 +22672,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_99": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 15,
-    "durability": 2,
+    "base1": 415,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22708,10 +22708,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_100": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 16,
-    "durability": 3,
+    "base1": 453,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22744,10 +22744,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_101": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 17,
-    "durability": 0,
+    "base1": 421,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22780,10 +22780,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_102": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 18,
-    "durability": 1,
+    "base1": 468,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22816,10 +22816,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_103": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 19,
-    "durability": 2,
+    "base1": 514,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22852,10 +22852,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_104": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 20,
-    "durability": 3,
+    "base1": 561,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22888,10 +22888,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_105": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 21,
-    "durability": 0,
+    "base1": 502,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22924,10 +22924,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_106": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 22,
-    "durability": 1,
+    "base1": 558,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22960,10 +22960,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_107": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 23,
-    "durability": 2,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -22996,10 +22996,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_108": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 24,
-    "durability": 3,
+    "base1": 669,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23032,10 +23032,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_109": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 25,
-    "durability": 0,
+    "base1": 108,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23080,10 +23080,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_110": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 26,
-    "durability": 1,
+    "base1": 120,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23128,10 +23128,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_111": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 27,
-    "durability": 2,
+    "base1": 132,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23176,10 +23176,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_112": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 28,
-    "durability": 3,
+    "base1": 144,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23224,10 +23224,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_113": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 29,
-    "durability": 0,
+    "base1": 198,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23272,10 +23272,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_114": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 30,
-    "durability": 1,
+    "base1": 220,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23320,10 +23320,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_115": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 31,
-    "durability": 2,
+    "base1": 242,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23368,10 +23368,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_116": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 32,
-    "durability": 3,
+    "base1": 264,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23416,10 +23416,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_117": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 33,
-    "durability": 0,
+    "base1": 288,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23464,10 +23464,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_118": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 34,
-    "durability": 1,
+    "base1": 320,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23512,10 +23512,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_119": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 35,
-    "durability": 2,
+    "base1": 352,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23560,10 +23560,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_120": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 36,
-    "durability": 3,
+    "base1": 384,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23608,10 +23608,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_121": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 37,
-    "durability": 0,
+    "base1": 378,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23656,10 +23656,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_122": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 38,
-    "durability": 1,
+    "base1": 420,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23704,10 +23704,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_123": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 39,
-    "durability": 2,
+    "base1": 462,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23752,10 +23752,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_124": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 40,
-    "durability": 3,
+    "base1": 504,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23800,10 +23800,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_125": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 41,
-    "durability": 0,
+    "base1": 468,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23848,10 +23848,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_126": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 42,
-    "durability": 1,
+    "base1": 520,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23896,10 +23896,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_127": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 43,
-    "durability": 2,
+    "base1": 572,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23944,10 +23944,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_128": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 44,
-    "durability": 3,
+    "base1": 624,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -23992,10 +23992,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_129": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 45,
-    "durability": 0,
+    "base1": 558,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24040,10 +24040,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_130": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 46,
-    "durability": 1,
+    "base1": 620,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24088,10 +24088,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_131": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 47,
-    "durability": 2,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24136,10 +24136,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_132": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 48,
-    "durability": 3,
+    "base1": 744,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24184,10 +24184,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_133": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 49,
-    "durability": 0,
+    "base1": 267,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24232,10 +24232,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_134": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 50,
-    "durability": 1,
+    "base1": 297,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24280,10 +24280,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_135": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 51,
-    "durability": 2,
+    "base1": 326,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24328,10 +24328,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_136": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 52,
-    "durability": 3,
+    "base1": 356,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24376,10 +24376,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_137": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 53,
-    "durability": 0,
+    "base1": 366,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24424,10 +24424,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_138": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 54,
-    "durability": 1,
+    "base1": 407,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24472,10 +24472,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_139": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 55,
-    "durability": 2,
+    "base1": 447,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24520,10 +24520,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_140": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 56,
-    "durability": 3,
+    "base1": 488,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24568,10 +24568,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_141": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 57,
-    "durability": 0,
+    "base1": 465,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24616,10 +24616,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_142": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 58,
-    "durability": 1,
+    "base1": 517,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24664,10 +24664,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_143": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 59,
-    "durability": 2,
+    "base1": 568,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24712,10 +24712,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_144": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 60,
-    "durability": 3,
+    "base1": 620,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24760,10 +24760,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_145": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 61,
-    "durability": 0,
+    "base1": 564,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24808,10 +24808,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_146": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 62,
-    "durability": 1,
+    "base1": 627,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24856,10 +24856,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_147": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 63,
-    "durability": 2,
+    "base1": 689,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24904,10 +24904,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_148": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 64,
-    "durability": 3,
+    "base1": 752,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -24952,10 +24952,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_149": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 65,
-    "durability": 0,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25000,10 +25000,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_150": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 66,
-    "durability": 1,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25048,10 +25048,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_151": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 67,
-    "durability": 2,
+    "base1": 750,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25096,10 +25096,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_152": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 68,
-    "durability": 3,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25144,10 +25144,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_153": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 69,
-    "durability": 0,
+    "base1": 736,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25192,10 +25192,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_154": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 70,
-    "durability": 1,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25240,10 +25240,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_155": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 71,
-    "durability": 2,
+    "base1": 900,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25288,10 +25288,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_156": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 72,
-    "durability": 3,
+    "base1": 982,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25336,20 +25336,20 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_157": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 23,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "5_158": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 73,
-    "durability": 0,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25394,10 +25394,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_159": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 74,
-    "durability": 1,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25442,10 +25442,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_160": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 75,
-    "durability": 2,
+    "base1": 750,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25490,10 +25490,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_161": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 76,
-    "durability": 3,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25538,10 +25538,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_162": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 77,
-    "durability": 0,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25586,10 +25586,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_163": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 78,
-    "durability": 1,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25634,10 +25634,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_164": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 79,
-    "durability": 2,
+    "base1": 750,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25682,10 +25682,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_165": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 80,
-    "durability": 3,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25730,10 +25730,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_166": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 81,
-    "durability": 0,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25778,10 +25778,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_167": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 82,
-    "durability": 1,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25826,10 +25826,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_168": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 83,
-    "durability": 2,
+    "base1": 750,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25874,10 +25874,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_169": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 84,
-    "durability": 3,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25922,10 +25922,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_170": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 85,
-    "durability": 0,
+    "base1": 675,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -25970,10 +25970,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_171": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 86,
-    "durability": 1,
+    "base1": 682,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26018,10 +26018,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_172": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 87,
-    "durability": 2,
+    "base1": 750,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26066,10 +26066,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_173": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 88,
-    "durability": 3,
+    "base1": 818,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26114,10 +26114,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_174": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 89,
-    "durability": 0,
+    "base1": 797,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26162,10 +26162,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_175": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 90,
-    "durability": 1,
+    "base1": 886,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26210,10 +26210,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_176": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 91,
-    "durability": 2,
+    "base1": 975,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26258,10 +26258,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_177": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 92,
-    "durability": 3,
+    "base1": 1063,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26306,10 +26306,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_178": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 93,
-    "durability": 0,
+    "base1": 859,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26354,10 +26354,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_179": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 94,
-    "durability": 1,
+    "base1": 954,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26402,10 +26402,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_180": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 95,
-    "durability": 2,
+    "base1": 1050,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26450,10 +26450,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_181": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 96,
-    "durability": 3,
+    "base1": 1145,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26498,10 +26498,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_182": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 97,
-    "durability": 0,
+    "base1": 920,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26546,10 +26546,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_183": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 98,
-    "durability": 1,
+    "base1": 1023,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26594,10 +26594,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_184": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 99,
-    "durability": 2,
+    "base1": 1125,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26642,10 +26642,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_185": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 100,
-    "durability": 3,
+    "base1": 1227,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26690,10 +26690,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_186": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 101,
-    "durability": 0,
+    "base1": 982,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26738,10 +26738,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_187": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 102,
-    "durability": 1,
+    "base1": 1091,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26786,10 +26786,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_188": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 103,
-    "durability": 2,
+    "base1": 1200,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26834,10 +26834,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "5_189": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 104,
-    "durability": 3,
+    "base1": 1309,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 36,
     "element": "none",
     "elementName": "",
     "options": [
@@ -26892,430 +26892,430 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "6_1": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 26,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_2": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 29,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_3": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 32,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_4": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 45,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_5": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 50,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_6": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 55,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_7": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 64,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_8": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 71,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_9": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 78,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_10": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 85,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_11": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 83,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_12": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 92,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_13": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 101,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_14": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 110,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_15": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 102,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_16": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 113,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_17": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 124,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_18": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 136,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_19": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 120,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_20": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 134,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_21": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 147,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_22": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 161,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_23": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 139,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_24": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 155,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_25": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 170,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_26": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 186,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_27": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 158,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_28": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 176,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_29": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 194,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_30": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 211,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_31": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 177,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_32": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 197,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_33": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 217,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_34": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 236,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_35": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 196,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_36": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 218,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_37": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 240,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_38": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 262,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_39": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 215,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_40": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 239,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_41": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 263,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_42": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 287,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_43": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 30,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27336,10 +27336,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_44": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 33,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27360,10 +27360,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_45": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 36,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27384,10 +27384,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_46": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 51,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27408,10 +27408,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_47": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 57,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27432,10 +27432,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_48": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 63,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27456,10 +27456,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_49": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 73,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27480,10 +27480,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_50": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 81,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27504,10 +27504,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_51": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 89,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27528,10 +27528,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_52": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 97,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27552,10 +27552,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_53": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 95,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27576,10 +27576,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_54": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 105,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27600,10 +27600,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_55": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 116,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27624,10 +27624,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_56": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 126,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27648,10 +27648,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_57": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 116,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27672,10 +27672,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_58": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 129,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27696,10 +27696,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_59": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 142,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27720,10 +27720,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_60": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 155,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27744,10 +27744,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_61": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 138,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27768,10 +27768,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_62": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 153,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27792,10 +27792,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_63": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 168,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27816,10 +27816,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_64": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 184,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27840,10 +27840,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_65": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 159,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27864,10 +27864,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_66": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 177,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27888,10 +27888,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_67": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 195,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27912,10 +27912,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_68": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 213,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27936,10 +27936,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_69": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 181,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27960,10 +27960,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_70": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 201,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -27984,10 +27984,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_71": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 221,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28008,10 +28008,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_72": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 241,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28032,10 +28032,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_73": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 203,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28056,10 +28056,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_74": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 225,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28080,10 +28080,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_75": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 248,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28104,10 +28104,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_76": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 270,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28128,10 +28128,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_77": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 224,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28152,10 +28152,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_78": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 249,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28176,10 +28176,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_79": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 274,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28200,10 +28200,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_80": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 299,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28224,10 +28224,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_81": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 246,
+    "base2": 0,
     "stat4": 0,
-    "durability": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28248,10 +28248,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_82": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 273,
+    "base2": 0,
     "stat4": 0,
-    "durability": 1,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28272,10 +28272,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_83": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 300,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28296,10 +28296,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_84": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 328,
+    "base2": 0,
     "stat4": 0,
-    "durability": 3,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28320,10 +28320,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_85": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 1,
-    "durability": 0,
+    "base1": 58,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28356,10 +28356,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_86": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 2,
-    "durability": 1,
+    "base1": 64,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28392,10 +28392,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_87": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 3,
-    "durability": 2,
+    "base1": 71,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28428,10 +28428,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_88": {
-    "base1": 2560,
-    "base2": 2050,
-    "stat4": 4,
-    "durability": 3,
+    "base1": 77,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28464,10 +28464,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_89": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 5,
-    "durability": 0,
+    "base1": 106,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28500,10 +28500,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_90": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 6,
-    "durability": 1,
+    "base1": 118,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28536,10 +28536,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_91": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 7,
-    "durability": 2,
+    "base1": 130,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28572,10 +28572,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_92": {
-    "base1": 5120,
-    "base2": 4100,
-    "stat4": 8,
-    "durability": 3,
+    "base1": 142,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28608,10 +28608,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_93": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 9,
-    "durability": 0,
+    "base1": 155,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28644,10 +28644,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_94": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 10,
-    "durability": 1,
+    "base1": 172,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28680,10 +28680,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_95": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 11,
-    "durability": 2,
+    "base1": 190,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28716,10 +28716,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_96": {
-    "base1": 7680,
-    "base2": 6150,
-    "stat4": 12,
-    "durability": 3,
+    "base1": 207,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28752,10 +28752,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_97": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 13,
-    "durability": 0,
+    "base1": 204,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28788,10 +28788,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_98": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 14,
-    "durability": 1,
+    "base1": 226,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28824,10 +28824,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_99": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 15,
-    "durability": 2,
+    "base1": 249,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28860,10 +28860,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_100": {
-    "base1": 10240,
-    "base2": 8200,
-    "stat4": 16,
-    "durability": 3,
+    "base1": 272,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28896,10 +28896,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_101": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 17,
-    "durability": 0,
+    "base1": 252,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28932,10 +28932,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_102": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 18,
-    "durability": 1,
+    "base1": 280,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -28968,10 +28968,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_103": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 19,
-    "durability": 2,
+    "base1": 308,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29004,10 +29004,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_104": {
-    "base1": 12800,
-    "base2": 10250,
-    "stat4": 20,
-    "durability": 3,
+    "base1": 336,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29040,10 +29040,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_105": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 21,
-    "durability": 0,
+    "base1": 301,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29076,10 +29076,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_106": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 22,
-    "durability": 1,
+    "base1": 334,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29112,10 +29112,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_107": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 23,
-    "durability": 2,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29148,10 +29148,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_108": {
-    "base1": 15360,
-    "base2": 12300,
-    "stat4": 24,
-    "durability": 3,
+    "base1": 401,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29184,10 +29184,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_109": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 25,
-    "durability": 0,
+    "base1": 64,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29232,10 +29232,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_110": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 26,
-    "durability": 1,
+    "base1": 72,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29280,10 +29280,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_111": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 27,
-    "durability": 2,
+    "base1": 79,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29328,10 +29328,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_112": {
-    "base1": 2560,
-    "base2": 2990,
-    "stat4": 28,
-    "durability": 3,
+    "base1": 86,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29376,10 +29376,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_113": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 29,
-    "durability": 0,
+    "base1": 118,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29424,10 +29424,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_114": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 30,
-    "durability": 1,
+    "base1": 132,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29472,10 +29472,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_115": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 31,
-    "durability": 2,
+    "base1": 145,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29520,10 +29520,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_116": {
-    "base1": 5120,
-    "base2": 5980,
-    "stat4": 32,
-    "durability": 3,
+    "base1": 158,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29568,10 +29568,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_117": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 33,
-    "durability": 0,
+    "base1": 172,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29616,10 +29616,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_118": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 34,
-    "durability": 1,
+    "base1": 192,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29664,10 +29664,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_119": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 35,
-    "durability": 2,
+    "base1": 211,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29712,10 +29712,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_120": {
-    "base1": 7680,
-    "base2": 8970,
-    "stat4": 36,
-    "durability": 3,
+    "base1": 230,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29760,10 +29760,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_121": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 37,
-    "durability": 0,
+    "base1": 226,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29808,10 +29808,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_122": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 38,
-    "durability": 1,
+    "base1": 252,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29856,10 +29856,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_123": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 39,
-    "durability": 2,
+    "base1": 277,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29904,10 +29904,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_124": {
-    "base1": 10240,
-    "base2": 11960,
-    "stat4": 40,
-    "durability": 3,
+    "base1": 302,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -29952,10 +29952,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_125": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 41,
-    "durability": 0,
+    "base1": 280,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30000,10 +30000,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_126": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 42,
-    "durability": 1,
+    "base1": 312,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30048,10 +30048,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_127": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 43,
-    "durability": 2,
+    "base1": 343,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30096,10 +30096,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_128": {
-    "base1": 12801,
-    "base2": 14950,
-    "stat4": 44,
-    "durability": 3,
+    "base1": 374,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30144,10 +30144,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_129": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 45,
-    "durability": 0,
+    "base1": 334,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30192,10 +30192,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_130": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 46,
-    "durability": 1,
+    "base1": 372,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30240,10 +30240,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_131": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 47,
-    "durability": 2,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30288,10 +30288,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_132": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 48,
-    "durability": 3,
+    "base1": 446,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30336,10 +30336,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_133": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 49,
-    "durability": 0,
+    "base1": 160,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30384,10 +30384,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_134": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 50,
-    "durability": 1,
+    "base1": 178,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30432,10 +30432,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_135": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 51,
-    "durability": 2,
+    "base1": 196,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30480,10 +30480,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_136": {
-    "base1": 6400,
-    "base2": 10900,
-    "stat4": 52,
-    "durability": 3,
+    "base1": 213,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30528,10 +30528,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_137": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 53,
-    "durability": 0,
+    "base1": 219,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30576,10 +30576,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_138": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 54,
-    "durability": 1,
+    "base1": 244,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30624,10 +30624,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_139": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 55,
-    "durability": 2,
+    "base1": 268,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30672,10 +30672,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_140": {
-    "base1": 8960,
-    "base2": 15260,
-    "stat4": 56,
-    "durability": 3,
+    "base1": 293,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30720,10 +30720,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_141": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 57,
-    "durability": 0,
+    "base1": 279,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30768,10 +30768,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_142": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 58,
-    "durability": 1,
+    "base1": 310,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30816,10 +30816,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_143": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 59,
-    "durability": 2,
+    "base1": 341,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30864,10 +30864,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_144": {
-    "base1": 11520,
-    "base2": 19620,
-    "stat4": 60,
-    "durability": 3,
+    "base1": 372,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30912,10 +30912,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_145": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 61,
-    "durability": 0,
+    "base1": 338,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -30960,10 +30960,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_146": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 62,
-    "durability": 1,
+    "base1": 376,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31008,10 +31008,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_147": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 63,
-    "durability": 2,
+    "base1": 413,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31056,10 +31056,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_148": {
-    "base1": 14081,
-    "base2": 23980,
-    "stat4": 64,
-    "durability": 3,
+    "base1": 451,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31104,10 +31104,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_149": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 65,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31152,10 +31152,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_150": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 66,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31200,10 +31200,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_151": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 67,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31248,10 +31248,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_152": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 68,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31296,10 +31296,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_153": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 69,
-    "durability": 0,
+    "base1": 441,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31344,10 +31344,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_154": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 70,
-    "durability": 1,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31392,10 +31392,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_155": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 71,
-    "durability": 2,
+    "base1": 540,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31440,10 +31440,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_156": {
-    "base1": 15361,
-    "base2": 26160,
-    "stat4": 72,
-    "durability": 3,
+    "base1": 589,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31488,20 +31488,20 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_157": {
-    "base1": 256,
-    "base2": 100,
+    "base1": 13,
+    "base2": 0,
     "stat4": 0,
-    "durability": 2,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [],
     "lines": []
   },
   "6_158": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 73,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31546,10 +31546,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_159": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 74,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31594,10 +31594,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_160": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 75,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31642,10 +31642,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_161": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 76,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31690,10 +31690,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_162": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 77,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31738,10 +31738,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_163": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 78,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31786,10 +31786,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_164": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 79,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31834,10 +31834,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_165": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 80,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31882,10 +31882,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_166": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 81,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31930,10 +31930,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_167": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 82,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -31978,10 +31978,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_168": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 83,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32026,10 +32026,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_169": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 84,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32074,10 +32074,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_170": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 85,
-    "durability": 0,
+    "base1": 368,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32122,10 +32122,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_171": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 86,
-    "durability": 1,
+    "base1": 409,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32170,10 +32170,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_172": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 87,
-    "durability": 2,
+    "base1": 450,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32218,10 +32218,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_173": {
-    "base1": 15360,
-    "base2": 17940,
-    "stat4": 88,
-    "durability": 3,
+    "base1": 491,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32266,10 +32266,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_174": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 89,
-    "durability": 0,
+    "base1": 478,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32314,10 +32314,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_175": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 90,
-    "durability": 1,
+    "base1": 531,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32362,10 +32362,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_176": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 91,
-    "durability": 2,
+    "base1": 585,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32410,10 +32410,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_177": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 92,
-    "durability": 3,
+    "base1": 638,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32458,10 +32458,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_178": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 93,
-    "durability": 0,
+    "base1": 515,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32506,10 +32506,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_179": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 94,
-    "durability": 1,
+    "base1": 531,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32554,10 +32554,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_180": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 95,
-    "durability": 2,
+    "base1": 585,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32602,10 +32602,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_181": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 96,
-    "durability": 3,
+    "base1": 638,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32650,10 +32650,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_182": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 97,
-    "durability": 0,
+    "base1": 552,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32698,10 +32698,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_183": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 98,
-    "durability": 1,
+    "base1": 613,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32746,10 +32746,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_184": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 99,
-    "durability": 2,
+    "base1": 675,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32794,10 +32794,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_185": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 100,
-    "durability": 3,
+    "base1": 736,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32842,10 +32842,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_186": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 101,
-    "durability": 0,
+    "base1": 589,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 31,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32890,10 +32890,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_187": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 102,
-    "durability": 1,
+    "base1": 654,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 32,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32938,10 +32938,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_188": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 103,
-    "durability": 2,
+    "base1": 720,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 33,
     "element": "none",
     "elementName": "",
     "options": [
@@ -32986,10 +32986,10 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "6_189": {
-    "base1": 15360,
-    "base2": 26160,
-    "stat4": 104,
-    "durability": 3,
+    "base1": 785,
+    "base2": 0,
+    "stat4": 0,
+    "durability": 34,
     "element": "none",
     "elementName": "",
     "options": [
@@ -33044,8 +33044,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_1": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 0,
+    "base2": 64,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33054,8 +33054,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_2": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 0,
+    "base2": 110,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33064,8 +33064,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_3": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 0,
+    "base2": 157,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33074,8 +33074,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_4": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 0,
+    "base2": 203,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33084,8 +33084,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_5": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 0,
+    "base2": 249,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33094,8 +33094,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_6": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 0,
+    "base2": 295,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33104,8 +33104,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_7": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 0,
+    "base2": 341,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33114,8 +33114,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_8": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 0,
+    "base2": 388,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33124,8 +33124,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_9": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 0,
+    "base2": 434,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33134,8 +33134,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_10": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 0,
+    "base2": 480,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33144,8 +33144,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_11": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 0,
+    "base2": 526,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33154,8 +33154,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "7_12": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 0,
+    "base2": 73,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33178,8 +33178,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_13": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 0,
+    "base2": 126,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33202,8 +33202,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_14": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 0,
+    "base2": 179,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33226,8 +33226,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_15": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 0,
+    "base2": 232,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33250,8 +33250,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_16": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 0,
+    "base2": 285,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33274,8 +33274,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_17": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 0,
+    "base2": 337,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33298,8 +33298,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_18": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 0,
+    "base2": 390,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33322,8 +33322,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_19": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 0,
+    "base2": 390,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33346,8 +33346,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_20": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 0,
+    "base2": 443,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33370,8 +33370,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_21": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 0,
+    "base2": 496,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33394,8 +33394,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_22": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 0,
+    "base2": 549,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33418,8 +33418,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_23": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 0,
+    "base2": 601,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33442,8 +33442,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_24": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 0,
+    "base2": 92,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33478,8 +33478,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_25": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 0,
+    "base2": 158,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33514,8 +33514,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_26": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 0,
+    "base2": 224,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33550,8 +33550,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_27": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 0,
+    "base2": 290,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33586,8 +33586,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_28": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 0,
+    "base2": 356,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33622,8 +33622,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_29": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 0,
+    "base2": 422,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33658,8 +33658,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_30": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 0,
+    "base2": 488,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33694,8 +33694,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_31": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 0,
+    "base2": 554,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33730,8 +33730,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_32": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 0,
+    "base2": 620,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33766,8 +33766,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_33": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 0,
+    "base2": 686,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33802,8 +33802,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_34": {
-    "base1": 14081,
-    "base2": 5500,
+    "base1": 0,
+    "base2": 752,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33838,8 +33838,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_35": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33874,8 +33874,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_36": {
-    "base1": 15361,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33910,8 +33910,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_37": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33946,8 +33946,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_38": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -33982,8 +33982,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_39": {
-    "base1": 15360,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34018,8 +34018,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_40": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 0,
+    "base2": 101,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34066,8 +34066,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_41": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 0,
+    "base2": 174,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34114,8 +34114,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_42": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 0,
+    "base2": 246,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34162,8 +34162,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_43": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 0,
+    "base2": 319,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34210,8 +34210,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_44": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 0,
+    "base2": 392,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34258,8 +34258,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_45": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 0,
+    "base2": 464,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34306,8 +34306,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_46": {
-    "base1": 8961,
-    "base2": 4935,
+    "base1": 0,
+    "base2": 537,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34354,8 +34354,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_47": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 0,
+    "base2": 609,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34402,8 +34402,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_48": {
-    "base1": 11521,
-    "base2": 6345,
+    "base1": 0,
+    "base2": 682,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34450,8 +34450,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_49": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 0,
+    "base2": 755,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34498,8 +34498,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_50": {
-    "base1": 14081,
-    "base2": 7755,
+    "base1": 0,
+    "base2": 827,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34546,8 +34546,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_51": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 900,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34594,8 +34594,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_52": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 900,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34642,8 +34642,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_53": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 900,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34690,8 +34690,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_54": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 900,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34738,8 +34738,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_55": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 900,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34786,8 +34786,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_56": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 0,
+    "base2": 506,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34834,8 +34834,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_57": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 0,
+    "base2": 665,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34882,8 +34882,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_58": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 0,
+    "base2": 823,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34930,8 +34930,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_59": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -34978,8 +34978,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_60": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35026,8 +35026,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_61": {
-    "base1": 15360,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35074,8 +35074,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_62": {
-    "base1": 10241,
-    "base2": 4000,
+    "base1": 0,
+    "base2": 554,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35110,8 +35110,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_63": {
-    "base1": 12801,
-    "base2": 5000,
+    "base1": 0,
+    "base2": 686,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35146,8 +35146,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_64": {
-    "base1": 15361,
-    "base2": 6000,
+    "base1": 0,
+    "base2": 818,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35182,8 +35182,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_65": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1080,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35230,8 +35230,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_66": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1080,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35278,8 +35278,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_67": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1080,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35326,8 +35326,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_68": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1473,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35374,8 +35374,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_69": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1473,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35422,8 +35422,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_70": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1473,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35470,8 +35470,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_71": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1767,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35506,8 +35506,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_72": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 1964,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35542,8 +35542,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_73": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 2160,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35578,8 +35578,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "7_74": {
-    "base1": 15361,
-    "base2": 8460,
+    "base1": 0,
+    "base2": 2356,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35636,8 +35636,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_1": {
-    "base1": 1280,
-    "base2": 500,
+    "base1": 0,
+    "base2": 43,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35646,8 +35646,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_2": {
-    "base1": 2560,
-    "base2": 1000,
+    "base1": 0,
+    "base2": 73,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35656,8 +35656,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_3": {
-    "base1": 3840,
-    "base2": 1500,
+    "base1": 0,
+    "base2": 104,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35666,8 +35666,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_4": {
-    "base1": 5120,
-    "base2": 2000,
+    "base1": 0,
+    "base2": 135,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35676,8 +35676,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_5": {
-    "base1": 6400,
-    "base2": 2500,
+    "base1": 0,
+    "base2": 166,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35686,8 +35686,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_6": {
-    "base1": 7680,
-    "base2": 3000,
+    "base1": 0,
+    "base2": 197,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35696,8 +35696,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_7": {
-    "base1": 8960,
-    "base2": 3500,
+    "base1": 0,
+    "base2": 227,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35706,8 +35706,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_8": {
-    "base1": 10240,
-    "base2": 4000,
+    "base1": 0,
+    "base2": 258,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35716,8 +35716,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_9": {
-    "base1": 11520,
-    "base2": 4500,
+    "base1": 0,
+    "base2": 289,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35726,8 +35726,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_10": {
-    "base1": 12800,
-    "base2": 5000,
+    "base1": 0,
+    "base2": 320,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35736,8 +35736,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_11": {
-    "base1": 14080,
-    "base2": 5500,
+    "base1": 0,
+    "base2": 351,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35746,8 +35746,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "8_12": {
-    "base1": 1280,
-    "base2": 705,
+    "base1": 0,
+    "base2": 49,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35770,8 +35770,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_13": {
-    "base1": 2560,
-    "base2": 1410,
+    "base1": 0,
+    "base2": 84,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35794,8 +35794,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_14": {
-    "base1": 3840,
-    "base2": 2115,
+    "base1": 0,
+    "base2": 119,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35818,8 +35818,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_15": {
-    "base1": 5120,
-    "base2": 2820,
+    "base1": 0,
+    "base2": 154,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35842,8 +35842,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_16": {
-    "base1": 6400,
-    "base2": 3525,
+    "base1": 0,
+    "base2": 190,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35866,8 +35866,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_17": {
-    "base1": 7680,
-    "base2": 4230,
+    "base1": 0,
+    "base2": 225,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35890,8 +35890,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_18": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 0,
+    "base2": 260,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35914,8 +35914,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_19": {
-    "base1": 8960,
-    "base2": 4935,
+    "base1": 0,
+    "base2": 260,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35938,8 +35938,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_20": {
-    "base1": 10240,
-    "base2": 5640,
+    "base1": 0,
+    "base2": 295,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35962,8 +35962,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_21": {
-    "base1": 11520,
-    "base2": 6345,
+    "base1": 0,
+    "base2": 330,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -35986,8 +35986,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_22": {
-    "base1": 12800,
-    "base2": 7050,
+    "base1": 0,
+    "base2": 366,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36010,8 +36010,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_23": {
-    "base1": 14080,
-    "base2": 7755,
+    "base1": 0,
+    "base2": 401,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36034,8 +36034,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_24": {
-    "base1": 1280,
-    "base2": 1025,
+    "base1": 0,
+    "base2": 61,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36070,8 +36070,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_25": {
-    "base1": 2560,
-    "base2": 2050,
+    "base1": 0,
+    "base2": 105,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36106,8 +36106,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_26": {
-    "base1": 3841,
-    "base2": 3075,
+    "base1": 0,
+    "base2": 149,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36142,8 +36142,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_27": {
-    "base1": 5120,
-    "base2": 4100,
+    "base1": 0,
+    "base2": 193,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36178,8 +36178,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_28": {
-    "base1": 6401,
-    "base2": 5125,
+    "base1": 0,
+    "base2": 237,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36214,8 +36214,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_29": {
-    "base1": 7680,
-    "base2": 6150,
+    "base1": 0,
+    "base2": 281,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36250,8 +36250,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_30": {
-    "base1": 8961,
-    "base2": 7175,
+    "base1": 0,
+    "base2": 325,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36286,8 +36286,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_31": {
-    "base1": 10240,
-    "base2": 8200,
+    "base1": 0,
+    "base2": 369,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36322,8 +36322,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_32": {
-    "base1": 11521,
-    "base2": 9225,
+    "base1": 0,
+    "base2": 413,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36358,8 +36358,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_33": {
-    "base1": 12800,
-    "base2": 10250,
+    "base1": 0,
+    "base2": 457,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36394,8 +36394,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_34": {
-    "base1": 14081,
-    "base2": 11275,
+    "base1": 0,
+    "base2": 501,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36430,8 +36430,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_35": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 0,
+    "base2": 545,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36466,8 +36466,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_36": {
-    "base1": 15361,
-    "base2": 12300,
+    "base1": 0,
+    "base2": 545,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36502,8 +36502,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_37": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 0,
+    "base2": 545,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36538,8 +36538,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_38": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 0,
+    "base2": 545,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36574,8 +36574,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_39": {
-    "base1": 15360,
-    "base2": 12300,
+    "base1": 0,
+    "base2": 545,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36610,8 +36610,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_40": {
-    "base1": 1280,
-    "base2": 1495,
+    "base1": 0,
+    "base2": 67,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36658,8 +36658,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_41": {
-    "base1": 2560,
-    "base2": 2990,
+    "base1": 0,
+    "base2": 116,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36706,8 +36706,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_42": {
-    "base1": 3841,
-    "base2": 4485,
+    "base1": 0,
+    "base2": 164,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36754,8 +36754,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_43": {
-    "base1": 5120,
-    "base2": 5980,
+    "base1": 0,
+    "base2": 212,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36802,8 +36802,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_44": {
-    "base1": 6401,
-    "base2": 7475,
+    "base1": 0,
+    "base2": 261,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36850,8 +36850,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_45": {
-    "base1": 7680,
-    "base2": 8970,
+    "base1": 0,
+    "base2": 309,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36898,8 +36898,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_46": {
-    "base1": 8961,
-    "base2": 10465,
+    "base1": 0,
+    "base2": 358,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36946,8 +36946,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_47": {
-    "base1": 10240,
-    "base2": 11960,
+    "base1": 0,
+    "base2": 406,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -36994,8 +36994,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_48": {
-    "base1": 11521,
-    "base2": 13455,
+    "base1": 0,
+    "base2": 454,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37042,8 +37042,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_49": {
-    "base1": 12800,
-    "base2": 14950,
+    "base1": 0,
+    "base2": 503,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37090,8 +37090,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_50": {
-    "base1": 14081,
-    "base2": 16445,
+    "base1": 0,
+    "base2": 551,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37138,8 +37138,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_51": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 600,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37186,8 +37186,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_52": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 600,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37234,8 +37234,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_53": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 600,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37282,8 +37282,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_54": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 600,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37330,8 +37330,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_55": {
-    "base1": 15360,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 600,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37378,8 +37378,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_56": {
-    "base1": 7680,
-    "base2": 13080,
+    "base1": 0,
+    "base2": 337,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37426,8 +37426,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_57": {
-    "base1": 10240,
-    "base2": 17440,
+    "base1": 0,
+    "base2": 443,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37474,8 +37474,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_58": {
-    "base1": 12800,
-    "base2": 21800,
+    "base1": 0,
+    "base2": 549,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37522,8 +37522,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_59": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 654,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37570,8 +37570,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_60": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 654,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37618,8 +37618,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_61": {
-    "base1": 15360,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 654,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37666,8 +37666,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_62": {
-    "base1": 3841,
-    "base2": 2115,
+    "base1": 0,
+    "base2": 119,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37690,8 +37690,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_63": {
-    "base1": 8961,
-    "base2": 4935,
+    "base1": 0,
+    "base2": 260,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37714,8 +37714,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_64": {
-    "base1": 10241,
-    "base2": 5640,
+    "base1": 0,
+    "base2": 295,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37738,8 +37738,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_65": {
-    "base1": 12801,
-    "base2": 10250,
+    "base1": 0,
+    "base2": 457,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37786,8 +37786,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_66": {
-    "base1": 14081,
-    "base2": 11275,
+    "base1": 0,
+    "base2": 501,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37834,8 +37834,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_67": {
-    "base1": 12801,
-    "base2": 14950,
+    "base1": 0,
+    "base2": 503,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37882,8 +37882,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_68": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 720,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37930,8 +37930,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_69": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 720,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -37978,8 +37978,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_70": {
-    "base1": 15361,
-    "base2": 17940,
+    "base1": 0,
+    "base2": 720,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38026,8 +38026,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_71": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38074,8 +38074,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_72": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38122,8 +38122,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_73": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 982,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38170,8 +38170,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_74": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 1178,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38218,8 +38218,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_75": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 1309,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38266,8 +38266,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_76": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 1440,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38314,8 +38314,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "8_77": {
-    "base1": 15361,
-    "base2": 26160,
+    "base1": 0,
+    "base2": 1571,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38372,8 +38372,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "9_1": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38420,8 +38420,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_2": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38456,8 +38456,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_3": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38492,8 +38492,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_4": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38540,8 +38540,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_5": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38588,8 +38588,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_6": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38636,8 +38636,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_7": {
-    "base1": 257,
-    "base2": 45,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38684,8 +38684,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_8": {
-    "base1": 257,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38732,8 +38732,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_9": {
-    "base1": 257,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38780,8 +38780,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_10": {
-    "base1": 257,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38828,8 +38828,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_11": {
-    "base1": 257,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38876,8 +38876,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "9_12": {
-    "base1": 257,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38934,8 +38934,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "lines": []
   },
   "10_1": {
-    "base1": 1281,
-    "base2": 100,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -38970,8 +38970,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_2": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -39018,8 +39018,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_3": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -39066,8 +39066,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_4": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -39114,8 +39114,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_5": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -39162,8 +39162,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_6": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
@@ -39210,8 +39210,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ]
   },
   "10_7": {
-    "base1": 1281,
-    "base2": 30000,
+    "base1": 0,
+    "base2": 0,
     "stat4": 0,
     "durability": 0,
     "element": "none",
