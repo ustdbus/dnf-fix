@@ -900,8 +900,8 @@ const editingSlot = ref<InventorySlot | null>(null)
 
 const modalSearchQuery = ref('')
 const selectedCategoryFilter = ref<number>(-1)
-const formTypeId = ref<number>(0x01)
-const formItemId = ref<number>(0x28)
+const formTypeId = ref<number>(0x00)
+const formItemId = ref<number>(0x00)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
@@ -1141,7 +1141,14 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
 watch(modalSearchQuery, (newQ) => {
   selectedCategoryFilter.value = -1
   const q = newQ.trim().toLowerCase()
-  if (!q) return
+  if (!q) {
+    if (editingSlot.value?.isEmpty) {
+      formTypeId.value = 0x00
+      formItemId.value = 0x00
+      syncEquipInnateDefaults(0x00, 0x00)
+    }
+    return
+  }
 
   const matched = allSearchMatchedItems.value
   if (matched.length > 0) {
@@ -1233,15 +1240,19 @@ function openEditModal(slot: InventorySlot) {
   isEquipStatsLocked.value = true
   showInnateDetailModal.value = false
   if (slot.isEmpty) {
-    selectedCategoryFilter.value = 0x01 // 默认太刀
-    formTypeId.value = 0x01 // 默认太刀
-    formItemId.value = 0x28 // 默认流光星陨刀
+    selectedCategoryFilter.value = -1 // 默认全部类别 (全库浏览)
+    formTypeId.value = 0x00 // 默认短剑
+    formItemId.value = 0x00 // 默认初始值
     formCount.value = 1
     formRefineLevel.value = 0
     formGrade.value = 3
+    formDurability.value = 35
+    formBaseAtkDef1.value = 0
+    formBaseAtkDef2.value = 0
     formRefineBonus1.value = 0
     formRefineBonus2.value = 0
-    syncEquipInnateDefaults(0x01, 0x28)
+    formStat4.value = 0
+    syncEquipInnateDefaults(0x00, 0x00)
     clearEnchant()
   } else {
     selectedCategoryFilter.value = slot.typeId
@@ -1273,6 +1284,8 @@ function closeEditModal() {
   editingSlot.value = null
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
+  formTypeId.value = 0x00
+  formItemId.value = 0x00
   showInnateDetailModal.value = false
   clearEnchant()
 }
