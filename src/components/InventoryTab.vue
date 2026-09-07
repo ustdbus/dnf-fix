@@ -18,7 +18,7 @@
           @click="filterType = 'all'"
           :class="['px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1 border', filterType === 'all' ? 'bg-amber-600 border-amber-500 text-black font-bold shadow-md shadow-amber-600/30' : 'bg-gray-800/90 border-gray-700 text-gray-300 hover:text-white hover:bg-gray-700']"
         >
-          全部 <span class="text-[10px] font-mono opacity-80">({{ save.inventory.length }})</span>
+          全部 <span class="text-[10px] font-mono opacity-80">({{ ownedSlots.length }})</span>
         </button>
         <button
           @click="filterType = 'equip'"
@@ -143,14 +143,36 @@
       @click.self="closeEditModal"
     >
       <div class="bg-[#161925] border border-amber-600/40 rounded-2xl w-full max-w-lg p-5 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
-        <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-          <div class="flex items-center gap-2">
+        <div class="flex items-center justify-between border-b border-gray-800 pb-3 gap-2 flex-wrap sm:flex-nowrap">
+          <div class="flex items-center gap-2 shrink-0">
             <span class="text-amber-400 font-bold">槽位 #{{ editingSlot.slotIndex + 1 }} 物品修改</span>
             <span v-if="editingSlot.isEmpty" class="text-xs px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">
               新物品录入
             </span>
           </div>
-          <button @click="closeEditModal" class="text-gray-400 hover:text-white text-lg">✕</button>
+
+          <!-- 批量复制控件 (直接指定复制数量，自动计算并填充后续槽位) -->
+          <div class="flex items-center gap-1.5 bg-[#0e1119] border border-gray-700/80 rounded-lg px-2 py-1 shadow-inner ml-auto mr-1">
+            <span class="text-xs text-gray-300 font-medium select-none">复制:</span>
+            <input
+              v-model.number="copyCountInput"
+              type="number"
+              min="1"
+              placeholder="数量"
+              class="w-16 bg-[#161925] border border-gray-600 rounded px-1.5 py-0.5 text-xs text-amber-300 font-mono text-center focus:border-amber-400 focus:outline-none"
+              @keydown.enter.prevent="executeBatchCopy"
+            />
+            <button
+              type="button"
+              @click="executeBatchCopy"
+              title="按指定数量复制到背包后续空槽位"
+              class="text-xs px-2.5 py-0.5 rounded bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold transition shadow-sm active:scale-95"
+            >
+              确定
+            </button>
+          </div>
+
+          <button @click="closeEditModal" class="text-gray-400 hover:text-white text-lg shrink-0">✕</button>
         </div>
 
         <!-- 顶部全局物品名称搜索 (在物品大类上方，搜索全部物品) -->
@@ -548,6 +570,7 @@
               </label>
               <select
                 v-model.number="formGrade"
+                @change="onGradeChange"
                 :disabled="isEquipStatsLocked"
                 :class="[
                   'w-full text-xs p-2 rounded-lg border font-bold transition',
@@ -925,6 +948,7 @@ const formTypeId = ref<number>(0x00)
 const formItemId = ref<number>(1)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
+const copyCountInput = ref<number | null>(null)
 
 // 装备高级属性锁定状态 (攻防、强化等级与四维，默认锁定保护)
 const isEquipStatsLocked = ref<boolean>(true)
@@ -967,6 +991,26 @@ const GRADE_LIST = [
   { value: 1, label: '中级 (50%~74%)', color: 'text-blue-400' },
   { value: 0, label: '下级 (1%~49%)', color: 'text-gray-400' },
 ]
+
+// 切换装备品级时，静默联动调整基础攻防为该品级对应的官方正规最大数值
+function onGradeChange() {
+  if (!isEquip(formTypeId.value)) return
+  const innate = getEquipInnateInfo(formTypeId.value, formItemId.value)
+  if (!innate) return
+
+  let ratio = 1.0
+  if (formGrade.value === 3) {
+    ratio = 1.0
+  } else if (formGrade.value === 2) {
+    ratio = 0.89
+  } else if (formGrade.value === 1) {
+    ratio = 0.74
+  } else if (formGrade.value === 0) {
+    ratio = 0.49
+  }
+  formBaseAtkDef1.value = Math.round((innate.base1 || 0) * ratio)
+  formBaseAtkDef2.value = Math.round((innate.base2 || 0) * ratio)
+}
 
 // 附魔计算属性
 const currentEnchantDef = computed(() => {
@@ -1053,45 +1097,54 @@ const currentQualityInfo = computed(() => {
   return getQualityInfo(currentSelectedInfo.value.quality)
 })
 
+// 角色有效拥有的背包槽位列表 (依据当前角色属性 bagSlotCount，有效上限为 90 格)
+const ownedSlots = computed(() => {
+  const cap = Math.min(90, Math.max(1, props.save.bagSlotCount || 24))
+  return props.save.inventory.slice(0, cap)
+})
+
+// 物品占的槽位数 (当前角色有效背包中非空的格子数)
 const usedSlotsCount = computed(() => {
-  return props.save.inventory.filter(s => !s.isEmpty).length
+  return ownedSlots.value.filter(s => !s.isEmpty).length
+})
+
+// 空槽位的计算：当前角色属性里，角色所拥有的背包槽位 - 物品占的槽位
+const emptySlotsCount = computed(() => {
+  const cap = Math.min(90, Math.max(1, props.save.bagSlotCount || 24))
+  return Math.max(0, cap - usedSlotsCount.value)
 })
 
 const equipSlotsCount = computed(() => {
-  return props.save.inventory.filter(s => !s.isEmpty && isEquip(s.typeId)).length
+  return ownedSlots.value.filter(s => !s.isEmpty && isEquip(s.typeId)).length
 })
 
 const consumableSlotsCount = computed(() => {
-  return props.save.inventory.filter(s => !s.isEmpty && isConsumable(s.typeId)).length
+  return ownedSlots.value.filter(s => !s.isEmpty && isConsumable(s.typeId)).length
 })
 
 const materialSlotsCount = computed(() => {
-  return props.save.inventory.filter(s => !s.isEmpty && isMaterial(s.typeId)).length
+  return ownedSlots.value.filter(s => !s.isEmpty && isMaterial(s.typeId)).length
 })
 
 const questSlotsCount = computed(() => {
-  return props.save.inventory.filter(s => !s.isEmpty && isQuest(s.typeId)).length
-})
-
-const emptySlotsCount = computed(() => {
-  return props.save.inventory.filter(s => s.isEmpty).length
+  return ownedSlots.value.filter(s => !s.isEmpty && isQuest(s.typeId)).length
 })
 
 const filteredSlots = computed(() => {
   switch (filterType.value) {
     case 'equip':
-      return props.save.inventory.filter(s => !s.isEmpty && isEquip(s.typeId))
+      return ownedSlots.value.filter(s => !s.isEmpty && isEquip(s.typeId))
     case 'consumable':
-      return props.save.inventory.filter(s => !s.isEmpty && isConsumable(s.typeId))
+      return ownedSlots.value.filter(s => !s.isEmpty && isConsumable(s.typeId))
     case 'material':
-      return props.save.inventory.filter(s => !s.isEmpty && isMaterial(s.typeId))
+      return ownedSlots.value.filter(s => !s.isEmpty && isMaterial(s.typeId))
     case 'quest':
-      return props.save.inventory.filter(s => !s.isEmpty && isQuest(s.typeId))
+      return ownedSlots.value.filter(s => !s.isEmpty && isQuest(s.typeId))
     case 'empty':
-      return props.save.inventory.filter(s => s.isEmpty)
+      return ownedSlots.value.filter(s => s.isEmpty)
     case 'all':
     default:
-      return props.save.inventory
+      return ownedSlots.value
   }
 })
 
@@ -1221,6 +1274,7 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
   if (isEquip(tId)) {
     const innate = getEquipInnateInfo(tId, iId)
     if (innate) {
+      formGrade.value = 3 // 切换装备默认最上级 (100%)
       formDurability.value = innate.durability || 35
       formBaseAtkDef1.value = innate.base1 || 0
       formBaseAtkDef2.value = innate.base2 || 0
@@ -1393,6 +1447,7 @@ function getSlotHoverTitle(slot: InventorySlot): string {
 
 function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
+  copyCountInput.value = null
   modalSearchQuery.value = ''
   selectedEnchantCategory.value = 'all'
   selectedQualityFilter.value = 'all'
@@ -1443,6 +1498,7 @@ function openEditModal(slot: InventorySlot) {
 
 function closeEditModal() {
   editingSlot.value = null
+  copyCountInput.value = null
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
   selectedQualityFilter.value = 'all'
@@ -1473,35 +1529,34 @@ function clearCurrentSlot() {
   closeEditModal()
 }
 
-function saveSlotEdit() {
-  if (!editingSlot.value) return
+function applySlotEdit(targetSlot: InventorySlot) {
   const info = findItemInfo(formTypeId.value, formItemId.value)
   const isEquip = isEquipCategory(formTypeId.value)
   const isSingle = isSingleCategory(formTypeId.value)
 
-  editingSlot.value.isEmpty = false
-  editingSlot.value.typeId = formTypeId.value
-  editingSlot.value.itemId = formItemId.value
+  targetSlot.isEmpty = false
+  targetSlot.typeId = formTypeId.value
+  targetSlot.itemId = formItemId.value
   // 装备数量严格锁死为 1，非装备最大限制 99
-  editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
-  editingSlot.value.refineLevel = isEquip ? Math.max(0, Math.min(63, formRefineLevel.value || 0)) : 0
+  targetSlot.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
+  targetSlot.refineLevel = isEquip ? Math.max(0, Math.min(63, formRefineLevel.value || 0)) : 0
 
   if (isEquip) {
-    editingSlot.value.grade = Math.max(0, Math.min(3, Math.floor(formGrade.value || 0)))
-    editingSlot.value.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
-    editingSlot.value.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
-    editingSlot.value.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))
-    editingSlot.value.refineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1.value || 0)))
-    editingSlot.value.refineBonus2 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus2.value || 0)))
-    editingSlot.value.stat4 = Math.max(0, Math.min(255, Math.floor(formStat4.value || 0)))
+    targetSlot.grade = Math.max(0, Math.min(3, Math.floor(formGrade.value || 0)))
+    targetSlot.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
+    targetSlot.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
+    targetSlot.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))
+    targetSlot.refineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1.value || 0)))
+    targetSlot.refineBonus2 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus2.value || 0)))
+    targetSlot.stat4 = Math.max(0, Math.min(255, Math.floor(formStat4.value || 0)))
   } else {
-    editingSlot.value.grade = undefined
-    editingSlot.value.durability = undefined
-    editingSlot.value.baseAtkDef1 = undefined
-    editingSlot.value.baseAtkDef2 = undefined
-    editingSlot.value.refineBonus1 = undefined
-    editingSlot.value.refineBonus2 = undefined
-    editingSlot.value.stat4 = undefined
+    targetSlot.grade = undefined
+    targetSlot.durability = undefined
+    targetSlot.baseAtkDef1 = undefined
+    targetSlot.baseAtkDef2 = undefined
+    targetSlot.refineBonus1 = undefined
+    targetSlot.refineBonus2 = undefined
+    targetSlot.stat4 = undefined
   }
 
   if (isEquip && formEnchantCode.value > 0) {
@@ -1511,17 +1566,128 @@ function saveSlotEdit() {
     formEnchantParam1.value = p1
     formEnchantParam2.value = p2
     formEnchantParam3.value = p3
-    editingSlot.value.enchant = {
+    targetSlot.enchant = {
       code: formEnchantCode.value,
       param1: p1,
       param2: p2,
       param3: p3
     }
   } else {
-    editingSlot.value.enchant = undefined
+    targetSlot.enchant = undefined
   }
-  editingSlot.value.itemName = info.name
-  editingSlot.value.categoryName = info.categoryName
+  targetSlot.itemName = info.name
+  targetSlot.categoryName = info.categoryName
+}
+
+function saveSlotEdit() {
+  if (!editingSlot.value) return
+  applySlotEdit(editingSlot.value)
   closeEditModal()
+}
+
+// 批量复制当前编辑物品到背包后续空槽位
+function executeBatchCopy() {
+  if (!editingSlot.value) return
+  const countToCopy = Math.floor(copyCountInput.value || 0)
+  if (countToCopy <= 0) {
+    alert('请输入有效的复制数量 (大于 0 的正整数)！')
+    return
+  }
+
+  // 获取当前角色属性拥有的背包槽位容量 (0 ~ bagSlotCount-1)
+  const cap = Math.min(90, Math.max(1, props.save.bagSlotCount || 24))
+  const validBagSlots = props.save.inventory.slice(0, cap)
+
+  // 当前角色拥有的可用空槽位列表 (排除当前正在编辑的槽位，按槽位序号升序排列)
+  const availableEmptySlots = validBagSlots
+    .filter(s => s.isEmpty && s.slotIndex !== editingSlot.value!.slotIndex)
+    .sort((a, b) => a.slotIndex - b.slotIndex)
+
+  // 必须要有空槽位才能进行复制
+  if (availableEmptySlots.length === 0) {
+    alert('当前角色背包无可用空槽位，无法进行复制！请先清理背包或在角色属性中扩展背包格数。')
+    return
+  }
+
+  const isEquip = isEquipCategory(formTypeId.value)
+  const isSingle = isSingleCategory(formTypeId.value)
+  const info = findItemInfo(formTypeId.value, formItemId.value)
+
+  if (isEquip || isSingle) {
+    // 装备类：单件不可堆叠，1件占用1个独立槽位
+    const neededEmptySlots = countToCopy
+    if (availableEmptySlots.length < neededEmptySlots) {
+      alert(`背包剩余空闲槽位不足！\n复制 ${neededEmptySlots} 件装备需要 ${neededEmptySlots} 个空槽位，但当前背包仅剩余 ${availableEmptySlots.length} 个空槽位。`)
+      return
+    }
+
+    // 先保存当前槽位配置
+    applySlotEdit(editingSlot.value)
+
+    // 顺次克隆当前装备到后续空槽位
+    for (let i = 0; i < neededEmptySlots; i++) {
+      applySlotEdit(availableEmptySlots[i])
+    }
+
+    alert(`已成功复制 ${neededEmptySlots} 件 [${info.name}] 到背包空槽位！`)
+    closeEditModal()
+  } else {
+    // 材料 / 消耗品等可堆叠物品：99个一个槽位
+    const currentCount = editingSlot.value.isEmpty ? 0 : Math.max(1, Math.min(99, formCount.value || 1))
+    const fillCurrent = Math.min(countToCopy, 99 - currentCount)
+    const newCurrentCount = currentCount + fillCurrent
+    const remainingToPlace = countToCopy - fillCurrent
+    const neededEmptySlots = Math.ceil(remainingToPlace / 99)
+
+    if (availableEmptySlots.length < neededEmptySlots) {
+      alert(`背包剩余空闲槽位不足！\n存放剩余 ${remainingToPlace} 个物品还需要 ${neededEmptySlots} 个空槽位，但当前背包仅剩余 ${availableEmptySlots.length} 个空槽位。`)
+      return
+    }
+
+    // 1. 更新当前槽位
+    editingSlot.value.isEmpty = false
+    editingSlot.value.typeId = formTypeId.value
+    editingSlot.value.itemId = formItemId.value
+    editingSlot.value.count = newCurrentCount
+    editingSlot.value.refineLevel = 0
+    editingSlot.value.grade = undefined
+    editingSlot.value.durability = undefined
+    editingSlot.value.baseAtkDef1 = undefined
+    editingSlot.value.baseAtkDef2 = undefined
+    editingSlot.value.refineBonus1 = undefined
+    editingSlot.value.refineBonus2 = undefined
+    editingSlot.value.stat4 = undefined
+    editingSlot.value.enchant = undefined
+    editingSlot.value.itemName = info.name
+    editingSlot.value.categoryName = info.categoryName
+
+    // 2. 将剩余数量顺次切片填入空槽位
+    let rem = remainingToPlace
+    for (let i = 0; i < neededEmptySlots; i++) {
+      const take = Math.min(99, rem)
+      const targetSlot = availableEmptySlots[i]
+      targetSlot.isEmpty = false
+      targetSlot.typeId = formTypeId.value
+      targetSlot.itemId = formItemId.value
+      targetSlot.count = take
+      targetSlot.refineLevel = 0
+      targetSlot.grade = undefined
+      targetSlot.durability = undefined
+      targetSlot.baseAtkDef1 = undefined
+      targetSlot.baseAtkDef2 = undefined
+      targetSlot.refineBonus1 = undefined
+      targetSlot.refineBonus2 = undefined
+      targetSlot.stat4 = undefined
+      targetSlot.enchant = undefined
+      targetSlot.itemName = info.name
+      targetSlot.categoryName = info.categoryName
+      rem -= take
+    }
+
+    const totalTotal = currentCount + countToCopy
+    const totalSlotsUsed = (newCurrentCount > 0 ? 1 : 0) + neededEmptySlots
+    alert(`成功复制 ${countToCopy} 个 [${info.name}]！\n当前槽位存入至 ${newCurrentCount} 个，另占用 ${neededEmptySlots} 个空槽位，总计 ${totalTotal} 个（共占用 ${totalSlotsUsed} 个槽位）。`)
+    closeEditModal()
+  }
 }
 </script>
