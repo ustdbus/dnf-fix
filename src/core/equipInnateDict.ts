@@ -860,8 +860,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 1,
         "p3": 0,
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -870,8 +870,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       }
     ]
   },
@@ -932,8 +932,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 15,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +15",
-        "color": "white"
+        "text": "眩晕抗性 +15%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -942,8 +942,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +15",
-        "color": "white"
+        "text": "眩晕抗性 +15%",
+        "color": "blue"
       }
     ]
   },
@@ -1076,8 +1076,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 15,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +15",
-        "color": "white"
+        "text": "中毒抗性 +15%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -1086,8 +1086,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +15",
-        "color": "white"
+        "text": "中毒抗性 +15%",
+        "color": "blue"
       }
     ]
   },
@@ -1184,8 +1184,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 10,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 10",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -1194,8 +1194,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 10",
+        "color": "blue"
       }
     ]
   },
@@ -1400,8 +1400,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 2,
         "p3": 0,
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -1410,8 +1410,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       }
     ]
   },
@@ -1808,8 +1808,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 1,
         "p3": 0,
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       },
       {
         "code": 8,
@@ -1826,8 +1826,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       },
       {
         "text": "MP恢复 +9",
@@ -2144,8 +2144,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 2,
         "p3": 0,
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv2减速",
+        "color": "blue"
       },
       {
         "code": 10,
@@ -2162,8 +2162,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv2减速",
+        "color": "blue"
       },
       {
         "text": "物理攻击力 +35",
@@ -2240,8 +2240,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 40,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 40",
+        "color": "blue"
       },
       {
         "code": 2,
@@ -2258,8 +2258,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 40",
+        "color": "blue"
       },
       {
         "text": "智力 +30",
@@ -2336,16 +2336,16 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 200,
         "p3": 100,
-        "text": "属性[0x4A]: +3",
-        "color": "white"
+        "text": "攻击时3%几率200秒物攻+100",
+        "color": "blue"
       },
       {
         "code": 75,
         "p1": 3,
         "p2": 200,
         "p3": 100,
-        "text": "属性[0x4B]: +3",
-        "color": "white"
+        "text": "攻击时3%几率200秒魔攻+100",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -2354,12 +2354,12 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4A]: +3",
-        "color": "white"
+        "text": "攻击时3%几率200秒物攻+100",
+        "color": "blue"
       },
       {
-        "text": "属性[0x4B]: +3",
-        "color": "white"
+        "text": "攻击时3%几率200秒魔攻+100",
+        "color": "blue"
       }
     ]
   },
@@ -3112,8 +3112,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 60,
         "p2": 20,
         "p3": 0,
-        "text": "属性[0x39]: +60",
-        "color": "white"
+        "text": "攻击时60%几率恢复 MP 20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -3126,8 +3126,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +60",
-        "color": "white"
+        "text": "攻击时60%几率恢复 MP 20",
+        "color": "blue"
       }
     ]
   },
@@ -3496,8 +3496,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 60,
         "p2": 20,
         "p3": 0,
-        "text": "属性[0x39]: +60",
-        "color": "white"
+        "text": "攻击时60%几率恢复 MP 20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -3510,8 +3510,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +60",
-        "color": "white"
+        "text": "攻击时60%几率恢复 MP 20",
+        "color": "blue"
       }
     ]
   },
@@ -4444,8 +4444,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 1,
         "p3": 0,
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -4454,8 +4454,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv1减速",
+        "color": "blue"
       }
     ]
   },
@@ -4768,8 +4768,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 1,
         "p3": 0,
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv1束缚",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -4778,8 +4778,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv1束缚",
+        "color": "blue"
       }
     ]
   },
@@ -5380,8 +5380,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 1,
         "p3": 0,
-        "text": "属性[0x24]: +4",
-        "color": "white"
+        "text": "攻击时4%几率造成Lv1减速",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -5390,8 +5390,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +4",
-        "color": "white"
+        "text": "攻击时4%几率造成Lv1减速",
+        "color": "blue"
       }
     ]
   },
@@ -5808,8 +5808,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 20,
         "p2": 3,
         "p3": 0,
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -5822,8 +5822,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       }
     ]
   },
@@ -5992,8 +5992,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 200,
         "p3": 100,
-        "text": "属性[0x4B]: +2",
-        "color": "white"
+        "text": "攻击时2%几率200秒魔攻+100",
+        "color": "blue"
       },
       {
         "code": 25,
@@ -6010,8 +6010,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4B]: +2",
-        "color": "white"
+        "text": "攻击时2%几率200秒魔攻+100",
+        "color": "blue"
       },
       {
         "text": "攻击时3%几率造成Lv28出血",
@@ -6184,8 +6184,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 70,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 70",
+        "color": "blue"
       },
       {
         "code": 24,
@@ -6202,8 +6202,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 70",
+        "color": "blue"
       },
       {
         "text": "噬灵鬼斩 Lv+1",
@@ -6328,8 +6328,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 100,
         "p3": 10,
-        "text": "属性[0x4F]: +3",
-        "color": "white"
+        "text": "攻击时3%几率100秒暴击+10%",
+        "color": "blue"
       },
       {
         "code": 26,
@@ -6346,8 +6346,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4F]: +3",
-        "color": "white"
+        "text": "攻击时3%几率100秒暴击+10%",
+        "color": "blue"
       },
       {
         "text": "攻击时4%几率造成Lv12中毒",
@@ -6384,8 +6384,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 40,
         "p3": 0,
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 40",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -6398,8 +6398,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 40",
+        "color": "blue"
       }
     ]
   },
@@ -6768,8 +6768,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 50,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 50",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -6782,8 +6782,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 50",
+        "color": "blue"
       }
     ]
   },
@@ -7096,8 +7096,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 70,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 70",
+        "color": "blue"
       },
       {
         "code": 24,
@@ -7114,8 +7114,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 70",
+        "color": "blue"
       },
       {
         "text": "噬灵鬼斩 Lv+1",
@@ -7152,8 +7152,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 50,
         "p3": 0,
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 50",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -7166,8 +7166,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +2",
-        "color": "white"
+        "text": "攻击时2%几率恢复 MP 50",
+        "color": "blue"
       }
     ]
   },
@@ -8122,8 +8122,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 2,
         "p3": 0,
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv2减速",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -8132,8 +8132,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +2",
-        "color": "white"
+        "text": "攻击时2%几率造成Lv2减速",
+        "color": "blue"
       }
     ]
   },
@@ -8482,8 +8482,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 100,
         "p3": 300,
-        "text": "属性[0x4C]: +2",
-        "color": "white"
+        "text": "被击时2%几率100秒物防+300",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -8492,8 +8492,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4C]: +2",
-        "color": "white"
+        "text": "被击时2%几率100秒物防+300",
+        "color": "blue"
       }
     ]
   },
@@ -9250,8 +9250,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 2,
         "p3": 0,
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       },
       {
         "code": 24,
@@ -9268,8 +9268,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       },
       {
         "text": "嗜魂封魔斩 Lv+1",
@@ -9970,7 +9970,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 50,
         "p3": 0,
-        "text": "攻击时2%几率附加50点伤害",
+        "text": "攻击时2%几率追加伤害50",
         "color": "blue"
       },
       {
@@ -9988,7 +9988,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时2%几率附加50点伤害",
+        "text": "攻击时2%几率追加伤害50",
         "color": "blue"
       },
       {
@@ -10306,15 +10306,15 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 3,
         "p3": 0,
-        "text": "属性[0x24]: +4",
-        "color": "white"
+        "text": "攻击时4%几率造成Lv3减速",
+        "color": "blue"
       },
       {
         "code": 125,
         "p1": 3,
         "p2": 100,
         "p3": 0,
-        "text": "攻击时3%几率附加100点伤害",
+        "text": "攻击时3%几率追加伤害100",
         "color": "blue"
       }
     ],
@@ -10324,11 +10324,11 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x24]: +4",
-        "color": "white"
+        "text": "攻击时4%几率造成Lv3减速",
+        "color": "blue"
       },
       {
-        "text": "攻击时3%几率附加100点伤害",
+        "text": "攻击时3%几率追加伤害100",
         "color": "blue"
       }
     ]
@@ -10506,8 +10506,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 20,
         "p3": 0,
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -10520,8 +10520,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 20",
+        "color": "blue"
       }
     ]
   },
@@ -10878,8 +10878,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 20,
         "p3": 0,
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -10892,8 +10892,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 20",
+        "color": "blue"
       }
     ]
   },
@@ -11718,7 +11718,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 10,
         "p3": 0,
-        "text": "攻击时2%几率附加10点伤害",
+        "text": "攻击时2%几率追加伤害10",
         "color": "blue"
       }
     ],
@@ -11728,7 +11728,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时2%几率附加10点伤害",
+        "text": "攻击时2%几率追加伤害10",
         "color": "blue"
       }
     ]
@@ -11790,7 +11790,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 20,
         "p3": 0,
-        "text": "攻击时2%几率附加20点伤害",
+        "text": "攻击时2%几率追加伤害20",
         "color": "blue"
       }
     ],
@@ -11800,7 +11800,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时2%几率附加20点伤害",
+        "text": "攻击时2%几率追加伤害20",
         "color": "blue"
       }
     ]
@@ -12926,8 +12926,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 20,
         "p3": 10,
-        "text": "属性[0x4F]: +3",
-        "color": "white"
+        "text": "攻击时3%几率20秒暴击+10%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -12940,8 +12940,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4F]: +3",
-        "color": "white"
+        "text": "攻击时3%几率20秒暴击+10%",
+        "color": "blue"
       }
     ]
   },
@@ -13014,8 +13014,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 2,
         "p3": 0,
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       },
       {
         "code": 6,
@@ -13032,8 +13032,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x22]: +3",
-        "color": "white"
+        "text": "攻击时3%几率造成Lv2束缚",
+        "color": "blue"
       },
       {
         "text": "MP MAX +125",
@@ -13254,7 +13254,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 200,
         "p3": 0,
-        "text": "攻击时3%几率附加200点伤害",
+        "text": "攻击时3%几率追加伤害200",
         "color": "blue"
       },
       {
@@ -13272,7 +13272,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时3%几率附加200点伤害",
+        "text": "攻击时3%几率追加伤害200",
         "color": "blue"
       },
       {
@@ -13350,8 +13350,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 100,
         "p3": 200,
-        "text": "属性[0x4A]: +3",
-        "color": "white"
+        "text": "攻击时3%几率100秒物攻+200",
+        "color": "blue"
       },
       {
         "code": 15,
@@ -13368,8 +13368,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4A]: +3",
-        "color": "white"
+        "text": "攻击时3%几率100秒物攻+200",
+        "color": "blue"
       },
       {
         "text": "暴击率 +7%",
@@ -13542,7 +13542,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 30,
         "p3": 0,
-        "text": "攻击时3%几率附加30点伤害",
+        "text": "攻击时3%几率追加伤害30",
         "color": "blue"
       },
       {
@@ -13560,7 +13560,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时3%几率附加30点伤害",
+        "text": "攻击时3%几率追加伤害30",
         "color": "blue"
       },
       {
@@ -13686,8 +13686,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 10,
         "p3": 0,
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 10",
+        "color": "blue"
       },
       {
         "code": 6,
@@ -13704,8 +13704,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x39]: +3",
-        "color": "white"
+        "text": "攻击时3%几率恢复 MP 10",
+        "color": "blue"
       },
       {
         "text": "MP MAX +100",
@@ -13926,7 +13926,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 70,
         "p3": 0,
-        "text": "攻击时3%几率附加70点伤害",
+        "text": "攻击时3%几率追加伤害70",
         "color": "blue"
       },
       {
@@ -13944,7 +13944,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时3%几率附加70点伤害",
+        "text": "攻击时3%几率追加伤害70",
         "color": "blue"
       },
       {
@@ -13982,8 +13982,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 20,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -13996,8 +13996,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       }
     ]
   },
@@ -14070,7 +14070,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 100,
         "p3": 0,
-        "text": "攻击时3%几率附加100点伤害",
+        "text": "攻击时3%几率追加伤害100",
         "color": "blue"
       },
       {
@@ -14088,7 +14088,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "攻击时3%几率附加100点伤害",
+        "text": "攻击时3%几率追加伤害100",
         "color": "blue"
       },
       {
@@ -14174,7 +14174,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 80,
         "p3": 0,
-        "text": "攻击时3%几率附加80点伤害",
+        "text": "攻击时3%几率追加伤害80",
         "color": "blue"
       }
     ],
@@ -14188,7 +14188,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "攻击时3%几率附加80点伤害",
+        "text": "攻击时3%几率追加伤害80",
         "color": "blue"
       }
     ]
@@ -14262,8 +14262,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 300,
         "p3": 130,
-        "text": "属性[0x4A]: +5",
-        "color": "white"
+        "text": "攻击时5%几率300秒物攻+130",
+        "color": "blue"
       },
       {
         "code": 15,
@@ -14280,8 +14280,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x4A]: +5",
-        "color": "white"
+        "text": "攻击时5%几率300秒物攻+130",
+        "color": "blue"
       },
       {
         "text": "暴击率 +4%",
@@ -14558,8 +14558,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 30,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x60]: +30",
-        "color": "white"
+        "text": "全属性增加 +30",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -14572,8 +14572,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x60]: +30",
-        "color": "white"
+        "text": "全属性增加 +30",
+        "color": "blue"
       }
     ]
   },
@@ -23204,8 +23204,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +2",
-        "color": "white"
+        "text": "中毒抗性 +2%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -23218,8 +23218,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x26]: +2",
-        "color": "white"
+        "text": "中毒抗性 +2%",
+        "color": "blue"
       }
     ]
   },
@@ -23396,8 +23396,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -23410,8 +23410,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -23540,7 +23540,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ],
@@ -23554,7 +23554,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ]
@@ -23588,8 +23588,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -23602,8 +23602,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -23732,7 +23732,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ],
@@ -23746,7 +23746,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ]
@@ -23780,7 +23780,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ],
@@ -23794,7 +23794,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ]
@@ -23924,8 +23924,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -23938,8 +23938,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -23972,8 +23972,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -23986,8 +23986,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -24116,8 +24116,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -24130,8 +24130,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -24356,8 +24356,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +3",
-        "color": "white"
+        "text": "中毒抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -24370,8 +24370,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x26]: +3",
-        "color": "white"
+        "text": "中毒抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -24548,8 +24548,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x28]: +4",
-        "color": "white"
+        "text": "感电抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -24562,8 +24562,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x28]: +4",
-        "color": "white"
+        "text": "感电抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -24692,7 +24692,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +5%",
+        "text": "黑暗抗性 +5%",
         "color": "blue"
       }
     ],
@@ -24706,7 +24706,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "感电抗性 +5%",
+        "text": "黑暗抗性 +5%",
         "color": "blue"
       }
     ]
@@ -24740,8 +24740,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +5",
-        "color": "white"
+        "text": "眩晕抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -24754,8 +24754,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2A]: +5",
-        "color": "white"
+        "text": "眩晕抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -24884,7 +24884,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +6%",
+        "text": "冰冻抗性 +6%",
         "color": "blue"
       }
     ],
@@ -24898,7 +24898,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "眩晕抗性 +6%",
+        "text": "冰冻抗性 +6%",
         "color": "blue"
       }
     ]
@@ -24932,7 +24932,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +6%",
+        "text": "石化抗性 +6%",
         "color": "blue"
       }
     ],
@@ -24946,7 +24946,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "冰冻抗性 +6%",
+        "text": "石化抗性 +6%",
         "color": "blue"
       }
     ]
@@ -25076,8 +25076,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +7",
-        "color": "white"
+        "text": "束缚抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25090,8 +25090,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2D]: +7",
-        "color": "white"
+        "text": "束缚抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -25124,8 +25124,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +7",
-        "color": "white"
+        "text": "混乱抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25138,8 +25138,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2E]: +7",
-        "color": "white"
+        "text": "混乱抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -25268,8 +25268,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 8,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +8",
-        "color": "white"
+        "text": "减速抗性 +8%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25282,8 +25282,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2F]: +8",
-        "color": "white"
+        "text": "减速抗性 +8%",
+        "color": "blue"
       }
     ]
   },
@@ -25470,7 +25470,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ],
@@ -25484,7 +25484,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ]
@@ -25518,8 +25518,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25532,8 +25532,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -25662,7 +25662,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ],
@@ -25676,7 +25676,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ]
@@ -25710,7 +25710,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ],
@@ -25724,7 +25724,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ]
@@ -25854,8 +25854,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25868,8 +25868,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -25902,8 +25902,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -25916,8 +25916,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -26046,8 +26046,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -26060,8 +26060,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -26238,7 +26238,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +5%",
+        "text": "黑暗抗性 +5%",
         "color": "blue"
       }
     ],
@@ -26252,7 +26252,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "感电抗性 +5%",
+        "text": "黑暗抗性 +5%",
         "color": "blue"
       }
     ]
@@ -26286,8 +26286,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +5",
-        "color": "white"
+        "text": "眩晕抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -26300,8 +26300,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2A]: +5",
-        "color": "white"
+        "text": "眩晕抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -26430,7 +26430,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +6%",
+        "text": "冰冻抗性 +6%",
         "color": "blue"
       }
     ],
@@ -26444,7 +26444,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "眩晕抗性 +6%",
+        "text": "冰冻抗性 +6%",
         "color": "blue"
       }
     ]
@@ -26478,7 +26478,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +6%",
+        "text": "石化抗性 +6%",
         "color": "blue"
       }
     ],
@@ -26492,7 +26492,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "冰冻抗性 +6%",
+        "text": "石化抗性 +6%",
         "color": "blue"
       }
     ]
@@ -26622,8 +26622,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +7",
-        "color": "white"
+        "text": "束缚抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -26636,8 +26636,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2D]: +7",
-        "color": "white"
+        "text": "束缚抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -26670,8 +26670,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +7",
-        "color": "white"
+        "text": "混乱抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -26684,8 +26684,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2E]: +7",
-        "color": "white"
+        "text": "混乱抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -26814,8 +26814,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 8,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +8",
-        "color": "white"
+        "text": "减速抗性 +8%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -26828,8 +26828,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x2F]: +8",
-        "color": "white"
+        "text": "减速抗性 +8%",
+        "color": "blue"
       }
     ]
   },
@@ -29356,8 +29356,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 1,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +1",
-        "color": "white"
+        "text": "中毒抗性 +1%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -29370,8 +29370,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +1",
-        "color": "white"
+        "text": "中毒抗性 +1%",
+        "color": "blue"
       }
     ]
   },
@@ -29548,8 +29548,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x28]: +2",
-        "color": "white"
+        "text": "感电抗性 +2%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -29562,8 +29562,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x28]: +2",
-        "color": "white"
+        "text": "感电抗性 +2%",
+        "color": "blue"
       }
     ]
   },
@@ -29692,7 +29692,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +3%",
+        "text": "黑暗抗性 +3%",
         "color": "blue"
       }
     ],
@@ -29706,7 +29706,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "感电抗性 +3%",
+        "text": "黑暗抗性 +3%",
         "color": "blue"
       }
     ]
@@ -29740,8 +29740,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +3",
-        "color": "white"
+        "text": "眩晕抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -29754,8 +29754,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +3",
-        "color": "white"
+        "text": "眩晕抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -29884,7 +29884,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +4%",
+        "text": "冰冻抗性 +4%",
         "color": "blue"
       }
     ],
@@ -29898,7 +29898,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "眩晕抗性 +4%",
+        "text": "冰冻抗性 +4%",
         "color": "blue"
       }
     ]
@@ -29932,7 +29932,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +4%",
+        "text": "石化抗性 +4%",
         "color": "blue"
       }
     ],
@@ -29946,7 +29946,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "冰冻抗性 +4%",
+        "text": "石化抗性 +4%",
         "color": "blue"
       }
     ]
@@ -30076,8 +30076,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +5",
-        "color": "white"
+        "text": "束缚抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30090,8 +30090,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2D]: +5",
-        "color": "white"
+        "text": "束缚抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -30124,8 +30124,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +5",
-        "color": "white"
+        "text": "混乱抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30138,8 +30138,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2E]: +5",
-        "color": "white"
+        "text": "混乱抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -30268,8 +30268,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +6",
-        "color": "white"
+        "text": "减速抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30282,8 +30282,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2F]: +6",
-        "color": "white"
+        "text": "减速抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -30508,8 +30508,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +2",
-        "color": "white"
+        "text": "中毒抗性 +2%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30522,8 +30522,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +2",
-        "color": "white"
+        "text": "中毒抗性 +2%",
+        "color": "blue"
       }
     ]
   },
@@ -30700,8 +30700,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30714,8 +30714,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -30844,7 +30844,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ],
@@ -30858,7 +30858,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ]
@@ -30892,8 +30892,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -30906,8 +30906,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -31036,7 +31036,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ],
@@ -31050,7 +31050,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ]
@@ -31084,7 +31084,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ],
@@ -31098,7 +31098,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ]
@@ -31228,8 +31228,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -31242,8 +31242,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -31276,8 +31276,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -31290,8 +31290,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -31420,8 +31420,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -31434,8 +31434,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -31622,7 +31622,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +3%",
+        "text": "黑暗抗性 +3%",
         "color": "blue"
       }
     ],
@@ -31636,7 +31636,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "感电抗性 +3%",
+        "text": "黑暗抗性 +3%",
         "color": "blue"
       }
     ]
@@ -31670,8 +31670,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +3",
-        "color": "white"
+        "text": "眩晕抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -31684,8 +31684,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +3",
-        "color": "white"
+        "text": "眩晕抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -31814,7 +31814,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +4%",
+        "text": "冰冻抗性 +4%",
         "color": "blue"
       }
     ],
@@ -31828,7 +31828,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "眩晕抗性 +4%",
+        "text": "冰冻抗性 +4%",
         "color": "blue"
       }
     ]
@@ -31862,7 +31862,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +4%",
+        "text": "石化抗性 +4%",
         "color": "blue"
       }
     ],
@@ -31876,7 +31876,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "冰冻抗性 +4%",
+        "text": "石化抗性 +4%",
         "color": "blue"
       }
     ]
@@ -32006,8 +32006,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +5",
-        "color": "white"
+        "text": "束缚抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32020,8 +32020,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2D]: +5",
-        "color": "white"
+        "text": "束缚抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -32054,8 +32054,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +5",
-        "color": "white"
+        "text": "混乱抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32068,8 +32068,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2E]: +5",
-        "color": "white"
+        "text": "混乱抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -32198,8 +32198,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +6",
-        "color": "white"
+        "text": "减速抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32212,8 +32212,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2F]: +6",
-        "color": "white"
+        "text": "减速抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -32390,7 +32390,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ],
@@ -32404,7 +32404,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "感电抗性 +4%",
+        "text": "黑暗抗性 +4%",
         "color": "blue"
       }
     ]
@@ -32438,8 +32438,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32452,8 +32452,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -32582,7 +32582,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ],
@@ -32596,7 +32596,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "眩晕抗性 +5%",
+        "text": "冰冻抗性 +5%",
         "color": "blue"
       }
     ]
@@ -32630,7 +32630,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ],
@@ -32644,7 +32644,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "冰冻抗性 +5%",
+        "text": "石化抗性 +5%",
         "color": "blue"
       }
     ]
@@ -32774,8 +32774,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32788,8 +32788,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2D]: +6",
-        "color": "white"
+        "text": "束缚抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -32822,8 +32822,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32836,8 +32836,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2E]: +6",
-        "color": "white"
+        "text": "混乱抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -32966,8 +32966,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 7,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -32980,8 +32980,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2F]: +7",
-        "color": "white"
+        "text": "减速抗性 +7%",
+        "color": "blue"
       }
     ]
   },
@@ -33498,8 +33498,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2F]: +5",
-        "color": "white"
+        "text": "减速抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -33508,8 +33508,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2F]: +5",
-        "color": "white"
+        "text": "减速抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -33822,8 +33822,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +5",
-        "color": "white"
+        "text": "中毒抗性 +5%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -33832,8 +33832,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +5",
-        "color": "white"
+        "text": "中毒抗性 +5%",
+        "color": "blue"
       }
     ]
   },
@@ -33858,8 +33858,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +6",
-        "color": "white"
+        "text": "中毒抗性 +6%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -33868,8 +33868,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +6",
-        "color": "white"
+        "text": "中毒抗性 +6%",
+        "color": "blue"
       }
     ]
   },
@@ -34190,7 +34190,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 2,
         "p2": 0,
         "p3": 0,
-        "text": "冰冻抗性 +2%",
+        "text": "石化抗性 +2%",
         "color": "blue"
       }
     ],
@@ -34204,7 +34204,7 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "冰冻抗性 +2%",
+        "text": "石化抗性 +2%",
         "color": "blue"
       }
     ]
@@ -34278,8 +34278,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 5,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +5",
-        "color": "white"
+        "text": "中毒抗性 +5%",
+        "color": "blue"
       },
       {
         "code": 19,
@@ -34296,8 +34296,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +5",
-        "color": "white"
+        "text": "中毒抗性 +5%",
+        "color": "blue"
       },
       {
         "text": "回避率 +5%",
@@ -34518,8 +34518,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 6,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x26]: +6",
-        "color": "white"
+        "text": "中毒抗性 +6%",
+        "color": "blue"
       },
       {
         "code": 23,
@@ -34536,8 +34536,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x26]: +6",
-        "color": "white"
+        "text": "中毒抗性 +6%",
+        "color": "blue"
       },
       {
         "text": "暗属性抗性 +7",
@@ -36342,8 +36342,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 4,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -36352,8 +36352,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "white"
       },
       {
-        "text": "属性[0x2A]: +4",
-        "color": "white"
+        "text": "眩晕抗性 +4%",
+        "color": "blue"
       }
     ]
   },
@@ -36734,8 +36734,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 3,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ],
     "lines": [
@@ -36748,8 +36748,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "color": "blue"
       },
       {
-        "text": "属性[0x28]: +3",
-        "color": "white"
+        "text": "感电抗性 +3%",
+        "color": "blue"
       }
     ]
   },
@@ -38840,16 +38840,16 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 20,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9A]: +20",
-        "color": "white"
+        "text": "经验值获得增加 +20%",
+        "color": "blue"
       },
       {
         "code": 155,
         "p1": 30,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9B]: +30",
-        "color": "white"
+        "text": "道具掉落率增加 +30%",
+        "color": "blue"
       },
       {
         "code": 9,
@@ -38862,12 +38862,12 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ],
     "lines": [
       {
-        "text": "属性[0x9A]: +20",
-        "color": "white"
+        "text": "经验值获得增加 +20%",
+        "color": "blue"
       },
       {
-        "text": "属性[0x9B]: +30",
-        "color": "white"
+        "text": "道具掉落率增加 +30%",
+        "color": "blue"
       },
       {
         "text": "HP、MP恢复 +8",
@@ -38888,8 +38888,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 20,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       },
       {
         "code": 17,
@@ -38910,8 +38910,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ],
     "lines": [
       {
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       },
       {
         "text": "移动速度 +2",
@@ -39078,8 +39078,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 20,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       },
       {
         "code": 55,
@@ -39100,8 +39100,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ],
     "lines": [
       {
-        "text": "属性[0x60]: +20",
-        "color": "white"
+        "text": "全属性增加 +20",
+        "color": "blue"
       },
       {
         "text": "攻击时10%几率削减敌人当前 HP 10%",
@@ -39174,16 +39174,16 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 10,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9A]: +10",
-        "color": "white"
+        "text": "经验值获得增加 +10%",
+        "color": "blue"
       },
       {
         "code": 155,
         "p1": 20,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9B]: +20",
-        "color": "white"
+        "text": "道具掉落率增加 +20%",
+        "color": "blue"
       },
       {
         "code": 18,
@@ -39196,12 +39196,12 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ],
     "lines": [
       {
-        "text": "属性[0x9A]: +10",
-        "color": "white"
+        "text": "经验值获得增加 +10%",
+        "color": "blue"
       },
       {
-        "text": "属性[0x9B]: +20",
-        "color": "white"
+        "text": "道具掉落率增加 +20%",
+        "color": "blue"
       },
       {
         "text": "命中率 +10%",
@@ -39222,16 +39222,16 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
         "p1": 0,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9E]: +0",
-        "color": "white"
+        "text": "自动拾取道具",
+        "color": "blue"
       },
       {
         "code": 159,
         "p1": 10,
         "p2": 0,
         "p3": 0,
-        "text": "属性[0x9F]: +10",
-        "color": "white"
+        "text": "金币获得量 +10%",
+        "color": "blue"
       },
       {
         "code": 9,
@@ -39244,12 +39244,12 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     ],
     "lines": [
       {
-        "text": "属性[0x9E]: +0",
-        "color": "white"
+        "text": "自动拾取道具",
+        "color": "blue"
       },
       {
-        "text": "属性[0x9F]: +10",
-        "color": "white"
+        "text": "金币获得量 +10%",
+        "color": "blue"
       },
       {
         "text": "HP、MP恢复 +5",
