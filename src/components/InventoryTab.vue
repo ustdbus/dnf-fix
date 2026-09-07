@@ -245,40 +245,7 @@
                   >
                     {{ currentQualityInfo.label }}
                   </span>
-                  <!-- 属性攻击徽标 -->
-                  <span
-                    v-if="currentEquipInnate && currentEquipInnate.element !== 'none'"
-                    class="text-[10px] px-2 py-0.5 rounded border font-bold flex items-center gap-1 shadow-sm"
-                    :class="{
-                      'bg-red-950/80 text-red-300 border-red-600/60 shadow-red-900/30': currentEquipInnate.element === 'fire',
-                      'bg-blue-950/80 text-cyan-300 border-cyan-500/60 shadow-cyan-900/30': currentEquipInnate.element === 'ice',
-                      'bg-amber-950/80 text-amber-200 border-amber-500/60 shadow-amber-900/30': currentEquipInnate.element === 'light',
-                      'bg-purple-950/80 text-purple-300 border-purple-500/60 shadow-purple-900/30': currentEquipInnate.element === 'dark'
-                    }"
-                  >
-                    <span>{{ currentEquipInnate.element === 'fire' ? '🔥' : currentEquipInnate.element === 'ice' ? '❄️' : currentEquipInnate.element === 'light' ? '⚡' : '🌑' }}</span>
-                    <span>{{ currentEquipInnate.elementName }}</span>
-                  </span>
-                  <!-- 固有技能加成徽标 -->
-                  <span
-                    v-if="currentEquipInnate && currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
-                    class="text-[10px] px-2 py-0.5 rounded border font-bold flex items-center gap-1 shadow-sm bg-purple-950/90 text-purple-200 border-purple-500/60 shadow-purple-900/40 font-mono"
-                  >
-                    <span>🎯</span>
-                    <span>{{ currentEquipInnate.skillDescs.join(', ') }}</span>
-                  </span>
                 </div>
-
-                <!-- 装备特性详情按钮 (点击打开详情模态框) -->
-                <button
-                  v-if="isEquipCategory(formTypeId)"
-                  type="button"
-                  @click="showInnateDetailModal = true"
-                  class="text-[11px] px-2.5 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-600/50 transition font-bold flex items-center gap-1 shadow-sm active:scale-95"
-                >
-                  <span>📜</span>
-                  <span>固有特性与属性详情</span>
-                </button>
               </div>
 
               <!-- 详细属性栏: 分类、等级、强化、价格等 -->
@@ -313,32 +280,35 @@
                 </span>
               </div>
 
-              <!-- 装备特殊能力 (如削血、冰冻等高亮显示) -->
+              <!-- 游戏原版装备词条面板 (完全对齐官方游戏内显示) -->
               <div
-                v-if="currentEquipInnate && currentEquipInnate.specialDesc"
-                class="text-[11px] text-amber-300 font-bold bg-amber-950/50 p-2 rounded-lg border border-amber-600/40 flex items-start gap-1.5 shadow-inner"
+                v-if="currentEquipInnate && (currentEquipInnate.lines.length > 0 || currentEquipInnate.elementName)"
+                class="bg-[#0b1220] border border-[#1c2c48] rounded-lg p-2.5 font-mono text-xs space-y-1 shadow-inner select-none"
               >
-                <span class="text-sm leading-none">⚔️</span>
-                <span>特殊能力: {{ currentEquipInnate.specialDesc }}</span>
-              </div>
+                <!-- 官方固有词条 (基础属性白色，技能与触发特效淡蓝色) -->
+                <div
+                  v-for="(line, lIdx) in currentEquipInnate.lines"
+                  :key="lIdx"
+                  :class="line.color === 'white' ? 'text-gray-100 font-normal' : 'text-sky-400 font-medium'"
+                  class="tracking-wide"
+                >
+                  {{ line.text }}
+                </div>
 
-              <!-- 装备固有技能强化 (如 [地裂·波动剑] Lv+2 等) -->
-              <div
-                v-if="currentEquipInnate && currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
-                class="text-[11px] text-purple-200 bg-purple-950/60 p-2 rounded-lg border border-purple-500/50 flex items-start gap-2 shadow-inner"
-              >
-                <span class="text-sm leading-none">🎯</span>
-                <div class="flex-1">
-                  <div class="text-[10px] text-purple-300 font-mono font-bold mb-1">固有技能等级强化:</div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <span
-                      v-for="(sk, sIdx) in currentEquipInnate.skillDescs"
-                      :key="sIdx"
-                      class="px-2 py-0.5 rounded bg-purple-900/90 text-amber-300 font-black border border-purple-400/50 text-xs font-mono shadow-sm"
-                    >
-                      🎯 {{ sk }}
-                    </span>
-                  </div>
+                <!-- 装备附魔效果 (如截图中的浅绿色 "追加伤害 + 5%") -->
+                <div
+                  v-if="formEnchantCode > 0 && currentEnchantFormatText"
+                  class="text-lime-400 font-medium tracking-wide"
+                >
+                  {{ currentEnchantFormatText }}
+                </div>
+
+                <!-- 最下面再加一条: xx属性攻击 (没有属性攻击就不写) -->
+                <div
+                  v-if="currentEquipInnate.elementName"
+                  class="text-sky-300 font-medium tracking-wide"
+                >
+                  {{ currentEquipInnate.elementName }}
                 </div>
               </div>
 
@@ -798,160 +768,6 @@
       </div>
     </div>
 
-    <!-- 装备固有特性与属性详情弹窗 (展示官方 0.etc 基础攻防、四维、耐久、属性攻击与削血等特殊能力) -->
-    <div
-      v-if="showInnateDetailModal && currentEquipInnate"
-      class="fixed inset-0 z-[60] flex items-center justify-center p-3 bg-black/85 backdrop-blur-md"
-      @click.self="showInnateDetailModal = false"
-    >
-      <div class="bg-[#151824] border border-amber-600/60 rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
-        <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-          <div class="flex items-center gap-2">
-            <span class="text-base">📜</span>
-            <span class="text-amber-300 font-black text-sm">装备官方固有属性与特性详情</span>
-          </div>
-          <button @click="showInnateDetailModal = false" class="text-gray-400 hover:text-white text-base">✕</button>
-        </div>
-
-        <div class="space-y-3">
-          <!-- 头部名称与属性 -->
-          <div class="bg-black/50 p-3 rounded-xl border border-gray-800 flex items-center justify-between">
-            <div>
-              <div class="text-sm font-black" :class="currentQualityInfo.color">
-                {{ currentSelectedInfo.name }}
-              </div>
-              <div class="text-[11px] text-gray-400 mt-0.5">
-                {{ currentSelectedInfo.categoryName }} | Lv.{{ currentSelectedInfo.reqLevel || 0 }}
-              </div>
-            </div>
-            <!-- 属性攻击徽章 -->
-            <div
-              class="px-2.5 py-1 rounded-lg border font-bold text-xs flex items-center gap-1.5"
-              :class="{
-                'bg-red-950/80 text-red-300 border-red-600': currentEquipInnate.element === 'fire',
-                'bg-blue-950/80 text-cyan-300 border-cyan-500': currentEquipInnate.element === 'ice',
-                'bg-amber-950/80 text-amber-200 border-amber-500': currentEquipInnate.element === 'light',
-                'bg-purple-950/80 text-purple-300 border-purple-500': currentEquipInnate.element === 'dark',
-                'bg-gray-900 text-gray-400 border-gray-700': currentEquipInnate.element === 'none'
-              }"
-            >
-              <span>{{ currentEquipInnate.element === 'fire' ? '🔥' : currentEquipInnate.element === 'ice' ? '❄️' : currentEquipInnate.element === 'light' ? '⚡' : currentEquipInnate.element === 'dark' ? '🌑' : '⚪' }}</span>
-              <span>{{ currentEquipInnate.elementName }}</span>
-            </div>
-          </div>
-
-          <!-- 官方基础属性一览 -->
-          <div class="bg-[#0e111a] p-3 rounded-xl border border-gray-800 space-y-2 text-xs">
-            <div class="text-[11px] font-bold text-amber-300 border-b border-gray-800/80 pb-1">
-              📊 官方 0.etc 基础属性
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-gray-300 font-mono">
-              <div>
-                <span class="text-gray-500">{{ isWeapon ? '物理攻击力:' : '物理防御力:' }}</span>
-                <span class="text-white font-bold ml-1.5">{{ currentEquipInnate.base1 }}</span>
-              </div>
-              <div>
-                <span class="text-gray-500">{{ isWeapon ? '魔法攻击力:' : '魔法防御力:' }}</span>
-                <span class="text-white font-bold ml-1.5">{{ currentEquipInnate.base2 }}</span>
-              </div>
-              <div>
-                <span class="text-gray-500">四维属性:</span>
-                <span class="text-amber-300 font-bold ml-1.5">+{{ currentEquipInnate.stat4 }}</span>
-              </div>
-              <div>
-                <span class="text-gray-500">耐久度:</span>
-                <span class="text-emerald-400 font-bold ml-1.5">{{ currentEquipInnate.durability }}</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 官方固有技能等级加成专属栏 -->
-          <div
-            v-if="currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
-            class="bg-[#12111d] p-3 rounded-xl border border-purple-600/50 space-y-2 text-xs shadow-inner"
-          >
-            <div class="text-[11px] font-bold text-purple-300 border-b border-purple-900/60 pb-1 flex items-center justify-between">
-              <span class="flex items-center gap-1.5">
-                <span>🎯</span>
-                <span>官方固有技能等级强化 (Option 0x18)</span>
-              </span>
-              <span class="text-[10px] text-purple-400 font-mono">共 {{ currentEquipInnate.skillDescs.length }} 个技能</span>
-            </div>
-            <div class="space-y-1.5">
-              <div
-                v-for="(sk, sIdx) in currentEquipInnate.skillDescs"
-                :key="sIdx"
-                class="p-2 rounded-lg bg-purple-950/70 border border-purple-500/40 flex items-center justify-between"
-              >
-                <span class="text-amber-300 font-bold text-xs tracking-wide flex items-center gap-1">
-                  <span>🎯</span>
-                  <span>{{ sk }}</span>
-                </span>
-                <span class="text-[10px] font-mono text-purple-300 bg-black/40 px-2 py-0.5 rounded border border-purple-700/40">
-                  Option Code: 0x18
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 官方固有特效与全量词条明细 -->
-          <div class="bg-[#0e111a] p-3 rounded-xl border border-gray-800 space-y-2 text-xs">
-            <div class="text-[11px] font-bold text-amber-300 border-b border-gray-800/80 pb-1">
-              ⚔️ 装备特殊能力与固有词条明细
-            </div>
-
-            <!-- 核心特殊能力 (削血、冰冻、白字等) -->
-            <div v-if="currentEquipInnate.specialDesc" class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-600/40 text-amber-200 font-bold leading-relaxed flex items-start gap-2">
-              <span class="text-base">💥</span>
-              <div>
-                <div class="text-[10px] text-amber-400 font-mono">固有核心特效:</div>
-                <div>{{ currentEquipInnate.specialDesc }}</div>
-              </div>
-            </div>
-
-            <!-- 全量 3 个 Option 词条中文解析 -->
-            <div v-if="currentEquipInnate.options && currentEquipInnate.options.length > 0" class="space-y-1.5 pt-1">
-              <div class="text-[10px] text-gray-400">官方 0.etc 完整固有 Option 词条明细:</div>
-              <div
-                v-for="(opt, idx) in currentEquipInnate.options"
-                :key="idx"
-                class="p-2 rounded-lg bg-black/40 border border-gray-800 text-[11px] flex items-center justify-between transition hover:border-gray-700"
-              >
-                <div class="flex items-center gap-2">
-                  <span class="text-amber-400/80 font-mono text-[10px]">[词条 {{ idx + 1 }}]</span>
-                  <span
-                    class="font-bold text-gray-200"
-                    :class="{
-                      'text-purple-300': opt.code === 0x18,
-                      'text-red-300': opt.code === 0x37,
-                      'text-cyan-300': opt.code === 0x20
-                    }"
-                  >
-                    {{ opt.desc || `Option 0x${opt.code.toString(16).padStart(2, '0').toUpperCase()}` }}
-                  </span>
-                </div>
-                <span class="text-gray-500 text-[10px] font-mono">
-                  Code: 0x{{ opt.code.toString(16).padStart(2, '0').toUpperCase() }} ({{ opt.p1 }}, {{ opt.p2 }}, {{ opt.p3 }})
-                </span>
-              </div>
-            </div>
-            <div v-else-if="!currentEquipInnate.specialDesc" class="text-gray-500 text-[11px] py-2 text-center">
-              该装备无官方额外特殊能力
-            </div>
-          </div>
-        </div>
-
-        <div class="flex justify-end pt-2 border-t border-gray-800">
-          <button
-            type="button"
-            @click="showInnateDetailModal = false"
-            class="text-xs px-4 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold transition"
-          >
-            关闭详情
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -980,8 +796,6 @@ const formRefineLevel = ref<number>(0)
 
 // 装备高级属性锁定状态 (攻防、强化等级与四维，默认锁定保护)
 const isEquipStatsLocked = ref<boolean>(true)
-// 装备特性与属性攻击详情弹窗开关
-const showInnateDetailModal = ref<boolean>(false)
 
 // 装备底层属性响应式状态 (依据官方 24 字节结构)
 const formGrade = ref<number>(3)           // 0:下级, 1:中级, 2:上级, 3:最上级
@@ -1305,14 +1119,11 @@ function getSlotHoverTitle(slot: InventorySlot): string {
   if (isEq) {
     const innate = getEquipInnateInfo(slot.typeId, slot.itemId)
     if (innate) {
-      if (innate.element !== 'none') {
-        extraStr += ` | [${innate.elementName}]`
+      if (innate.lines && innate.lines.length > 0) {
+        extraStr += ` | ${innate.lines.map(l => l.text).join(' | ')}`
       }
-      if (innate.skillDescs && innate.skillDescs.length > 0) {
-        extraStr += ` | 🎯 技能: ${innate.skillDescs.join(', ')}`
-      }
-      if (innate.specialDesc) {
-        extraStr += ` | ⚔️ ${innate.specialDesc}`
+      if (innate.elementName) {
+        extraStr += ` | ${innate.elementName}`
       }
     }
   }
@@ -1328,7 +1139,6 @@ function openEditModal(slot: InventorySlot) {
   modalSearchQuery.value = ''
   selectedEnchantCategory.value = 'all'
   isEquipStatsLocked.value = true
-  showInnateDetailModal.value = false
   if (slot.isEmpty) {
     selectedCategoryFilter.value = -1 // 默认全部类别 (全库浏览)
     formTypeId.value = 0x00 // 默认短剑
@@ -1376,7 +1186,6 @@ function closeEditModal() {
   selectedCategoryFilter.value = -1
   formTypeId.value = 0x00
   formItemId.value = 0x00
-  showInnateDetailModal.value = false
   clearEnchant()
 }
 
