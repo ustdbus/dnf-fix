@@ -61,6 +61,10 @@ for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
 
   for (const [itemIdStr, official] of Object.entries(items)) {
     const itemId = Number(itemIdStr)
+    // 彻底排除官方解包产生的“初始值”与“重置”伪条目 (如 0x00 占位符)
+    if (itemId === 0 || official.name === '初始值' || official.name === '重置') {
+      continue
+    }
     const special = SPECIAL_ITEM_DESC[`${typeId}_${itemId}`]
     const quality = special?.quality || official.quality || 'white'
     const desc = special?.desc || (official.reqLevel !== undefined ? `Lv.${official.reqLevel}${official.price ? ' 售价:' + official.price : ''}` : undefined)
@@ -154,9 +158,27 @@ export function findItemInfo(typeId: number, itemId: number): {
   const catName = cat ? cat.name : `未知类别`
   const isEquip = typeId >= 0x00 && typeId <= 0x08
 
+  // 0 或空物品直接返回空，绝不制造“初始值”
+  if (itemId === 0) {
+    return {
+      name: '空',
+      categoryName: catName,
+      quality: 'white',
+      canRefine: false,
+    }
+  }
+
   // 1. 查官方全量解包数据库 (1797件物品完整数据)
   const official = OFFICIAL_ITEM_DATABASE[typeId]?.[itemId]
   if (official) {
+    if (official.name === '初始值' || official.name === '重置') {
+      return {
+        name: '空',
+        categoryName: catName,
+        quality: 'white',
+        canRefine: false,
+      }
+    }
     const special = SPECIAL_ITEM_DESC[`${typeId}_${itemId}`]
     return {
       name: official.name,
@@ -219,3 +241,12 @@ export function getCategoryItems(typeId: number): ItemDefinition[] {
 export function getAllAvailableItems(): ItemDefinition[] {
   return ITEM_DICTIONARY
 }
+
+/**
+ * 获取指定大类下的第一件真实有效物品 ID (保证不返回 0 或初始值，默认返回该分类首件)
+ */
+export function getCategoryFirstItemId(typeId: number): number {
+  const items = ITEM_DICTIONARY.filter(i => i.typeId === typeId)
+  return items.length > 0 ? items[0].itemId : 1
+}
+

@@ -196,11 +196,50 @@
           </select>
         </div>
 
-        <!-- 2. 物品选择列表 -->
+        <!-- 2. 装备品质筛选分类 (全部品质 / 普通 / 高级 / 稀有 / 神器 / 史诗) -->
+        <div v-if="showQualityFilter" class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs text-gray-400 font-medium flex items-center gap-1.5">
+              <span>💎</span>
+              <span>2. 装备品质分类:</span>
+            </label>
+            <span
+              v-if="selectedQualityFilter !== 'all'"
+              @click="selectedQualityFilter = 'all'; onQualityFilterChange()"
+              class="text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer bg-amber-900/30 px-1.5 py-0.5 rounded border border-amber-700/40 transition"
+            >
+              ✕ 重置为全部品质
+            </span>
+          </div>
+          <!-- 品质药丸快捷切换按钮组 (6列自适应布局，直观展示专属颜色与当前分类下数量) -->
+          <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+            <button
+              v-for="q in QUALITY_FILTER_OPTIONS"
+              :key="q.value"
+              type="button"
+              @click="selectedQualityFilter = q.value; onQualityFilterChange()"
+              :disabled="qualityCounts[q.value] === 0"
+              :class="[
+                'text-xs py-1.5 px-1.5 rounded-lg font-bold border transition-all flex items-center justify-center gap-1 active:scale-95 select-none',
+                qualityCounts[q.value] === 0
+                  ? 'opacity-30 border-gray-800 bg-gray-900/40 text-gray-600 cursor-not-allowed'
+                  : selectedQualityFilter === q.value
+                    ? q.activeClass
+                    : 'bg-[#0e1119] border-gray-800 text-gray-400 hover:text-gray-200 hover:border-gray-700 cursor-pointer'
+              ]"
+            >
+              <span class="w-2 h-2 rounded-full shrink-0" :class="q.dotClass"></span>
+              <span class="truncate">{{ q.label }}</span>
+              <span class="text-[10px] font-mono opacity-80">({{ qualityCounts[q.value] || 0 }})</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 物品选择列表 -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ modalSearchQuery.trim() ? '搜索匹配物品列表 (含穿戴等级与品级分类):' : '2. 选择物品 (含穿戴等级与品级分类):' }}
+              {{ modalSearchQuery.trim() ? '搜索匹配物品列表 (含穿戴等级与品级分类):' : (showQualityFilter ? '3. 选择物品 (含穿戴等级与品级分类):' : '2. 选择物品 (含穿戴等级与品级分类):') }}
             </label>
             <span class="text-[10px] text-gray-500 font-mono">
               共 {{ modalDisplayItems.length }} 件物品
@@ -774,7 +813,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
+import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
@@ -783,14 +822,25 @@ const props = defineProps<{
   save: DnfHeroSave
 }>()
 
+// 品质筛选选项配置 (全部品质 / 普通 / 高级 / 稀有 / 神器 / 史诗)
+const QUALITY_FILTER_OPTIONS = [
+  { value: 'all', label: '全部品质', dotClass: 'bg-amber-400', activeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-sm shadow-amber-500/20' },
+  { value: 'white', label: '普通', dotClass: 'bg-gray-300', activeClass: 'bg-gray-800 text-gray-200 border-gray-500/60 shadow-sm shadow-gray-500/20' },
+  { value: 'blue', label: '高级', dotClass: 'bg-blue-400', activeClass: 'bg-blue-900/40 text-blue-300 border-blue-500/60 shadow-sm shadow-blue-500/20' },
+  { value: 'purple', label: '稀有', dotClass: 'bg-purple-400', activeClass: 'bg-purple-900/40 text-purple-300 border-purple-500/60 shadow-sm shadow-purple-500/20' },
+  { value: 'pink', label: '神器', dotClass: 'bg-fuchsia-400', activeClass: 'bg-fuchsia-900/40 text-fuchsia-300 border-fuchsia-500/60 shadow-sm shadow-fuchsia-500/20' },
+  { value: 'orange', label: '史诗', dotClass: 'bg-amber-500', activeClass: 'bg-amber-950/60 text-amber-400 border-amber-500/80 shadow-sm shadow-amber-500/30' },
+] as const
+
 type FilterType = 'all' | 'equip' | 'consumable' | 'material' | 'quest' | 'empty'
 const filterType = ref<FilterType>('all')
 const editingSlot = ref<InventorySlot | null>(null)
 
 const modalSearchQuery = ref('')
 const selectedCategoryFilter = ref<number>(-1)
+const selectedQualityFilter = ref<string>('all')
 const formTypeId = ref<number>(0x00)
-const formItemId = ref<number>(0x00)
+const formItemId = ref<number>(1)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
@@ -991,21 +1041,54 @@ const categoryFilterOptions = computed(() => {
   }).filter(cat => !q || cat.count > 0)
 })
 
-// 弹窗中展示的物品列表：根据搜索词与选定大类双重过滤
+// 是否展示装备品质分类筛选 (全库浏览 -1 或 装备大类 0x00~0x08 时展示)
+const showQualityFilter = computed(() => {
+  return selectedCategoryFilter.value === -1 || isEquip(selectedCategoryFilter.value)
+})
+
+// 当前大类下各品质装备的动态统计数量
+const qualityCounts = computed<Record<string, number>>(() => {
+  let list = allSearchMatchedItems.value
+  if (selectedCategoryFilter.value !== -1) {
+    list = list.filter(i => i.typeId === selectedCategoryFilter.value)
+  }
+  const counts: Record<string, number> = {
+    all: list.length,
+    white: 0,
+    blue: 0,
+    purple: 0,
+    pink: 0,
+    orange: 0,
+  }
+  for (const it of list) {
+    const q = it.quality || 'white'
+    if (counts[q] !== undefined) {
+      counts[q]++
+    }
+  }
+  return counts
+})
+
+// 弹窗中展示的物品列表：根据搜索词、选定大类与品质筛选三重联动过滤
 const modalDisplayItems = computed(() => {
   const q = modalSearchQuery.value.trim().toLowerCase()
   let list = allSearchMatchedItems.value
   
-  // 如果选择了特定类别（非“全部类别”），按该类别过滤
+  // 1. 如果选择了特定类别（非“全部类别”），按该类别过滤
   if (selectedCategoryFilter.value !== -1) {
     list = list.filter(i => i.typeId === selectedCategoryFilter.value)
+  }
+
+  // 2. 如果在装备类别下且指定了品质筛选，按品质过滤
+  if (showQualityFilter.value && selectedQualityFilter.value !== 'all') {
+    list = list.filter(i => (i.quality || 'white') === selectedQualityFilter.value)
   }
 
   if (list.length === 0) {
     return [{
       typeId: formTypeId.value,
       itemId: formItemId.value,
-      name: q ? `未找到包含 "${modalSearchQuery.value}" 的物品` : '当前分类无物品',
+      name: q ? `未找到包含 "${modalSearchQuery.value}" 的物品` : '当前分类与品质无匹配物品',
       categoryName: '无匹配'
     }]
   }
@@ -1027,12 +1110,14 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
 // 监听搜索输入，自动重置大类为全部类别，列出全库所有类别的匹配物品
 watch(modalSearchQuery, (newQ) => {
   selectedCategoryFilter.value = -1
+  selectedQualityFilter.value = 'all'
   const q = newQ.trim().toLowerCase()
   if (!q) {
     if (editingSlot.value?.isEmpty) {
       formTypeId.value = 0x00
-      formItemId.value = 0x00
-      syncEquipInnateDefaults(0x00, 0x00)
+      const firstId = getCategoryFirstItemId(0x00)
+      formItemId.value = firstId
+      syncEquipInnateDefaults(0x00, firstId)
     }
     return
   }
@@ -1052,8 +1137,27 @@ watch(modalSearchQuery, (newQ) => {
   }
 })
 
-// 切换大类分类时触发：不修改搜索词，只定位选中的物品到当前分类的首项
+// 切换大类分类时触发：按用户要求，默认显示该类别的第一件真实物品 (彻底杜绝初始值)
 function onCategoryFilterChange() {
+  // 若当前选中的品质在该大类下没有物品，自动切回全部品质
+  if (selectedQualityFilter.value !== 'all' && qualityCounts.value[selectedQualityFilter.value] === 0) {
+    selectedQualityFilter.value = 'all'
+  }
+
+  const list = modalDisplayItems.value
+  if (list.length > 0 && list[0].categoryName !== '无匹配') {
+    const first = list[0]
+    formTypeId.value = first.typeId
+    formItemId.value = first.itemId
+    if (isSingleCategory(first.typeId)) {
+      formCount.value = 1
+    }
+    syncEquipInnateDefaults(first.typeId, first.itemId)
+  }
+}
+
+// 切换品质分类时触发：若当前选中的物品不属于该品质，自动定位到该品质首件物品
+function onQualityFilterChange() {
   const list = modalDisplayItems.value
   if (list.length > 0 && list[0].categoryName !== '无匹配') {
     const hasCurrent = list.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
@@ -1138,11 +1242,13 @@ function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
   modalSearchQuery.value = ''
   selectedEnchantCategory.value = 'all'
+  selectedQualityFilter.value = 'all'
   isEquipStatsLocked.value = true
   if (slot.isEmpty) {
-    selectedCategoryFilter.value = -1 // 默认全部类别 (全库浏览)
+    selectedCategoryFilter.value = 0x00 // 默认短剑分类
     formTypeId.value = 0x00 // 默认短剑
-    formItemId.value = 0x00 // 默认初始值
+    const firstItemId = getCategoryFirstItemId(0x00)
+    formItemId.value = firstItemId // 默认第一件有效装备 (破损的铁剑)
     formCount.value = 1
     formRefineLevel.value = 0
     formGrade.value = 3
@@ -1152,15 +1258,16 @@ function openEditModal(slot: InventorySlot) {
     formRefineBonus1.value = 0
     formRefineBonus2.value = 0
     formStat4.value = 0
-    syncEquipInnateDefaults(0x00, 0x00)
+    syncEquipInnateDefaults(0x00, firstItemId)
     clearEnchant()
   } else {
     selectedCategoryFilter.value = slot.typeId
     formTypeId.value = slot.typeId
-    formItemId.value = slot.itemId
+    const safeItemId = slot.itemId > 0 ? slot.itemId : getCategoryFirstItemId(slot.typeId)
+    formItemId.value = safeItemId
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
-    const innate = getEquipInnateInfo(slot.typeId, slot.itemId)
+    const innate = getEquipInnateInfo(slot.typeId, safeItemId)
     formGrade.value = slot.grade !== undefined ? slot.grade : 3
     formDurability.value = slot.durability !== undefined ? slot.durability : (innate?.durability || 35)
     formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : (innate?.base1 || 0)
@@ -1184,8 +1291,9 @@ function closeEditModal() {
   editingSlot.value = null
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
+  selectedQualityFilter.value = 'all'
   formTypeId.value = 0x00
-  formItemId.value = 0x00
+  formItemId.value = 1
   clearEnchant()
 }
 
