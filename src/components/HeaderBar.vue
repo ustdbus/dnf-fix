@@ -26,6 +26,9 @@
               <span class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-amber-950/80 text-amber-300 border border-amber-500/50 font-semibold shadow-inner">
                 阿拉德秘宝
               </span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold tracking-tight shadow-sm">
+                v1.5.0
+              </span>
             </div>
             <p class="text-[11px] text-gray-400 flex items-center gap-1.5 mt-0.5">
               <span class="text-amber-500/90 font-medium">DNF 单机专属</span>
