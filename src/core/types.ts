@@ -6,6 +6,7 @@ export interface ItemDefinition {
   quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'; // 品级
   canRefine?: boolean;  // 是否可强化 (武器/防具/首饰)
   reqLevel?: number;    // 装备需求等级
+  armorType?: '布甲' | '轻甲' | '重甲' | '板甲'; // 防具材质分类 (护肩、上衣、下衣)
   price?: number;       // 基础售价
   desc?: string;        // 说明备注
 }

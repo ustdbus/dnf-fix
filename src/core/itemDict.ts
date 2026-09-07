@@ -1,5 +1,16 @@
 import { ItemDefinition } from './types'
 import { OFFICIAL_ITEM_DATABASE } from './officialItems'
+import { getArmorMaterial, type ArmorType, ARMOR_TYPES } from './armorDict'
+
+export type { ArmorType }
+export { ARMOR_TYPES }
+
+/**
+ * 是否属于防具（护肩 0x04、上衣 0x05、下衣 0x06）
+ */
+export function isArmorCategory(typeId: number): boolean {
+  return typeId === 0x04 || typeId === 0x05 || typeId === 0x06
+}
 
 export const CATEGORIES: { id: number; name: string }[] = [
   { id: 0x00, name: '短剑' },
@@ -23,8 +34,6 @@ export const CATEGORIES: { id: number; name: string }[] = [
   { id: 0x12, name: '罐子类' },
   { id: 0x13, name: '任务物品' },
 ]
-
-export const ARMOR_TYPES = ['布甲', '轻甲', '重甲', '板甲'] as const
 
 /**
  * 特殊物品属性增强说明 (如称号属性加成、宠物特技描述)
@@ -69,6 +78,8 @@ for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
     const quality = special?.quality || official.quality || 'white'
     const desc = special?.desc || (official.reqLevel !== undefined ? `Lv.${official.reqLevel}${official.price ? ' 售价:' + official.price : ''}` : undefined)
 
+    const armorType = isArmorCategory(typeId) ? getArmorMaterial(typeId, itemId) : undefined
+
     ITEM_DICTIONARY.push({
       typeId,
       itemId,
@@ -77,6 +88,7 @@ for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
       quality,
       canRefine: isEquip,
       reqLevel: official.reqLevel,
+      armorType,
       price: official.price,
       desc,
     })
@@ -151,12 +163,14 @@ export function findItemInfo(typeId: number, itemId: number): {
   quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'
   canRefine: boolean
   reqLevel?: number
+  armorType?: ArmorType
   price?: number
   desc?: string
 } {
   const cat = CATEGORIES.find(c => c.id === typeId)
   const catName = cat ? cat.name : `未知类别`
   const isEquip = typeId >= 0x00 && typeId <= 0x08
+  const armorType = isArmorCategory(typeId) ? getArmorMaterial(typeId, itemId) : undefined
 
   // 0 或空物品直接返回空，绝不制造“初始值”
   if (itemId === 0) {
@@ -186,6 +200,7 @@ export function findItemInfo(typeId: number, itemId: number): {
       quality: special?.quality || official.quality || 'white',
       canRefine: isEquip,
       reqLevel: official.reqLevel,
+      armorType,
       price: official.price,
       desc: special?.desc || (official.reqLevel !== undefined ? `Lv.${official.reqLevel}` : undefined),
     }

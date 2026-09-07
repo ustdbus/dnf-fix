@@ -235,11 +235,50 @@
           </div>
         </div>
 
-        <!-- 3. 物品选择列表 -->
+        <!-- 3. 防具材质分类 (仅在护肩 0x04、上衣 0x05、下衣 0x06 时显示: 全部材质 / 布甲 / 轻甲 / 重甲 / 板甲) -->
+        <div v-if="showArmorTypeFilter" class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs text-gray-400 font-medium flex items-center gap-1.5">
+              <span>🛡️</span>
+              <span>3. 防具材质分类 (布甲 / 轻甲 / 重甲 / 板甲):</span>
+            </label>
+            <span
+              v-if="selectedArmorTypeFilter !== 'all'"
+              @click="selectedArmorTypeFilter = 'all'; onArmorTypeFilterChange()"
+              class="text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer bg-amber-900/30 px-1.5 py-0.5 rounded border border-amber-700/40 transition"
+            >
+              ✕ 重置为全部材质
+            </span>
+          </div>
+          <!-- 材质药丸快捷切换按钮组 (5列自适应布局，直观展示专属颜色与当前筛选下的数量) -->
+          <div class="grid grid-cols-5 gap-1.5">
+            <button
+              v-for="mat in ARMOR_FILTER_OPTIONS"
+              :key="mat.value"
+              type="button"
+              @click="selectedArmorTypeFilter = mat.value; onArmorTypeFilterChange()"
+              :disabled="armorTypeCounts[mat.value] === 0"
+              :class="[
+                'text-xs py-1.5 px-1 rounded-lg font-bold border transition-all flex items-center justify-center gap-1 active:scale-95 select-none',
+                armorTypeCounts[mat.value] === 0
+                  ? 'opacity-30 border-gray-800 bg-gray-900/40 text-gray-600 cursor-not-allowed'
+                  : selectedArmorTypeFilter === mat.value
+                    ? mat.activeClass
+                    : 'bg-[#0e1119] border-gray-800 text-gray-400 hover:text-gray-200 hover:border-gray-700 cursor-pointer'
+              ]"
+            >
+              <span class="w-2 h-2 rounded-full shrink-0" :class="mat.dotClass"></span>
+              <span class="truncate">{{ mat.label }}</span>
+              <span class="text-[10px] font-mono opacity-80">({{ armorTypeCounts[mat.value] || 0 }})</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. 物品选择列表 -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ modalSearchQuery.trim() ? '搜索匹配物品列表 (含穿戴等级与品级分类):' : (showQualityFilter ? '3. 选择物品 (含穿戴等级与品级分类):' : '2. 选择物品 (含穿戴等级与品级分类):') }}
+              {{ modalSearchQuery.trim() ? '搜索匹配物品列表 (含穿戴等级、材质与品级分类):' : (showArmorTypeFilter ? '4. 选择物品 (含穿戴等级、材质与品级分类):' : (showQualityFilter ? '3. 选择物品 (含穿戴等级与品级分类):' : '2. 选择物品:')) }}
             </label>
             <span class="text-[10px] text-gray-500 font-mono">
               共 {{ modalDisplayItems.length }} 件物品
@@ -260,7 +299,7 @@
           </select>
         </div>
 
-        <!-- 4. 选定物品实时详情卡片 (等级、品级分类、属性完整呈现) -->
+        <!-- 5. 选定物品实时详情卡片 (等级、品级分类、属性完整呈现) -->
         <div
           :class="[
             'p-3 rounded-xl border transition-all space-y-2',
@@ -284,10 +323,16 @@
                   >
                     {{ currentQualityInfo.label }}
                   </span>
+                  <span
+                    v-if="currentSelectedInfo.armorType"
+                    class="text-[10px] px-1.5 py-0.5 rounded bg-sky-950/70 text-sky-300 border border-sky-600/60 font-bold font-mono tracking-wide"
+                  >
+                    {{ currentSelectedInfo.armorType }}
+                  </span>
                 </div>
               </div>
 
-              <!-- 详细属性栏: 分类、等级、强化、价格等 -->
+              <!-- 详细属性栏: 分类、材质、等级、强化、价格等 -->
               <div class="text-[11px] text-gray-300 flex flex-wrap items-center gap-x-3.5 gap-y-1 pt-0.5">
                 <span class="flex items-center gap-1">
                   <span class="text-gray-500">品级:</span>
@@ -296,6 +341,10 @@
                 <span class="flex items-center gap-1">
                   <span class="text-gray-500">分类:</span>
                   <span class="text-amber-200 font-semibold">{{ currentSelectedInfo.categoryName }}</span>
+                </span>
+                <span v-if="currentSelectedInfo.armorType" class="flex items-center gap-1">
+                  <span class="text-gray-500">材质:</span>
+                  <span class="text-sky-300 font-bold font-mono">{{ currentSelectedInfo.armorType }}</span>
                 </span>
                 <span v-if="currentSelectedInfo.reqLevel !== undefined" class="flex items-center gap-1">
                   <span class="text-gray-500">穿戴等级:</span>
@@ -813,7 +862,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId } from '../core/itemDict'
+import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
@@ -832,6 +881,15 @@ const QUALITY_FILTER_OPTIONS = [
   { value: 'orange', label: '史诗', dotClass: 'bg-amber-500', activeClass: 'bg-amber-950/60 text-amber-400 border-amber-500/80 shadow-sm shadow-amber-500/30' },
 ] as const
 
+// 防具材质筛选配置 (仅护肩、上衣、下衣可用: 布甲 / 轻甲 / 重甲 / 板甲)
+const ARMOR_FILTER_OPTIONS = [
+  { value: 'all', label: '全部材质', dotClass: 'bg-amber-400', activeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-sm shadow-amber-500/20' },
+  { value: '布甲', label: '布甲', dotClass: 'bg-sky-400', activeClass: 'bg-sky-950/60 text-sky-300 border-sky-500/60 shadow-sm shadow-sky-500/20' },
+  { value: '轻甲', label: '轻甲', dotClass: 'bg-emerald-400', activeClass: 'bg-emerald-950/60 text-emerald-300 border-emerald-500/60 shadow-sm shadow-emerald-500/20' },
+  { value: '重甲', label: '重甲', dotClass: 'bg-rose-400', activeClass: 'bg-rose-950/60 text-rose-300 border-rose-500/60 shadow-sm shadow-rose-500/20' },
+  { value: '板甲', label: '板甲', dotClass: 'bg-yellow-200', activeClass: 'bg-yellow-950/60 text-yellow-200 border-yellow-500/60 shadow-sm shadow-yellow-500/20' },
+] as const
+
 type FilterType = 'all' | 'equip' | 'consumable' | 'material' | 'quest' | 'empty'
 const filterType = ref<FilterType>('all')
 const editingSlot = ref<InventorySlot | null>(null)
@@ -839,6 +897,7 @@ const editingSlot = ref<InventorySlot | null>(null)
 const modalSearchQuery = ref('')
 const selectedCategoryFilter = ref<number>(-1)
 const selectedQualityFilter = ref<string>('all')
+const selectedArmorTypeFilter = ref<string>('all')
 const formTypeId = ref<number>(0x00)
 const formItemId = ref<number>(1)
 const formCount = ref<number>(1)
@@ -1046,6 +1105,11 @@ const showQualityFilter = computed(() => {
   return selectedCategoryFilter.value === -1 || isEquip(selectedCategoryFilter.value)
 })
 
+// 是否展示防具材质分类筛选 (仅护肩 0x04、上衣 0x05、下衣 0x06 时展示)
+const showArmorTypeFilter = computed(() => {
+  return isArmorCategory(selectedCategoryFilter.value)
+})
+
 // 当前大类下各品质装备的动态统计数量
 const qualityCounts = computed<Record<string, number>>(() => {
   let list = allSearchMatchedItems.value
@@ -1069,7 +1133,31 @@ const qualityCounts = computed<Record<string, number>>(() => {
   return counts
 })
 
-// 弹窗中展示的物品列表：根据搜索词、选定大类与品质筛选三重联动过滤
+// 当前防具大类与品质筛选下各材质装备的动态统计数量
+const armorTypeCounts = computed<Record<string, number>>(() => {
+  let list = allSearchMatchedItems.value
+  if (selectedCategoryFilter.value !== -1) {
+    list = list.filter(i => i.typeId === selectedCategoryFilter.value)
+  }
+  if (selectedQualityFilter.value !== 'all') {
+    list = list.filter(i => (i.quality || 'white') === selectedQualityFilter.value)
+  }
+  const counts: Record<string, number> = {
+    all: list.length,
+    '布甲': 0,
+    '轻甲': 0,
+    '重甲': 0,
+    '板甲': 0,
+  }
+  for (const it of list) {
+    if (it.armorType && counts[it.armorType] !== undefined) {
+      counts[it.armorType]++
+    }
+  }
+  return counts
+})
+
+// 弹窗中展示的物品列表：根据搜索词、选定大类、品质与防具材质多重联动过滤
 const modalDisplayItems = computed(() => {
   const q = modalSearchQuery.value.trim().toLowerCase()
   let list = allSearchMatchedItems.value
@@ -1084,11 +1172,16 @@ const modalDisplayItems = computed(() => {
     list = list.filter(i => (i.quality || 'white') === selectedQualityFilter.value)
   }
 
+  // 3. 如果在防具大类下且指定了材质筛选，按防具材质过滤 (布甲/轻甲/重甲/板甲)
+  if (showArmorTypeFilter.value && selectedArmorTypeFilter.value !== 'all') {
+    list = list.filter(i => i.armorType === selectedArmorTypeFilter.value)
+  }
+
   if (list.length === 0) {
     return [{
       typeId: formTypeId.value,
       itemId: formItemId.value,
-      name: q ? `未找到包含 "${modalSearchQuery.value}" 的物品` : '当前分类与品质无匹配物品',
+      name: q ? `未找到包含 "${modalSearchQuery.value}" 的物品` : '当前分类、品质与材质下无匹配物品',
       categoryName: '无匹配'
     }]
   }
@@ -1111,6 +1204,7 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
 watch(modalSearchQuery, (newQ) => {
   selectedCategoryFilter.value = -1
   selectedQualityFilter.value = 'all'
+  selectedArmorTypeFilter.value = 'all'
   const q = newQ.trim().toLowerCase()
   if (!q) {
     if (editingSlot.value?.isEmpty) {
@@ -1139,6 +1233,13 @@ watch(modalSearchQuery, (newQ) => {
 
 // 切换大类分类时触发：按用户要求，默认显示该类别的第一件真实物品 (彻底杜绝初始值)
 function onCategoryFilterChange() {
+  // 若切换出防具分类，重置防具材质筛选为全部
+  if (!isArmorCategory(selectedCategoryFilter.value)) {
+    selectedArmorTypeFilter.value = 'all'
+  } else if (selectedArmorTypeFilter.value !== 'all' && armorTypeCounts.value[selectedArmorTypeFilter.value] === 0) {
+    selectedArmorTypeFilter.value = 'all'
+  }
+
   // 若当前选中的品质在该大类下没有物品，自动切回全部品质
   if (selectedQualityFilter.value !== 'all' && qualityCounts.value[selectedQualityFilter.value] === 0) {
     selectedQualityFilter.value = 'all'
@@ -1158,6 +1259,28 @@ function onCategoryFilterChange() {
 
 // 切换品质分类时触发：若当前选中的物品不属于该品质，自动定位到该品质首件物品
 function onQualityFilterChange() {
+  // 若材质在当前品质下无物品，自动切回全部材质
+  if (showArmorTypeFilter.value && selectedArmorTypeFilter.value !== 'all' && armorTypeCounts.value[selectedArmorTypeFilter.value] === 0) {
+    selectedArmorTypeFilter.value = 'all'
+  }
+
+  const list = modalDisplayItems.value
+  if (list.length > 0 && list[0].categoryName !== '无匹配') {
+    const hasCurrent = list.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
+    if (!hasCurrent) {
+      const first = list[0]
+      formTypeId.value = first.typeId
+      formItemId.value = first.itemId
+      if (isSingleCategory(first.typeId)) {
+        formCount.value = 1
+      }
+      syncEquipInnateDefaults(first.typeId, first.itemId)
+    }
+  }
+}
+
+// 切换防具材质分类时触发：若当前选中的物品不属于该材质，自动定位到该材质首件物品
+function onArmorTypeFilterChange() {
   const list = modalDisplayItems.value
   if (list.length > 0 && list[0].categoryName !== '无匹配') {
     const hasCurrent = list.some(m => m.typeId === formTypeId.value && m.itemId === formItemId.value)
@@ -1177,8 +1300,9 @@ function formatOptionLabel(item: any, isSearching: boolean = false): string {
   if (!item) return ''
   const qInfo = getQualityInfo(item.quality)
   const lvlStr = item.reqLevel !== undefined && item.reqLevel > 0 ? `Lv.${item.reqLevel} ` : ''
+  const matStr = item.armorType ? `${item.armorType} ` : ''
   const categoryPrefix = isSearching ? `[${item.categoryName}] ` : ''
-  return `${categoryPrefix}[${lvlStr}${qInfo.name}] ${item.name}`
+  return `${categoryPrefix}[${lvlStr}${matStr}${qInfo.name}] ${item.name}`
 }
 
 function onSelectKeyChange(event: Event) {
@@ -1243,6 +1367,7 @@ function openEditModal(slot: InventorySlot) {
   modalSearchQuery.value = ''
   selectedEnchantCategory.value = 'all'
   selectedQualityFilter.value = 'all'
+  selectedArmorTypeFilter.value = 'all'
   isEquipStatsLocked.value = true
   if (slot.isEmpty) {
     selectedCategoryFilter.value = 0x00 // 默认短剑分类
@@ -1292,6 +1417,7 @@ function closeEditModal() {
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
   selectedQualityFilter.value = 'all'
+  selectedArmorTypeFilter.value = 'all'
   formTypeId.value = 0x00
   formItemId.value = 1
   clearEnchant()
