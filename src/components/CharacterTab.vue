@@ -93,15 +93,21 @@
             <span>⚡</span>
             <span>修改转职/觉醒:</span>
           </span>
-          <span class="text-[11px] text-gray-400">
-            可自由切换四职业转职与觉醒形态
+          <span class="text-[11px]" :class="isProfessionLocked ? 'text-gray-500' : 'text-amber-300/80'">
+            {{ isProfessionLocked ? '🔒 已锁定保护（点击右侧解锁切换职业）' : '🔓 已解锁，可自由切换四职业转职与觉醒形态' }}
           </span>
         </div>
 
         <div class="flex items-center gap-2 flex-wrap">
           <select
             v-model.number="save.profession"
-            class="bg-[#121522] text-xs text-amber-200 px-3 py-1.5 rounded-lg border border-amber-700/70 focus:border-amber-400 focus:outline-none font-bold"
+            :disabled="isProfessionLocked"
+            :class="[
+              'text-xs px-3 py-1.5 rounded-lg border font-bold transition-all',
+              isProfessionLocked
+                ? 'bg-gray-900/80 text-gray-500 border-gray-800 cursor-not-allowed opacity-60'
+                : 'bg-[#121522] text-amber-200 border-amber-500/80 shadow-md shadow-amber-500/20 focus:border-amber-400 focus:outline-none cursor-pointer'
+            ]"
           >
             <optgroup label="【觉醒职业】">
               <option :value="7">🔥 狱血魔神 (狂战士觉醒)</option>
@@ -119,6 +125,20 @@
               <option :value="0">🔰 鬼剑士 (未转职)</option>
             </optgroup>
           </select>
+
+          <!-- 锁定/解锁切换按钮 -->
+          <button
+            @click="isProfessionLocked = !isProfessionLocked"
+            type="button"
+            :class="[
+              'text-xs px-2.5 py-1.5 rounded-lg border font-bold flex items-center gap-1 transition-all active:scale-95',
+              isProfessionLocked
+                ? 'bg-gray-800 hover:bg-gray-700 text-gray-300 border-gray-700'
+                : 'bg-amber-600 hover:bg-amber-500 text-black border-amber-400 shadow-md shadow-amber-600/30'
+            ]"
+          >
+            <span>{{ isProfessionLocked ? '🔒 点击解锁' : '🔓 已解锁(锁定)' }}</span>
+          </button>
         </div>
       </div>
     </div>
@@ -317,7 +337,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { DnfHeroSave } from '../core/types'
 import goldIcon from '../assets/official/Gold.png'
 import { getProfessionInfo } from '../utils/professionAssets'
@@ -325,6 +345,8 @@ import { getProfessionInfo } from '../utils/professionAssets'
 const props = defineProps<{
   save: DnfHeroSave
 }>()
+
+const isProfessionLocked = ref(true)
 
 const profInfo = computed(() => {
   return getProfessionInfo(props.save.profession)

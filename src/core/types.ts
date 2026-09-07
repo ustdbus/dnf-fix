@@ -25,6 +25,13 @@ export interface InventorySlot {
   count: number;        // 数量
   flag: number;         // 标志位 (如 0x01, 0x00)
   refineLevel: number;  // 强化等级 (+0 ~ +31)
+  grade?: number;       // 品级 (0: 下级, 1: 中级, 2: 上级, 3: 最上级) (字节 5)
+  durability?: number;  // 耐久度 (字节 6)
+  baseAtkDef1?: number; // 基础物攻/物防 (字节 7~8, uint16 LE)
+  baseAtkDef2?: number; // 基础魔攻/魔防 (字节 9~10, uint16 LE)
+  refineBonus1?: number;// 强化物攻/物防加成 (字节 11~12, uint16 LE)
+  refineBonus2?: number;// 强化魔攻/魔防加成 (字节 13~14, uint16 LE)
+  stat4?: number;       // 四维属性加成 (字节 15, uint8)
   rawBytes: Uint8Array; // 完整的 24 字节备份
   itemName: string;     // 解析出的物品名
   categoryName: string; // 物品大类名

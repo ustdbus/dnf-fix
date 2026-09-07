@@ -72,6 +72,25 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
     // 只有装备才使用第4字节作为强化等级；非装备强化等级视为 0
     const refineLevel = (!isEmpty && isEquip) ? slotBytes[4] : 0
 
+    // 装备底层属性字段 (依据官方 24 字节结构：字节 5~15)
+    let grade: number | undefined = undefined
+    let durability: number | undefined = undefined
+    let baseAtkDef1: number | undefined = undefined
+    let baseAtkDef2: number | undefined = undefined
+    let refineBonus1: number | undefined = undefined
+    let refineBonus2: number | undefined = undefined
+    let stat4: number | undefined = undefined
+
+    if (!isEmpty && isEquip) {
+      grade = slotBytes[5]
+      durability = slotBytes[6]
+      baseAtkDef1 = slotBytes[7] | (slotBytes[8] << 8)
+      baseAtkDef2 = slotBytes[9] | (slotBytes[10] << 8)
+      refineBonus1 = slotBytes[11] | (slotBytes[12] << 8)
+      refineBonus2 = slotBytes[13] | (slotBytes[14] << 8)
+      stat4 = slotBytes[15]
+    }
+
     // 装备附魔 Option Type (字节 17) 及参数 1~3 (字节 18~23, uint16 LE)
     let enchant = undefined
     if (!isEmpty && isEquip) {
@@ -96,6 +115,13 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
       count: isEmpty ? 0 : count,
       flag,
       refineLevel,
+      grade,
+      durability,
+      baseAtkDef1,
+      baseAtkDef2,
+      refineBonus1,
+      refineBonus2,
+      stat4,
       rawBytes: slotBytes,
       itemName: itemInfo.name,
       categoryName: itemInfo.categoryName,
@@ -247,6 +273,44 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
       }
       if (isEquip) {
         baseBytes[4] = Math.max(0, Math.min(255, slot.refineLevel)) & 0xff
+
+        // 写入品级 (字节 5: 0: 下级, 1: 中级, 2: 上级, 3: 最上级)
+        if (slot.grade !== undefined) {
+          baseBytes[5] = Math.max(0, Math.min(3, Math.floor(slot.grade))) & 0xff
+        }
+        // 写入耐久度 (字节 6: uint8 0~255)
+        if (slot.durability !== undefined) {
+          baseBytes[6] = Math.max(0, Math.min(255, Math.floor(slot.durability))) & 0xff
+        }
+        // 写入基础物攻/物防 (字节 7~8: uint16 LE 0~65535)
+        if (slot.baseAtkDef1 !== undefined) {
+          const val = Math.max(0, Math.min(65535, Math.floor(slot.baseAtkDef1)))
+          baseBytes[7] = val & 0xff
+          baseBytes[8] = (val >> 8) & 0xff
+        }
+        // 写入基础魔攻/魔防 (字节 9~10: uint16 LE 0~65535)
+        if (slot.baseAtkDef2 !== undefined) {
+          const val = Math.max(0, Math.min(65535, Math.floor(slot.baseAtkDef2)))
+          baseBytes[9] = val & 0xff
+          baseBytes[10] = (val >> 8) & 0xff
+        }
+        // 写入强化物攻/物防附加 (字节 11~12: uint16 LE 0~65535)
+        if (slot.refineBonus1 !== undefined) {
+          const val = Math.max(0, Math.min(65535, Math.floor(slot.refineBonus1)))
+          baseBytes[11] = val & 0xff
+          baseBytes[12] = (val >> 8) & 0xff
+        }
+        // 写入强化魔攻/魔防附加 (字节 13~14: uint16 LE 0~65535)
+        if (slot.refineBonus2 !== undefined) {
+          const val = Math.max(0, Math.min(65535, Math.floor(slot.refineBonus2)))
+          baseBytes[13] = val & 0xff
+          baseBytes[14] = (val >> 8) & 0xff
+        }
+        // 写入四维加成 (字节 15: uint8 0~255)
+        if (slot.stat4 !== undefined) {
+          baseBytes[15] = Math.max(0, Math.min(255, Math.floor(slot.stat4))) & 0xff
+        }
+
         // 写入附魔数据 (字节 17~23: 附魔代码 + 参数1~3 小端序, 严格限制在 uint16 0~65535)
         if (slot.enchant && slot.enchant.code > 0) {
           const p1 = Math.max(0, Math.min(65535, Math.floor(slot.enchant.param1 || 0)))

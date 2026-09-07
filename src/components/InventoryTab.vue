@@ -124,8 +124,11 @@
             </span>
             <span v-else class="hidden sm:inline text-[9px] text-gray-600">可添加</span>
 
-            <span v-if="!slot.isEmpty" class="w-full sm:w-auto text-right text-[8px] sm:text-[10px] font-mono text-amber-300 font-semibold">
+            <span v-if="!slot.isEmpty && !isSingleCategory(slot.typeId)" class="w-full sm:w-auto text-right text-[8px] sm:text-[10px] font-mono text-amber-300 font-semibold">
               x{{ slot.count }}
+            </span>
+            <span v-else-if="!slot.isEmpty && isSingleCategory(slot.typeId)" class="w-full sm:w-auto text-right text-[7px] sm:text-[9px] font-mono text-gray-500">
+              --
             </span>
             <span v-else class="w-full sm:w-auto text-right text-[7px] sm:text-[9px] text-gray-600 font-mono">--</span>
           </div>
@@ -229,24 +232,45 @@
           <div class="flex items-start justify-between gap-3">
             <div class="space-y-1.5 min-w-0 flex-1">
               <!-- 物品名称与品级分类徽章 -->
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="text-sm font-black truncate" :class="currentQualityInfo.color">
-                  {{ currentSelectedInfo.name }}
-                </span>
-                <span
-                  :class="[
-                    'text-[10px] px-2 py-0.5 rounded border font-bold font-mono tracking-wide',
-                    currentQualityInfo.badgeClass
-                  ]"
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-sm font-black truncate" :class="currentQualityInfo.color">
+                    {{ currentSelectedInfo.name }}
+                  </span>
+                  <span
+                    :class="[
+                      'text-[10px] px-2 py-0.5 rounded border font-bold font-mono tracking-wide',
+                      currentQualityInfo.badgeClass
+                    ]"
+                  >
+                    {{ currentQualityInfo.label }}
+                  </span>
+                  <!-- 属性攻击徽标 -->
+                  <span
+                    v-if="currentEquipInnate && currentEquipInnate.element !== 'none'"
+                    class="text-[10px] px-2 py-0.5 rounded border font-bold flex items-center gap-1 shadow-sm"
+                    :class="{
+                      'bg-red-950/80 text-red-300 border-red-600/60 shadow-red-900/30': currentEquipInnate.element === 'fire',
+                      'bg-blue-950/80 text-cyan-300 border-cyan-500/60 shadow-cyan-900/30': currentEquipInnate.element === 'ice',
+                      'bg-amber-950/80 text-amber-200 border-amber-500/60 shadow-amber-900/30': currentEquipInnate.element === 'light',
+                      'bg-purple-950/80 text-purple-300 border-purple-500/60 shadow-purple-900/30': currentEquipInnate.element === 'dark'
+                    }"
+                  >
+                    <span>{{ currentEquipInnate.element === 'fire' ? '🔥' : currentEquipInnate.element === 'ice' ? '❄️' : currentEquipInnate.element === 'light' ? '⚡' : '🌑' }}</span>
+                    <span>{{ currentEquipInnate.elementName }}</span>
+                  </span>
+                </div>
+
+                <!-- 装备特性详情按钮 (点击打开详情模态框) -->
+                <button
+                  v-if="isEquipCategory(formTypeId)"
+                  type="button"
+                  @click="showInnateDetailModal = true"
+                  class="text-[11px] px-2.5 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-600/50 transition font-bold flex items-center gap-1 shadow-sm active:scale-95"
                 >
-                  {{ currentQualityInfo.label }}
-                </span>
-                <span
-                  v-if="isSingleCategory(formTypeId)"
-                  class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/40 font-mono"
-                >
-                  🔒 独立装备 (数量固定1)
-                </span>
+                  <span>📜</span>
+                  <span>固有特性与属性详情</span>
+                </button>
               </div>
 
               <!-- 详细属性栏: 分类、等级、强化、价格等 -->
@@ -281,6 +305,15 @@
                 </span>
               </div>
 
+              <!-- 装备特殊能力 (如削血、冰冻等高亮显示) -->
+              <div
+                v-if="currentEquipInnate && currentEquipInnate.specialDesc"
+                class="text-[11px] text-amber-300 font-bold bg-amber-950/50 p-2 rounded-lg border border-amber-600/40 flex items-start gap-1.5 shadow-inner"
+              >
+                <span class="text-sm leading-none">⚔️</span>
+                <span>特殊能力: {{ currentEquipInnate.specialDesc }}</span>
+              </div>
+
               <!-- 物品说明/备注 -->
               <div v-if="currentSelectedInfo.desc" class="text-[10px] text-gray-400 font-mono pt-0.5 border-t border-gray-800/60">
                 {{ currentSelectedInfo.desc }}
@@ -289,19 +322,13 @@
           </div>
         </div>
 
-        <!-- 5. 物品数量 (装备数量锁死为1不可更改，非装备最高99) -->
-        <div>
+        <!-- 5. 物品数量 (仅对非装备物品显示，装备为独立单件不可叠加，完全隐藏数量词条) -->
+        <div v-if="!isSingleCategory(formTypeId)">
           <div class="flex items-center justify-between mb-1">
             <label class="text-xs text-gray-400 font-medium">
-              {{ isSingleCategory(formTypeId) ? '物品数量 (装备锁死):' : '物品数量 (1 ~ 99):' }}
+              物品数量 (1 ~ 99):
             </label>
-            <span
-              v-if="isSingleCategory(formTypeId)"
-              class="text-[10px] text-amber-400 font-mono flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/40"
-            >
-              🔒 装备单件独立，数量锁死为 1
-            </span>
-            <div v-else class="flex gap-1">
+            <div class="flex gap-1">
               <button
                 v-for="amt in [1, 10, 20, 30, 50, 99]"
                 :key="amt"
@@ -312,17 +339,7 @@
               </button>
             </div>
           </div>
-          <div v-if="isSingleCategory(formTypeId)" class="relative">
-            <input
-              type="text"
-              value="1 (装备独立不可叠加，数量已锁死)"
-              disabled
-              class="w-full bg-[#0e1119]/80 text-xs font-mono text-amber-300/80 p-2 rounded-lg border border-gray-800 cursor-not-allowed select-none font-bold"
-            />
-            <span class="absolute right-3 top-2 text-xs text-gray-500">🔒 锁定</span>
-          </div>
           <input
-            v-else
             v-model.number="formCount"
             type="number"
             min="1"
@@ -333,33 +350,239 @@
           />
         </div>
 
-        <!-- 5. 装备强化等级 (仅武器/防具/首饰可用) -->
-        <div v-if="isEquipCategory(formTypeId)" class="bg-amber-950/20 p-3 rounded-lg border border-amber-800/30">
-          <div class="flex items-center justify-between mb-1">
-            <label class="text-xs text-amber-300 font-bold">4. 装备强化等级 (+0 ~ +34+):</label>
-            <div class="flex gap-1">
-              <button
-                v-for="lvl in [0, 10, 12, 15, 18, 31]"
-                :key="lvl"
-                @click="formRefineLevel = lvl"
-                class="text-[10px] px-1.5 py-0.5 rounded bg-amber-900/50 hover:bg-amber-800/80 text-amber-200 border border-amber-700/40"
+        <!-- 装备高级属性控制面板 (强化等级、品级耐久、底层攻防与四维加成，默认置灰锁定保护) -->
+        <div v-if="isEquipCategory(formTypeId)" class="bg-[#121522] p-3.5 rounded-xl border border-amber-800/40 space-y-3 shadow-inner">
+          <!-- 锁定状态与切换工具栏 -->
+          <div
+            class="flex items-center justify-between p-2.5 rounded-lg border transition-all"
+            :class="isEquipStatsLocked ? 'bg-gray-900/80 border-gray-800 text-gray-500' : 'bg-amber-950/40 border-amber-500/60 text-amber-200 shadow-md shadow-amber-950/40'"
+          >
+            <div class="flex items-center gap-2">
+              <span class="text-base">{{ isEquipStatsLocked ? '🔒' : '🔓' }}</span>
+              <div>
+                <div class="text-xs font-bold" :class="isEquipStatsLocked ? 'text-gray-400' : 'text-amber-300'">
+                  {{ isEquipStatsLocked ? '攻防数值、强化等级与四维已锁定保护' : '攻防数值、强化等级与四维已解锁编辑' }}
+                </div>
+                <div class="text-[10px]" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-amber-400/80'">
+                  {{ isEquipStatsLocked ? '点击右侧按钮解锁后方可修改强化与底层攻防数值' : '可自由微调或魔改装备强化等级与攻防底层数值' }}
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              @click="isEquipStatsLocked = !isEquipStatsLocked"
+              :class="[
+                'text-xs px-2.5 py-1.5 rounded-lg font-bold transition flex items-center gap-1 active:scale-95 border',
+                isEquipStatsLocked
+                  ? 'bg-gray-800 hover:bg-gray-700 text-gray-200 border-gray-600'
+                  : 'bg-amber-600 hover:bg-amber-500 text-black border-amber-400 shadow-md shadow-amber-600/30'
+              ]"
+            >
+              <span>{{ isEquipStatsLocked ? '🔒 点击解锁' : '🔓 已解锁(锁定)' }}</span>
+            </button>
+          </div>
+
+          <!-- 强化等级 (+0 ~ +31) -->
+          <div
+            class="p-2.5 rounded-lg border transition-all"
+            :class="isEquipStatsLocked ? 'bg-gray-900/40 border-gray-800/80 opacity-60' : 'bg-amber-950/20 border-amber-700/40'"
+          >
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-xs font-bold flex items-center gap-1.5" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-amber-300'">
+                <span>⚡</span>
+                <span>装备强化等级 (+0 ~ +31+):</span>
+              </label>
+              <div class="flex gap-1">
+                <button
+                  v-for="lvl in [0, 10, 12, 15, 18, 31]"
+                  :key="lvl"
+                  type="button"
+                  :disabled="isEquipStatsLocked"
+                  @click="formRefineLevel = lvl"
+                  :class="[
+                    'text-[10px] px-1.5 py-0.5 rounded border transition',
+                    isEquipStatsLocked
+                      ? 'bg-gray-800/40 text-gray-600 border-gray-800 cursor-not-allowed'
+                      : 'bg-amber-900/50 hover:bg-amber-800/80 text-amber-200 border-amber-700/40 cursor-pointer active:scale-95'
+                  ]"
+                >
+                  +{{ lvl }}
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-1.5">
+              <input
+                v-model.number="formRefineLevel"
+                type="range"
+                min="0"
+                max="63"
+                step="1"
+                :disabled="isEquipStatsLocked"
+                :class="isEquipStatsLocked ? 'cursor-not-allowed opacity-40' : 'accent-amber-500 cursor-pointer'"
+                class="flex-1"
+              />
+              <span
+                class="text-sm font-mono font-bold w-12 text-right"
+                :class="isEquipStatsLocked ? 'text-gray-500' : 'text-amber-400'"
               >
-                +{{ lvl }}
-              </button>
+                +{{ formRefineLevel }}
+              </span>
             </div>
           </div>
-          <div class="flex items-center gap-3 mt-2">
-            <input
-              v-model.number="formRefineLevel"
-              type="range"
-              min="0"
-              max="63"
-              step="1"
-              class="flex-1 accent-amber-500 cursor-pointer"
-            />
-            <span class="text-sm font-mono font-bold text-amber-400 w-12 text-right">
-              +{{ formRefineLevel }}
-            </span>
+
+          <!-- 装备品级与耐久度 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <!-- 品级 -->
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                装备品级 (Byte 5):
+              </label>
+              <select
+                v-model.number="formGrade"
+                :disabled="isEquipStatsLocked"
+                :class="[
+                  'w-full text-xs p-2 rounded-lg border font-bold transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-amber-200 border-gray-700 focus:border-amber-500 focus:outline-none cursor-pointer'
+                ]"
+              >
+                <option v-for="g in GRADE_LIST" :key="g.value" :value="g.value">
+                  {{ g.label }}
+                </option>
+              </select>
+            </div>
+
+            <!-- 耐久度 -->
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                当前耐久度 (Byte 6, Max 255):
+              </label>
+              <input
+                v-model.number="formDurability"
+                type="number"
+                min="0"
+                max="255"
+                :disabled="isEquipStatsLocked"
+                @blur="formDurability = Math.max(0, Math.min(255, Math.floor(formDurability || 0)))"
+                @change="formDurability = Math.max(0, Math.min(255, Math.floor(formDurability || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-white border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
+          </div>
+
+          <!-- 底层攻防数值 (Byte 7~10 uint16 LE) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                {{ isWeapon ? '基础物理攻击 (Byte 7~8):' : '基础物理防御 (Byte 7~8):' }}
+              </label>
+              <input
+                v-model.number="formBaseAtkDef1"
+                type="number"
+                min="0"
+                max="65535"
+                :disabled="isEquipStatsLocked"
+                @blur="formBaseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1 || 0)))"
+                @change="formBaseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1 || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-white border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                {{ isWeapon ? '基础魔法攻击 (Byte 9~10):' : '基础魔法防御 (Byte 9~10):' }}
+              </label>
+              <input
+                v-model.number="formBaseAtkDef2"
+                type="number"
+                min="0"
+                max="65535"
+                :disabled="isEquipStatsLocked"
+                @blur="formBaseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2 || 0)))"
+                @change="formBaseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2 || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-white border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
+          </div>
+
+          <!-- 强化附加数值与四维属性 (Byte 11~15) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                强化物攻/防加成 (B11~12):
+              </label>
+              <input
+                v-model.number="formRefineBonus1"
+                type="number"
+                min="0"
+                max="65535"
+                :disabled="isEquipStatsLocked"
+                @blur="formRefineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1 || 0)))"
+                @change="formRefineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1 || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-white border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                强化魔攻/防加成 (B13~14):
+              </label>
+              <input
+                v-model.number="formRefineBonus2"
+                type="number"
+                min="0"
+                max="65535"
+                :disabled="isEquipStatsLocked"
+                @blur="formRefineBonus2 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus2 || 0)))"
+                @change="formRefineBonus2 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus2 || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-white border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
+            <div>
+              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+                四维属性加成 (Byte 15):
+              </label>
+              <input
+                v-model.number="formStat4"
+                type="number"
+                min="0"
+                max="255"
+                :disabled="isEquipStatsLocked"
+                @blur="formStat4 = Math.max(0, Math.min(255, Math.floor(formStat4 || 0)))"
+                @change="formStat4 = Math.max(0, Math.min(255, Math.floor(formStat4 || 0)))"
+                :class="[
+                  'w-full text-xs font-mono p-2 rounded-lg border transition',
+                  isEquipStatsLocked
+                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
+                    : 'bg-[#0e1119] text-amber-300 font-bold border-gray-700 focus:border-amber-500 focus:outline-none'
+                ]"
+              />
+            </div>
           </div>
         </div>
 
@@ -546,6 +769,116 @@
         </div>
       </div>
     </div>
+
+    <!-- 装备固有特性与属性详情弹窗 (展示官方 0.etc 基础攻防、四维、耐久、属性攻击与削血等特殊能力) -->
+    <div
+      v-if="showInnateDetailModal && currentEquipInnate"
+      class="fixed inset-0 z-[60] flex items-center justify-center p-3 bg-black/85 backdrop-blur-md"
+      @click.self="showInnateDetailModal = false"
+    >
+      <div class="bg-[#151824] border border-amber-600/60 rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+        <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-base">📜</span>
+            <span class="text-amber-300 font-black text-sm">装备官方固有属性与特性详情</span>
+          </div>
+          <button @click="showInnateDetailModal = false" class="text-gray-400 hover:text-white text-base">✕</button>
+        </div>
+
+        <div class="space-y-3">
+          <!-- 头部名称与属性 -->
+          <div class="bg-black/50 p-3 rounded-xl border border-gray-800 flex items-center justify-between">
+            <div>
+              <div class="text-sm font-black" :class="currentQualityInfo.color">
+                {{ currentSelectedInfo.name }}
+              </div>
+              <div class="text-[11px] text-gray-400 mt-0.5">
+                {{ currentSelectedInfo.categoryName }} | Lv.{{ currentSelectedInfo.reqLevel || 0 }}
+              </div>
+            </div>
+            <!-- 属性攻击徽章 -->
+            <div
+              class="px-2.5 py-1 rounded-lg border font-bold text-xs flex items-center gap-1.5"
+              :class="{
+                'bg-red-950/80 text-red-300 border-red-600': currentEquipInnate.element === 'fire',
+                'bg-blue-950/80 text-cyan-300 border-cyan-500': currentEquipInnate.element === 'ice',
+                'bg-amber-950/80 text-amber-200 border-amber-500': currentEquipInnate.element === 'light',
+                'bg-purple-950/80 text-purple-300 border-purple-500': currentEquipInnate.element === 'dark',
+                'bg-gray-900 text-gray-400 border-gray-700': currentEquipInnate.element === 'none'
+              }"
+            >
+              <span>{{ currentEquipInnate.element === 'fire' ? '🔥' : currentEquipInnate.element === 'ice' ? '❄️' : currentEquipInnate.element === 'light' ? '⚡' : currentEquipInnate.element === 'dark' ? '🌑' : '⚪' }}</span>
+              <span>{{ currentEquipInnate.elementName }}</span>
+            </div>
+          </div>
+
+          <!-- 官方基础属性一览 -->
+          <div class="bg-[#0e111a] p-3 rounded-xl border border-gray-800 space-y-2 text-xs">
+            <div class="text-[11px] font-bold text-amber-300 border-b border-gray-800/80 pb-1">
+              📊 官方 0.etc 基础属性
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-gray-300 font-mono">
+              <div>
+                <span class="text-gray-500">{{ isWeapon ? '物理攻击力:' : '物理防御力:' }}</span>
+                <span class="text-white font-bold ml-1.5">{{ currentEquipInnate.base1 }}</span>
+              </div>
+              <div>
+                <span class="text-gray-500">{{ isWeapon ? '魔法攻击力:' : '魔法防御力:' }}</span>
+                <span class="text-white font-bold ml-1.5">{{ currentEquipInnate.base2 }}</span>
+              </div>
+              <div>
+                <span class="text-gray-500">四维属性:</span>
+                <span class="text-amber-300 font-bold ml-1.5">+{{ currentEquipInnate.stat4 }}</span>
+              </div>
+              <div>
+                <span class="text-gray-500">耐久度:</span>
+                <span class="text-emerald-400 font-bold ml-1.5">{{ currentEquipInnate.durability }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 官方固有特效与特殊能力 -->
+          <div class="bg-[#0e111a] p-3 rounded-xl border border-gray-800 space-y-2 text-xs">
+            <div class="text-[11px] font-bold text-amber-300 border-b border-gray-800/80 pb-1">
+              ⚔️ 装备特殊能力与固有词条
+            </div>
+
+            <div v-if="currentEquipInnate.specialDesc" class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-600/40 text-amber-200 font-bold leading-relaxed flex items-start gap-2">
+              <span class="text-base">💥</span>
+              <div>
+                <div class="text-[10px] text-amber-400 font-mono">固有核心特效:</div>
+                <div>{{ currentEquipInnate.specialDesc }}</div>
+              </div>
+            </div>
+
+            <div v-if="currentEquipInnate.options && currentEquipInnate.options.length > 0" class="space-y-1.5 pt-1">
+              <div class="text-[10px] text-gray-400">官方固有 Option 词条 (共 {{ currentEquipInnate.options.length }} 条):</div>
+              <div
+                v-for="(opt, idx) in currentEquipInnate.options"
+                :key="idx"
+                class="p-1.5 rounded bg-black/40 border border-gray-800 text-[11px] font-mono text-gray-300 flex items-center justify-between"
+              >
+                <span>[Option {{ idx + 1 }}] 0x{{ opt.code.toString(16).padStart(2, '0').toUpperCase() }}</span>
+                <span class="text-gray-500 text-[10px]">参数: ({{ opt.p1 }}, {{ opt.p2 }}, {{ opt.p3 }})</span>
+              </div>
+            </div>
+            <div v-else-if="!currentEquipInnate.specialDesc" class="text-gray-500 text-[11px] py-2 text-center">
+              该装备无官方额外特殊能力
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2 border-t border-gray-800">
+          <button
+            type="button"
+            @click="showInnateDetailModal = false"
+            class="text-xs px-4 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold transition"
+          >
+            关闭详情
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -555,6 +888,7 @@ import { DnfHeroSave, InventorySlot } from '../core/types'
 import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
+import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
 
 const props = defineProps<{
   save: DnfHeroSave
@@ -571,12 +905,43 @@ const formItemId = ref<number>(0x28)
 const formCount = ref<number>(1)
 const formRefineLevel = ref<number>(0)
 
+// 装备高级属性锁定状态 (攻防、强化等级与四维，默认锁定保护)
+const isEquipStatsLocked = ref<boolean>(true)
+// 装备特性与属性攻击详情弹窗开关
+const showInnateDetailModal = ref<boolean>(false)
+
+// 装备底层属性响应式状态 (依据官方 24 字节结构)
+const formGrade = ref<number>(3)           // 0:下级, 1:中级, 2:上级, 3:最上级
+const formDurability = ref<number>(35)     // 耐久度
+const formBaseAtkDef1 = ref<number>(0)     // 基础物理攻/防 (uint16 LE)
+const formBaseAtkDef2 = ref<number>(0)     // 基础魔法攻/防 (uint16 LE)
+const formRefineBonus1 = ref<number>(0)    // 强化物理加成 (uint16 LE)
+const formRefineBonus2 = ref<number>(0)    // 强化魔法加成 (uint16 LE)
+const formStat4 = ref<number>(0)           // 四维加成 (uint8)
+
 // 附魔响应式状态
 const selectedEnchantCategory = ref<string>('all')
 const formEnchantCode = ref<number>(0)
 const formEnchantParam1 = ref<number>(0)
 const formEnchantParam2 = ref<number>(0)
 const formEnchantParam3 = ref<number>(0)
+
+// 装备固有属性计算属性
+const currentEquipInnate = computed<EquipInnateInfo | null>(() => {
+  if (!isEquip(formTypeId.value)) return null
+  return getEquipInnateInfo(formTypeId.value, formItemId.value)
+})
+
+const isWeapon = computed(() => {
+  return formTypeId.value >= 0x00 && formTypeId.value <= 0x05
+})
+
+const GRADE_LIST = [
+  { value: 3, label: '最上级 (100%)', color: 'text-amber-400' },
+  { value: 2, label: '上级 (75%~89%)', color: 'text-purple-400' },
+  { value: 1, label: '中级 (50%~74%)', color: 'text-blue-400' },
+  { value: 0, label: '下级 (1%~49%)', color: 'text-gray-400' },
+]
 
 // 附魔计算属性
 const currentEnchantDef = computed(() => {
@@ -760,6 +1125,18 @@ const modalDisplayItems = computed(() => {
   return list
 })
 
+function syncEquipInnateDefaults(tId: number, iId: number) {
+  if (isEquip(tId)) {
+    const innate = getEquipInnateInfo(tId, iId)
+    if (innate) {
+      formDurability.value = innate.durability || 35
+      formBaseAtkDef1.value = innate.base1 || 0
+      formBaseAtkDef2.value = innate.base2 || 0
+      formStat4.value = innate.stat4 || 0
+    }
+  }
+}
+
 // 监听搜索输入，自动重置大类为全部类别，列出全库所有类别的匹配物品
 watch(modalSearchQuery, (newQ) => {
   selectedCategoryFilter.value = -1
@@ -776,6 +1153,7 @@ watch(modalSearchQuery, (newQ) => {
       if (isSingleCategory(first.typeId)) {
         formCount.value = 1
       }
+      syncEquipInnateDefaults(first.typeId, first.itemId)
     }
   }
 })
@@ -792,6 +1170,7 @@ function onCategoryFilterChange() {
       if (isSingleCategory(first.typeId)) {
         formCount.value = 1
       }
+      syncEquipInnateDefaults(first.typeId, first.itemId)
     }
   }
 }
@@ -815,6 +1194,7 @@ function onSelectKeyChange(event: Event) {
     if (isSingleCategory(tId)) {
       formCount.value = 1
     }
+    syncEquipInnateDefaults(tId, iId)
   }
 }
 
@@ -850,12 +1230,18 @@ function openEditModal(slot: InventorySlot) {
   editingSlot.value = slot
   modalSearchQuery.value = ''
   selectedEnchantCategory.value = 'all'
+  isEquipStatsLocked.value = true
+  showInnateDetailModal.value = false
   if (slot.isEmpty) {
     selectedCategoryFilter.value = 0x01 // 默认太刀
     formTypeId.value = 0x01 // 默认太刀
     formItemId.value = 0x28 // 默认流光星陨刀
     formCount.value = 1
     formRefineLevel.value = 0
+    formGrade.value = 3
+    formRefineBonus1.value = 0
+    formRefineBonus2.value = 0
+    syncEquipInnateDefaults(0x01, 0x28)
     clearEnchant()
   } else {
     selectedCategoryFilter.value = slot.typeId
@@ -863,6 +1249,15 @@ function openEditModal(slot: InventorySlot) {
     formItemId.value = slot.itemId
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
+    const innate = getEquipInnateInfo(slot.typeId, slot.itemId)
+    formGrade.value = slot.grade !== undefined ? slot.grade : 3
+    formDurability.value = slot.durability !== undefined ? slot.durability : (innate?.durability || 35)
+    formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : (innate?.base1 || 0)
+    formBaseAtkDef2.value = slot.baseAtkDef2 !== undefined ? slot.baseAtkDef2 : (innate?.base2 || 0)
+    formRefineBonus1.value = slot.refineBonus1 !== undefined ? slot.refineBonus1 : 0
+    formRefineBonus2.value = slot.refineBonus2 !== undefined ? slot.refineBonus2 : 0
+    formStat4.value = slot.stat4 !== undefined ? slot.stat4 : (innate?.stat4 || 0)
+
     if (slot.enchant && slot.enchant.code > 0) {
       formEnchantCode.value = slot.enchant.code
       formEnchantParam1.value = slot.enchant.param1
@@ -878,6 +1273,7 @@ function closeEditModal() {
   editingSlot.value = null
   modalSearchQuery.value = ''
   selectedCategoryFilter.value = -1
+  showInnateDetailModal.value = false
   clearEnchant()
 }
 
@@ -888,6 +1284,13 @@ function clearCurrentSlot() {
   editingSlot.value.itemId = 0
   editingSlot.value.count = 0
   editingSlot.value.refineLevel = 0
+  editingSlot.value.grade = undefined
+  editingSlot.value.durability = undefined
+  editingSlot.value.baseAtkDef1 = undefined
+  editingSlot.value.baseAtkDef2 = undefined
+  editingSlot.value.refineBonus1 = undefined
+  editingSlot.value.refineBonus2 = undefined
+  editingSlot.value.stat4 = undefined
   editingSlot.value.enchant = undefined
   editingSlot.value.itemName = '空槽位'
   editingSlot.value.categoryName = '空'
@@ -906,7 +1309,26 @@ function saveSlotEdit() {
   editingSlot.value.itemId = formItemId.value
   // 装备数量严格锁死为 1，非装备最大限制 99
   editingSlot.value.count = isSingle ? 1 : Math.max(1, Math.min(99, formCount.value || 1))
-  editingSlot.value.refineLevel = isEquip ? formRefineLevel.value : 0
+  editingSlot.value.refineLevel = isEquip ? Math.max(0, Math.min(63, formRefineLevel.value || 0)) : 0
+
+  if (isEquip) {
+    editingSlot.value.grade = Math.max(0, Math.min(3, Math.floor(formGrade.value || 0)))
+    editingSlot.value.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
+    editingSlot.value.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
+    editingSlot.value.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))
+    editingSlot.value.refineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1.value || 0)))
+    editingSlot.value.refineBonus2 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus2.value || 0)))
+    editingSlot.value.stat4 = Math.max(0, Math.min(255, Math.floor(formStat4.value || 0)))
+  } else {
+    editingSlot.value.grade = undefined
+    editingSlot.value.durability = undefined
+    editingSlot.value.baseAtkDef1 = undefined
+    editingSlot.value.baseAtkDef2 = undefined
+    editingSlot.value.refineBonus1 = undefined
+    editingSlot.value.refineBonus2 = undefined
+    editingSlot.value.stat4 = undefined
+  }
+
   if (isEquip && formEnchantCode.value > 0) {
     const p1 = clampEnchantParam(formEnchantCode.value, 0, formEnchantParam1.value)
     const p2 = clampEnchantParam(formEnchantCode.value, 1, formEnchantParam2.value)
