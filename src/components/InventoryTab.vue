@@ -259,6 +259,14 @@
                     <span>{{ currentEquipInnate.element === 'fire' ? '🔥' : currentEquipInnate.element === 'ice' ? '❄️' : currentEquipInnate.element === 'light' ? '⚡' : '🌑' }}</span>
                     <span>{{ currentEquipInnate.elementName }}</span>
                   </span>
+                  <!-- 固有技能加成徽标 -->
+                  <span
+                    v-if="currentEquipInnate && currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
+                    class="text-[10px] px-2 py-0.5 rounded border font-bold flex items-center gap-1 shadow-sm bg-purple-950/90 text-purple-200 border-purple-500/60 shadow-purple-900/40 font-mono"
+                  >
+                    <span>🎯</span>
+                    <span>{{ currentEquipInnate.skillDescs.join(', ') }}</span>
+                  </span>
                 </div>
 
                 <!-- 装备特性详情按钮 (点击打开详情模态框) -->
@@ -312,6 +320,26 @@
               >
                 <span class="text-sm leading-none">⚔️</span>
                 <span>特殊能力: {{ currentEquipInnate.specialDesc }}</span>
+              </div>
+
+              <!-- 装备固有技能强化 (如 [地裂·波动剑] Lv+2 等) -->
+              <div
+                v-if="currentEquipInnate && currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
+                class="text-[11px] text-purple-200 bg-purple-950/60 p-2 rounded-lg border border-purple-500/50 flex items-start gap-2 shadow-inner"
+              >
+                <span class="text-sm leading-none">🎯</span>
+                <div class="flex-1">
+                  <div class="text-[10px] text-purple-300 font-mono font-bold mb-1">固有技能等级强化:</div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span
+                      v-for="(sk, sIdx) in currentEquipInnate.skillDescs"
+                      :key="sIdx"
+                      class="px-2 py-0.5 rounded bg-purple-900/90 text-amber-300 font-black border border-purple-400/50 text-xs font-mono shadow-sm"
+                    >
+                      🎯 {{ sk }}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <!-- 物品说明/备注 -->
@@ -837,12 +865,42 @@
             </div>
           </div>
 
-          <!-- 官方固有特效与特殊能力 -->
+          <!-- 官方固有技能等级加成专属栏 -->
+          <div
+            v-if="currentEquipInnate.skillDescs && currentEquipInnate.skillDescs.length > 0"
+            class="bg-[#12111d] p-3 rounded-xl border border-purple-600/50 space-y-2 text-xs shadow-inner"
+          >
+            <div class="text-[11px] font-bold text-purple-300 border-b border-purple-900/60 pb-1 flex items-center justify-between">
+              <span class="flex items-center gap-1.5">
+                <span>🎯</span>
+                <span>官方固有技能等级强化 (Option 0x18)</span>
+              </span>
+              <span class="text-[10px] text-purple-400 font-mono">共 {{ currentEquipInnate.skillDescs.length }} 个技能</span>
+            </div>
+            <div class="space-y-1.5">
+              <div
+                v-for="(sk, sIdx) in currentEquipInnate.skillDescs"
+                :key="sIdx"
+                class="p-2 rounded-lg bg-purple-950/70 border border-purple-500/40 flex items-center justify-between"
+              >
+                <span class="text-amber-300 font-bold text-xs tracking-wide flex items-center gap-1">
+                  <span>🎯</span>
+                  <span>{{ sk }}</span>
+                </span>
+                <span class="text-[10px] font-mono text-purple-300 bg-black/40 px-2 py-0.5 rounded border border-purple-700/40">
+                  Option Code: 0x18
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 官方固有特效与全量词条明细 -->
           <div class="bg-[#0e111a] p-3 rounded-xl border border-gray-800 space-y-2 text-xs">
             <div class="text-[11px] font-bold text-amber-300 border-b border-gray-800/80 pb-1">
-              ⚔️ 装备特殊能力与固有词条
+              ⚔️ 装备特殊能力与固有词条明细
             </div>
 
+            <!-- 核心特殊能力 (削血、冰冻、白字等) -->
             <div v-if="currentEquipInnate.specialDesc" class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-600/40 text-amber-200 font-bold leading-relaxed flex items-start gap-2">
               <span class="text-base">💥</span>
               <div>
@@ -851,15 +909,30 @@
               </div>
             </div>
 
+            <!-- 全量 3 个 Option 词条中文解析 -->
             <div v-if="currentEquipInnate.options && currentEquipInnate.options.length > 0" class="space-y-1.5 pt-1">
-              <div class="text-[10px] text-gray-400">官方固有 Option 词条 (共 {{ currentEquipInnate.options.length }} 条):</div>
+              <div class="text-[10px] text-gray-400">官方 0.etc 完整固有 Option 词条明细:</div>
               <div
                 v-for="(opt, idx) in currentEquipInnate.options"
                 :key="idx"
-                class="p-1.5 rounded bg-black/40 border border-gray-800 text-[11px] font-mono text-gray-300 flex items-center justify-between"
+                class="p-2 rounded-lg bg-black/40 border border-gray-800 text-[11px] flex items-center justify-between transition hover:border-gray-700"
               >
-                <span>[Option {{ idx + 1 }}] 0x{{ opt.code.toString(16).padStart(2, '0').toUpperCase() }}</span>
-                <span class="text-gray-500 text-[10px]">参数: ({{ opt.p1 }}, {{ opt.p2 }}, {{ opt.p3 }})</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-amber-400/80 font-mono text-[10px]">[词条 {{ idx + 1 }}]</span>
+                  <span
+                    class="font-bold text-gray-200"
+                    :class="{
+                      'text-purple-300': opt.code === 0x18,
+                      'text-red-300': opt.code === 0x37,
+                      'text-cyan-300': opt.code === 0x20
+                    }"
+                  >
+                    {{ opt.desc || `Option 0x${opt.code.toString(16).padStart(2, '0').toUpperCase()}` }}
+                  </span>
+                </div>
+                <span class="text-gray-500 text-[10px] font-mono">
+                  Code: 0x{{ opt.code.toString(16).padStart(2, '0').toUpperCase() }} ({{ opt.p1 }}, {{ opt.p2 }}, {{ opt.p3 }})
+                </span>
               </div>
             </div>
             <div v-else-if="!currentEquipInnate.specialDesc" class="text-gray-500 text-[11px] py-2 text-center">
@@ -1227,10 +1300,27 @@ function getSlotHoverTitle(slot: InventorySlot): string {
   const qInfo = getQualityInfo(info.quality)
   const lvlStr = info.reqLevel !== undefined ? ` | Lv.${info.reqLevel}` : ''
   const refineStr = slot.refineLevel > 0 ? ` (+${slot.refineLevel})` : ''
+  const isEq = isEquip(slot.typeId)
+  let extraStr = ''
+  if (isEq) {
+    const innate = getEquipInnateInfo(slot.typeId, slot.itemId)
+    if (innate) {
+      if (innate.element !== 'none') {
+        extraStr += ` | [${innate.elementName}]`
+      }
+      if (innate.skillDescs && innate.skillDescs.length > 0) {
+        extraStr += ` | 🎯 技能: ${innate.skillDescs.join(', ')}`
+      }
+      if (innate.specialDesc) {
+        extraStr += ` | ⚔️ ${innate.specialDesc}`
+      }
+    }
+  }
   const enchantStr = (slot.enchant && slot.enchant.code > 0)
     ? ` | 🔮 附魔: ${formatEnchantText(slot.enchant.code, slot.enchant.param1, slot.enchant.param2, slot.enchant.param3)}`
     : ''
-  return `${slot.itemName}${refineStr} [${qInfo.label}] | ${info.categoryName}${lvlStr} | 数量: ${slot.count}${enchantStr}`
+  const countStr = isSingleCategory(slot.typeId) ? '' : ` | 数量: ${slot.count}`
+  return `${slot.itemName}${refineStr} [${qInfo.label}] | ${info.categoryName}${lvlStr}${countStr}${extraStr}${enchantStr}`
 }
 
 function openEditModal(slot: InventorySlot) {
