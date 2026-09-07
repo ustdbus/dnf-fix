@@ -362,46 +362,68 @@
                   <span class="text-gray-500">附魔:</span>
                   <span class="text-fuchsia-300 font-bold font-mono">{{ currentEnchantFormatText }}</span>
                 </span>
-                <span v-if="currentSelectedInfo.price" class="flex items-center gap-1">
-                  <span class="text-gray-500">售价:</span>
-                  <span class="text-yellow-400 font-mono">{{ currentSelectedInfo.price }} 金币</span>
-                </span>
               </div>
 
-              <!-- 游戏原版装备词条面板 (完全对齐官方游戏内显示) -->
+              <!-- 装备效果与套装效果区域：若存在套装效果，在右半边展示套装效果 (左右双栏布局) -->
               <div
-                v-if="currentEquipInnate && (currentEquipInnate.lines.length > 0 || currentEquipInnate.elementName)"
-                class="bg-[#0b1220] border border-[#1c2c48] rounded-lg p-2.5 font-mono text-xs space-y-1 shadow-inner select-none"
+                v-if="(currentEquipInnate && (currentEquipInnate.lines.length > 0 || currentEquipInnate.elementName)) || currentSetInfo"
+                :class="[
+                  'gap-2.5 items-start',
+                  currentSetInfo ? 'grid grid-cols-1 md:grid-cols-2' : 'flex flex-col'
+                ]"
               >
-                <!-- 官方固有词条 (基础属性白色，技能与触发特效淡蓝色) -->
+                <!-- 左栏: 游戏原版装备词条面板 (完全对齐官方游戏内显示) -->
                 <div
-                  v-for="(line, lIdx) in currentEquipInnate.lines"
-                  :key="lIdx"
-                  :class="line.color === 'white' ? 'text-gray-100 font-normal' : 'text-sky-400 font-medium'"
-                  class="tracking-wide"
+                  v-if="currentEquipInnate && (currentEquipInnate.lines.length > 0 || currentEquipInnate.elementName)"
+                  class="w-full bg-[#0b1220] border border-[#1c2c48] rounded-lg p-2.5 font-mono text-xs space-y-1 shadow-inner select-none"
                 >
-                  {{ line.text }}
+                  <!-- 官方固有词条 (基础属性白色，技能与触发特效淡蓝色) -->
+                  <div
+                    v-for="(line, lIdx) in currentEquipInnate.lines"
+                    :key="lIdx"
+                    :class="line.color === 'white' ? 'text-gray-100 font-normal' : 'text-sky-400 font-medium'"
+                    class="tracking-wide"
+                  >
+                    {{ line.text }}
+                  </div>
+
+                  <!-- 装备附魔效果 (如浅绿色 "追加伤害 + 5%") -->
+                  <div
+                    v-if="formEnchantCode > 0 && currentEnchantFormatText"
+                    class="text-lime-400 font-medium tracking-wide"
+                  >
+                    {{ currentEnchantFormatText }}
+                  </div>
+
+                  <!-- 最下面再加一条: xx属性攻击 (没有属性攻击就不写) -->
+                  <div
+                    v-if="currentEquipInnate.elementName"
+                    class="text-sky-300 font-medium tracking-wide"
+                  >
+                    {{ currentEquipInnate.elementName }}
+                  </div>
                 </div>
 
-                <!-- 装备附魔效果 (如截图中的浅绿色 "追加伤害 + 5%") -->
+                <!-- 右栏: 套装效果面板 (如果该装备存在套装效果，在右半边显示套装效果) -->
                 <div
-                  v-if="formEnchantCode > 0 && currentEnchantFormatText"
-                  class="text-lime-400 font-medium tracking-wide"
+                  v-if="currentSetInfo"
+                  class="w-full bg-[#0b1220] border border-[#1c2c48] rounded-lg p-2.5 font-mono text-xs space-y-1 shadow-inner select-none"
                 >
-                  {{ currentEnchantFormatText }}
-                </div>
-
-                <!-- 最下面再加一条: xx属性攻击 (没有属性攻击就不写) -->
-                <div
-                  v-if="currentEquipInnate.elementName"
-                  class="text-sky-300 font-medium tracking-wide"
-                >
-                  {{ currentEquipInnate.elementName }}
+                  <div class="text-amber-300 font-medium tracking-wide">
+                    [套装效果]
+                  </div>
+                  <div
+                    v-for="(eff, eIdx) in currentSetInfo.effects"
+                    :key="eIdx"
+                    class="text-emerald-400 font-medium tracking-wide"
+                  >
+                    {{ eff }}
+                  </div>
                 </div>
               </div>
 
-              <!-- 物品说明/备注 -->
-              <div v-if="currentSelectedInfo.desc" class="text-[10px] text-gray-400 font-mono pt-0.5 border-t border-gray-800/60">
+              <!-- 物品特别说明/备注 (过滤掉重复的 Lv.xx 提示，保留真正的特殊说明) -->
+              <div v-if="currentSelectedInfo.desc && !currentSelectedInfo.desc.startsWith('Lv.')" class="text-[10px] text-gray-400 font-mono pt-0.5 border-t border-gray-800/60">
                 {{ currentSelectedInfo.desc }}
               </div>
             </div>
@@ -866,6 +888,7 @@ import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCate
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
+import { getEquipSetInfo, type EquipSetInfo } from '../core/setEffectDict'
 
 const props = defineProps<{
   save: DnfHeroSave
@@ -926,6 +949,12 @@ const formEnchantParam3 = ref<number>(0)
 const currentEquipInnate = computed<EquipInnateInfo | null>(() => {
   if (!isEquip(formTypeId.value)) return null
   return getEquipInnateInfo(formTypeId.value, formItemId.value)
+})
+
+// 套装效果计算属性 (若当前装备属于某套装，则返回套装信息)
+const currentSetInfo = computed<EquipSetInfo | null>(() => {
+  if (!isEquip(formTypeId.value)) return null
+  return getEquipSetInfo(formTypeId.value, formItemId.value)
 })
 
 const isWeapon = computed(() => {
