@@ -20,6 +20,8 @@ export interface EnchantDefinition {
   format: (p1: number, p2: number, p3: number) => string
 }
 
+export type EquipPart = 'weapon' | 'shoulder' | 'top' | 'bottom' | 'bracelet' | 'ring'
+
 export interface EnchantPreset {
   id: string
   name: string
@@ -29,6 +31,7 @@ export interface EnchantPreset {
   param2: number
   param3: number
   icon: string
+  parts?: EquipPart[]
 }
 
 export const ENCHANT_CATEGORIES: { id: EnchantCategory; name: string; icon: string }[] = [
@@ -567,7 +570,7 @@ export const ENCHANT_DEFINITIONS: Record<number, EnchantDefinition> = {
 }
 
 // 常见强力附魔预设（Presets）
-// 严格对齐官方 3.etc 莎兰附魔卡片数据（共 106 张卡片），不采用任何超标或伪造词条
+// 严格对齐官方 3.etc 莎兰附魔卡片数据（共 106 张卡片），不采用任何超标或伪造词条，且按装备部位（武器/护肩/上衣/下衣/手腕/戒指）精准匹配
 export const ENCHANT_PRESETS: EnchantPreset[] = [
   {
     id: 'sharan_fire_attr',
@@ -577,7 +580,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 0,
     param2: 0,
     param3: 0,
-    icon: '🔥'
+    icon: '🔥',
+    parts: ['weapon']
   },
   {
     id: 'sharan_ice_attr',
@@ -587,7 +591,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 0,
     param2: 0,
     param3: 0,
-    icon: '❄️'
+    icon: '❄️',
+    parts: ['weapon']
   },
   {
     id: 'sharan_light_attr',
@@ -597,7 +602,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 0,
     param2: 0,
     param3: 0,
-    icon: '⚡'
+    icon: '⚡',
+    parts: ['weapon']
   },
   {
     id: 'sharan_dark_attr',
@@ -607,7 +613,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 0,
     param2: 0,
     param3: 0,
-    icon: '🌑'
+    icon: '🌑',
+    parts: ['weapon']
   },
   {
     id: 'sharan_phy_atk_63',
@@ -617,7 +624,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 63,
     param2: 0,
     param3: 0,
-    icon: '⚔️'
+    icon: '⚔️',
+    parts: ['weapon', 'top', 'bottom']
   },
   {
     id: 'sharan_mag_atk_39',
@@ -627,7 +635,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 39,
     param2: 0,
     param3: 0,
-    icon: '🔮'
+    icon: '🔮',
+    parts: ['weapon', 'top', 'bottom']
   },
   {
     id: 'sharan_extra_dmg_180',
@@ -637,7 +646,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 180,
     param2: 0,
     param3: 0,
-    icon: '💥'
+    icon: '💥',
+    parts: ['weapon', 'top', 'bottom']
   },
   {
     id: 'sharan_crit_10',
@@ -647,7 +657,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 10,
     param2: 0,
     param3: 0,
-    icon: '🎯'
+    icon: '🎯',
+    parts: ['shoulder']
   },
   {
     id: 'sharan_all_stat_15',
@@ -657,7 +668,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 15,
     param2: 0,
     param3: 0,
-    icon: '🌟'
+    icon: '🌟',
+    parts: ['bracelet', 'ring']
   },
   {
     id: 'sharan_all_res_15',
@@ -667,7 +679,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 15,
     param2: 0,
     param3: 0,
-    icon: '🛡️'
+    icon: '🛡️',
+    parts: ['bracelet', 'ring']
   },
   {
     id: 'sharan_move_speed_6',
@@ -677,7 +690,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 6,
     param2: 0,
     param3: 0,
-    icon: '🏃'
+    icon: '🏃',
+    parts: ['bracelet', 'ring', 'shoulder']
   },
   {
     id: 'sharan_hp_max_200',
@@ -687,7 +701,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 200,
     param2: 0,
     param3: 0,
-    icon: '🩸'
+    icon: '🩸',
+    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring']
   },
   {
     id: 'sharan_hp_max_10pct',
@@ -697,7 +712,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 10,
     param2: 0,
     param3: 0,
-    icon: '💎'
+    icon: '💎',
+    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring']
   },
   {
     id: 'sharan_hit_recover_60',
@@ -707,7 +723,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 60,
     param2: 0,
     param3: 0,
-    icon: '⚡'
+    icon: '⚡',
+    parts: ['shoulder']
   },
   {
     id: 'sharan_hit_rate_8',
@@ -717,7 +734,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 8,
     param2: 0,
     param3: 0,
-    icon: '🎯'
+    icon: '🎯',
+    parts: ['weapon']
   },
   {
     id: 'sharan_avoid_rate_8',
@@ -727,7 +745,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 8,
     param2: 0,
     param3: 0,
-    icon: '🍃'
+    icon: '🍃',
+    parts: ['bracelet', 'ring']
   },
   {
     id: 'sharan_str_20',
@@ -737,7 +756,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 20,
     param2: 0,
     param3: 0,
-    icon: '💪'
+    icon: '💪',
+    parts: ['weapon', 'top', 'bottom']
   },
   {
     id: 'sharan_int_40',
@@ -747,7 +767,8 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 40,
     param2: 0,
     param3: 0,
-    icon: '🧠'
+    icon: '🧠',
+    parts: ['weapon', 'top', 'bottom', 'shoulder']
   },
   {
     id: 'sharan_hp_mp_rec_15',
@@ -757,9 +778,46 @@ export const ENCHANT_PRESETS: EnchantPreset[] = [
     param1: 15,
     param2: 0,
     param3: 0,
-    icon: '💖'
+    icon: '💖',
+    parts: ['bracelet', 'ring', 'shoulder']
   }
 ]
+
+/**
+ * 根据物品 typeId 获取装备部位 (用于附魔卡片适用部位过滤)
+ */
+export function getEquipPartByTypeId(typeId: number): EquipPart | null {
+  if (typeId >= 0x00 && typeId <= 0x03) return 'weapon' // 短剑、太刀、巨剑、光剑
+  if (typeId === 0x04) return 'shoulder' // 护肩
+  if (typeId === 0x05) return 'top'      // 上衣
+  if (typeId === 0x06) return 'bottom'   // 下衣
+  if (typeId === 0x07) return 'bracelet' // 手腕
+  if (typeId === 0x08) return 'ring'     // 戒指
+  return null
+}
+
+/**
+ * 获取部位中文显示名称
+ */
+export function getEquipPartName(part: EquipPart | null): string {
+  switch (part) {
+    case 'weapon': return '武器'
+    case 'shoulder': return '护肩'
+    case 'top': return '上衣'
+    case 'bottom': return '下衣'
+    case 'bracelet': return '手腕'
+    case 'ring': return '戒指'
+    default: return '装备'
+  }
+}
+
+/**
+ * 根据部位过滤适用的附魔预设
+ */
+export function getEnchantPresetsForPart(part: EquipPart | null): EnchantPreset[] {
+  if (!part) return ENCHANT_PRESETS
+  return ENCHANT_PRESETS.filter(p => !p.parts || p.parts.includes(part))
+}
 
 /**
  * 格式化附魔说明文本

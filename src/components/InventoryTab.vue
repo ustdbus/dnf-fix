@@ -740,13 +740,45 @@
           </div>
 
           <!-- 快捷预设横向药丸栏 (Presets) -->
-          <div class="space-y-1">
-            <div class="text-[10px] text-gray-400 flex items-center justify-between">
-              <span>🔮 莎兰附魔卡预设 (一键应用):</span>
+          <div class="space-y-1.5">
+            <div class="text-[10px] text-gray-400 flex items-center justify-between flex-wrap gap-1">
+              <span class="flex items-center gap-1">
+                <span>🔮 莎兰附魔卡预设</span>
+                <span v-if="enchantPresetFilterMode === 'part' && currentEquipPart" class="text-amber-300 font-bold bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-600/40">
+                  ({{ currentEquipPartName }}适用)
+                </span>
+                <span v-else class="text-gray-500 font-mono">(全量)</span>:
+              </span>
+              <div class="flex items-center gap-1 text-[9px]">
+                <button
+                  type="button"
+                  @click="enchantPresetFilterMode = 'part'"
+                  :class="[
+                    'px-2 py-0.5 rounded transition font-medium',
+                    enchantPresetFilterMode === 'part'
+                      ? 'bg-amber-600 text-black font-bold shadow-sm'
+                      : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                  ]"
+                >
+                  {{ currentEquipPartName }}专属 ({{ getEnchantPresetsForPart(currentEquipPart).length }})
+                </button>
+                <button
+                  type="button"
+                  @click="enchantPresetFilterMode = 'all'"
+                  :class="[
+                    'px-2 py-0.5 rounded transition font-medium',
+                    enchantPresetFilterMode === 'all'
+                      ? 'bg-amber-600 text-black font-bold shadow-sm'
+                      : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                  ]"
+                >
+                  全部 ({{ ENCHANT_PRESETS.length }})
+                </button>
+              </div>
             </div>
             <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
               <button
-                v-for="preset in ENCHANT_PRESETS"
+                v-for="preset in displayedEnchantPresets"
                 :key="preset.id"
                 @click="applyPreset(preset)"
                 :class="[
@@ -915,7 +947,7 @@ import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
 import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory, isWeaponCategory, hasDurability } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
-import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
+import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset, getEquipPartByTypeId, getEquipPartName, getEnchantPresetsForPart, type EquipPart } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
 import { getEquipSetInfo, type EquipSetInfo } from '../core/setEffectDict'
 
@@ -974,6 +1006,27 @@ const formEnchantCode = ref<number>(0)
 const formEnchantParam1 = ref<number>(0)
 const formEnchantParam2 = ref<number>(0)
 const formEnchantParam3 = ref<number>(0)
+
+// 附魔预设部位筛选：'part' 表示仅显示当前部位专属推荐；'all' 表示显示全部
+const enchantPresetFilterMode = ref<'part' | 'all'>('part')
+
+// 当前装备的部位 ('weapon' | 'shoulder' | 'top' | 'bottom' | 'bracelet' | 'ring' | null)
+const currentEquipPart = computed<EquipPart | null>(() => {
+  return getEquipPartByTypeId(formTypeId.value)
+})
+
+// 当前部位名称
+const currentEquipPartName = computed<string>(() => {
+  return getEquipPartName(currentEquipPart.value)
+})
+
+// 当前展示的预设列表 (依据当前部位智能过滤或全量查看)
+const displayedEnchantPresets = computed<EnchantPreset[]>(() => {
+  if (enchantPresetFilterMode.value === 'all') {
+    return ENCHANT_PRESETS
+  }
+  return getEnchantPresetsForPart(currentEquipPart.value)
+})
 
 // 装备固有属性计算属性
 const currentEquipInnate = computed<EquipInnateInfo | null>(() => {
