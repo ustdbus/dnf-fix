@@ -27,7 +27,7 @@
                 阿拉德秘宝
               </span>
               <span class="text-[10px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold tracking-tight shadow-sm">
-                v1.5.6
+                v1.5.7
               </span>
             </div>
             <p class="text-[11px] text-gray-400 flex items-center gap-1.5 mt-0.5">
@@ -177,7 +177,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import chibiLogo from '../assets/ghost_blade_chibi.png'
 import { getProfessionInfo } from '../utils/professionAssets'
 
 const props = defineProps<{
@@ -189,18 +188,18 @@ const props = defineProps<{
 
 const activeAvatar = computed(() => {
   const current = props.characterStatus[props.currentCharacter]
-  if (current && current.exists && current.profession !== undefined && current.profession > 0) {
+  if (current && current.exists && current.profession !== undefined) {
     return getProfessionInfo(current.profession).avatar
   }
-  return chibiLogo
+  return getProfessionInfo(0).avatar
 })
 
 const activeTitle = computed(() => {
   const current = props.characterStatus[props.currentCharacter]
-  if (current && current.exists && current.profession !== undefined && current.profession > 0) {
+  if (current && current.exists && current.profession !== undefined) {
     return getProfessionInfo(current.profession).name
   }
-  return '鬼剑士'
+  return '鬼剑士 (未转职)'
 })
 
 defineEmits<{
