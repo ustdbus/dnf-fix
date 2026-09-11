@@ -26,7 +26,7 @@ export interface InventorySlot {
   count: number;        // 数量
   flag: number;         // 标志位 (如 0x01, 0x00)
   refineLevel: number;  // 强化等级 (+0 ~ +31)
-  grade?: number;       // 品级 (0: 下级, 1: 中级, 2: 上级 (Max 满属性)) (字节 5)
+  grade?: number;       // 品级 (0: 下级, 1: 中级, 2: 上级, 3: 最上级(自动路由为上级+7%)) (字节 5)
   durability?: number;  // 耐久度 (字节 6)
   baseAtkDef1?: number; // 基础物攻/物防 (字节 7~8, uint16 LE)
   baseAtkDef2?: number; // 基础魔攻/魔防 (字节 9~10, uint16 LE)

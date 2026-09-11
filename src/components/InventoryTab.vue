@@ -399,9 +399,9 @@
                   v-if="currentEquipInnate && (currentEquipInnate.lines.length > 0 || currentEquipInnate.elementName)"
                   class="w-full bg-[#0b1220] border border-[#1c2c48] rounded-lg p-2.5 font-mono text-xs space-y-1 shadow-inner select-none"
                 >
-                  <!-- 官方固有词条 (基础属性白色，技能与触发特效淡蓝色) -->
+                  <!-- 官方固有词条 (基础属性白色，技能与触发特效淡蓝色，四维动态绑定当前属性) -->
                   <div
-                    v-for="(line, lIdx) in currentEquipInnate.lines"
+                    v-for="(line, lIdx) in displayInnateLines"
                     :key="lIdx"
                     :class="line.color === 'white' ? 'text-gray-100 font-normal' : 'text-sky-400 font-medium'"
                     class="tracking-wide"
@@ -948,7 +948,7 @@ const copyCountInput = ref<number | null>(null)
 const isEquipStatsLocked = ref<boolean>(true)
 
 // 装备底层属性响应式状态 (依据官方 24 字节结构)
-const formGrade = ref<number>(2)           // 0:下级, 1:中级, 2:上级 (Max 满属性)
+const formGrade = ref<number>(3)           // 3:最上级(+7%), 2:上级(+5%), 1:中级(+3.5%), 0:下级(原值)
 const formDurability = ref<number>(35)     // 耐久度
 const formBaseAtkDef1 = ref<number>(0)     // 基础物理攻/防 (uint16 LE)
 const formBaseAtkDef2 = ref<number>(0)     // 基础魔法攻/防 (uint16 LE)
@@ -975,37 +975,91 @@ const currentSetInfo = computed<EquipSetInfo | null>(() => {
   return getEquipSetInfo(formTypeId.value, formItemId.value)
 })
 
+// 解析装备固有的四维属性基准值 (出厂下级值) 与类型 (力量、智力、体力、精神)
+function getInnateStat4Info(innate: EquipInnateInfo | null): { type: string | null; baseVal: number } {
+  if (!innate) return { type: null, baseVal: 0 }
+  if (innate.options) {
+    for (const opt of innate.options) {
+      if (opt.code === 1) return { type: '力量', baseVal: opt.p1 }
+      if (opt.code === 2) return { type: '智力', baseVal: opt.p1 }
+      if (opt.code === 3) return { type: '体力', baseVal: opt.p1 }
+      if (opt.code === 4) return { type: '精神', baseVal: opt.p1 }
+    }
+  }
+  if (innate.stat4 > 0) {
+    return { type: '力量', baseVal: innate.stat4 }
+  }
+  return { type: null, baseVal: 0 }
+}
+
+// 动态词条列表：四维属性动态对齐当前的 formStat4.value (Byte 15)
+const displayInnateLines = computed(() => {
+  if (!currentEquipInnate.value) return []
+  const statInfo = getInnateStat4Info(currentEquipInnate.value)
+  return currentEquipInnate.value.lines.map(line => {
+    if (statInfo.type && line.text.startsWith(statInfo.type)) {
+      const currentVal = formStat4.value > 0 ? formStat4.value : statInfo.baseVal
+      return {
+        ...line,
+        text: `${statInfo.type} +${currentVal}`
+      }
+    }
+    return line
+  })
+})
+
 const isWeapon = computed(() => {
   return formTypeId.value >= 0x00 && formTypeId.value <= 0x05
 })
 
 const GRADE_LIST = [
-  { value: 2, label: '上级 (Max 满属性)', color: 'text-amber-400' },
+  { value: 3, label: '最上级', color: 'text-amber-400' },
+  { value: 2, label: '上级', color: 'text-yellow-400' },
   { value: 1, label: '中级', color: 'text-purple-400' },
   { value: 0, label: '下级', color: 'text-blue-400' },
 ]
 
-// 切换装备品级时，联动计算基础攻防与耐久度（上级 Max 100%、中级 92%、下级 85%）
+// 切换装备品级时，联动计算基础攻防、耐久度与四维属性
+// 0.etc 为出厂基准下级值 (Grade 0, 100%)
+// 最上级 (Grade 3): 自动应用 +7% 满属性 (保存时自动路由到上级 Grade 2，保证游戏内正常显示品级)
+// 上级 (Grade 2): 基准值 * 1.05 (+5%)，官方基准上级
+// 中级 (Grade 1): 基准值 * 1.035 (+3.5%)
+// 下级 (Grade 0): 基准值 * 1.00 (出厂原值)
 function onGradeChange() {
   if (!isEquip(formTypeId.value)) return
   const innate = getEquipInnateInfo(formTypeId.value, formItemId.value)
   if (!innate) return
 
-  let ratio = 1.0
+  const statInfo = getInnateStat4Info(innate)
+
+  let ratio = 1.07
+  let statRatio = 1.07
   let durOffset = 0
-  if (formGrade.value === 2) {
-    ratio = 1.0   // 上级 Max: 100% 官方满属性
+  if (formGrade.value === 3) {
+    ratio = 1.07   // 最上级: 107% 官方满属性
+    statRatio = 1.07
+    durOffset = 0
+  } else if (formGrade.value === 2) {
+    ratio = 1.05   // 上级: 105% 官方基准上级
+    statRatio = 1.05
     durOffset = 0
   } else if (formGrade.value === 1) {
-    ratio = 0.92  // 中级
-    durOffset = -2
+    ratio = 1.035  // 中级: 103.5%
+    statRatio = 1.035
+    durOffset = -1
   } else if (formGrade.value === 0) {
-    ratio = 0.85  // 下级
-    durOffset = -5
+    ratio = 1.0    // 下级: 100%
+    statRatio = 1.0
+    durOffset = -2
   }
 
-  formBaseAtkDef1.value = Math.round((innate.base1 || 0) * ratio)
-  formBaseAtkDef2.value = Math.round((innate.base2 || 0) * ratio)
+  // 基础攻防向下取整，100% 对齐游戏实机 (如混沌剑圣光剑最上级: 2228 * 1.07 = 2383, 1938 * 1.07 = 2073)
+  formBaseAtkDef1.value = Math.floor((innate.base1 || 0) * ratio)
+  formBaseAtkDef2.value = Math.floor((innate.base2 || 0) * ratio)
+  // 四维属性四舍五入对齐游戏实机 (如最上级 67 * 1.07 = 72)
+  if (statInfo.baseVal > 0) {
+    formStat4.value = Math.round(statInfo.baseVal * statRatio)
+  }
   formDurability.value = Math.max(1, (innate.durability || 35) + durOffset)
 }
 
@@ -1271,11 +1325,12 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
   if (isEquip(tId)) {
     const innate = getEquipInnateInfo(tId, iId)
     if (innate) {
-      formGrade.value = 2 // 切换装备默认上级 (Max 满属性)
+      formGrade.value = 3 // 切换装备默认最上级 (+7% 满属性)
       formDurability.value = innate.durability || 35
-      formBaseAtkDef1.value = innate.base1 || 0
-      formBaseAtkDef2.value = innate.base2 || 0
-      formStat4.value = innate.stat4 || 0
+      formBaseAtkDef1.value = Math.floor((innate.base1 || 0) * 1.07)
+      formBaseAtkDef2.value = Math.floor((innate.base2 || 0) * 1.07)
+      const statInfo = getInnateStat4Info(innate)
+      formStat4.value = statInfo.baseVal > 0 ? Math.round(statInfo.baseVal * 1.07) : 0
     }
   }
 }
@@ -1425,10 +1480,22 @@ function getSlotHoverTitle(slot: InventorySlot): string {
   const isEq = isEquip(slot.typeId)
   let extraStr = ''
   if (isEq) {
+    const gradeLabel = (slot.grade !== undefined && slot.grade >= 2) ? '上级' : (slot.grade === 1 ? '中级' : (slot.grade === 0 ? '下级' : ''))
+    if (gradeLabel) {
+      extraStr += ` | [${gradeLabel}]`
+    }
     const innate = getEquipInnateInfo(slot.typeId, slot.itemId)
     if (innate) {
+      const statInfo = getInnateStat4Info(innate)
       if (innate.lines && innate.lines.length > 0) {
-        extraStr += ` | ${innate.lines.map(l => l.text).join(' | ')}`
+        const dynamicLines = innate.lines.map(line => {
+          if (statInfo.type && line.text.startsWith(statInfo.type)) {
+            const currentVal = (slot.stat4 !== undefined && slot.stat4 > 0) ? slot.stat4 : statInfo.baseVal
+            return `${statInfo.type} +${currentVal}`
+          }
+          return line.text
+        })
+        extraStr += ` | ${dynamicLines.join(' | ')}`
       }
       if (innate.elementName) {
         extraStr += ` | ${innate.elementName}`
@@ -1474,13 +1541,32 @@ function openEditModal(slot: InventorySlot) {
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
     const innate = getEquipInnateInfo(slot.typeId, safeItemId)
-    formGrade.value = Math.min(2, slot.grade !== undefined ? slot.grade : 2)
+    // 最上级与上级回显：如果存档为 3 或攻防达到 +7% 满属性，回显为最上级；普通 2 回显为上级
+    let initGrade = slot.grade !== undefined ? slot.grade : 3
+    if (initGrade >= 2) {
+      if (initGrade === 3 || (innate && innate.base1 && slot.baseAtkDef1 && slot.baseAtkDef1 >= Math.floor(innate.base1 * 1.07))) {
+        formGrade.value = 3
+      } else {
+        formGrade.value = 2
+      }
+    } else {
+      formGrade.value = initGrade
+    }
     formDurability.value = slot.durability !== undefined ? slot.durability : (innate?.durability || 35)
-    formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : (innate?.base1 || 0)
-    formBaseAtkDef2.value = slot.baseAtkDef2 !== undefined ? slot.baseAtkDef2 : (innate?.base2 || 0)
+    
+    const defaultRatio = formGrade.value === 3 ? 1.07 : (formGrade.value === 2 ? 1.05 : (formGrade.value === 1 ? 1.035 : 1.0))
+    formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : Math.floor((innate?.base1 || 0) * defaultRatio)
+    formBaseAtkDef2.value = slot.baseAtkDef2 !== undefined ? slot.baseAtkDef2 : Math.floor((innate?.base2 || 0) * defaultRatio)
     formRefineBonus1.value = slot.refineBonus1 !== undefined ? slot.refineBonus1 : 0
     formRefineBonus2.value = slot.refineBonus2 !== undefined ? slot.refineBonus2 : 0
-    formStat4.value = slot.stat4 !== undefined ? slot.stat4 : (innate?.stat4 || 0)
+
+    if (slot.stat4 !== undefined && slot.stat4 > 0) {
+      formStat4.value = slot.stat4
+    } else if (statInfo.baseVal > 0) {
+      formStat4.value = Math.round(statInfo.baseVal * defaultRatio)
+    } else {
+      formStat4.value = 0
+    }
 
     if (slot.enchant && slot.enchant.code > 0) {
       formEnchantCode.value = slot.enchant.code
@@ -1539,7 +1625,8 @@ function applySlotEdit(targetSlot: InventorySlot) {
   targetSlot.refineLevel = isEquip ? Math.max(0, Math.min(63, formRefineLevel.value || 0)) : 0
 
   if (isEquip) {
-    targetSlot.grade = Math.max(0, Math.min(2, Math.floor(formGrade.value ?? 2)))
+    // 最上级 (value 3) 自动路由写入上级 (Byte 5 = 2)，确保在游戏实机中正常显示品级文字且拥有满属性
+    targetSlot.grade = formGrade.value === 3 ? 2 : Math.max(0, Math.min(2, Math.floor(formGrade.value ?? 2)))
     targetSlot.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
     targetSlot.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
     targetSlot.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))
