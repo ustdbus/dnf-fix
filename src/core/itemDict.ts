@@ -60,22 +60,22 @@ export const CATEGORIES: { id: number; name: string }[] = [
 /**
  * 特殊物品属性增强说明 (如称号属性加成、宠物特技描述)
  */
-export const SPECIAL_ITEM_DESC: Record<string, { desc: string; quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange' }> = {
+export const SPECIAL_ITEM_DESC: Record<string, { desc: string }> = {
   // 称号增强属性说明 (0x09)
-  '9_8': { desc: '物攻+X%, 力+30, 体+40', quality: 'pink' },
-  '9_9': { desc: '魔攻+X%, 智+30, 精+40', quality: 'pink' },
-  '9_10': { desc: '暴击+X%, 暴伤+20%, 打击回复+50', quality: 'orange' },
-  '9_11': { desc: '获得经验+X%, 掉率+30%, HP/MP+8', quality: 'orange' },
-  '9_12': { desc: '全状态+X, 移动+2, HP/MP再生+3', quality: 'orange' },
+  '9_8': { desc: '物攻+X%, 力+30, 体+40' },
+  '9_9': { desc: '魔攻+X%, 智+30, 精+40' },
+  '9_10': { desc: '暴击+X%, 暴伤+20%, 打击回复+50' },
+  '9_11': { desc: '获得经验+X%, 掉率+30%, HP/MP+8' },
+  '9_12': { desc: '全状态+X, 移动+2, HP/MP再生+3' },
 
   // 宠物增强技能说明 (0x0a)
-  '10_1': { desc: 'HPMax+7%, 暴击+5%', quality: 'pink' },
-  '10_2': { desc: '物攻+X%, HPMAX+15%, 力量+30', quality: 'pink' },
-  '10_3': { desc: '魔攻+X%, MPMAX+15%, 智力+30', quality: 'pink' },
-  '10_4': { desc: '全状态+X, 削血10%, 命中+10%', quality: 'orange' },
-  '10_5': { desc: '暴击+X%, 移动+2, 打击回复+50', quality: 'pink' },
-  '10_6': { desc: '经验+X%, 物品掉落率+20%, 命中+10%', quality: 'orange' },
-  '10_7': { desc: '自动拾取, 金币+10%, HP/MP再生+5', quality: 'orange' },
+  '10_1': { desc: 'HPMax+7%, 暴击+5%' },
+  '10_2': { desc: '物攻+X%, HPMAX+15%, 力量+30' },
+  '10_3': { desc: '魔攻+X%, MPMAX+15%, 智力+30' },
+  '10_4': { desc: '全状态+X, 削血10%, 命中+10%' },
+  '10_5': { desc: '暴击+X%, 移动+2, 打击回复+50' },
+  '10_6': { desc: '经验+X%, 物品掉落率+20%, 命中+10%' },
+  '10_7': { desc: '自动拾取, 金币+10%, HP/MP再生+5' },
 }
 
 /**
@@ -97,7 +97,7 @@ for (const [typeIdStr, items] of Object.entries(OFFICIAL_ITEM_DATABASE)) {
       continue
     }
     const special = SPECIAL_ITEM_DESC[`${typeId}_${itemId}`]
-    const quality = special?.quality || official.quality || 'white'
+    const quality = official.quality || 'white'
     const desc = special?.desc || (official.reqLevel !== undefined ? `Lv.${official.reqLevel}${official.price ? ' 售价:' + official.price : ''}` : undefined)
 
     const armorType = isArmorCategory(typeId) ? getArmorMaterial(typeId, itemId) : undefined
@@ -219,7 +219,7 @@ export function findItemInfo(typeId: number, itemId: number): {
     return {
       name: official.name,
       categoryName: catName,
-      quality: special?.quality || official.quality || 'white',
+      quality: official.quality || 'white',
       canRefine: isEquip,
       reqLevel: official.reqLevel,
       armorType,
