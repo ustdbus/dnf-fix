@@ -565,19 +565,13 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <!-- 品级 -->
             <div>
-              <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
+              <label class="text-[11px] block mb-1 font-medium text-amber-300/90">
                 装备品级 (Byte 5):
               </label>
               <select
                 v-model.number="formGrade"
                 @change="onGradeChange"
-                :disabled="isEquipStatsLocked"
-                :class="[
-                  'w-full text-xs p-2 rounded-lg border font-bold transition',
-                  isEquipStatsLocked
-                    ? 'bg-gray-900/60 text-gray-500 border-gray-800 cursor-not-allowed'
-                    : 'bg-[#0e1119] text-amber-200 border-gray-700 focus:border-amber-500 focus:outline-none cursor-pointer'
-                ]"
+                class="w-full text-xs p-2 rounded-lg border font-bold transition bg-[#0e1119] text-amber-200 border-gray-700 focus:border-amber-500 focus:outline-none cursor-pointer"
               >
                 <option v-for="g in GRADE_LIST" :key="g.value" :value="g.value">
                   {{ g.label }}
@@ -954,7 +948,7 @@ const copyCountInput = ref<number | null>(null)
 const isEquipStatsLocked = ref<boolean>(true)
 
 // 装备底层属性响应式状态 (依据官方 24 字节结构)
-const formGrade = ref<number>(3)           // 0:下级, 1:中级, 2:上级, 3:最上级
+const formGrade = ref<number>(2)           // 0:下级, 1:中级, 2:上级 (Max 满属性)
 const formDurability = ref<number>(35)     // 耐久度
 const formBaseAtkDef1 = ref<number>(0)     // 基础物理攻/防 (uint16 LE)
 const formBaseAtkDef2 = ref<number>(0)     // 基础魔法攻/防 (uint16 LE)
@@ -986,21 +980,33 @@ const isWeapon = computed(() => {
 })
 
 const GRADE_LIST = [
-  { value: 3, label: '最上级 (100% 官方满属性)', color: 'text-amber-400' },
-  { value: 2, label: '上级', color: 'text-purple-400' },
-  { value: 1, label: '中级', color: 'text-blue-400' },
-  { value: 0, label: '下级', color: 'text-gray-400' },
+  { value: 2, label: '上级 (Max 满属性)', color: 'text-amber-400' },
+  { value: 1, label: '中级', color: 'text-purple-400' },
+  { value: 0, label: '下级', color: 'text-blue-400' },
 ]
 
-// 切换装备品级时，静默联动调整基础攻防与耐久度为该装备官方正规出厂满属性
+// 切换装备品级时，联动计算基础攻防与耐久度（上级 Max 100%、中级 92%、下级 85%）
 function onGradeChange() {
   if (!isEquip(formTypeId.value)) return
   const innate = getEquipInnateInfo(formTypeId.value, formItemId.value)
   if (!innate) return
 
-  formBaseAtkDef1.value = innate.base1 || 0
-  formBaseAtkDef2.value = innate.base2 || 0
-  formDurability.value = innate.durability || 35
+  let ratio = 1.0
+  let durOffset = 0
+  if (formGrade.value === 2) {
+    ratio = 1.0   // 上级 Max: 100% 官方满属性
+    durOffset = 0
+  } else if (formGrade.value === 1) {
+    ratio = 0.92  // 中级
+    durOffset = -2
+  } else if (formGrade.value === 0) {
+    ratio = 0.85  // 下级
+    durOffset = -5
+  }
+
+  formBaseAtkDef1.value = Math.round((innate.base1 || 0) * ratio)
+  formBaseAtkDef2.value = Math.round((innate.base2 || 0) * ratio)
+  formDurability.value = Math.max(1, (innate.durability || 35) + durOffset)
 }
 
 // 附魔计算属性
@@ -1265,7 +1271,7 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
   if (isEquip(tId)) {
     const innate = getEquipInnateInfo(tId, iId)
     if (innate) {
-      formGrade.value = 3 // 切换装备默认最上级 (100%)
+      formGrade.value = 2 // 切换装备默认上级 (Max 满属性)
       formDurability.value = innate.durability || 35
       formBaseAtkDef1.value = innate.base1 || 0
       formBaseAtkDef2.value = innate.base2 || 0
@@ -1451,7 +1457,7 @@ function openEditModal(slot: InventorySlot) {
     formItemId.value = firstItemId // 默认第一件有效装备 (破损的铁剑)
     formCount.value = 1
     formRefineLevel.value = 0
-    formGrade.value = 3
+    formGrade.value = 2
     formDurability.value = 35
     formBaseAtkDef1.value = 0
     formBaseAtkDef2.value = 0
@@ -1468,7 +1474,7 @@ function openEditModal(slot: InventorySlot) {
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
     const innate = getEquipInnateInfo(slot.typeId, safeItemId)
-    formGrade.value = slot.grade !== undefined ? slot.grade : 3
+    formGrade.value = Math.min(2, slot.grade !== undefined ? slot.grade : 2)
     formDurability.value = slot.durability !== undefined ? slot.durability : (innate?.durability || 35)
     formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : (innate?.base1 || 0)
     formBaseAtkDef2.value = slot.baseAtkDef2 !== undefined ? slot.baseAtkDef2 : (innate?.base2 || 0)
@@ -1533,7 +1539,7 @@ function applySlotEdit(targetSlot: InventorySlot) {
   targetSlot.refineLevel = isEquip ? Math.max(0, Math.min(63, formRefineLevel.value || 0)) : 0
 
   if (isEquip) {
-    targetSlot.grade = Math.max(0, Math.min(3, Math.floor(formGrade.value || 0)))
+    targetSlot.grade = Math.max(0, Math.min(2, Math.floor(formGrade.value ?? 2)))
     targetSlot.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
     targetSlot.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
     targetSlot.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))

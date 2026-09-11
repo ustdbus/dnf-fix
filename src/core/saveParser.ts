@@ -274,9 +274,9 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
       if (isEquip) {
         baseBytes[4] = Math.max(0, Math.min(255, slot.refineLevel)) & 0xff
 
-        // 写入品级 (字节 5: 0: 下级, 1: 中级, 2: 上级, 3: 最上级)
+        // 写入品级 (字节 5: 0: 下级, 1: 中级, 2: 上级 (Max 满属性))
         if (slot.grade !== undefined) {
-          baseBytes[5] = Math.max(0, Math.min(3, Math.floor(slot.grade))) & 0xff
+          baseBytes[5] = Math.max(0, Math.min(2, Math.floor(slot.grade))) & 0xff
         }
         // 写入耐久度 (字节 6: uint8 0~255)
         if (slot.durability !== undefined) {
