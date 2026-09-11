@@ -556,8 +556,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 17,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -700,8 +700,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 92,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -736,8 +736,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 192,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -772,8 +772,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 192,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -808,8 +808,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 257,
     "stat4": 0,
     "durability": 35,
-    "element": "ice",
-    "elementName": "冰属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -880,8 +880,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 332,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -1024,8 +1024,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 512,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -1060,8 +1060,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 512,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -1096,8 +1096,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 732,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -1204,8 +1204,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 732,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -1276,8 +1276,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 732,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -1312,8 +1312,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 732,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -1420,8 +1420,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 19,
     "stat4": 0,
     "durability": 35,
-    "element": "dark",
-    "elementName": "暗属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -1648,8 +1648,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 224,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -1696,8 +1696,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 224,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -1744,8 +1744,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 299,
     "stat4": 0,
     "durability": 35,
-    "element": "ice",
-    "elementName": "冰属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -1840,8 +1840,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 387,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -1888,8 +1888,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 387,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -2128,8 +2128,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 854,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -2368,8 +2368,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 854,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -2416,8 +2416,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 854,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -2752,8 +2752,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 364,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -2944,8 +2944,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 874,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -3040,8 +3040,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1037,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -3136,8 +3136,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1037,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -3280,8 +3280,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1024,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -3328,8 +3328,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1024,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -3520,8 +3520,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 2074,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -3664,8 +3664,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 14,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -3798,8 +3798,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 293,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -4140,8 +4140,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 367,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -4212,8 +4212,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 16,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -4248,8 +4248,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 29,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -4320,8 +4320,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 80,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -4392,8 +4392,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 166,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -4428,8 +4428,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 166,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -4464,8 +4464,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 222,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -4536,8 +4536,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 286,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -4572,8 +4572,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 286,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -4608,8 +4608,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 359,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -4716,8 +4716,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 440,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -4788,8 +4788,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 629,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -4860,8 +4860,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 629,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -4932,8 +4932,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 629,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -4968,8 +4968,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 629,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -5040,8 +5040,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 629,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -5124,8 +5124,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 59,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -5400,8 +5400,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 259,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -5496,8 +5496,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 334,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -5544,8 +5544,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 419,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -5736,8 +5736,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 734,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -5832,8 +5832,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 734,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -5928,8 +5928,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 734,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -6024,8 +6024,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 734,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6072,8 +6072,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 734,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6312,8 +6312,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 168,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6360,8 +6360,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 235,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -6408,8 +6408,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 314,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 2,
@@ -6456,8 +6456,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 405,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6600,8 +6600,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 751,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 2,
@@ -6696,8 +6696,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 891,
     "stat4": 0,
     "durability": 35,
-    "element": "dark",
-    "elementName": "暗属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6840,8 +6840,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1247,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -6888,8 +6888,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 891,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -6936,8 +6936,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 880,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -6984,8 +6984,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 880,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 2,
@@ -7224,8 +7224,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1960,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 2,
@@ -7272,8 +7272,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 2228,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 2,
@@ -7998,8 +7998,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 60,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -8106,8 +8106,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 127,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -8178,8 +8178,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 170,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -8250,8 +8250,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 220,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -8394,8 +8394,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 340,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -8502,8 +8502,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 487,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -8538,8 +8538,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 487,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -8646,8 +8646,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 487,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -8754,8 +8754,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 23,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -8994,8 +8994,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 148,
     "stat4": 0,
     "durability": 35,
-    "element": "dark",
-    "elementName": "暗属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -9042,8 +9042,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 198,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -9138,8 +9138,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 257,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -9234,8 +9234,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 323,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -9378,8 +9378,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 397,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -9426,8 +9426,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 568,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -9570,8 +9570,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 568,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -9714,8 +9714,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 568,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -9810,8 +9810,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 568,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -10098,8 +10098,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 241,
     "stat4": 0,
     "durability": 35,
-    "element": "fire",
-    "elementName": "火属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -10194,8 +10194,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 392,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -10434,8 +10434,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 690,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -10530,8 +10530,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 966,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -10614,8 +10614,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 682,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -10710,8 +10710,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 682,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -10806,8 +10806,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 690,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -10902,8 +10902,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 690,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -10996,8 +10996,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 4,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11006,8 +11006,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 7,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11016,8 +11016,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 14,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11026,8 +11026,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 37,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11036,8 +11036,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 44,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11046,8 +11046,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 67,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11056,8 +11056,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 94,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11066,8 +11066,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 127,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11076,8 +11076,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 164,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11086,8 +11086,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 207,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11106,8 +11106,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 307,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11116,8 +11116,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 364,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [],
     "lines": []
   },
@@ -11126,8 +11126,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 7,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11150,8 +11150,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 8,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11174,8 +11174,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 9,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11198,8 +11198,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 12,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11222,8 +11222,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 14,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11246,8 +11246,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 19,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11270,8 +11270,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 37,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11294,8 +11294,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 44,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11318,8 +11318,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 67,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11342,8 +11342,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 94,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11390,8 +11390,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 164,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11414,8 +11414,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 207,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11438,8 +11438,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 254,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11462,8 +11462,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 307,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11486,8 +11486,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 364,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11510,8 +11510,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 9,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -11534,8 +11534,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 18,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -11558,8 +11558,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 46,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -11594,8 +11594,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 56,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11630,8 +11630,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 56,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11702,8 +11702,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 118,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -11774,8 +11774,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 159,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -11810,8 +11810,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 206,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -11954,8 +11954,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 318,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12026,8 +12026,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12062,8 +12062,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -12098,8 +12098,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -12134,8 +12134,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -12170,8 +12170,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12206,8 +12206,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -12278,8 +12278,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 456,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -12350,8 +12350,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 12,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -12386,8 +12386,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 25,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -12422,8 +12422,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 65,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -12470,8 +12470,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 78,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12518,8 +12518,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 78,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12614,8 +12614,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 165,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -12758,8 +12758,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 288,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12854,8 +12854,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 362,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12902,8 +12902,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 362,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12950,8 +12950,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 445,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -12998,8 +12998,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 445,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -13046,8 +13046,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -13142,8 +13142,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -13190,8 +13190,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -13238,8 +13238,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -13382,8 +13382,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -13430,8 +13430,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 638,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -13526,8 +13526,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 95,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "light",
+    "elementName": "光属性攻击",
     "options": [
       {
         "code": 1,
@@ -13574,8 +13574,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 143,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -13622,8 +13622,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 201,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "ice",
+    "elementName": "冰属性攻击",
     "options": [
       {
         "code": 1,
@@ -13766,8 +13766,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 440,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "fire",
+    "elementName": "火属性攻击",
     "options": [
       {
         "code": 1,
@@ -13910,8 +13910,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 775,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14006,8 +14006,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 775,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -14054,8 +14054,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 775,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14102,8 +14102,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1085,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14150,8 +14150,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 775,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14294,8 +14294,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 766,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14342,8 +14342,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 766,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14390,8 +14390,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1317,
     "stat4": 0,
     "durability": 35,
-    "element": "none",
-    "elementName": "",
+    "element": "dark",
+    "elementName": "暗属性攻击",
     "options": [
       {
         "code": 1,
@@ -14438,8 +14438,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1550,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14486,8 +14486,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1705,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
@@ -14534,8 +14534,8 @@ export const EQUIP_INNATE_DATABASE: Record<string, EquipInnateInfo> = {
     "base2": 1938,
     "stat4": 0,
     "durability": 35,
-    "element": "light",
-    "elementName": "光属性攻击",
+    "element": "none",
+    "elementName": "",
     "options": [
       {
         "code": 1,
