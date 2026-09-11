@@ -561,8 +561,8 @@
             </div>
           </div>
 
-          <!-- 装备品级与耐久度 -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- 装备品级与耐久度 (首饰无耐久度直接不展示耐久度栏，无任何额外小字) -->
+          <div :class="canHaveDurability ? 'grid grid-cols-1 sm:grid-cols-2 gap-2.5' : 'block'">
             <!-- 品级 -->
             <div>
               <div class="flex items-center justify-between mb-1">
@@ -591,7 +591,7 @@
               </select>
             </div>
 
-            <!-- 耐久度 (仅武器与防具具有耐久度；首饰类无耐久度) -->
+            <!-- 耐久度 (仅在有耐久度时显示，首饰无耐久度直接不渲染) -->
             <div v-if="canHaveDurability">
               <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
                 当前耐久度 (Byte 6, Max 255):
@@ -612,22 +612,13 @@
                 ]"
               />
             </div>
-            <div v-else>
-              <label class="text-[11px] block mb-1 font-medium text-gray-500">
-                装备耐久度 (Byte 6):
-              </label>
-              <div class="w-full text-xs font-mono p-2 rounded-lg border bg-gray-900/40 text-gray-400 border-gray-800 flex items-center justify-between">
-                <span>无耐久度 (首饰类无需修理)</span>
-                <span class="text-[10px] text-amber-500/80 bg-amber-950/40 px-1.5 py-0.5 rounded border border-amber-800/40">永不磨损</span>
-              </div>
-            </div>
           </div>
 
           <!-- 底层攻防数值 (Byte 7~10 uint16 LE) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div>
               <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
-                {{ isWeapon ? '基础物理攻击 (Byte 7~8):' : (isJewelry ? '基础物理防御 (首饰常为0):' : '基础物理防御 (Byte 7~8):') }}
+                {{ isWeapon ? '基础物理攻击 (Byte 7~8):' : '基础物理防御 (Byte 7~8):' }}
               </label>
               <input
                 v-model.number="formBaseAtkDef1"
