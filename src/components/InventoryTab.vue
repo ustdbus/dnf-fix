@@ -742,7 +742,7 @@
           <!-- 快捷预设横向药丸栏 (Presets) -->
           <div class="space-y-1">
             <div class="text-[10px] text-gray-400 flex items-center justify-between">
-              <span>⚡ 强力神级附魔一键应用 (预设):</span>
+              <span>🔮 莎兰附魔卡预设 (一键应用):</span>
             </div>
             <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
               <button
