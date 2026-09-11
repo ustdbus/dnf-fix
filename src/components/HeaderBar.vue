@@ -27,7 +27,7 @@
                 阿拉德秘宝
               </span>
               <span class="text-[10px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold tracking-tight shadow-sm">
-                v1.5.5
+                v1.5.6
               </span>
             </div>
             <p class="text-[11px] text-gray-400 flex items-center gap-1.5 mt-0.5">
