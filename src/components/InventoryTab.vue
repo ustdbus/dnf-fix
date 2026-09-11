@@ -591,8 +591,8 @@
               </select>
             </div>
 
-            <!-- 耐久度 -->
-            <div>
+            <!-- 耐久度 (仅武器与防具具有耐久度；首饰类无耐久度) -->
+            <div v-if="canHaveDurability">
               <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
                 当前耐久度 (Byte 6, Max 255):
               </label>
@@ -612,13 +612,22 @@
                 ]"
               />
             </div>
+            <div v-else>
+              <label class="text-[11px] block mb-1 font-medium text-gray-500">
+                装备耐久度 (Byte 6):
+              </label>
+              <div class="w-full text-xs font-mono p-2 rounded-lg border bg-gray-900/40 text-gray-400 border-gray-800 flex items-center justify-between">
+                <span>无耐久度 (首饰类无需修理)</span>
+                <span class="text-[10px] text-amber-500/80 bg-amber-950/40 px-1.5 py-0.5 rounded border border-amber-800/40">永不磨损</span>
+              </div>
+            </div>
           </div>
 
           <!-- 底层攻防数值 (Byte 7~10 uint16 LE) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div>
               <label class="text-[11px] block mb-1 font-medium" :class="isEquipStatsLocked ? 'text-gray-500' : 'text-gray-400'">
-                {{ isWeapon ? '基础物理攻击 (Byte 7~8):' : '基础物理防御 (Byte 7~8):' }}
+                {{ isWeapon ? '基础物理攻击 (Byte 7~8):' : (isJewelry ? '基础物理防御 (首饰常为0):' : '基础物理防御 (Byte 7~8):') }}
               </label>
               <input
                 v-model.number="formBaseAtkDef1"
@@ -913,7 +922,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory } from '../core/itemDict'
+import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory, isWeaponCategory, isJewelryCategory, hasDurability } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
@@ -1020,9 +1029,11 @@ const displayInnateLines = computed(() => {
   })
 })
 
-const isWeapon = computed(() => {
-  return formTypeId.value >= 0x00 && formTypeId.value <= 0x05
-})
+const isWeapon = computed(() => isWeaponCategory(formTypeId.value))
+const isArmor = computed(() => isArmorCategory(formTypeId.value))
+const isJewelry = computed(() => isJewelryCategory(formTypeId.value))
+const canHaveDurability = computed(() => hasDurability(formTypeId.value))
+
 
 const GRADE_LIST = [
   { value: 3, label: '最上级', color: 'text-amber-400' },
@@ -1092,7 +1103,11 @@ function onGradeChange() {
   if (statInfo.baseVal > 0) {
     formStat4.value = Math.round(statInfo.baseVal * statRatio)
   }
-  formDurability.value = Math.max(1, (innate.durability || 35) + durOffset)
+  if (canHaveDurability.value) {
+    formDurability.value = Math.max(1, (innate.durability || 35) + durOffset)
+  } else {
+    formDurability.value = 0
+  }
 }
 
 // 附魔计算属性
@@ -1358,7 +1373,7 @@ function syncEquipInnateDefaults(tId: number, iId: number) {
     const innate = getEquipInnateInfo(tId, iId)
     if (innate) {
       formGrade.value = 3 // 切换装备默认最上级 (+7% 满属性)
-      formDurability.value = innate.durability || 35
+      formDurability.value = hasDurability(tId) ? (innate.durability || 35) : 0
       formBaseAtkDef1.value = Math.floor((innate.base1 || 0) * 1.07)
       formBaseAtkDef2.value = Math.floor((innate.base2 || 0) * 1.07)
       const statInfo = getInnateStat4Info(innate)
@@ -1584,7 +1599,9 @@ function openEditModal(slot: InventorySlot) {
     } else {
       formGrade.value = initGrade
     }
-    formDurability.value = slot.durability !== undefined ? slot.durability : (innate?.durability || 35)
+    formDurability.value = hasDurability(slot.typeId)
+      ? (slot.durability !== undefined ? slot.durability : (innate?.durability || 35))
+      : 0
     
     const defaultRatio = formGrade.value === 3 ? 1.07 : (formGrade.value === 2 ? 1.05 : (formGrade.value === 1 ? 1.035 : 1.0))
     formBaseAtkDef1.value = slot.baseAtkDef1 !== undefined ? slot.baseAtkDef1 : Math.floor((innate?.base1 || 0) * defaultRatio)
@@ -1659,7 +1676,7 @@ function applySlotEdit(targetSlot: InventorySlot) {
   if (isEquip) {
     // 最上级 (value 3) 自动路由写入上级 (Byte 5 = 2)，确保在游戏实机中正常显示品级文字且拥有满属性
     targetSlot.grade = formGrade.value === 3 ? 2 : Math.max(0, Math.min(2, Math.floor(formGrade.value ?? 2)))
-    targetSlot.durability = Math.max(0, Math.min(255, Math.floor(formDurability.value || 0)))
+    targetSlot.durability = hasDurability(targetSlot.typeId) ? Math.max(0, Math.min(255, Math.floor(formDurability.value || 0))) : 0
     targetSlot.baseAtkDef1 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef1.value || 0)))
     targetSlot.baseAtkDef2 = Math.max(0, Math.min(65535, Math.floor(formBaseAtkDef2.value || 0)))
     targetSlot.refineBonus1 = Math.max(0, Math.min(65535, Math.floor(formRefineBonus1.value || 0)))

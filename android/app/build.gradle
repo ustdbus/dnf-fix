@@ -10,8 +10,8 @@ android {
         applicationId "com.dnf.fix"
         minSdk 21
         targetSdk 34
-        versionCode System.getenv("VERSION_CODE") ? Integer.parseInt(System.getenv("VERSION_CODE")) : 158
-        versionName System.getenv("APP_VERSION") ?: "1.5.8"
+        versionCode System.getenv("VERSION_CODE") ? Integer.parseInt(System.getenv("VERSION_CODE")) : 159
+        versionName System.getenv("APP_VERSION") ?: "1.5.9"
     }
 
     signingConfigs {

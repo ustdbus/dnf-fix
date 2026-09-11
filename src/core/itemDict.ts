@@ -6,10 +6,32 @@ export type { ArmorType }
 export { ARMOR_TYPES }
 
 /**
+ * 是否属于武器（短剑 0x00、太刀 0x01、巨剑 0x02、光剑 0x03）
+ */
+export function isWeaponCategory(typeId: number): boolean {
+  return typeId >= 0x00 && typeId <= 0x03
+}
+
+/**
  * 是否属于防具（护肩 0x04、上衣 0x05、下衣 0x06）
  */
 export function isArmorCategory(typeId: number): boolean {
   return typeId === 0x04 || typeId === 0x05 || typeId === 0x06
+}
+
+/**
+ * 是否属于首饰（手镯 0x07、戒指 0x08）
+ */
+export function isJewelryCategory(typeId: number): boolean {
+  return typeId === 0x07 || typeId === 0x08
+}
+
+/**
+ * 是否拥有耐久度：官方规则仅武器 (0~3) 与防具 (4~6) 具有耐久度；
+ * 首饰 (手镯 7、戒指 8) 在官方实机中不磨损、无需修理、无耐久度
+ */
+export function hasDurability(typeId: number): boolean {
+  return isWeaponCategory(typeId) || isArmorCategory(typeId)
 }
 
 export const CATEGORIES: { id: number; name: string }[] = [

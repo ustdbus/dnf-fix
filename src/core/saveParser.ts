@@ -1,5 +1,5 @@
 import { DnfHeroSave, InventorySlot, MapRegion } from './types'
-import { findItemInfo } from './itemDict'
+import { findItemInfo, hasDurability, isJewelryCategory } from './itemDict'
 
 export const EMPTY_SLOT_TEMPLATE = new Uint8Array([
   0x00, 0x00, 0xf8, 0x00, 0xf8, 0x00, 0x00, 0xf8,
@@ -83,7 +83,7 @@ export function parseHeroSave(buffer: ArrayBuffer, charIndex: number = 0): DnfHe
 
     if (!isEmpty && isEquip) {
       grade = slotBytes[5]
-      durability = slotBytes[6]
+      durability = hasDurability(typeId) ? slotBytes[6] : 0
       baseAtkDef1 = slotBytes[7] | (slotBytes[8] << 8)
       baseAtkDef2 = slotBytes[9] | (slotBytes[10] << 8)
       refineBonus1 = slotBytes[11] | (slotBytes[12] << 8)
@@ -279,7 +279,10 @@ export function serializeHeroSave(save: DnfHeroSave): Uint8Array {
           baseBytes[5] = Math.max(0, Math.min(2, Math.floor(slot.grade))) & 0xff
         }
         // 写入耐久度 (字节 6: uint8 0~255)
-        if (slot.durability !== undefined) {
+        // 官方实机规则：首饰 (7: 手镯, 8: 戒指) 及无耐久装备在游戏中不磨损、无需修理，字节 6 必须为 0
+        if (isJewelryCategory(slot.typeId) || !hasDurability(slot.typeId)) {
+          baseBytes[6] = 0
+        } else if (slot.durability !== undefined) {
           baseBytes[6] = Math.max(0, Math.min(255, Math.floor(slot.durability))) & 0xff
         }
         // 写入基础物攻/物防 (字节 7~8: uint16 LE 0~65535)
