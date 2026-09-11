@@ -776,7 +776,7 @@
                 </button>
               </div>
             </div>
-            <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
+            <div class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
               <button
                 v-for="preset in displayedEnchantPresets"
                 :key="preset.id"
