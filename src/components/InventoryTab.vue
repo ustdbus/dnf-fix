@@ -782,13 +782,15 @@
                 :key="preset.id"
                 @click="applyPreset(preset)"
                 :class="[
-                  'text-[10px] px-2 py-1 rounded-lg border transition flex items-center gap-1',
-                  formEnchantCode === preset.code && formEnchantParam1 === preset.param1 && formEnchantParam2 === preset.param2 && formEnchantParam3 === preset.param3
-                    ? 'bg-fuchsia-600 border-fuchsia-400 text-white font-bold shadow-md shadow-fuchsia-600/30'
-                    : 'bg-gray-800/80 hover:bg-gray-700 border-gray-700 text-gray-300 hover:text-white'
+                  'text-[10px] px-2 py-1 rounded-lg border transition flex items-center gap-1.5',
+                  getPresetClass(preset, isPresetActive(preset))
                 ]"
                 :title="preset.desc"
               >
+                <span
+                  class="w-1.5 h-1.5 rounded-full shrink-0"
+                  :class="isPresetActive(preset) ? 'bg-black' : getPresetDotClass(preset.quality)"
+                ></span>
                 <span>{{ preset.name }}</span>
               </button>
             </div>
@@ -1174,6 +1176,45 @@ const filteredEnchantList = computed(() => {
   }
   return list.filter(item => item.category === selectedEnchantCategory.value)
 })
+
+function isPresetActive(preset: EnchantPreset): boolean {
+  return formEnchantCode.value === preset.code &&
+    formEnchantParam1.value === preset.param1 &&
+    formEnchantParam2.value === preset.param2 &&
+    formEnchantParam3.value === preset.param3
+}
+
+// 依据品质（普通/高级/稀有/神器/史诗）赋予对应卡片色彩
+function getPresetClass(preset: EnchantPreset, isActive: boolean): string {
+  if (isActive) {
+    return 'bg-gradient-to-r from-amber-500 to-yellow-400 border-amber-300 text-black font-black shadow-lg shadow-amber-500/40 ring-1 ring-amber-300 scale-[1.02]'
+  }
+  switch (preset.quality) {
+    case 'orange': // 史诗 (橙)
+      return 'bg-amber-950/40 hover:bg-amber-900/60 border-amber-500/50 text-amber-300 shadow-sm shadow-amber-950/20'
+    case 'pink':   // 神器 (粉)
+      return 'bg-fuchsia-950/40 hover:bg-fuchsia-900/60 border-fuchsia-500/50 text-fuchsia-300 shadow-sm shadow-fuchsia-950/20'
+    case 'purple': // 稀有 (紫)
+      return 'bg-purple-950/40 hover:bg-purple-900/60 border-purple-500/50 text-purple-300 shadow-sm shadow-purple-950/20'
+    case 'blue':   // 高级 (蓝)
+      return 'bg-blue-950/40 hover:bg-blue-900/60 border-blue-500/50 text-blue-300 shadow-sm shadow-blue-950/20'
+    case 'white':  // 普通 (白)
+    default:
+      return 'bg-gray-800/80 hover:bg-gray-700/90 border-gray-600 text-gray-200'
+  }
+}
+
+// 品质徽章圆点色彩
+function getPresetDotClass(quality?: string): string {
+  switch (quality) {
+    case 'orange': return 'bg-amber-400 shadow-sm shadow-amber-400/80'
+    case 'pink':   return 'bg-fuchsia-400 shadow-sm shadow-fuchsia-400/80'
+    case 'purple': return 'bg-purple-400 shadow-sm shadow-purple-400/80'
+    case 'blue':   return 'bg-blue-400 shadow-sm shadow-blue-400/80'
+    case 'white':
+    default:       return 'bg-gray-300 shadow-sm'
+  }
+}
 
 function applyPreset(preset: EnchantPreset) {
   formEnchantCode.value = preset.code

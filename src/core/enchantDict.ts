@@ -32,6 +32,7 @@ export interface EnchantPreset {
   param3: number
   icon: string
   parts?: EquipPart[]
+  quality?: 'white' | 'blue' | 'purple' | 'pink' | 'orange'
 }
 
 export const ENCHANT_CATEGORIES: { id: EnchantCategory; name: string; icon: string }[] = [
@@ -570,216 +571,235 @@ export const ENCHANT_DEFINITIONS: Record<number, EnchantDefinition> = {
 }
 
 // 常见强力附魔预设（Presets）
-// 严格对齐官方 3.etc 莎兰附魔卡片数据（共 106 张卡片），不采用任何超标或伪造词条，且按装备部位（武器/护肩/上衣/下衣/手腕/戒指）精准匹配
+// 严格对齐官方 3.etc 莎兰附魔卡片原生排列顺序与品质（普通/高级/稀有/神器/史诗），且按装备部位（武器/护肩/上衣/下衣/手腕/戒指）精准匹配
 export const ENCHANT_PRESETS: EnchantPreset[] = [
   {
     id: 'sharan_fire_attr',
     name: '🔥 赋予火属性攻击',
-    desc: '官方莎兰附魔卡：使武器赋予火属性攻击效果',
+    desc: '官方莎兰附魔卡(普通)：使武器赋予火属性攻击效果',
     code: 0x79,
     param1: 0,
     param2: 0,
     param3: 0,
     icon: '🔥',
-    parts: ['weapon']
-  },
-  {
-    id: 'sharan_ice_attr',
-    name: '❄️ 赋予冰属性攻击',
-    desc: '官方莎兰附魔卡：使武器赋予冰属性攻击效果',
-    code: 0x7a,
-    param1: 0,
-    param2: 0,
-    param3: 0,
-    icon: '❄️',
-    parts: ['weapon']
-  },
-  {
-    id: 'sharan_light_attr',
-    name: '⚡ 赋予光属性攻击',
-    desc: '官方莎兰附魔卡：使武器赋予光属性攻击效果',
-    code: 0x7b,
-    param1: 0,
-    param2: 0,
-    param3: 0,
-    icon: '⚡',
-    parts: ['weapon']
-  },
-  {
-    id: 'sharan_dark_attr',
-    name: '🌑 赋予暗属性攻击',
-    desc: '官方莎兰附魔卡：使武器赋予暗属性攻击效果',
-    code: 0x7c,
-    param1: 0,
-    param2: 0,
-    param3: 0,
-    icon: '🌑',
-    parts: ['weapon']
-  },
-  {
-    id: 'sharan_phy_atk_63',
-    name: '⚔️ 物理攻击力 +63',
-    desc: '官方莎兰顶级卡片：物理攻击力提升 63 点',
-    code: 0x0a,
-    param1: 63,
-    param2: 0,
-    param3: 0,
-    icon: '⚔️',
-    parts: ['weapon', 'top', 'bottom']
+    parts: ['weapon'],
+    quality: 'white'
   },
   {
     id: 'sharan_mag_atk_39',
     name: '🔮 魔法攻击力 +39',
-    desc: '官方莎兰顶级卡片：魔法攻击力提升 39 点',
+    desc: '官方莎兰附魔卡(普通)：魔法攻击力提升 39 点',
     code: 0x0b,
     param1: 39,
     param2: 0,
     param3: 0,
     icon: '🔮',
-    parts: ['weapon', 'top', 'bottom']
+    parts: ['weapon', 'top', 'bottom'],
+    quality: 'white'
+  },
+  {
+    id: 'sharan_ice_attr',
+    name: '❄️ 赋予冰属性攻击',
+    desc: '官方莎兰附魔卡(普通)：使武器赋予冰属性攻击效果',
+    code: 0x7a,
+    param1: 0,
+    param2: 0,
+    param3: 0,
+    icon: '❄️',
+    parts: ['weapon'],
+    quality: 'white'
+  },
+  {
+    id: 'sharan_dark_attr',
+    name: '🌑 赋予暗属性攻击',
+    desc: '官方莎兰附魔卡(高级)：使武器赋予暗属性攻击效果',
+    code: 0x7c,
+    param1: 0,
+    param2: 0,
+    param3: 0,
+    icon: '🌑',
+    parts: ['weapon'],
+    quality: 'blue'
+  },
+  {
+    id: 'sharan_phy_atk_63',
+    name: '⚔️ 物理攻击力 +63',
+    desc: '官方莎兰附魔卡(高级)：物理攻击力提升 63 点',
+    code: 0x0a,
+    param1: 63,
+    param2: 0,
+    param3: 0,
+    icon: '⚔️',
+    parts: ['weapon', 'top', 'bottom'],
+    quality: 'blue'
+  },
+  {
+    id: 'sharan_light_attr',
+    name: '⚡ 赋予光属性攻击',
+    desc: '官方莎兰附魔卡(稀有)：使武器赋予光属性攻击效果',
+    code: 0x7b,
+    param1: 0,
+    param2: 0,
+    param3: 0,
+    icon: '⚡',
+    parts: ['weapon'],
+    quality: 'purple'
   },
   {
     id: 'sharan_extra_dmg_180',
     name: '💥 追加伤害 +180',
-    desc: '官方莎兰顶级卡片：攻击时追加 180 点固定白字伤害',
+    desc: '官方莎兰附魔卡(史诗)：攻击时追加 180 点固定白字伤害',
     code: 0x0e,
     param1: 180,
     param2: 0,
     param3: 0,
     icon: '💥',
-    parts: ['weapon', 'top', 'bottom']
-  },
-  {
-    id: 'sharan_crit_10',
-    name: '🎯 暴击率 +10%',
-    desc: '官方莎兰顶级卡片：物理与魔法暴击率提升 10%',
-    code: 0x0f,
-    param1: 10,
-    param2: 0,
-    param3: 0,
-    icon: '🎯',
-    parts: ['shoulder']
+    parts: ['weapon', 'top', 'bottom'],
+    quality: 'orange'
   },
   {
     id: 'sharan_all_stat_15',
     name: '🌟 全属性增加 +15',
-    desc: '官方莎兰极品卡片：力量、智力、体力、精神全部增加 15 点',
+    desc: '官方莎兰极品卡片(史诗)：力量、智力、体力、精神全部增加 15 点',
     code: 0x60,
     param1: 15,
     param2: 0,
     param3: 0,
     icon: '🌟',
-    parts: ['bracelet', 'ring']
-  },
-  {
-    id: 'sharan_all_res_15',
-    name: '🛡️ 所有属性抗性 +15',
-    desc: '官方莎兰顶级卡片：火、冰、光、暗全属性抗性增加 15 点',
-    code: 0x65,
-    param1: 15,
-    param2: 0,
-    param3: 0,
-    icon: '🛡️',
-    parts: ['bracelet', 'ring']
-  },
-  {
-    id: 'sharan_move_speed_6',
-    name: '🏃 移动速度 +6%',
-    desc: '官方莎兰顶级卡片：角色移动速度提升 6%',
-    code: 0x11,
-    param1: 6,
-    param2: 0,
-    param3: 0,
-    icon: '🏃',
-    parts: ['bracelet', 'ring', 'shoulder']
-  },
-  {
-    id: 'sharan_hp_max_200',
-    name: '🩸 HP MAX +200',
-    desc: '官方莎兰卡片：角色生命上限提升 200 点',
-    code: 0x05,
-    param1: 200,
-    param2: 0,
-    param3: 0,
-    icon: '🩸',
-    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring']
-  },
-  {
-    id: 'sharan_hp_max_10pct',
-    name: '💎 HP MAX +10%',
-    desc: '官方莎兰极品卡片：角色生命上限增加 10%',
-    code: 0x7e,
-    param1: 10,
-    param2: 0,
-    param3: 0,
-    icon: '💎',
-    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring']
-  },
-  {
-    id: 'sharan_hit_recover_60',
-    name: '⚡ 硬直恢复 +60',
-    desc: '官方莎兰卡片：硬直恢复时间提升 60 点',
-    code: 0x10,
-    param1: 60,
-    param2: 0,
-    param3: 0,
-    icon: '⚡',
-    parts: ['shoulder']
-  },
-  {
-    id: 'sharan_hit_rate_8',
-    name: '🎯 命中率 +8%',
-    desc: '官方莎兰顶级卡片：攻击命中率提升 8%',
-    code: 0x12,
-    param1: 8,
-    param2: 0,
-    param3: 0,
-    icon: '🎯',
-    parts: ['weapon']
-  },
-  {
-    id: 'sharan_avoid_rate_8',
-    name: '🍃 回避率 +8%',
-    desc: '官方莎兰顶级卡片：攻击回避率提升 8%',
-    code: 0x13,
-    param1: 8,
-    param2: 0,
-    param3: 0,
-    icon: '🍃',
-    parts: ['bracelet', 'ring']
+    parts: ['bracelet', 'ring'],
+    quality: 'orange'
   },
   {
     id: 'sharan_str_20',
     name: '💪 力量 +20',
-    desc: '官方莎兰卡片：角色力量提升 20 点',
+    desc: '官方莎兰附魔卡(稀有)：角色力量提升 20 点',
     code: 0x01,
     param1: 20,
     param2: 0,
     param3: 0,
     icon: '💪',
-    parts: ['weapon', 'top', 'bottom']
+    parts: ['weapon', 'top', 'bottom'],
+    quality: 'purple'
   },
   {
     id: 'sharan_int_40',
     name: '🧠 智力 +40',
-    desc: '官方莎兰顶级卡片：角色智力提升 40 点',
+    desc: '官方莎兰附魔卡(史诗)：角色智力提升 40 点',
     code: 0x02,
     param1: 40,
     param2: 0,
     param3: 0,
     icon: '🧠',
-    parts: ['weapon', 'top', 'bottom', 'shoulder']
+    parts: ['weapon', 'top', 'bottom', 'shoulder'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_hp_max_10pct',
+    name: '💎 HP MAX +10%',
+    desc: '官方莎兰极品卡片(史诗)：角色生命上限增加 10%',
+    code: 0x7e,
+    param1: 10,
+    param2: 0,
+    param3: 0,
+    icon: '💎',
+    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring'],
+    quality: 'orange'
   },
   {
     id: 'sharan_hp_mp_rec_15',
     name: '💖 HP、MP恢复 +15',
-    desc: '官方莎兰卡片：HP与MP自然恢复量提升 15 点',
+    desc: '官方莎兰附魔卡(史诗)：HP与MP自然恢复量提升 15 点',
     code: 0x09,
     param1: 15,
     param2: 0,
     param3: 0,
     icon: '💖',
-    parts: ['bracelet', 'ring', 'shoulder']
+    parts: ['bracelet', 'ring', 'shoulder'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_hp_max_200',
+    name: '🩸 HP MAX +200',
+    desc: '官方莎兰附魔卡(史诗)：角色生命上限提升 200 点',
+    code: 0x05,
+    param1: 200,
+    param2: 0,
+    param3: 0,
+    icon: '🩸',
+    parts: ['shoulder', 'top', 'bottom', 'bracelet', 'ring'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_move_speed_6',
+    name: '🏃 移动速度 +6%',
+    desc: '官方莎兰附魔卡(神器)：角色移动速度提升 6%',
+    code: 0x11,
+    param1: 6,
+    param2: 0,
+    param3: 0,
+    icon: '🏃',
+    parts: ['bracelet', 'ring', 'shoulder'],
+    quality: 'pink'
+  },
+  {
+    id: 'sharan_all_res_15',
+    name: '🛡️ 所有属性抗性 +15',
+    desc: '官方莎兰顶级卡片(史诗)：火、冰、光、暗全属性抗性增加 15 点',
+    code: 0x65,
+    param1: 15,
+    param2: 0,
+    param3: 0,
+    icon: '🛡️',
+    parts: ['bracelet', 'ring'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_crit_10',
+    name: '🎯 暴击率 +10%',
+    desc: '官方莎兰顶级卡片(史诗)：物理与魔法暴击率提升 10%',
+    code: 0x0f,
+    param1: 10,
+    param2: 0,
+    param3: 0,
+    icon: '🎯',
+    parts: ['shoulder'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_hit_recover_60',
+    name: '⚡ 硬直恢复 +60',
+    desc: '官方莎兰附魔卡(史诗)：硬直恢复时间提升 60 点',
+    code: 0x10,
+    param1: 60,
+    param2: 0,
+    param3: 0,
+    icon: '⚡',
+    parts: ['shoulder'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_hit_rate_8',
+    name: '🎯 命中率 +8%',
+    desc: '官方莎兰顶级卡片(史诗)：攻击命中率提升 8%',
+    code: 0x12,
+    param1: 8,
+    param2: 0,
+    param3: 0,
+    icon: '🎯',
+    parts: ['weapon'],
+    quality: 'orange'
+  },
+  {
+    id: 'sharan_avoid_rate_8',
+    name: '🍃 回避率 +8%',
+    desc: '官方莎兰顶级卡片(史诗)：攻击回避率提升 8%',
+    code: 0x13,
+    param1: 8,
+    param2: 0,
+    param3: 0,
+    icon: '🍃',
+    parts: ['bracelet', 'ring'],
+    quality: 'orange'
   }
 ]
 
