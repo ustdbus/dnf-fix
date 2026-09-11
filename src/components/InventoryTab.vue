@@ -565,9 +565,21 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <!-- 品级 -->
             <div>
-              <label class="text-[11px] block mb-1 font-medium text-amber-300/90">
-                装备品级 (Byte 5):
-              </label>
+              <div class="flex items-center justify-between mb-1">
+                <label class="text-[11px] font-medium text-amber-300/90">
+                  装备品级 (Byte 5):
+                </label>
+                <button
+                  v-if="formGrade !== 3"
+                  type="button"
+                  @click="onGradeChange"
+                  class="text-[10px] text-amber-400 hover:text-amber-300 bg-amber-950/60 hover:bg-amber-900/60 border border-amber-700/50 px-1.5 py-0.5 rounded transition flex items-center gap-1 active:scale-95 cursor-pointer"
+                  title="按官方游戏规则在当前品级区间内重新随机掷点属性"
+                >
+                  <span>🎲</span>
+                  <span>重新随机</span>
+                </button>
+              </div>
               <select
                 v-model.number="formGrade"
                 @change="onGradeChange"
@@ -1019,12 +1031,13 @@ const GRADE_LIST = [
   { value: 0, label: '下级', color: 'text-blue-400' },
 ]
 
-// 切换装备品级时，联动计算基础攻防、耐久度与四维属性
+// 切换装备品级或点击重新随机时，按官方游戏引擎原生算法在区间内随机加成
+// 逆向源码依据：libBNVModule.so: createItem @ 0x000b7801
 // 0.etc 为出厂基准下级值 (Grade 0, 100%)
-// 最上级 (Grade 3): 自动应用 +7% 满属性 (保存时自动路由到上级 Grade 2，保证游戏内正常显示品级)
-// 上级 (Grade 2): 基准值 * 1.05 (+5%)，官方基准上级
-// 中级 (Grade 1): 基准值 * 1.035 (+3.5%)
-// 下级 (Grade 0): 基准值 * 1.00 (出厂原值)
+// 最上级 (Grade 3): 固定 +7% 顶格满属性 (无需随机，保存自动路由到上级 Grade 2 确保游戏正常显示)
+// 上级 (Grade 2): 官方原生代码 bl getRandom(5, 7)，在 +5% ~ +7% 之间随机波动，耐久度 +0 ~ +2
+// 中级 (Grade 1): 官方原生代码围绕中间基准小幅随机浮动 +0% ~ +3%，耐久度 -1 ~ 0
+// 下级 (Grade 0): 官方原生代码扣减 -3% ~ -7% (基准值的 93% ~ 97%)，耐久度 -2 ~ -4
 function onGradeChange() {
   if (!isEquip(formTypeId.value)) return
   const innate = getEquipInnateInfo(formTypeId.value, formItemId.value)
@@ -1032,31 +1045,50 @@ function onGradeChange() {
 
   const statInfo = getInnateStat4Info(innate)
 
-  let ratio = 1.07
+  let ratio1 = 1.07
+  let ratio2 = 1.07
   let statRatio = 1.07
   let durOffset = 0
+
   if (formGrade.value === 3) {
-    ratio = 1.07   // 最上级: 107% 官方满属性
+    // 最上级: 107% 官方满属性 (固定顶格最大值)
+    ratio1 = 1.07
+    ratio2 = 1.07
     statRatio = 1.07
     durOffset = 0
   } else if (formGrade.value === 2) {
-    ratio = 1.05   // 上级: 105% 官方基准上级
-    statRatio = 1.05
-    durOffset = 0
+    // 上级: 官方代码 bl getRandom(5, 7)，在 +5% ~ +7% 随机掷点
+    const rate1 = Math.floor(Math.random() * 3) + 5 // 5, 6, 7 (%)
+    const rate2 = Math.floor(Math.random() * 3) + 5 // 5, 6, 7 (%)
+    const statRate = Math.max(rate1, rate2)
+    ratio1 = 1 + rate1 / 100
+    ratio2 = 1 + rate2 / 100
+    statRatio = 1 + statRate / 100
+    durOffset = Math.floor(Math.random() * 3) // +0 ~ +2
   } else if (formGrade.value === 1) {
-    ratio = 1.035  // 中级: 103.5%
-    statRatio = 1.035
-    durOffset = -1
+    // 中级: 官方代码在基准线上浮动 0% ~ 3%
+    const rate1 = Math.floor(Math.random() * 4) // 0, 1, 2, 3 (%)
+    const rate2 = Math.floor(Math.random() * 4) // 0, 1, 2, 3 (%)
+    const statRate = Math.max(rate1, rate2)
+    ratio1 = 1 + rate1 / 100
+    ratio2 = 1 + rate2 / 100
+    statRatio = 1 + statRate / 100
+    durOffset = -Math.floor(Math.random() * 2) // -1 ~ 0
   } else if (formGrade.value === 0) {
-    ratio = 1.0    // 下级: 100%
-    statRatio = 1.0
-    durOffset = -2
+    // 下级: 官方代码扣减 3% ~ 7% (基准原值的 93% ~ 97%)
+    const rate1 = Math.floor(Math.random() * 5) + 3 // 3, 4, 5, 6, 7 (%)
+    const rate2 = Math.floor(Math.random() * 5) + 3 // 3, 4, 5, 6, 7 (%)
+    const statRate = Math.max(rate1, rate2)
+    ratio1 = Math.max(0.90, 1 - rate1 / 100)
+    ratio2 = Math.max(0.90, 1 - rate2 / 100)
+    statRatio = Math.max(0.90, 1 - statRate / 100)
+    durOffset = -(Math.floor(Math.random() * 3) + 2) // -2 ~ -4
   }
 
-  // 基础攻防向下取整，100% 对齐游戏实机 (如混沌剑圣光剑最上级: 2228 * 1.07 = 2383, 1938 * 1.07 = 2073)
-  formBaseAtkDef1.value = Math.floor((innate.base1 || 0) * ratio)
-  formBaseAtkDef2.value = Math.floor((innate.base2 || 0) * ratio)
-  // 四维属性四舍五入对齐游戏实机 (如最上级 67 * 1.07 = 72)
+  // 基础攻防向下取整，100% 对齐游戏实机
+  formBaseAtkDef1.value = Math.floor((innate.base1 || 0) * ratio1)
+  formBaseAtkDef2.value = Math.floor((innate.base2 || 0) * ratio2)
+  // 四维属性四舍五入对齐游戏实机
   if (statInfo.baseVal > 0) {
     formStat4.value = Math.round(statInfo.baseVal * statRatio)
   }
