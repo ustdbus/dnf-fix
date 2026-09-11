@@ -913,7 +913,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { DnfHeroSave, InventorySlot } from '../core/types'
-import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory, isWeaponCategory, isJewelryCategory, hasDurability } from '../core/itemDict'
+import { CATEGORIES, findItemInfo, getQualityInfo, getAllAvailableItems, getCategoryFirstItemId, isArmorCategory, isWeaponCategory, hasDurability } from '../core/itemDict'
 import { isEquipCategory } from '../core/saveParser'
 import { ENCHANT_CATEGORIES, ENCHANT_DEFINITIONS, ENCHANT_PRESETS, formatEnchantText, clampEnchantParam, EnchantPreset } from '../core/enchantDict'
 import { getEquipInnateInfo, EquipInnateInfo } from '../core/equipInnateDict'
@@ -1021,8 +1021,6 @@ const displayInnateLines = computed(() => {
 })
 
 const isWeapon = computed(() => isWeaponCategory(formTypeId.value))
-const isArmor = computed(() => isArmorCategory(formTypeId.value))
-const isJewelry = computed(() => isJewelryCategory(formTypeId.value))
 const canHaveDurability = computed(() => hasDurability(formTypeId.value))
 
 
@@ -1579,6 +1577,7 @@ function openEditModal(slot: InventorySlot) {
     formCount.value = isSingleCategory(slot.typeId) ? 1 : Math.min(99, slot.count || 1)
     formRefineLevel.value = slot.refineLevel || 0
     const innate = getEquipInnateInfo(slot.typeId, safeItemId)
+    const statInfo = getInnateStat4Info(innate)
     // 最上级与上级回显：如果存档为 3 或攻防达到 +7% 满属性，回显为最上级；普通 2 回显为上级
     let initGrade = slot.grade !== undefined ? slot.grade : 3
     if (initGrade >= 2) {
